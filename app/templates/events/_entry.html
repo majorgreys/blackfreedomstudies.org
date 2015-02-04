@@ -1,0 +1,146 @@
+{#
+ # Event entry template
+ #}
+
+{% extends "_layout" %}
+{% set title = entry.title %}
+{% set url = entry.url %}
+{% set description = entry.description|striptags %}
+{% set image = graphics.image.first().getUrl() %}
+
+{% block content %}
+<ul class="nav nav-pills">
+  {% if "now"|date('Y-m-d') <= entry.date and entry.eventbrite|length %}
+  <li> <a target="_blank" title="Register on Eventbrite" href="{{ entry.eventbrite }}"> <i class="fa fa-check-square-o"></i> Register! </a> </li>
+  {% endif %}
+  {% if entry.description is not empty %}<li><a href="#description">Description</a></li> {% endif %}
+  <li><a href="#speakers">Speakers</a></li>
+  {% if entry.primaryResources is not empty %} <li><a href="#primaryresources">Primary Resources</a></li> {% endif %}
+  {% if entry.video is not empty %} <li ><a href="#recording">Recording</a></li> {% endif %}
+  {# <li {% if entry.teaching is empty %} class="disabled" {% endif %}><a href="#teaching">Teaching</a></li> #}
+  <li><a href="#discussion">Discussion</a></li>
+</ul>
+<article>
+  <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='9754669' data-title='{{ entry.title }}' data-link='{{ entry.url }}' style="top: 0px; position: fixed;" ></div>
+    <div class="event-single">
+      <div class="event-header clearfix b0 bb1">
+        <div class="event-header-date p2 pt1 pb1">
+          <h2>
+            <span class="event-header-date-month">{{ entry.date  | date("M")}}</span>
+            <span class="event-header-date-day">{{ entry.date  | date("d")}}</span>
+          </h2>
+        </div>
+        <div class="event-header-name p1">
+          <h2>{{ entry.title }}</h2>
+        </div>
+      </div>
+      <div class="event-books clearfix">
+        {% for asset in entry.books %}
+        <div class="event-books-item">
+          <div class="img-container">
+            <img src="{{ asset.getUrl('eventbannerlarge') }}">
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% if entry.description|length %}
+    <section>
+      <h3>Description</h3>
+      <div id="description">
+          {{ entry.description }}
+      </div>
+    </section>
+    {% endif %}
+    <section>
+      <h3>Speakers</h3>
+      <div id="speakers" class="b0 p1 bt1">
+        <ul class="event-speakers clearfix b0 p0">
+          {% for speaker in entry.speakers %}
+          <li class="event-speakers-item pt1 pb1">
+          {% if speaker.image.first().url is empty %}
+          <span class="speaker-headshot"><i class="fa fa-user fa-5x"></i></span>
+          {% else %}
+          <img src="{{ speaker.image.first().url }}"  class="speaker-headshot pr1"/>
+          {% endif %}
+          <h3 class="event-speakers-item-name">
+            {{ speaker.title }}
+          </h3>
+          {% if speaker.affiliation %}
+          <span><em>{{ speaker.affiliation }}</em></span> <br/>
+          {% endif %}
+          {% if speaker.homepage %}
+          <span><a href="{{ speaker.homepage }}"><i class="fa fa-home fa-2x"></i></a></span>
+          {% endif %}
+          {% if speaker.email %}
+          <span><a href="mailto:{{ speaker.email }}"><i class="fa fa-envelope-o fa-2x"></i></a></span>
+          {% endif %}
+          {% if speaker.twitter %}
+          <span><a href="http://twitter.com/{{ speaker.twitter }}"><i class="fa fa-twitter fa-2x"></i></a></span>
+          {% endif %}
+          <div class="event-speakers-item-bio">
+            {{ speaker.bio }}
+          </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </section>
+    {% if entry.video|length %}
+    <section>
+      <h3>Recording</h3>
+      <div id="recording" class="event-section">
+        {% if entry.video.first().type == "externalDocument" %}
+          <div class="videoresource">
+            {{ entry.video.first().sourceUrl|videoEmbed }}
+          </div>
+        {% else %}
+        {% if entry.video.first().videoEmbedCode %}
+          <div class="videoresource">
+          {{ entry.video.first().videoEmbedCode|raw }}
+          </div>
+        {% else %}
+          {{ entry.video.first().body }}
+        {% endif %} 
+        {% endif %}
+      </div>
+    </section>
+    {% endif %}
+    {% if entry.primaryResources|length %}
+    <section>
+      <h3>Primary Resources</h3>
+      <div id="primaryresources" class="event-section">
+        <ul class="list-unstyled">
+        {% for resource in entry.primaryResources %}
+          {% if resource.resourceType == 'Video' %}
+          <div class="videoresource">
+            {{ resource.sourceUrl|videoEmbed }}
+          </div>
+          {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </section>
+    {% endif %}
+    <section>
+      <h3>Discussion</h3>
+      <div id="discussion">
+        <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                var disqus_shortname = 'blackfreedomstudies'; // required: replace example with your forum shortname
+
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+         </div>
+      </div>
+    </section>
+</article>
+{% endblock %}

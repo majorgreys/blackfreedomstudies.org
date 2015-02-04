@@ -1,0 +1,43 @@
+{#
+ # NEH Seminar 2015 template
+ # ---------------
+ #}
+
+{% extends "_layout" %}
+{% set title = "NEH Seminar 2015: Rethinking Black Freedom Studies from the Jim Crow North to the Jim Crow West" %}
+
+{% block content %}
+<div class='shareaholic-canvas' data-app='share_buttons' data-app-id='9754669' data-title='{{ entry.title }}' data-link='{{ entry.url }}' style="top: 0px; position: fixed;" ></div>
+<header class="p1">
+  <h1 class="header" id="responsive-header"> {{ title }} </h1>
+  <div class="horizontalimages">
+    <ul class="list-unstyled">
+    {% for block in entry.sectionedContent.type('headerImage') %}
+    <li> <div class="img-container"> <img src="{{ block.image.first().getUrl('fullWidth') }}" alt="{{ block.caption }}"/> </div> </li>
+    {% endfor %}
+    </ul>
+  </div>
+  <div>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+      <ul class="nav nav-pills">
+      {% for block in entry.sectionedContent.type('textSection') %}
+        <li><a href="#{{ loop.index }}">{{ block.sectionHeading }}</a></li>
+      {% endfor %}
+      </ul>
+    </nav>
+  </div>
+  <p class="lead">
+    {{ entry.sectionedContent.type('summary').first().summary }}
+  </p>
+</header>
+<article>
+  {% for block in entry.sectionedContent.type('textSection') %}
+  <section class="clearfix bt2">
+    <h3 class="p1" id="{{ loop.index }}">{{ block.sectionHeading }}</h3>
+    <div class="clearfix b0 p1 bt1">
+      {{ block.sectionContent }}
+    </div>
+  </section>
+  {% endfor %}
+</article>
+{% endblock %}

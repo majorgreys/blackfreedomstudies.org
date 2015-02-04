@@ -14,11 +14,27 @@
  #}
 
 {% extends "_layout" %}
+{% set title = entry.title %}
+{% set url = entry.url %}
+{% set description = entry.body|striptags %}
+{% set image = graphics.image.first().getUrl() %}
 
 {% block content %}
-  <article>
-    <h1>{{ entry.title }}</h1>
-    <p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
-    {{ entry.body }}
-  </article>
+	<article>
+          <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='9754669' data-title='{{ entry.title }}' data-link='{{ entry.url }}' style="top: 0px; position: fixed;" ></div>
+                <div class="news">
+		<h1>{{ entry.title }}</h1>
+                <p><i class="fa fa-clock-o"></i> {{ entry.postDate.format('F d, Y') }}</p>
+                {% if entry.imagebanner is not empty %}
+                <div class="horizontalimages">
+                  <ul class="list-unstyled">
+                  {% for block in entry.imagebanner.type('image') %}
+                  <li> <div class="img-container"> <img src="{{ block.imageasset.first().getUrl('fullWidth') }}" alt="{{ block.caption }}"/> </div> </li>
+                  {% endfor %}
+                  </ul>
+                </div>
+                {% endif %}
+                  {{ entry.body }}
+                </div>
+	</article>
 {% endblock %}

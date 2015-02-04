@@ -1,0 +1,38 @@
+{#
+ # Resource index template
+ #}
+
+{% extends "_layout" %}
+{% set title = "Resources" %}
+
+{% set externalResources = craft.entries.type('externalResource') %}
+
+{% block content %}
+<div class="event-header b0" id="nav-page-sections">
+  <div class="event-header-name p1">
+    <h2> {{ title }} </h2>
+  </div>
+</div>
+<article>
+  <section class="clearfix bt2">
+    <div class="clearfix b0 p1 bt1">
+      <ul class="list-unstyled">
+        {% for externalResource in externalResources %}
+        {% if externalResource.resourceType == 'Video' %}
+        <li> 
+          {% if 'youtube' in externalResource.sourceUrl or 'vimeo' in externalResource.sourceUrl %}
+          <a href="{{ externalResource.sourceUrl }}" class="videothumb">
+            <i class="fa fa-play fa-4x"></i>
+            <img></img>
+          </a>
+          {% endif %}
+          <span>{{ externalResource.publicationDate }}</span>
+          <a href="{{ externalResource.sourceUrl }}"><h3>{{ externalResource.title }}</h3></a>
+        </li> 
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+</article>
+{% endblock %}

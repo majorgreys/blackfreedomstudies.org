@@ -1,81 +1,145 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
-    <link rel="home" href="{{ siteUrl }}" />
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{#
+ # Layout template
+ #}
 
-    {% set serverName = craft.request.getServerName() | split('.') %}
+ <!DOCTYPE html>
+ <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+ <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+ <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+ <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+ <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+        <link rel="home" href="{{ siteUrl }}" />
+        <meta name="description" content="Conversations in Black Freedom Studies">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {% if serverName[1] == 'staging' %}
-      <meta name="robots" content="noindex, nofollow">
-    {% endif %}
+        <!-- facebook -->
+        <meta property="og:url" content="{{ url }}">
+        <meta property="og:title" content="{{ title }}">
+        <meta property="og:description" content="{{ description }}">
+        <meta property="og:image" content="{{ image }}">
+        <meta property="og:image:width" content="350">
 
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <!-- build:css /styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
+        <!-- Bootstrap -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+       
+        <!-- custom CSS -->
+        <link rel="stylesheet" href="/css/normalize.css">
+        <link rel="stylesheet" href="/css/shb.css">
+        <link rel="stylesheet" href="/css/main.css">
 
-    <!-- build:css /styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
+        <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+        
+        <!-- shareaholic -->
+        <script type="text/javascript">
+        //<![CDATA[
+          (function() {
+            var shr = document.createElement('script');
+            shr.setAttribute('data-cfasync', 'false');
+            shr.src = '//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js';
+            shr.type = 'text/javascript'; shr.async = 'true';
+            shr.onload = shr.onreadystatechange = function() {
+              var rs = this.readyState;
+              if (rs && rs != 'complete' && rs != 'loaded') return;
+              var site_id = '3dc43696a7ebd5692a3198ff69958f37';
+              try { Shareaholic.init(site_id); } catch (e) {}
+            };
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(shr, s);
+          })();
+        //]]>
+        </script>
 
-    <!-- build:js /scripts/vendor/modernizr.js -->
-    <script src="../bower_components/modernizr/modernizr.js"></script>
-    <!-- endbuild -->
-  </head>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
 
-  <body>
-    <!--[if lt IE 10]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+        <!-- Add your site or application content here -->
+        <main id="content" role="main">
+          <div id="topnav">
+          <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ siteUrl }}">Black<br/>Freedom<br/>Studies</a>
+              </div>
 
-    <header>
-      <h1><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="/events/">Conversations Series</a></li>
+                  <li><a href="/neh-seminar-2015/">NEH Summer Seminar</a></li>
+                  <li><a href="/news/">News</a></li>
+                  <li><a href="/about">About</a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          </div>
 
-      <nav>
-        <ul>
-          <li><a href="{{ url('news') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>News</a></li>
-        </ul>
-      </nav>
-    </header>
+          {% block content %}
+          <p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+          <p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+          {% endblock %}
+          
+          <div class="footer">
+            <p class="text-muted">Follow us on <a href="http://twitter.com/SchomburgCBFS">@SchomburgCBFS <i class="fa fa-twitter"></i></a></p>
+            <p class="text-muted">Send comments and questions to <a href="mailto:blackfreedomstudies@gmail.com">blackfreedomstudies@gmail.com <i class="fa fa-envelope"></i></a></p>
+              <p class="text-muted">CBFS is supported by the <a href="http://www.nypl.org/locations/schomburg">Schomburg Center for Research in Black Culture</a> and the <a href="http://gc.cuny.edu">City Univerity of New York (CUNY) Graduate Center</a>.</p>
+          </div>
+        </main>
 
-    {% block content %}
-      <p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
-      <p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
-    {% endblock %}
+        <script src="/js/jquery-1.11.1.min.js"></script>
+        <script src="/js/jquery.fitvids.js"></script>
+        <script src="/js/jquery.fittext.js"></script>
+        <script src="/js/plugins.js"></script>
+        <script src="/js/main.js"></script>
+        <script src="/js/modernizr-2.6.2.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
 
-    <footer>
-      Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved &bull; Built with <a href="http://buildwithcraft.com">Craft</a>
-    </footer>
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-53205754-1');ga('send','pageview');
+        </script>
+        
+        <script>
+          $('body').scrollspy({target: '.nav-spy'});
+        </script>
 
-    <!-- build:js /scripts/vendor.js -->
-    <!-- bower:js --><!-- endbower -->
-    <!-- endbuild -->
-
-    <!-- build:js /scripts/main.js -->
-    <script src="scripts/main.js"></script>
-    <!-- endbuild -->
-
-    <!--inject:livereload-->
-    <!--end inject-->
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
-  </body>
+        <script>
+          $(document).ready(function() {
+             // deactivate disabled nav links
+             $(".nav li.disabled a").click(function() {
+               return false;
+             });
+             $(".videoresource").fitVids();
+             $("#responsive-header").fitText(2);
+             // insert thumbnails for video links
+             $(".videothumb").each(function(index){
+                console.log(index + ": " + $(this));
+             });
+           });
+        </script>
+    </body>
 </html>
