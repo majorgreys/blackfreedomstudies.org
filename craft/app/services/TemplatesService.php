@@ -290,7 +290,7 @@ class TemplatesService extends BaseApplicationComponent
 		{
 			// Replace shortcut "{var}"s with "{{object.var}}"s, without affecting normal Twig tags
 			$formattedTemplate = preg_replace('/(?<![\{\%])\{(?![\{\%])/', '{{object.', $template);
-			$formattedTemplate = preg_replace('/(?<![\}\%])\}(?![\}\%])/', '}}', $formattedTemplate);
+			$formattedTemplate = preg_replace('/(?<![\}\%])\}(?![\}\%])/', '|raw}}', $formattedTemplate);
 			$this->_objectTemplates[$template] = $twig->loadTemplate($formattedTemplate);
 		}
 
@@ -481,8 +481,11 @@ class TemplatesService extends BaseApplicationComponent
 	 */
 	public function includeJs($js, $first = false)
 	{
+		// Trim any whitespace and ensure it ends with a semicolon.
+		$js = trim($js, " \t\n\r\0\x0B;").';';
+
 		$latestBuffer =& $this->_jsBuffers[count($this->_jsBuffers)-1];
-		ArrayHelper::prependOrAppend($latestBuffer, trim($js), $first);
+		ArrayHelper::prependOrAppend($latestBuffer, $js, $first);
 	}
 
 	/**
@@ -738,7 +741,15 @@ class TemplatesService extends BaseApplicationComponent
 	 */
 	public function doesTemplateExist($name)
 	{
-		return (bool) $this->findTemplate($name);
+		try
+		{
+			return (bool) $this->findTemplate($name);
+		}
+		catch (\Twig_Error_Loader $e)
+		{
+			// _validateTemplateName() han an issue with it
+			return false;
+		}
 	}
 
 	/**
@@ -973,7 +984,7 @@ class TemplatesService extends BaseApplicationComponent
 			if ($otherAttributes)
 			{
 				$idNamespace = $this->formatInputId($namespace);
-				$html = preg_replace('/(?<![\w\-])((id|for|list|data\-target|data\-reverse\-target|data\-target\-prefix)=(\'|")#?)([^\.][^\'"]*)\3/i', '$1'.$idNamespace.'-$4$3', $html);
+				$html = preg_replace('/(?<![\w\-])((id|for|list|data\-target|data\-reverse\-target|data\-target\-prefix)=(\'|")#?)([^\.\'"][^\'"]*)\3/i', '$1'.$idNamespace.'-$4$3', $html);
 			}
 
 			// Bring back the textarea content
@@ -1381,11 +1392,6 @@ class TemplatesService extends BaseApplicationComponent
 			$html .= ' removable';
 		}
 
-		if ($context['context'] != 'index')
-		{
-			$html .= ' unselectable';
-		}
-
 		if ($thumbUrl)
 		{
 			$html .= ' hasthumb';
@@ -1398,6 +1404,11 @@ class TemplatesService extends BaseApplicationComponent
 		$label = HtmlHelper::encode($context['element']);
 
 		$html .= '" data-id="'.$context['element']->id.'" data-locale="'.$context['element']->locale.'" data-status="'.$context['element']->getStatus().'" data-label="'.$label.'" data-url="'.$context['element']->getUrl().'"';
+
+		if ($context['element']->level)
+		{
+			$html .= ' data-level="'.$context['element']->level.'"';
+		}
 
 		$isEditable = ElementHelper::isElementEditable($context['element']);
 

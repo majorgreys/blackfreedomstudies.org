@@ -149,14 +149,6 @@ class CraftVariable
 	}
 
 	/**
-	 * @return FieldTypesVariable
-	 */
-	public function fieldTypes()
-	{
-		return new FieldTypesVariable();
-	}
-
-	/**
 	 * @return CpVariable
 	 */
 	public function cp()
@@ -226,14 +218,6 @@ class CraftVariable
 	public function feeds()
 	{
 		return new FeedsVariable();
-	}
-
-	/**
-	 * @return LinksVariable
-	 */
-	public function links()
-	{
-		return new LinksVariable();
 	}
 
 	/**

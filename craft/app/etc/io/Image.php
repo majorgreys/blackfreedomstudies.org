@@ -341,6 +341,20 @@ class Image
 	}
 
 	/**
+	 * Rotate an image by degrees.
+	 *
+	 * @param int $degrees
+	 *
+	 * @return Image
+	 */
+	public function rotate($degrees)
+	{
+		$this->_image->rotate($degrees);
+
+		return $this;
+	}
+
+	/**
 	 * Set image quality.
 	 *
 	 * @param int $quality
@@ -383,18 +397,43 @@ class Image
 	}
 
 	/**
-	 * Returns true if Imagick is installed and says that the iamge is transparent.
+	 * Returns true if Imagick is installed and says that the image is transparent.
 	 *
 	 * @return bool
 	 */
 	public function isTransparent()
 	{
-		if(craft()->images->isImagick() && method_exists("Imagick", "getImageAlphaChannel"))
+		if (craft()->images->isImagick() && method_exists("Imagick", "getImageAlphaChannel"))
 		{
-			return $this->_image->getImagineImageInterface()->getImagick()->getImageAlphaChannel();
+			return $this->_image->getImagick()->getImageAlphaChannel();
 		}
 
 		return false;
+	}
+
+	/**
+	 * Return EXIF metadata for a file by it's path
+	 *
+	 * @param $filePath
+	 *
+	 * @return array
+	 */
+	public function getExifMetadata($filePath)
+	{
+		try
+		{
+			$exifReader = new \Imagine\Image\Metadata\ExifMetadataReader();
+			$this->_instance->setMetadataReader($exifReader);
+			$exif = $this->_instance->open($filePath)->metadata();
+
+			return $exif->toArray();
+		}
+		catch (\Imagine\Exception\NotSupportedException $exception)
+		{
+			Craft::log($exception->getMessage(), LogLevel::Error);
+
+			return array();
+		}
 	}
 
 	// Private Methods
@@ -538,7 +577,25 @@ class Image
 					$normalizedQuality = 9;
 				}
 
-				return array('png_compression_level' => $normalizedQuality, 'flatten' => false);
+				$options = array('png_compression_level' => $normalizedQuality, 'flatten' => false);
+				$pngInfo = ImageHelper::getPngImageInfo($this->_imageSourcePath);
+
+				// Even though a 2 channel PNG is valid (Grayscale with alpha channel), Imagick doesn't recognize it as
+				// a valid format: http://www.imagemagick.org/script/formats.php
+				// So 2 channel PNGs get converted to 4 channel.
+
+				if (is_array($pngInfo) && isset($pngInfo['channels']) && $pngInfo['channels'] !== 2)
+				{
+					$format = 'png'.(8 * $pngInfo['channels']);
+				}
+				else
+				{
+					$format = 'png32';
+				}
+
+				$options['png_format'] = $format;
+
+				return $options;
 			}
 
 			default:

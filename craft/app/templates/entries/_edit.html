@@ -40,17 +40,7 @@
 			<div class="item" data-position="right" data-colspan="1">
 
 				{% if showPreviewBtn %}
-					{% if shareUrl is defined %}
-						<div id="view-btns" class="btngroup">
-					{% endif %}
-							<div id="livepreview-btn" class="btn big" data-icon="view">
-								{{ "Live Preview"|t }}
-								<div id="livepreview-spinner" class="spinner hidden"></div>
-							</div>
-					{% if shareUrl is defined %}
-							<a href="{{ shareUrl }}" id="share-btn" class="btn big" data-icon="share" title="{{ 'View this entry on your website'|t }}" target="_blank"></a>
-						</div>
-					{% endif %}
+					{% include "_includes/previewbtns" %}
 				{% endif %}
 
 				{% if craft.isLocalized() and section.getLocales() | length > 1 %}
@@ -104,25 +94,30 @@
 								disabled: isVersion
 							}) }}
 
-							{% if section.type == 'structure' and parentOptions|length > 1 %}
-								{{ forms.selectField({
+							{% if parentOptionCriteria is defined %}
+								{{ forms.elementSelectField({
 									label: "Parent Entry"|t,
 									id: 'parentId',
 									name: 'parentId',
-									options: parentOptions,
-									value: parentId,
-									disabled: isVersion
+									elementType: elementType,
+									addButtonLabel: "Choose"|t,
+									sources: ['section:'~section.id],
+									criteria: parentOptionCriteria,
+									limit: 1,
+									elements: (parent is defined and parent ? [parent])
 								}) }}
 							{% endif %}
 
-							{% if CraftEdition >= CraftClient %}
-								{{ forms.selectField({
+							{% if CraftEdition == CraftPro and currentUser.can('editPeerEntries'~permissionSuffix) %}
+								{{ forms.elementSelectField({
 									label: "Author"|t,
 									id: 'author',
 									name: 'author',
-									options: authorOptions,
-									value: entry.authorId,
-									disabled: isVersion
+									elementType: userElementType,
+									addButtonLabel: "Choose"|t,
+									criteria: authorOptionCriteria,
+									limit: 1,
+									elements: (author is defined and author ? [author])
 								}) }}
 							{% endif %}
 
@@ -262,7 +257,7 @@
 												{% if showEntryTypes %}
 													{% set nextEntryParams = nextEntryParams|merge(['typeId={type.id}']) %}
 												{% endif %}
-												{% if section.type == 'structure' and parentOptions|length > 1 %}
+												{% if section.type == 'structure' %}
 													{% set nextEntryParams = nextEntryParams|merge(['parentId={parent.id}']) %}
 												{% endif %}
 
@@ -272,6 +267,10 @@
 
 												{% if CraftEdition >= CraftClient %}
 													<li><a class="formsubmit" data-action="entryRevisions/saveDraft" data-redirect="{{ baseCpEditUrl }}/drafts/{draftId}">{{ 'Save as a draft'|t }}</a></li>
+												{% endif %}
+
+												{% if not isSingle and entry.id %}
+													<li><a class="formsubmit" data-param="entryId" data-value="" data-redirect="{{ continueEditingUrl }}">{{ "Save as a new entry"|t }}</a></li>
 												{% endif %}
 											</ul>
 										</div>

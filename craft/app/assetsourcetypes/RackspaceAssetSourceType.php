@@ -12,7 +12,7 @@ craft()->requireEdition(Craft::Pro);
  * @see        http://buildwithcraft.com
  * @package    craft.app.assetsourcetypes
  * @since      1.0
- * @deprecated This class will most likely be removed in Craft 3.0.
+ * @deprecated This class will be removed in Craft 3.0.
  */
 class RackspaceAssetSourceType extends BaseAssetSourceType
 {
@@ -532,14 +532,27 @@ class RackspaceAssetSourceType extends BaseAssetSourceType
 			{
 				$transforms = craft()->assetTransforms->getAllCreatedTransformsForFile($file);
 
+				$destination = clone $file;
+				$destination->filename = $fileName;
+
 				// Move transforms
 				foreach ($transforms as $index)
 				{
+					// For each file, we have to have both the source and destination
+					// for both files and transforms, so we can reliably move them
+					$destinationIndex = clone $index;
+
+					if (!empty($index->filename))
+					{
+						$destinationIndex->filename = $fileName;
+						craft()->assetTransforms->storeTransformIndexData($destinationIndex);
+					}
+
 					// Since Rackspace needs it's paths prepared, we deviate a little from the usual pattern.
 					$sourceTransformPath = $file->getFolder()->path.craft()->assetTransforms->getTransformSubpath($file, $index);
 					$sourceTransformPath = $this->_prepareRequestURI($originatingSettings->container, $originatingSettings->subfolder.$sourceTransformPath);
 
-					$targetTransformPath = $targetFolder->path.craft()->assetTransforms->getTransformSubpath($file, $index);
+					$targetTransformPath = $targetFolder->path.craft()->assetTransforms->getTransformSubpath($destination, $destinationIndex);
 					$targetTransformPath = $this->_prepareRequestURI($this->getSettings()->container, $targetTransformPath);
 
 					$this->_copyFile($sourceTransformPath, $targetTransformPath);
@@ -549,7 +562,7 @@ class RackspaceAssetSourceType extends BaseAssetSourceType
 			}
 			else
 			{
-				craft()->assetTransforms->deleteCreatedTransformsForFile($file);
+				craft()->assetTransforms->deleteAllTransformData($file);
 			}
 		}
 
@@ -994,7 +1007,23 @@ class RackspaceAssetSourceType extends BaseAssetSourceType
 
 		if (!$lastModified)
 		{
-			return false;
+			// For Rackspace, apparently it's OK for folders to have "/" or not. Whatever.
+			if (substr($path, -1) == "/")
+			{
+				$target = $this->_prepareRequestURI($this->getSettings()->container, rtrim($path, "/"));
+				$response = $this->_doAuthenticatedRequest(static::RACKSPACE_STORAGE_OPERATION, $target, 'HEAD');
+				$lastModified = static::_extractHeader($response, 'Last-Modified');
+				$size = static::_extractHeader($response, 'Content-Length');
+
+				if (!$lastModified)
+				{
+					return false;
+				}
+			}
+			else
+			{
+				return false;
+			}
 		}
 
 		return (object) array('lastModified' => $lastModified, 'size' => $size);

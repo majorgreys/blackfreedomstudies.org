@@ -84,11 +84,17 @@ class ResourcesService extends BaseApplicationComponent
 				case 'js':
 				{
 					// Route to js/compressed/ if useCompressedJs is enabled
-					if (craft()->config->get('useCompressedJs') && !craft()->request->getQuery('uncompressed'))
+					// unless js/uncompressed/* is requested, in which case drop the uncompressed/ seg
+					if (isset($segs[1]) && $segs[1] == 'uncompressed')
+					{
+						array_splice($segs, 1, 1);
+					}
+					else if (craft()->config->get('useCompressedJs'))
 					{
 						array_splice($segs, 1, 0, 'compressed');
-						$path = implode('/', $segs);
 					}
+
+					$path = implode('/', $segs);
 					break;
 				}
 
@@ -110,14 +116,14 @@ class ResourcesService extends BaseApplicationComponent
 							return false;
 						}
 
-						$size = AssetsHelper::cleanAssetName($segs[2]);
+						$size = AssetsHelper::cleanAssetName($segs[2], false);
 						// Looking for either a numeric size or "original" keyword
 						if (!is_numeric($size) && $size != "original")
 						{
 							return false;
 						}
 
-						$username = AssetsHelper::cleanAssetName($segs[1]);
+						$username = AssetsHelper::cleanAssetName($segs[1], false);
 						$filename = AssetsHelper::cleanAssetName($segs[3]);
 
 						$userPhotosPath = craft()->path->getUserPhotosPath().$username.'/';
@@ -279,14 +285,11 @@ class ResourcesService extends BaseApplicationComponent
 		// Maybe a plugin wants to do something custom with this URL
 		craft()->plugins->loadPlugins();
 
-		$pluginPaths = craft()->plugins->call('getResourcePath', array($path));
+		$pluginPath = craft()->plugins->callFirst('getResourcePath', array($path), true);
 
-		foreach ($pluginPaths as $path)
+		if ($pluginPath && IOHelper::fileExists($pluginPath))
 		{
-			if ($path && IOHelper::fileExists($path))
-			{
-				return $path;
-			}
+			return $pluginPath;
 		}
 
 		// Couldn't find the file
@@ -305,7 +308,7 @@ class ResourcesService extends BaseApplicationComponent
 	{
 		if (PathHelper::ensurePathIsContained($path) === false)
 		{
-			throw new HttpException(403);
+			throw new HttpException(404);
 		}
 
 		$cachedPath = $this->getCachedResourcePath($path);
@@ -397,25 +400,41 @@ class ResourcesService extends BaseApplicationComponent
 	 */
 	private function _normalizeCssUrl($match)
 	{
-		// ignore root-relative, absolute, and data: URLs
+		// Ignore root-relative, absolute, and data: URLs
 		if (preg_match('/^(\/|https?:\/\/|data:)/', $match[3]))
 		{
 			return $match[0];
 		}
 
-		$url = IOHelper::getFolderName(craft()->request->getPath()).$match[3];
+		// Clean up any relative folders at the beginning of the CSS URL
+		$requestFolder = IOHelper::getFolderName(craft()->request->getPath());
+		$requestFolderParts = array_filter(explode('/', $requestFolder));
+		$cssUrlParts = array_filter(explode('/', $match[3]));
 
-		// Make sure this is a resource URL
-		$resourceTrigger = craft()->config->getResourceTrigger();
-		$resourceTriggerPos = mb_strpos($url, $resourceTrigger);
-
-		if ($resourceTriggerPos !== false)
+		while (isset($cssUrlParts[0]) && $cssUrlParts[0] == '..' && $requestFolderParts)
 		{
-			// Give UrlHelper a chance to add the timestamp
-			$path = mb_substr($url, $resourceTriggerPos + mb_strlen($resourceTrigger));
-			$url = UrlHelper::getResourceUrl($path);
+			array_pop($requestFolderParts);
+			array_shift($cssUrlParts);
 		}
 
+		$pathParts = array_merge($requestFolderParts, $cssUrlParts);
+		$path = implode('/', $pathParts);
+		$url = UrlHelper::getUrl($path);
+
+		// Is this going to be a resource URL?
+		$rootResourceUrl = UrlHelper::getUrl(craft()->config->getResourceTrigger()).'/';
+		$rootResourceUrlLength = strlen($rootResourceUrl);
+
+		if (strncmp($rootResourceUrl, $url, $rootResourceUrlLength) === 0)
+		{
+			// Isolate the relative resource path
+			$resourcePath = substr($url, $rootResourceUrlLength);
+
+			// Give UrlHelper a chance to add the timestamp
+			$url = UrlHelper::getResourceUrl($resourcePath);
+		}
+
+		// Return the normalized CSS URL declaration
 		return $match[1].$url.$match[4];
 	}
 

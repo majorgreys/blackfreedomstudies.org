@@ -10,12 +10,10 @@ return array(
     $vendorDir . '/phpunit/php-file-iterator',
     $vendorDir . '/phpunit/php-text-template',
     $vendorDir . '/phpunit/phpunit-story',
-    $vendorDir . '/phpunit/php-token-stream',
     $vendorDir . '/phpunit/dbunit',
     $vendorDir . '/symfony/yaml',
-    $vendorDir . '/phpunit/phpunit-mock-objects',
+    $vendorDir . '/phpunit/phpunit-selenium',
     $vendorDir . '/phpunit/php-code-coverage',
     $vendorDir . '/phpunit/phpunit',
     $vendorDir . '/symfony/yaml',
-    $vendorDir . '/phpunit/phpunit-selenium',
 );

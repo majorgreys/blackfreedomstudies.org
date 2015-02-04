@@ -4,12 +4,13 @@ namespace Craft;
 /**
  * Class AssetSourcesService
  *
- * @author    Pixel & Tonic, Inc. <support@pixelandtonic.com>
- * @copyright Copyright (c) 2014, Pixel & Tonic, Inc.
- * @license   http://buildwithcraft.com/license Craft License Agreement
- * @see       http://buildwithcraft.com
- * @package   craft.app.services
- * @since     1.0
+ * @author     Pixel & Tonic, Inc. <support@pixelandtonic.com>
+ * @copyright  Copyright (c) 2014, Pixel & Tonic, Inc.
+ * @license    http://buildwithcraft.com/license Craft License Agreement
+ * @see        http://buildwithcraft.com
+ * @package    craft.app.services
+ * @since      1.0
+ * @deprecated This class will have several breaking changes in Craft 3.0.
  */
 class AssetSourcesService extends BaseApplicationComponent
 {
@@ -325,8 +326,9 @@ class AssetSourcesService extends BaseApplicationComponent
 			$oldSource = AssetSourceModel::populateModel($sourceRecord);
 		}
 
-		$sourceRecord->name = $source->name;
-		$sourceRecord->type = $source->type;
+		$sourceRecord->name          = $source->name;
+		$sourceRecord->handle        = $source->handle;
+		$sourceRecord->type          = $source->type;
 		$sourceRecord->fieldLayoutId = $source->fieldLayoutId;
 
 		$sourceType = $this->populateSourceType($source);
@@ -363,7 +365,7 @@ class AssetSourcesService extends BaseApplicationComponent
 
 				// Save the new one
 				$fieldLayout = $source->getFieldLayout();
-				craft()->fields->saveLayout($fieldLayout, false);
+				craft()->fields->saveLayout($fieldLayout);
 
 				// Update the source record/model with the new layout ID
 				$source->fieldLayoutId = $fieldLayout->id;
@@ -516,7 +518,7 @@ class AssetSourcesService extends BaseApplicationComponent
 	private function _createSourceQuery()
 	{
 		return craft()->db->createCommand()
-			->select('id, fieldLayoutId, name, type, settings, sortOrder')
+			->select('id, fieldLayoutId, name, handle, type, settings, sortOrder')
 			->from('assetsources')
 			->order('sortOrder');
 	}
@@ -554,7 +556,7 @@ class AssetSourcesService extends BaseApplicationComponent
 
 			if (!$sourceRecord)
 			{
-				throw new Exception(Craft::t('No source exists with the ID “{id}”', array('id' => $sourceId)));
+				throw new Exception(Craft::t('No source exists with the ID “{id}”.', array('id' => $sourceId)));
 			}
 		}
 		else

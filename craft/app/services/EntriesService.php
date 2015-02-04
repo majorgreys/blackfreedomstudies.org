@@ -46,7 +46,10 @@ class EntriesService extends BaseApplicationComponent
 	 * $entry->enabled   = true;
 	 *
 	 * $entry->getContent()->title = "Hello World!";
-	 * $entry->getContent()->body  = "<p>I can’t believe I literally just called this “Hello World!”.</p>";
+	 *
+	 * $entry->setContentFromPost(array(
+	 *     'body' => "<p>I can’t believe I literally just called this “Hello World!”.</p>",
+	 * ));
 	 *
 	 * $success = craft()->entries->saveEntry($entry);
 	 *
@@ -71,11 +74,11 @@ class EntriesService extends BaseApplicationComponent
 		{
 			if ($entry->parentId)
 			{
-				$parentEntry = $this->getEntryById($entry->parentId);
+				$parentEntry = $this->getEntryById($entry->parentId, $entry->locale);
 
 				if (!$parentEntry)
 				{
-					throw new Exception(Craft::t('No entry exists with the ID “{id}”', array('id' => $entry->parentId)));
+					throw new Exception(Craft::t('No entry exists with the ID “{id}”.', array('id' => $entry->parentId)));
 				}
 			}
 			else
@@ -93,7 +96,7 @@ class EntriesService extends BaseApplicationComponent
 
 			if (!$entryRecord)
 			{
-				throw new Exception(Craft::t('No entry exists with the ID “{id}”', array('id' => $entry->id)));
+				throw new Exception(Craft::t('No entry exists with the ID “{id}”.', array('id' => $entry->id)));
 			}
 		}
 		else
@@ -106,7 +109,7 @@ class EntriesService extends BaseApplicationComponent
 
 		if (!$section)
 		{
-			throw new Exception(Craft::t('No section exists with the ID “{id}”', array('id' => $entry->sectionId)));
+			throw new Exception(Craft::t('No section exists with the ID “{id}”.', array('id' => $entry->sectionId)));
 		}
 
 		// Verify that the section is available in this locale
@@ -155,17 +158,53 @@ class EntriesService extends BaseApplicationComponent
 		}
 
 		$transaction = craft()->db->getCurrentTransaction() === null ? craft()->db->beginTransaction() : null;
+
 		try
 		{
 			// Fire an 'onBeforeSaveEntry' event
-			$this->onBeforeSaveEntry(new Event($this, array(
+			$event = new Event($this, array(
 				'entry'      => $entry,
 				'isNewEntry' => $isNewEntry
-			)));
+			));
 
-			// Save the element
-			if (craft()->elements->saveElement($entry))
+			$this->onBeforeSaveEntry($event);
+
+			// Is the event giving us the go-ahead?
+			if ($event->performAction)
 			{
+				// Save the element
+				$success = craft()->elements->saveElement($entry);
+
+				// If it didn't work, rollback the transaction in case something changed in onBeforeSaveEntry
+				if (!$success)
+				{
+					if ($transaction !== null)
+					{
+						$transaction->rollback();
+					}
+
+					// If "title" has an error, check if they've defined a custom title label.
+					if ($entry->getError('title'))
+					{
+						// Grab all of the original errors.
+						$errors = $entry->getErrors();
+
+						// Grab just the title error message.
+						$originalTitleError = $errors['title'];
+
+						// Clear the old.
+						$entry->clearErrors();
+
+						// Create the new "title" error message.
+						$errors['title'] = str_replace('Title', $entryType->titleLabel, $originalTitleError);
+
+						// Add all of the errors back on the model.
+						$entry->addErrors($errors);
+					}
+
+					return false;
+				}
+
 				// Now that we have an element ID, save it on the other stuff
 				if ($isNewEntry)
 				{
@@ -199,40 +238,17 @@ class EntriesService extends BaseApplicationComponent
 				{
 					craft()->entryRevisions->saveVersion($entry);
 				}
-
-				if ($transaction !== null)
-				{
-					$transaction->commit();
-				}
 			}
 			else
 			{
-				if ($transaction !== null)
-				{
-					$transaction->rollback();
-				}
+				$success = false;
+			}
 
-				// If "title" has an error, check if they've defined a custom title label.
-				if ($entry->getError('title'))
-				{
-					// Grab all of the original errors.
-					$errors = $entry->getErrors();
-
-					// Grab just the title error message.
-					$originalTitleError = $errors['title'];
-
-					// Clear the old.
-					$entry->clearErrors();
-
-					// Create the new "title" error message.
-					$errors['title'] = str_replace('Title', $entryType->titleLabel, $originalTitleError);
-
-					// Add all of the errors back on the model.
-					$entry->addErrors($errors);
-
-				}
-
-				return false;
+			// Commit the transaction regardless of whether we saved the entry, in case something changed
+			// in onBeforeSaveEntry
+			if ($transaction !== null)
+			{
+				$transaction->commit();
 			}
 		}
 		catch (\Exception $e)
@@ -245,15 +261,16 @@ class EntriesService extends BaseApplicationComponent
 			throw $e;
 		}
 
-		// If we've made it here, everything has been successful so far.
+		if ($success)
+		{
+			// Fire an 'onSaveEntry' event
+			$this->onSaveEntry(new Event($this, array(
+				'entry'      => $entry,
+				'isNewEntry' => $isNewEntry
+			)));
+		}
 
-		// Fire an 'onSaveEntry' event
-		$this->onSaveEntry(new Event($this, array(
-			'entry'      => $entry,
-			'isNewEntry' => $isNewEntry
-		)));
-
-		return true;
+		return $success;
 	}
 
 	/**
@@ -272,6 +289,7 @@ class EntriesService extends BaseApplicationComponent
 		}
 
 		$transaction = craft()->db->getCurrentTransaction() === null ? craft()->db->beginTransaction() : null;
+
 		try
 		{
 			if (!is_array($entries))
@@ -283,6 +301,11 @@ class EntriesService extends BaseApplicationComponent
 
 			foreach ($entries as $entry)
 			{
+				// Fire an 'onBeforeDeleteEntry' event
+				$this->onBeforeDeleteEntry(new Event($this, array(
+					'entry' => $entry
+				)));
+
 				$section = $entry->getSection();
 
 				if ($section->type == SectionType::Structure)
@@ -295,11 +318,6 @@ class EntriesService extends BaseApplicationComponent
 						craft()->structures->moveBefore($section->structureId, $child, $entry, 'update', true);
 					}
 				}
-
-				// Fire an 'onBeforeDeleteEntry' event
-				$this->onBeforeDeleteEntry(new Event($this, array(
-					'entry' => $entry
-				)));
 
 				$entryIds[] = $entry->id;
 			}
@@ -370,6 +388,9 @@ class EntriesService extends BaseApplicationComponent
 			return false;
 		}
 	}
+
+	// Events
+	// -------------------------------------------------------------------------
 
 	/**
 	 * Fires an 'onBeforeSaveEntry' event.
@@ -450,13 +471,13 @@ class EntriesService extends BaseApplicationComponent
 		}
 
 		// Is it set to the top level now, but it hadn't been before?
-		if ($entry->parentId === '0' && $entry->level != 1)
+		if ($entry->parentId === '' && $entry->level != 1)
 		{
 			return true;
 		}
 
 		// Is it set to be under a parent now, but didn't have one before?
-		if ($entry->parentId !== '0' && $entry->level == 1)
+		if ($entry->parentId !== '' && $entry->level == 1)
 		{
 			return true;
 		}
@@ -469,7 +490,7 @@ class EntriesService extends BaseApplicationComponent
 		$criteria->localeEnabled = null;
 
 		$oldParent = $criteria->first();
-		$oldParentId = ($oldParent ? $oldParent->id : '0');
+		$oldParentId = ($oldParent ? $oldParent->id : '');
 
 		if ($entry->parentId != $oldParentId)
 		{

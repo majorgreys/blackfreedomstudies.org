@@ -118,7 +118,7 @@ class ImagesService extends BaseApplicationComponent
 		$channels = isset($imageInfo['channels']) ? $imageInfo['channels'] : 4;
 		$memoryNeeded = round(($imageInfo[0] * $imageInfo[1] * $bits  * $channels / 8 + $K64) * $tweakFactor);
 
-		$memoryLimit = AppHelper::getByteValueFromPhpSizeString(ini_get('memory_limit'));
+		$memoryLimit = AppHelper::getPhpConfigValueInBytes('memory_limit');
 
 		if (memory_get_usage() + $memoryNeeded < $memoryLimit)
 		{
@@ -143,6 +143,119 @@ class ImagesService extends BaseApplicationComponent
 	 */
 	public function cleanImage($filePath)
 	{
+		if (craft()->config->get('rotateImagesOnUploadByExifData'))
+		{
+			$this->rotateImageByExifData($filePath);
+		}
+
+		$this->stripOrientationFromExifData($filePath);
+
 		return $this->loadImage($filePath)->saveAs($filePath, true);
+
+	}
+
+	/**
+	 * Rotate image according to it's EXIF data.
+	 *
+	 * @param string $filePath
+	 *
+	 * @return null
+	 */
+	public function rotateImageByExifData($filePath)
+	{
+		if (!ImageHelper::canHaveExifData($filePath))
+		{
+			return null;
+		}
+
+		$exif = $this->getExifData($filePath);
+
+		$degrees = 0;
+
+		if (!empty($exif['ifd0.Orientation']))
+		{
+			switch ($exif['ifd0.Orientation'])
+			{
+				case ImageHelper::EXIF_IFD0_ROTATE_180:
+				{
+					$degrees = 180;
+					break;
+				}
+				case ImageHelper::EXIF_IFD0_ROTATE_90:
+				{
+					$degrees = 90;
+					break;
+				}
+				case ImageHelper::EXIF_IFD0_ROTATE_270:
+				{
+					$degrees = 270;
+					break;
+				}
+			}
+		}
+
+		$image = $this->loadImage($filePath)->rotate($degrees);
+
+		return $image->saveAs($filePath, true);
+	}
+
+	/**
+	 * Get EXIF metadata for a file by it's path.
+	 *
+	 * @param $filePath
+	 *
+	 * @return array
+	 */
+	public function getExifData($filePath)
+	{
+		if (!ImageHelper::canHaveExifData($filePath))
+		{
+			return null;
+		}
+
+		$image = new Image();
+
+		return $image->getExifMetadata($filePath);
+	}
+
+	/**
+	 * Strip orientation from EXIF data for an image at a path.
+	 *
+	 * @param $filePath
+	 *
+	 * @return bool
+	 */
+	public function stripOrientationFromExifData($filePath)
+	{
+		if (!ImageHelper::canHaveExifData($filePath))
+		{
+			return null;
+		}
+
+		$data = new \PelDataWindow(IOHelper::getFileContents($filePath));
+
+		// Is this a valid JPEG?
+		if (\PelJpeg::isValid($data))
+		{
+			$jpeg = $file = new \PelJpeg();
+			$jpeg->load($data);
+			$exif = $jpeg->getExif();
+
+			if ($exif)
+			{
+				$tiff = $exif->getTiff();
+				$ifd0 = $tiff->getIfd();
+
+				// Delete the Orientation entry and re-save the file
+				$ifd0->offsetUnset(\PelTag::ORIENTATION);
+				$file->saveFile($filePath);
+			}
+
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }

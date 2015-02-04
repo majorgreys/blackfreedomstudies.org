@@ -4,12 +4,13 @@ namespace Craft;
 /**
  * Class AssetTransformsService
  *
- * @author    Pixel & Tonic, Inc. <support@pixelandtonic.com>
- * @copyright Copyright (c) 2014, Pixel & Tonic, Inc.
- * @license   http://buildwithcraft.com/license Craft License Agreement
- * @see       http://buildwithcraft.com
- * @package   craft.app.services
- * @since     1.0
+ * @author     Pixel & Tonic, Inc. <support@pixelandtonic.com>
+ * @copyright  Copyright (c) 2014, Pixel & Tonic, Inc.
+ * @license    http://buildwithcraft.com/license Craft License Agreement
+ * @see        http://buildwithcraft.com
+ * @package    craft.app.services
+ * @since      1.0
+ * @deprecated This class will have several breaking changes in Craft 3.0.
  */
 class AssetTransformsService extends BaseApplicationComponent
 {
@@ -132,7 +133,7 @@ class AssetTransformsService extends BaseApplicationComponent
 
 			if (!$transformRecord)
 			{
-				throw new Exception(Craft::t('Can’t find the transform with ID “{id}”', array('id' => $transform->id)));
+				throw new Exception(Craft::t('Can’t find the transform with ID “{id}”.', array('id' => $transform->id)));
 			}
 		}
 		else
@@ -466,6 +467,10 @@ class AssetTransformsService extends BaseApplicationComponent
 		unset($values['detectedFormat']);
 		unset($values['transform']);
 
+		// Let DbCommand take care of the audit columns.
+		unset($values['dateCreated']);
+		unset($values['dateUpdated']);
+
 		if (!empty($index->id))
 		{
 			$id = $index->id;
@@ -663,6 +668,7 @@ class AssetTransformsService extends BaseApplicationComponent
 
 			$this->storeLocalSource($localCopy, $imageSourcePath);
 			$this->queueSourceForDeletingIfNecessary($imageSourcePath);
+			IOHelper::deleteFile($localCopy, true);
 		}
 
 		$file->setTransformSource($imageSourcePath);
@@ -701,6 +707,19 @@ class AssetTransformsService extends BaseApplicationComponent
 	}
 
 	/**
+	 * Delete all image sources queued up for deletion.
+	 *
+	 * @return null
+	 */
+	public function deleteQueuedSourceFiles()
+	{
+		foreach ($this->_sourcesToBeDeleted as $source)
+		{
+			IOHelper::deleteFile($source, true);
+		}
+	}
+
+	/**
 	 * Store a local image copy to a destination path.
 	 *
 	 * @param $localCopy
@@ -713,8 +732,9 @@ class AssetTransformsService extends BaseApplicationComponent
 		$maxCachedImageSize = $this->getCachedCloudImageSize();
 
 		// Resize if constrained by maxCachedImageSizes setting
-		if ($maxCachedImageSize > 0)
+		if ($maxCachedImageSize > 0 && ImageHelper::isImageManipulatable($localCopy))
 		{
+
 			craft()->images->loadImage($localCopy)->scaleToFit($maxCachedImageSize, $maxCachedImageSize)->setQuality(100)->saveAs($destination);
 
 			if ($localCopy != $destination)
@@ -741,15 +761,15 @@ class AssetTransformsService extends BaseApplicationComponent
 	 */
 	public function detectAutoTransformFormat(AssetFileModel $file)
 	{
-		if (in_array($file->getExtension(), ImageHelper::getWebSafeFormats()))
+		if (in_array(mb_strtolower($file->getExtension()), ImageHelper::getWebSafeFormats()))
 		{
 			return $file->getExtension();
 		}
 		else if ($file->kind == "image")
 		{
 
-			// The only reasonable way to check for transparency is with Imagick
-			// If Imagick is not present, then we fallback to jpg
+			// The only reasonable way to check for transparency is with Imagick. If Imagick is not present, then
+			// we fallback to jpg
 			if (craft()->images->isGd() || !method_exists("Imagick", "getImageAlphaChannel"))
 			{
 				return 'jpg';

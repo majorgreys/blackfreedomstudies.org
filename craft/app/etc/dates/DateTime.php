@@ -82,7 +82,7 @@ class DateTime extends \DateTime
 	 *  - Unix timestamps
 	 *
 	 * @param string|array $date
-	 * @param stirng|null  $timezone The [PHP timezone identifier](http://php.net/manual/en/timezones.php),
+	 * @param string|null  $timezone The [PHP timezone identifier](http://php.net/manual/en/timezones.php),
 	 *                               if not specified in $date. Defaults to 'UTC'.
 	 *
 	 * @return DateTime|null|false
@@ -112,7 +112,7 @@ class DateTime extends \DateTime
 				$date = $dt['date'];
 				$format = $dateFormatter->getDatepickerPhpFormat();
 
-				// Check for a two-digit year
+				// Check for a two-digit year as well
 				$altFormat = str_replace('Y', 'y', $format);
 
 				if (static::createFromFormat($altFormat, $date) !== false)
@@ -351,7 +351,23 @@ class DateTime extends \DateTime
 		$dateFormatter = $localeData->getDateFormatter();
 		$format = $dateFormatter->getTimepickerPhpFormat();
 
-		return $this->format($format);
+		$time = $this->format($format);
+
+		// Replace "AM" and "PM" with the localized versions
+		$localeData = craft()->i18n->getLocaleData();
+		$amName = $localeData->getAMName();
+		$pmName = $localeData->getPMName();
+
+		if ($amName != 'AM' || $pmName != 'PM')
+		{
+			$time = str_replace(
+				array('am', 'AM', 'pm', 'PM'),
+				array($amName, $amName, $pmName, $pmName),
+				$time
+			);
+		}
+
+		return $time;
 	}
 
 	/**
@@ -427,12 +443,27 @@ class DateTime extends \DateTime
 	}
 
 	/**
-	 * Returns a nicely formatted date string for given Datetime string.
+	 * Returns a nicely formatted date string.
 	 *
 	 * @return string
 	 */
 	public function nice()
 	{
 		return DateTimeHelper::nice($this->getTimestamp());
+	}
+
+	/**
+	 * Returns a UI-facing timestamp.
+	 *
+	 * - If the date/time is from today, only the time will be retuned in a localized format (e.g. “10:00 AM”).
+	 * - If the date/time is from yesterday, “Yesterday” will be returned.
+	 * - If the date/time is from the last 7 days, the name of the day will be returned (e.g. “Monday”).
+	 * - Otherwise, the date will be returned in a localized format (e.g. “12/2/2014”).
+	 *
+	 * @return string
+	 */
+	public function uiTimestamp()
+	{
+		return DateTimeHelper::uiTimestamp($this);
 	}
 }

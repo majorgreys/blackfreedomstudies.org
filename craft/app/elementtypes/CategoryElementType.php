@@ -92,10 +92,11 @@ class CategoryElementType extends BaseElementType
 			$key = 'group:'.$group->id;
 
 			$sources[$key] = array(
-				'label'       => Craft::t($group->name),
-				'data'        => array('handle' => $group->handle),
-				'criteria'    => array('groupId' => $group->id),
-				'structureId' => $group->structureId,
+				'label'             => Craft::t($group->name),
+				'data'              => array('handle' => $group->handle),
+				'criteria'          => array('groupId' => $group->id),
+				'structureId'       => $group->structureId,
+				'structureEditable' => craft()->userSession->checkPermission('editCategories:'.$group->id),
 			);
 		}
 
@@ -103,40 +104,95 @@ class CategoryElementType extends BaseElementType
 	}
 
 	/**
-	 * @inheritDoc IElementType::getIndexHtml()
+	 * @inheritDoc IElementType::getAvailableActions()
 	 *
-	 * @param ElementCriteriaModel $criteria
-	 * @param array                $disabledElementIds
-	 * @param array                $viewState
-	 * @param string|null          $sourceKey
-	 * @param string|null          $context
+	 * @param string|null $source
 	 *
-	 * @return string
+	 * @return array|null
 	 */
-	public function getIndexHtml($criteria, $disabledElementIds, $viewState, $sourceKey, $context)
+	public function getAvailableActions($source = null)
 	{
-		if ($context == 'index' && $viewState['mode'] == 'structure')
+		if (preg_match('/^group:(\d+)$/', $source, $matches))
 		{
-			$criteria->offset = 0;
-			$criteria->limit = null;
+			$group = craft()->categories->getGroupById($matches[1]);
+		}
 
-			$source = $this->getSource($sourceKey, $context);
+		if (empty($group))
+		{
+			return;
+		}
 
-			return craft()->templates->render('_elements/categoryindex', array(
-				'viewMode'            => $viewState['mode'],
-				'context'             => $context,
-				'elementType'         => new ElementTypeVariable($this),
-				'disabledElementIds'  => $disabledElementIds,
-				'structure'           => craft()->structures->getStructureById($source['structureId']),
-				'collapsedElementIds' => isset($viewState['collapsedElementIds']) ? $viewState['collapsedElementIds'] : array(),
-				'elements'            => $criteria->find(),
-				'groupId'             => $source['criteria']['groupId'],
+		$actions = array();
+
+		// Set Status
+		$actions[] = 'SetStatus';
+
+		if ($group->hasUrls)
+		{
+			// View
+			$viewAction = craft()->elements->getAction('View');
+			$viewAction->setParams(array(
+				'label' => Craft::t('View category'),
 			));
+			$actions[] = $viewAction;
 		}
-		else
+
+		// Edit
+		$editAction = craft()->elements->getAction('Edit');
+		$editAction->setParams(array(
+			'label' => Craft::t('Edit category'),
+		));
+		$actions[] = $editAction;
+
+		// New Child
+		$structure = craft()->structures->getStructureById($group->structureId);
+
+		if ($structure)
 		{
-			return parent::getIndexHtml($criteria, $disabledElementIds, $viewState, $sourceKey, $context);
+			$newChildAction = craft()->elements->getAction('NewChild');
+			$newChildAction->setParams(array(
+				'label'       => Craft::t('Create a new child category'),
+				'maxLevels'   => $structure->maxLevels,
+				'newChildUrl' => 'categories/'.$group->handle.'/new',
+			));
+			$actions[] = $newChildAction;
 		}
+
+		// Delete
+		$deleteAction = craft()->elements->getAction('Delete');
+		$deleteAction->setParams(array(
+			'confirmationMessage' => Craft::t('Are you sure you want to delete the selected categories?'),
+			'successMessage'      => Craft::t('Categories deleted.'),
+		));
+		$actions[] = $deleteAction;
+
+		// Allow plugins to add additional actions
+		$allPluginActions = craft()->plugins->call('addCategoryActions', array($source), true);
+
+		foreach ($allPluginActions as $pluginActions)
+		{
+			$actions = array_merge($actions, $pluginActions);
+		}
+
+		return $actions;
+	}
+
+	/**
+	 * @inheritDoc IElementType::defineSortableAttributes()
+	 *
+	 * @retrun array
+	 */
+	public function defineSortableAttributes()
+	{
+		$attributes = array(
+			'title' => Craft::t('Title'),
+			'uri'   => Craft::t('URI'),
+		);
+
+		// Allow plugins to modify the attributes
+		craft()->plugins->call('modifyCategorySortableAttributes', array(&$attributes));
+
+		return $attributes;
 	}
 
 	/**
@@ -148,9 +204,36 @@ class CategoryElementType extends BaseElementType
 	 */
 	public function defineTableAttributes($source = null)
 	{
-		return array(
-			'title' => Craft::t('Title')
+		$attributes = array(
+			'title' => Craft::t('Title'),
+			'uri'   => Craft::t('URI'),
 		);
+
+		// Allow plugins to modify the attributes
+		craft()->plugins->call('modifyCategoryTableAttributes', array(&$attributes, $source));
+
+		return $attributes;
+	}
+
+	/**
+	 * @inheritDoc IElementType::getTableAttributeHtml()
+	 *
+	 * @param BaseElementModel $element
+	 * @param string           $attribute
+	 *
+	 * @return string
+	 */
+	public function getTableAttributeHtml(BaseElementModel $element, $attribute)
+	{
+		// First give plugins a chance to set this
+		$pluginAttributeHtml = craft()->plugins->callFirst('getCategoryTableAttributeHtml', array($element, $attribute), true);
+
+		if ($pluginAttributeHtml !== null)
+		{
+			return $pluginAttributeHtml;
+		}
+
+		return parent::getTableAttributeHtml($element, $attribute);
 	}
 
 	/**

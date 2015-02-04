@@ -195,8 +195,9 @@ class TemplateCacheService extends BaseApplicationComponent
 	 */
 	public function endTemplateCache($key, $global, $duration, $expiration, $body)
 	{
-		// If there are any transform generation URLs in the body, don't cache it
-		if (strpos($body, UrlHelper::getResourceUrl('transforms')))
+		// If there are any transform generation URLs in the body, don't cache it.
+		// Can't use getResourceUrl() here because that will append ?d= or ?x= to the URL.
+		if (strpos($body, UrlHelper::getSiteUrl(craft()->config->getResourceTrigger().'/transforms')))
 		{
 			return;
 		}

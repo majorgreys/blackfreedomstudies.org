@@ -103,6 +103,77 @@ class AssetElementType extends BaseElementType
 	}
 
 	/**
+	 * @inheritDoc IElementType::getAvailableActions()
+	 *
+	 * @param string|null $source
+	 *
+	 * @return array|null
+	 */
+	public function getAvailableActions($source = null)
+	{
+		if (!preg_match('/^folder:(\d+)$/', $source, $matches))
+		{
+			return;
+		}
+
+		$folderId = $matches[1];
+
+		$actions = array();
+
+		// View
+		$viewAction = craft()->elements->getAction('View');
+		$viewAction->setParams(array(
+			'label' => Craft::t('View asset'),
+		));
+		$actions[] = $viewAction;
+
+		// Edit
+		$editAction = craft()->elements->getAction('Edit');
+		$editAction->setParams(array(
+			'label' => Craft::t('Edit asset'),
+		));
+		$actions[] = $editAction;
+
+		// Rename File
+		if (
+			craft()->assets->canUserPerformAction($folderId, 'removeFromAssetSource') &&
+			craft()->assets->canUserPerformAction($folderId, 'uploadToAssetSource')
+		)
+		{
+			$actions[] = 'RenameFile';
+		}
+
+		// Replace File
+		if (craft()->assets->canUserPerformAction($folderId, 'uploadToAssetSource'))
+		{
+			$actions[] = 'ReplaceFile';
+		}
+
+		// Copy Reference Tag
+		$copyRefTagAction = craft()->elements->getAction('CopyReferenceTag');
+		$copyRefTagAction->setParams(array(
+			'elementType' => 'asset',
+		));
+		$actions[] = $copyRefTagAction;
+
+		// Delete
+		if (craft()->assets->canUserPerformAction($folderId, 'removeFromAssetSource'))
+		{
+			$actions[] = 'DeleteAssets';
+		}
+
+		// Allow plugins to add additional actions
+		$allPluginActions = craft()->plugins->call('addAssetActions', array($source), true);
+
+		foreach ($allPluginActions as $pluginActions)
+		{
+			$actions = array_merge($actions, $pluginActions);
+		}
+
+		return $actions;
+	}
+
+	/**
 	 * @inheritDoc IElementType::defineSearchableAttributes()
 	 *
 	 * @return array
@@ -110,6 +181,26 @@ class AssetElementType extends BaseElementType
 	public function defineSearchableAttributes()
 	{
 		return array('filename', 'extension', 'kind');
+	}
+
+	/**
+	 * @inheritDoc IElementType::defineSortableAttributes()
+	 *
+	 * @retrun array
+	 */
+	public function defineSortableAttributes()
+	{
+		$attributes = array(
+			'title'        => Craft::t('Title'),
+			'filename'     => Craft::t('Filename'),
+			'size'         => Craft::t('Size'),
+			'dateModified' => Craft::t('Date Modified'),
+		);
+
+		// Allow plugins to modify the attributes
+		craft()->plugins->call('modifyAssetSortableAttributes', array(&$attributes));
+
+		return $attributes;
 	}
 
 	/**
@@ -121,12 +212,17 @@ class AssetElementType extends BaseElementType
 	 */
 	public function defineTableAttributes($source = null)
 	{
-		return array(
+		$attributes = array(
 			'title'        => Craft::t('Title'),
 			'filename'     => Craft::t('Filename'),
 			'size'         => Craft::t('Size'),
 			'dateModified' => Craft::t('Date Modified'),
 		);
+
+		// Allow plugins to modify the attributes
+		craft()->plugins->call('modifyAssetTableAttributes', array(&$attributes, $source));
+
+		return $attributes;
 	}
 
 	/**
@@ -139,6 +235,14 @@ class AssetElementType extends BaseElementType
 	 */
 	public function getTableAttributeHtml(BaseElementModel $element, $attribute)
 	{
+		// First give plugins a chance to set this
+		$pluginAttributeHtml = craft()->plugins->callFirst('getAssetTableAttributeHtml', array($element, $attribute), true);
+
+		if ($pluginAttributeHtml !== null)
+		{
+			return $pluginAttributeHtml;
+		}
+
 		switch ($attribute)
 		{
 			case 'filename':
@@ -151,20 +255,6 @@ class AssetElementType extends BaseElementType
 				if ($element->size)
 				{
 					return craft()->formatter->formatSize($element->size);
-				}
-				else
-				{
-					return '';
-				}
-			}
-
-			case 'dateModified':
-			{
-				$date = $element->$attribute;
-
-				if ($date)
-				{
-					return $date->localeDate();
 				}
 				else
 				{
@@ -188,6 +278,7 @@ class AssetElementType extends BaseElementType
 	{
 		return array(
 			'sourceId' => AttributeType::Number,
+			'source'   => AttributeType::Handle,
 			'folderId' => AttributeType::Number,
 			'filename' => AttributeType::String,
 			'kind'     => AttributeType::Mixed,
@@ -212,9 +303,19 @@ class AssetElementType extends BaseElementType
 			->addSelect('assetfiles.sourceId, assetfiles.folderId, assetfiles.filename, assetfiles.kind, assetfiles.width, assetfiles.height, assetfiles.size, assetfiles.dateModified')
 			->join('assetfiles assetfiles', 'assetfiles.id = elements.id');
 
+		if (!empty($criteria->source))
+		{
+			$query->join('assetsources assetsources', 'assetfiles.sourceId = assetsources.id');
+		}
+
 		if ($criteria->sourceId)
 		{
 			$query->andWhere(DbHelper::parseParam('assetfiles.sourceId', $criteria->sourceId, $query->params));
+		}
+
+		if ($criteria->source)
+		{
+			$query->andWhere(DbHelper::parseParam('assetsources.handle', $criteria->source, $query->params));
 		}
 
 		if ($criteria->folderId)

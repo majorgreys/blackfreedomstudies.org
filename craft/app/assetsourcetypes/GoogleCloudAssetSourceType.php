@@ -13,7 +13,7 @@ craft()->requireEdition(Craft::Pro);
  * @see        http://buildwithcraft.com
  * @package    craft.app.assetsourcetypes
  * @since      1.0
- * @deprecated This class will most likely be removed in Craft 3.0.
+ * @deprecated This class will be removed in Craft 3.0.
  */
 class GoogleCloudAssetSourceType extends BaseAssetSourceType
 {
@@ -526,16 +526,32 @@ class GoogleCloudAssetSourceType extends BaseAssetSourceType
 			{
 				$transforms = craft()->assetTransforms->getAllCreatedTransformsForFile($file);
 
+				$destination = clone $file;
+				$destination->filename = $fileName;
+
 				// Move transforms
 				foreach ($transforms as $index)
 				{
-					$this->copyTransform($file, $targetFolder, $index, $index);
-					$this->deleteSourceFile($file->getFolder()->path.craft()->assetTransforms->getTransformSubpath($file, $index));
+					// For each file, we have to have both the source and destination
+					// for both files and transforms, so we can reliably move them
+					$destinationIndex = clone $index;
+
+					if (!empty($index->filename))
+					{
+						$destinationIndex->filename = $fileName;
+						craft()->assetTransforms->storeTransformIndexData($destinationIndex);
+					}
+
+					$from = $file->getFolder()->path.craft()->assetTransforms->getTransformSubpath($file, $index);
+					$to   = $targetFolder->path.craft()->assetTransforms->getTransformSubpath($destination, $destinationIndex);
+
+					$this->copySourceFile($from, $to);
+					$this->deleteSourceFile($from);
 				}
 			}
 			else
 			{
-				craft()->assetTransforms->deleteCreatedTransformsForFile($file);
+				craft()->assetTransforms->deleteAllTransformData($file);
 			}
 		}
 
@@ -719,7 +735,7 @@ class GoogleCloudAssetSourceType extends BaseAssetSourceType
 	 * Get a file's S3 path.
 	 *
 	 * @param AssetFileModel $file
-	 * @param                $settings Source settings to use
+	 * @param                $settings The source settings to use.
 	 *
 	 * @return string
 	 */

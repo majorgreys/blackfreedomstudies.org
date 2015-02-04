@@ -29,7 +29,16 @@ class ElementHelper
 
 		if (!$slug)
 		{
-			$slug = $element->title;
+			// Create a slug for them, based on the element's title.
+			// Replace periods, underscores, and hyphens with spaces so they get separated with the slugWordSeparator
+			// to mimic the default JavaScript-based slug generation.
+			$slug = str_replace(array('.', '_', '-'), ' ', $element->title);
+
+			// Enforce the limitAutoSlugsToAscii config setting
+			if (craft()->config->get('limitAutoSlugsToAscii'))
+			{
+				$slug = StringHelper::asciiString($slug);
+			}
 		}
 
 		$element->slug = static::createSlug($slug);
@@ -53,11 +62,10 @@ class ElementHelper
 		if (craft()->config->get('allowUppercaseInSlug') === false)
 		{
 			// Make it lowercase
-			$slug = StringHelper::toLowerCase($slug, 'UTF-8');
+			$slug = StringHelper::toLowerCase($slug);
 		}
 
-		// Get the "words".  Split on anything that is not a unicode letter or number. Periods, underscores and hyphens
-		// get a pass.
+		// Get the "words". Split on anything that is not alphanumeric, or a period, underscore, or hyphen.
 		preg_match_all('/[\p{L}\p{N}\._-]+/u', $slug, $words);
 		$words = ArrayHelper::filterEmptyStringsFromArray($words[0]);
 		$slug = implode(craft()->config->get('slugWordSeparator'), $words);

@@ -103,42 +103,6 @@ var CP = Garnish.Base.extend(
 		$errorNotifications.delay(CP.notificationDuration * 2).velocity('fadeOut');
 		$otherNotifications.delay(CP.notificationDuration).velocity('fadeOut');
 
-		// Secondary form submit buttons
-		this.addListener($('.formsubmit'), 'activate', function(ev)
-		{
-			var $btn = $(ev.currentTarget);
-
-			if ($btn.attr('data-confirm'))
-			{
-				if (!confirm($btn.attr('data-confirm')))
-				{
-					return;
-				}
-			}
-
-			// Is this a menu item?
-			if ($btn.data('menu'))
-			{
-				var $form = $btn.data('menu').$trigger.closest('form');
-			}
-			else
-			{
-				var $form = $btn.closest('form');
-			}
-
-			if ($btn.attr('data-action'))
-			{
-				$('<input type="hidden" name="action" value="'+$btn.attr('data-action')+'"/>').appendTo($form);
-			}
-
-			if ($btn.attr('data-redirect'))
-			{
-				$('<input type="hidden" name="redirect" value="'+$btn.attr('data-redirect')+'"/>').appendTo($form);
-			}
-
-			$form.submit();
-		});
-
 		// Alerts
 		if (this.$alerts.length)
 		{
@@ -177,27 +141,47 @@ var CP = Garnish.Base.extend(
 
 			if (this.$confirmUnloadForms.length)
 			{
-				this.initialFormValues = [];
+				if (!Craft.forceConfirmUnload)
+				{
+					this.initialFormValues = [];
+				}
 
 				for (var i = 0; i < this.$confirmUnloadForms.length; i++)
 				{
 					var $form = $(this.$confirmUnloadForms);
-					this.initialFormValues[i] = $form.serialize();
+
+					if (!Craft.forceConfirmUnload)
+					{
+						this.initialFormValues[i] = $form.serialize();
+					}
+
 					this.addListener($form, 'submit', function()
 					{
 						this.removeListener(Garnish.$win, 'beforeunload');
 					});
 				}
 
-				this.addListener(Garnish.$win, 'beforeunload', function()
+				this.addListener(Garnish.$win, 'beforeunload', function(ev)
 				{
 					for (var i = 0; i < this.$confirmUnloadForms.length; i++)
 					{
-						var newFormValue = $(this.$confirmUnloadForms[i]).serialize();
-
-						if (this.initialFormValues[i] != newFormValue)
+						if (
+							Craft.forceConfirmUnload ||
+							this.initialFormValues[i] != $(this.$confirmUnloadForms[i]).serialize()
+						)
 						{
-							return Craft.t('Any changes will be lost if you leave this page.');
+							var message = Craft.t('Any changes will be lost if you leave this page.');
+
+							if (ev)
+							{
+								ev.originalEvent.returnValue = message;
+							}
+							else
+							{
+								window.event.returnValue = message;
+							}
+
+							return message;
 						}
 					}
 				});

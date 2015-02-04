@@ -110,7 +110,7 @@ abstract class BaseElementModel extends BaseModel
 	 */
 	public function __isset($name)
 	{
-		if (parent::__isset($name) || $this->getFieldByHandle($name))
+		if ($name == 'title' || parent::__isset($name) || $this->getFieldByHandle($name))
 		{
 			return true;
 		}
@@ -284,7 +284,7 @@ abstract class BaseElementModel extends BaseModel
 	 */
 	public function getLink()
 	{
-		$link = '<a href="'.$this->getUrl().'">'.$this->__toString().'</a>';
+		$link = '<a href="'.$this->getUrl().'">'.HtmlHelper::encode($this->__toString()).'</a>';
 		return TemplateHelper::getRaw($link);
 	}
 
@@ -624,6 +624,21 @@ abstract class BaseElementModel extends BaseModel
 	}
 
 	/**
+	 * Returns the total number of descendants that the element has.
+	 *
+	 * @return bool
+	 */
+	public function getTotalDescendants()
+	{
+		if ($this->hasDescendants())
+		{
+			return ($this->rgt - $this->lft - 1) / 2;
+		}
+
+		return 0;
+	}
+
+	/**
 	 * Returns whether this element is an ancestor of another one.
 	 *
 	 * @param BaseElementModel $element
@@ -744,7 +759,7 @@ abstract class BaseElementModel extends BaseModel
 	 */
 	public function offsetExists($offset)
 	{
-		if (parent::offsetExists($offset) || $this->getFieldByHandle($offset))
+		if ($offset == 'title' || parent::offsetExists($offset) || $this->getFieldByHandle($offset))
 		{
 			return true;
 		}

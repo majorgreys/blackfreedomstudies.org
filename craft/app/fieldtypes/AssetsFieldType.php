@@ -79,6 +79,9 @@ class AssetsFieldType extends BaseElementFieldType
 			$fileKindOptions[] = array('value' => $value, 'label' => $kind['label']);
 		}
 
+		$namespace = craft()->templates->getNamespace();
+		$isMatrix = (strncmp($namespace, 'types[Matrix][blockTypes][', 26) === 0);
+
 		return craft()->templates->render('_components/fieldtypes/Assets/settings', array(
 			'folderOptions'     => $folderOptions,
 			'sourceOptions'     => $sourceOptions,
@@ -86,6 +89,7 @@ class AssetsFieldType extends BaseElementFieldType
 			'settings'          => $this->getSettings(),
 			'type'              => $this->getName(),
 			'fileKindOptions'   => $fileKindOptions,
+			'isMatrix'          => $isMatrix,
 		));
 	}
 
@@ -145,6 +149,7 @@ class AssetsFieldType extends BaseElementFieldType
 						move_uploaded_file($file->getTempName(), $tempPath);
 						$response = craft()->assets->insertFileByLocalPath($tempPath, $file->getName(), $targetFolderId);
 						$fileIds[] = $response->getDataItem('fileId');
+						IOHelper::deleteFile($tempPath, true);
 					}
 
 					if (is_array($value) && is_array($fileIds))
@@ -198,10 +203,6 @@ class AssetsFieldType extends BaseElementFieldType
 			}
 			else
 			{
-				$targetFolderId = $this->_resolveSourcePathToFolderId(
-					$settings->defaultUploadLocationSource,
-					$settings->defaultUploadLocationSubpath);
-
 				// Find the files with temp sources and just move those.
 				$criteria =array(
 					'id' => array_merge(array('in'), $fileIds),
@@ -214,6 +215,14 @@ class AssetsFieldType extends BaseElementFieldType
 				foreach ($filesInTempSource as $file)
 				{
 					$filesToMove[] = $file->id;
+				}
+
+				// If we have some files to move, make sure the folder exists.
+				if (!empty($filesToMove))
+				{
+					$targetFolderId = $this->_resolveSourcePathToFolderId(
+						$settings->defaultUploadLocationSource,
+						$settings->defaultUploadLocationSubpath);
 				}
 			}
 
@@ -331,7 +340,9 @@ class AssetsFieldType extends BaseElementFieldType
 
 		if ($settings->useSingleFolder)
 		{
-			$folderPath = 'folder:'.$this->_determineUploadFolderId($settings).':single';
+			$folderId = $this->_determineUploadFolderId($settings);
+			craft()->userSession->authorize('uploadToAssetSource:'.$folderId);
+			$folderPath = 'folder:'.$folderId.':single';
 
 			return array($folderPath);
 		}
