@@ -2,6 +2,9 @@
 'use strict';
 
 var gulp = require('gulp'),
+    sass = require('gulp-sass'),
+    gutil = require('gulp-util'),
+    neat = require('node-neat').includePaths,
     $ = require('gulp-load-plugins')(),
     minimist = require('minimist'),
     browserify = require('browserify'),
@@ -149,16 +152,15 @@ gulp.task('db-dump', [
       .pipe(gulp.dest('databases'));
 });
 
+// require('node-bourbon').includePaths
 /**
  * gulp styles
  */
 gulp.task('styles', function() {
   return gulp.src(paths.styles)
     .pipe($.plumber())
-    .pipe($.rubySass({
-      loadPath: 'bower_components',
-      style: 'expanded',
-      precision: 10
+    .pipe(sass({
+      includePaths: ['styles'].concat(neat)
     }))
     .pipe($.autoprefixer('last 1 version'))
     .pipe(gulp.dest('public/styles'))
