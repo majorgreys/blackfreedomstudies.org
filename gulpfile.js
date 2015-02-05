@@ -2,7 +2,7 @@
 'use strict';
 
 var gulp = require('gulp'),
-    sass = require('gulp-sass'),
+    sass = require('gulp-ruby-sass'),
     gutil = require('gulp-util'),
     neat = require('node-neat').includePaths,
     $ = require('gulp-load-plugins')(),
@@ -14,6 +14,7 @@ var paths = {
   styles: 'app/styles/**/*.scss',
   scripts: 'app/scripts/**/*.js',
   images: 'app/images/**/*.{gif,jpg,png,svg,webp}',
+  fonts: 'app/fonts/**/*.{ttf,woff,eof,svg}',
   extras: 'app/*.*',
   html: ['app/**/*.{html,json,csv}'],
   index: 'app/**/_layout.html',
@@ -152,17 +153,17 @@ gulp.task('db-dump', [
       .pipe(gulp.dest('databases'));
 });
 
-// require('node-bourbon').includePaths
 /**
  * gulp styles
  */
 gulp.task('styles', function() {
+  var includePaths = ['styles'];
   return gulp.src(paths.styles)
     .pipe($.plumber())
     .pipe(sass({
-      includePaths: ['styles'].concat(neat)
+      loadPath: includePaths
     }))
-    .pipe($.autoprefixer('last 1 version'))
+    //.pipe($.autoprefixer('last 1 version'))
     .pipe(gulp.dest('public/styles'))
 });
 
@@ -195,6 +196,16 @@ gulp.task('images', function () {
     })))
     .pipe(gulp.dest('public/images'));
 });
+
+/**
+ * gulp fonts
+ */
+gulp.task('fonts', function () {
+  gutil.log(paths.fonts);
+  return gulp.src(paths.fonts)
+    .pipe(gulp.dest('public/fonts'));
+});
+
 
 /**
  * gulp extras
@@ -237,6 +248,7 @@ gulp.task('build', ['clean'], function() {
 gulp.task('build-useref', [
     'html',
     'images',
+    'fonts',
     'scripts',
     'styles',
     'extras'
@@ -273,6 +285,7 @@ gulp.task('watch', function() {
   gulp.watch(paths.scripts, ['scripts']);
   gulp.watch(paths.styles,  ['styles']);
   gulp.watch(paths.images,  ['images']);
+  gulp.watch(paths.fonts,  ['fonts']);
 });
 
 /**

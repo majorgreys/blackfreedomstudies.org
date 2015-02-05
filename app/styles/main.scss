@@ -1,15 +1,25 @@
 @charset "UTF-8";
 @import "bourbon";
+@import "base/base";
 @import "neat";
 
-div.container {
-  @include outer-container;
-  
-  div.parent-element {
-    @include span-columns(8);
+@import "partials/headernav";
+@import "partials/hero";
 
-    div.element {
-      @include span-columns(6 of 8);
-    }
-  }
+@include font-face("Open Sans",
+                   "/fonts/OpenSans-Regular");
+@include font-face("Open Sans",
+                   "/fonts/OpenSans-Bold",
+                   bold);
+@include font-face("Open Sans",
+                  "/fonts/OpenSans-ExtraBold",
+                  bold);
+@include font-face("Open Sans",
+                   "/fonts/OpenSans-ExtraBold",
+                   bold);
+
+main {
+  @include outer-container;
+  aside { @include span-columns(3); }
+  article { @include span-columns(8); }
 }
