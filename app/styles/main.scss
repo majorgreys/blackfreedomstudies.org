@@ -3,8 +3,10 @@
 @import "base/base";
 @import "neat";
 
+@import "partials/footer";
 @import "partials/headernav";
 @import "partials/hero";
+@import "partials/eventcard";
 
 @include font-face("Open Sans",
                    "/fonts/OpenSans-Regular");

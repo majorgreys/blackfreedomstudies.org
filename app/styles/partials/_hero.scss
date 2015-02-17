@@ -8,7 +8,7 @@
 
 .hero {
 
-  $hero-image: 'http://www.blackfreedomstudies.org/images/graphics/CBFS-Landing-Photo-1.jpg';
+  $hero-image: '/images/graphics/CBFS-Landing-Photo-1.jpg';
 
   @include background(linear-gradient(rgba(white, 0.25), rgba(white, 0.25)), url($hero-image), $dark-green);
   @include filter(grayscale(50%));

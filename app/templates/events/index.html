@@ -8,57 +8,40 @@
 
 {% block content %}
     <h1 class="header" id="responsive-header">
-      {{ title }} 
+      {{ title }}
     </h1>
-  <div class="nav-spy">
-    <ul class="nav nav-pills">
+  <div>
+    <ul>
       {% for season in seasons %}
       <li><a href="#{{season.id}}">{{ season.title }} </a></li>
-      {% endfor %} 
+      {% endfor %}
     </ul>
   </div>
 
   {% for season in seasons %}
   <h2 class="season-header" id="{{ season.id }}">{{ season.title }} </h2>
-  <ul class="events-list clearfix">
+  <div class="cards">
     {% for event in season.children %}
-    <li class="event p1">
-    <a href="{{ event.url }}">
-      <div class="event-header clearfix">
-        <div class="event-header-date p2 pt1 pb1">
-          <h2>
-            <span class="event-header-date-month">{{ event.date  | date("M")}}</span>
-            <span class="event-header-date-day">{{ event.date  | date("d")}}</span>
-          </h2>
-        </div>
-        <div class="event-header-name p1">
-          <h2>{{ event.title }}</h2>
-        </div>
+    <div class="card">
+      <div class="card-image">
+        <span class="card-date"> {{ event.date  | date("M")}} {{ event.date  | date("d")}} </span>
+        <img src="{{ event.books.first.getUrl('eventbannersmall') }}" alt="">
+        <img src="{{ event.books.last.getUrl('eventbannersmall') }}" alt="">
       </div>
-      <div class="event-books clearfix">
-        {% for asset in event.books %}
-        <div class="event-books-item">
-          <div class="img-container">    
-            <img src="{{ asset.getUrl('eventbannersmall') }}">
-          </div>
-        </div>
-        {% endfor %}
+      <div class="card-header">
+        <h3> {{ event.title }} </h3>
       </div>
-      <ul class="event-speakers">
-        {% for speaker in event.speakers %}
-        <li class="event-speakers-item pt1 pb1">
-        <h3 class="event-speakers-item-name">
-          {{ speaker.title }}
-        </h3>
-        <div class="event-speakers-item-affiliation">
-          {{ speaker.affiliation }}
-        </div>
-        </li>
-        {% endfor %}
-      </ul>
-    </a>
-    </li>
+      <div class="card-copy">
+        <ul class="event-speakers">
+          {% for speaker in event.speakers %}
+          <li class="event-speakers-item pt1 pb1">
+          {{ speaker.title }} {{ speaker.affiliation }}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
     {% endfor %}
-  </ul>
+  </div>
   {% endfor %}
   {% endblock %}

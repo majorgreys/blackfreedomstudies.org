@@ -1,7 +1,7 @@
 .footer {
   ///////////////////////////////////////////////////////////////////////////////////
-  $base-spacing: 1.5em !default;
-  $base-accent-color: #477DCA !default;
+  $base-spacing: 1.2em !default;
+  $base-accent-color: $dark-green !default;
   $medium-screen: em(640) !default;
   $large-screen: em(860) !default;
 
@@ -20,44 +20,32 @@
   }
   //////////////////////////////////////////////////////////////////////////////////
 
-  $footer-background: desaturate(darken($base-accent-color, 20%), 30%);
-  $footer-color: white;
-  $footer-link-color: transparentize($footer-color, 0.6);
-  $footer-disclaimer-color: transparentize($footer-color, 0.6);
+  $footer-background: desaturate(darken($base-accent-color, 10%), 50%);
+  $footer-color: transparentize($base-background-color, 0.2);
+  $footer-link-color: lighten($footer-color, 0.2);
 
   background: $footer-background;
   padding: $base-spacing;
+  color: $footer-color;
   width: 100%;
   display: inline-block;
 
-
-  ul {
+  span {
+    margin-right: 0;
     margin-bottom: 1em;
 
     @include media($large-screen) {
       float: left;
-      line-height: 1.8em;
-      margin-left: 1em;
       margin-bottom: 0;
     }
-  }
 
-  ul li {
-    font-weight: 800;
-    padding-right: 1em;
+    a {
+      color: $footer-link-color;
 
-    @include media($large-screen) {
-      display: inline;
-      text-align: left;
-    }
-  }
-
-  ul li a {
-    color: $footer-link-color;
-
-    &:focus,
-    &:hover {
-      color: transparentize($footer-color, 0);
+      &:focus,
+      &:hover {
+        border-bottom: 1px $footer-link-color solid;
+      }
     }
   }
 
@@ -66,27 +54,41 @@
       float: right;
     }
 
-    li {
-      font-size: 0.8em;
-      font-weight: 400;
-    }
-
     ul {
-      margin-top: 1em;
+      -webkit-transform-style: preserve-3d; // stop webkit flicker
+      clear: both;
+      display: inline-block;
+      margin: 0 auto;
+      overflow: visible;
+      padding: 0;
+      width: 100%;
+      z-index: 9999;
 
       @include media($large-screen) {
-        float: right;
-        margin-top: 0;
+        display: inline;
+        margin: 0;
+        padding: 0;
       }
 
       li {
+        display: block;
+        overflow: hidden;
+        z-index: 9999;
         font-size: 1em;
         float: left;
-        line-height: 0;
         padding-right: 0.7em;
 
         &:last-child {
           padding-right: 0;
+        }
+
+        a {
+          color: $footer-link-color;
+
+          &:focus,
+          &:hover {
+            color: white;
+          }
         }
       }
     }
