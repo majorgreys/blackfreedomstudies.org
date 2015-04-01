@@ -8,6 +8,7 @@
 @import "partials/hero";
 @import "partials/eventcard";
 
+
 @include font-face("Open Sans",
                    "/fonts/OpenSans-Regular");
 @include font-face("Open Sans",
@@ -22,6 +23,11 @@
 
 main {
   @include outer-container;
-  aside { @include span-columns(3); }
-  article { @include span-columns(8); }
+  header h1 {
+    font-size: 3.0em;
+  }
+  section {
+    aside { @include span-columns(2); }
+    article { @include span-columns(10); }
+  }
 }

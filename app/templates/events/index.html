@@ -2,46 +2,44 @@
  # Event index template
  #}
 
-{% extends "_layout" %}
 {% set title = "Conversations at the Schomburg" %}
 {% set seasons = craft.entries.type('seasons') %}
+{% extends "_layout" %}
 
 {% block content %}
-    <h1 class="header" id="responsive-header">
-      {{ title }}
-    </h1>
-  <div>
-    <ul>
-      {% for season in seasons %}
-      <li><a href="#{{season.id}}">{{ season.title }} </a></li>
-      {% endfor %}
-    </ul>
-  </div>
-
   {% for season in seasons %}
-  <h2 class="season-header" id="{{ season.id }}">{{ season.title }} </h2>
-  <div class="cards">
-    {% for event in season.children %}
-    <div class="card">
-      <div class="card-image">
-        <span class="card-date"> {{ event.date  | date("M")}} {{ event.date  | date("d")}} </span>
-        <img src="{{ event.books.first.getUrl('eventbannersmall') }}" alt="">
-        <img src="{{ event.books.last.getUrl('eventbannersmall') }}" alt="">
-      </div>
-      <div class="card-header">
-        <h3> {{ event.title }} </h3>
-      </div>
-      <div class="card-copy">
-        <ul class="event-speakers">
-          {% for speaker in event.speakers %}
-          <li class="event-speakers-item pt1 pb1">
-          {{ speaker.title }} {{ speaker.affiliation }}
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
-    {% endfor %}
+  <section>
+    <aside><h2 id="{{ season.id }}">{{ season.title }}</h2></aside>
+    <article>
+      <div class="cards">
+        {% for event in season.children %}
+        <div class="card">
+          <div class="card-image">
+            <span class="card-date"> {{ event.date  | date("M")}} {{ event.date  | date("d")}} </span>
+            {% for book in event.books %}
+            <div class="card-image-book">
+              <div class="card-image-book-container">
+                <img src="{{ book.getUrl('eventbannersmall') }}" alt="">
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="card-header">
+            <h3> {{ event.title }} </h3>
+          </div>
+          <div class="card-copy">
+            <ul>
+              {% for speaker in event.speakers %}
+              <li>
+              {{ speaker.title }} {# {{ speaker.affiliation }} #}
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        {% endfor %}
+      </article>
+    </section>
   </div>
   {% endfor %}
   {% endblock %}
