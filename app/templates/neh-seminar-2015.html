@@ -3,41 +3,42 @@
  # ---------------
  #}
 
-{% extends "_layout" %}
 {% set title = "NEH Seminar 2015: Rethinking Black Freedom Studies from the Jim Crow North to the Jim Crow West" %}
+{% extends "_layout" %}
 
 {% block content %}
 <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='9754669' data-title='{{ entry.title }}' data-link='{{ entry.url }}' style="top: 0px; position: fixed;" ></div>
-<header class="p1">
-  <h1 class="header" id="responsive-header"> {{ title }} </h1>
-  <div class="horizontalimages">
-    <ul class="list-unstyled">
+<header class="navigation" role="banner">
+  <div class="image-banner">
     {% for block in entry.sectionedContent.type('headerImage') %}
-    <li> <div class="img-container"> <img src="{{ block.image.first().getUrl('fullWidth') }}" alt="{{ block.caption }}"/> </div> </li>
+    <div class="image-banner-item">
+      <div class="image-banner-item-container">
+        <img src="{{ block.image.first().getUrl('fullWidth') }}" alt="{{ block.caption }}"/>
+      </div>
+    </div>
     {% endfor %}
     </ul>
   </div>
-  <div>
-    <nav class="navbar navbar-default navbar-static-top" role="navigation">
-      <ul class="nav nav-pills">
+  <div class="navigation-wrapper">
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu-sections">Sections</a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu-sections" class="navigation-menu show">
       {% for block in entry.sectionedContent.type('textSection') %}
-        <li><a href="#{{ loop.index }}">{{ block.sectionHeading }}</a></li>
+        <li class="nav-link"><a href="#{{ loop.index }}">{{ block.sectionHeading }}</a></li>
       {% endfor %}
       </ul>
     </nav>
   </div>
-  <p class="lead">
-    {{ entry.sectionedContent.type('summary').first().summary }}
-  </p>
 </header>
-<article>
+<section id="summary">
+  {{ entry.sectionedContent.type('summary').first().summary }}
+</section>
+<section id="page-sections">
   {% for block in entry.sectionedContent.type('textSection') %}
-  <section class="clearfix bt2">
-    <h3 class="p1" id="{{ loop.index }}">{{ block.sectionHeading }}</h3>
-    <div class="clearfix b0 p1 bt1">
-      {{ block.sectionContent }}
-    </div>
+  <section>
+    <h2 id="{{ loop.index }}">{{ block.sectionHeading }}</h2>
+    {{ block.sectionContent }}
   </section>
   {% endfor %}
-</article>
+</section>
 {% endblock %}

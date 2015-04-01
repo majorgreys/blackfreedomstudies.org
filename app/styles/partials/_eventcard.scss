@@ -100,6 +100,12 @@
     p {
       margin: 0 0 ($base-spacing / 2);
     }
+
+    ul {
+      list-style-type: none;
+      margin-bottom: 0;
+      padding-left: 0;
+    }
   }
 
   &:focus,
