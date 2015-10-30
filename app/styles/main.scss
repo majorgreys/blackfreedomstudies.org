@@ -3,11 +3,13 @@
 @import "base/base";
 @import "neat";
 
+
 @import "partials/footer";
 @import "partials/headernav";
 @import "partials/hero";
 @import "partials/eventcard";
 @import "partials/imagebanner";
+@import "partials/articlenews";
 
 
 @include font-face("Open Sans",
@@ -22,10 +24,21 @@
                    "/fonts/OpenSans-ExtraBold",
                    bold);
 
+@import url(https://fonts.googleapis.com/css?family=Oswald:700,400,300|Open+Sans:400italic,400,600,600italic);
+$banner-font: 'Oswald', sans-serif;
+
 main {
   @include outer-container;
-  header h1 {
-    font-size: 3.0em;
+  .page-title {
+    font-size: modular-scale(2);
+    font-weight: 400;
+    background-color: $light-gray;
+    margin-bottom: 1.0;
+    color: transparentize($base-font-color, 0.2);
+    padding: ($base-spacing / 4) ($base-spacing / 4) ($base-spacing / 4) ($base-spacing / 4);
+    @include media($medium-screen) {
+        font-size: 2.4em;
+    }
   }
   section {
     @include outer-container;

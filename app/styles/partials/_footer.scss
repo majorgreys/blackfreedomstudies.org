@@ -41,10 +41,12 @@
 
     a {
       color: $footer-link-color;
+      font-weight: bold;
+      border-bottom: 1px $footer-link-color solid;
 
       &:focus,
       &:hover {
-        border-bottom: 1px $footer-link-color solid;
+        border-bottom: 1px $dark-red solid;
       }
     }
   }

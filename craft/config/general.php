@@ -22,12 +22,18 @@ return array(
 
     'environmentVariables' => array(
       'siteUrl'  => SITE_URL,
+      'baseUrl'  => SITE_URL,
       'basePath' => BASEPATH
     )
   ),
 
   'blackfreedomstudiesorg.craft.dev' => array(
     'devMode' => true,
-    'cacheDuration' => 'PT30S'
+    'cacheDuration' => 'PT30S',
+    'environmentVariables' => array(
+      'siteUrl'  => 'http://blackfreedomstudiesorg.craft.dev/',
+      'baseUrl'  => 'http://blackfreedomstudiesorg.craft.dev/',
+      'basePath' => BASEPATH
+    )
   ),
 );

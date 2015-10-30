@@ -20,21 +20,22 @@
 {% set image = graphics.image.first().getUrl() %}
 
 {% block content %}
-	<article>
-          <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='9754669' data-title='{{ entry.title }}' data-link='{{ entry.url }}' style="top: 0px; position: fixed;" ></div>
-                <div class="news">
-		<h1>{{ entry.title }}</h1>
-                <p><i class="fa fa-clock-o"></i> {{ entry.postDate.format('F d, Y') }}</p>
-                {% if entry.imagebanner is not empty %}
-                <div class="horizontalimages">
-                  <ul class="list-unstyled">
-                  {% for block in entry.imagebanner.type('image') %}
-                  <li> <div class="img-container"> <img src="{{ block.imageasset.first().getUrl('fullWidth') }}" alt="{{ block.caption }}"/> </div> </li>
-                  {% endfor %}
-                  </ul>
-                </div>
-                {% endif %}
-                  {{ entry.body }}
-                </div>
-	</article>
+<div class='shareaholic-canvas' data-app='share_buttons' data-app-id='9754669' data-title='{{ entry.title }}' data-link='{{ entry.url }}' style="top: 0px; position: fixed;" ></div>
+<article class="news">
+  <h1 class="page-title">{{ entry.title }}</h1>
+  <p class="date">{{ entry.postDate.format('F d, Y') }}</p>
+  {% if entry.imagebanner is not empty %}
+  <div class="image-banner">
+  {% for block in entry.imagebanner.type('image') %}
+    <div class="image-banner-item">
+      <div class="image-banner-item-container">
+        <img src="{{ block.imageasset.first().getUrl('fullWidth') }}"/>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+  {% endif %}
+  <p>{{ entry.body }}</p>
+  </div>
+</article>
 {% endblock %}

@@ -1,6 +1,7 @@
 {
   "require": {
     "ext-mbstring": "*",
-    "ext-imagick": "*"
+    "ext-imagick": "*",
+    "twig/extensions": "*"
   }
 }

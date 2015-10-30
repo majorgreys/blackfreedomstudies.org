@@ -19,14 +19,14 @@
   $card-border-color: darken($base-border-color, 20%);
   $card-border: 1px solid $card-border-color;
   $card-background: lighten($card-border-color, 30%);
-  $card-header-background: lighten(black, 15%);
-  $card-header-hover-background: lighten(black, 10%);
+  $card-header-background: darken($card-border-color, 50%);
+  $card-header-hover-background: darken($card-border-color, 40%);
   $card-hover-background: lighten($card-background, 5%);
-  $card-image-background: $dark-green;
+  $card-image-background: black;
   $card-image-hover-background: lighten($card-image-background, 5%);
   $card-margin: 1em;
 
-  @include flex-basis(20em);
+  @include flex-basis(30em);
   @include flex-grow(0);
   @include transition (all 0.2s ease-in-out);
   background-color: $card-background;
@@ -40,10 +40,12 @@
 
   .card-image {
     display: table;
+    min-height: 120px;
     max-height: 120px;
     margin: 0;
     padding: 0;
     width: 100%;
+    background: $card-image-background;
 
     .card-image-book {
       display: table-cell;
@@ -74,9 +76,9 @@
       text-transform: uppercase;
       font-weight: bold;
       line-height: 1.5em;
-      font-size: 1.2em;
+      font-size: modular-scale(0);
       background-color: $dark-red;
-      padding: ($base-spacing / 4) 1.5em ($base-spacing / 4) 1.5em;
+      padding: ($base-spacing / 8) 1.0em ($base-spacing / 8) 1.0em;
     }
   }
 
