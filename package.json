@@ -1,0 +1,25 @@
+{
+  "name": "cbfs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "build:classic": "THEME=classic astro build",
+    "build:redesign": "THEME=redesign astro build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@astrojs/check": "^0.9.7",
+    "astro": "^6.0.4",
+    "typescript": "^5.9.3"
+  }
+}
