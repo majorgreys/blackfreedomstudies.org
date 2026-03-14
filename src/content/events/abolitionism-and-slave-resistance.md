@@ -7,7 +7,10 @@ speakers:
   - "sowande-mustakeem"
   - "manisha-sinha"
   - "sasha-turner"
-books: []
+books:
+  - ../../assets/bookcovers/slaveryatsea.jpg
+  - ../../assets/bookcovers/slavescause.jpg
+  - ../../assets/bookcovers/contestedbodies.jpg
 video: "abolitionism-and-slave-resistance"
 ---
 

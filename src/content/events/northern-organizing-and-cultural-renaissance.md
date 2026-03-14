@@ -8,7 +8,9 @@ speakers:
   - "erik-gellman"
   - "anne-knupfer"
   - "yasmin-ramirez"
-books: []
+books:
+  - ../../assets/bookcovers/deathblowtojimcrow.jpg
+  - ../../assets/bookcovers/blackchicago.jpg
 video: "northern-organizing-and-cultural-renaissance"
 ---
 

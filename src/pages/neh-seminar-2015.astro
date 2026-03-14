@@ -1,0 +1,75 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import { Layout, isClassic } from '../lib/theme';
+
+import bannerRosa from '../assets/graphics/Schomburg-Rosa.jpg';
+import bannerExodus from '../assets/graphics/Schomburg-Exodus.jpg';
+import bannerSeale from '../assets/graphics/Schomburg-Seale.jpg';
+import nehLogo from '../assets/graphics/neh_logo_horizontal_rgb.jpg';
+
+const pagesCollection = await getCollection('pages');
+const page = pagesCollection.find(p => p.id === 'neh-seminar-2015');
+let PageContent: any = null;
+if (page) {
+  const rendered = await render(page);
+  PageContent = rendered.Content;
+}
+
+const sections = ['Description', 'Program', 'Directors', 'Eligibility', 'Apply', 'Housing', 'Stipend', 'Contact Us'];
+---
+<Layout title={page?.data.title || 'NEH Seminar 2015'}>
+  {isClassic ? (
+    <div>
+      <div class="c-page-header">
+        <h1>{page?.data.title}</h1>
+      </div>
+      <div class="c-banner-images">
+        <div class="c-banner-images__item">
+          <div class="c-banner-images__crop">
+            <Image src={bannerRosa} alt="Septima Clark and Rosa Parks" width={267} />
+          </div>
+        </div>
+        <div class="c-banner-images__item">
+          <div class="c-banner-images__crop">
+            <Image src={bannerExodus} alt="Operation Exodus to desegregate Boston schools" width={267} />
+          </div>
+        </div>
+        <div class="c-banner-images__item">
+          <div class="c-banner-images__crop">
+            <Image src={bannerSeale} alt="Bobby Seale" width={267} />
+          </div>
+        </div>
+      </div>
+      <ul class="c-sub-nav">
+        {sections.map((s, i) => (
+          <li><a href={`#section-${i}`}>{s}</a></li>
+        ))}
+      </ul>
+      <div class="c-about-content">
+        <div>
+          <p>Over the past decade, a burgeoning scholarship on freedom movements outside of the South has reframed our understandings of the Black Freedom Struggle in the United States. It shows and documents the deep and wide roots of racial inequality and segregation across the United States on the one hand and the vast array of movements in the Northeast, Midwest, and West that flowered alongside those in the South to challenge those roots on the other hand. This new framework broadens the timeline, expands our understandings of the Civil Rights movement, labor, and women's liberation movements; foregrounds the central role of youth; and shows that women were pivotal in leadership, strategy and organizing with international visions and grassroots dimensions. Moreover, this scholarship shows the importance of a number of Black alliances and coalitions with Latino, Asian American and Native American movements.</p>
+          <p>This two-week NEH summer faculty seminar entitled "Rethinking Black Freedom Studies from the Jim Crow North to the Jim Crow West" will bring together scholars working in this field and those interested in expanding their own teaching/curriculum by getting a deep introduction in this expanding scholarship. We welcome scholars across the disciplines of history, political science, music, theater and the arts, urban studies, literature, women's studies, and Black studies and a multiplicity of viewpoints and approaches. Graduate students, lecturers, tenure track and tenured faculty are all encouraged to apply.</p>
+          <p>The seminar will be run by <strong>Komozi Woodard</strong> (Sarah Lawrence College) and <strong>Jeanne Theoharis</strong> (Brooklyn College of CUNY) and held from June 16-25, 2015 at <strong>Sarah Lawrence College</strong> and the <strong>Schomburg Center for Research in Black Culture</strong>. Sixteen participants will be chosen and participants are required to attend every day of the seminar. Everyone in the seminar will workshop a project, whether a draft article, chapter or syllabus. Applications will be due on March 2, 2015.</p>
+          <p style="text-align:center;"><Image src={nehLogo} alt="National Endowment for the Humanities" width={252} /></p>
+          <p>The seminar will uphold the <a href="http://www.neh.gov/grants/education/principles-civility">principles of civility</a> outlined by the NEH.</p>
+          <p><strong>Disclaimer</strong>: <em>Any views, findings, conclusions, or recommendations expressed in this program do not necessarily represent those of the National Endowment for the Humanities.</em></p>
+        </div>
+      </div>
+      <div class="c-about-content">
+        <div>
+          {PageContent && <PageContent />}
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div>
+      <div class="r-page-header">
+        <h1>{page?.data.title}</h1>
+      </div>
+      <div class="r-prose">
+        {PageContent && <PageContent />}
+      </div>
+    </div>
+  )}
+</Layout>

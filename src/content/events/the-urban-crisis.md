@@ -8,7 +8,10 @@ speakers:
   - "robert-curvin"
   - "clarence-taylor"
   - "junius-williams"
-books: []
+books:
+  - ../../assets/bookcovers/curvinnewark.jpg
+  - ../../assets/bookcovers/williamsagenda.jpg
+  - ../../assets/bookcovers/taylornyc.jpg
 video: "the-urban-crisis-an-unfinished-agenda"
 ---
 

@@ -9,7 +9,11 @@ speakers:
   - "adom-getachew"
   - "peter-james-hudson"
   - "daniel-immerwahr"
-books: []
+books:
+  - ../../assets/bookcovers/IMG_9969.JPG
+  - ../../assets/bookcovers/IMG_9971.JPG
+  - ../../assets/bookcovers/IMG_9968.JPG
+  - ../../assets/bookcovers/IMG_9970.JPG
 video: "slavery-capitalism-and-empire"
 ---
 

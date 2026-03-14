@@ -8,7 +8,9 @@ speakers:
   - "mary-phillips"
   - "sherie-randolph"
   - "robyn-spencer"
-books: []
+books:
+  - ../../assets/bookcovers/crosbyground.jpg
+  - ../../assets/bookcovers/theoharisstart.jpg
 ---
 
 

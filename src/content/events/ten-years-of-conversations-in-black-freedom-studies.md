@@ -9,7 +9,8 @@ speakers:
   - "jeanne-theoharis"
   - "komozi-woodard"
   - "brian-jones"
-books: []
+books:
+  - ../../assets/bookcovers/cbfs.jpeg
 ---
 
 Join us in person or online, for a very special edition of the next Conversations in Black Freedom Studies, **Building a Black Public Square: Ten Years of Conversations in Black Freedom Studies**. This is the first in person iteration in this series since the start of the COVID-19 pandemic closures in March 2020.

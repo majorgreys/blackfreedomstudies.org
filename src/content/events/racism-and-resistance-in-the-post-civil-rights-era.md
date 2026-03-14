@@ -9,7 +9,11 @@ speakers:
   - "elizabeth-hinton"
   - "emily-hobeson"
   - "daniel-lucks"
-books: []
+books:
+  - ../../assets/bookcovers/IMG_9975.JPG
+  - ../../assets/bookcovers/IMG_9974.JPG
+  - ../../assets/bookcovers/IMG_9972.JPG
+  - ../../assets/bookcovers/IMG_9976.JPG
 video: "racism-and-resistance-in-the-post-civil-rights-era"
 ---
 

@@ -10,7 +10,10 @@ speakers:
   - "robyn-spencer"
   - "akinyele-umoja"
   - "komozi-woodard"
-books: []
+books:
+  - ../../assets/bookcovers/Griffin.jpg
+  - ../../assets/bookcovers/goreradicalism.jpg
+  - ../../assets/bookcovers/umojashoot.jpg
 video: "fallen-freedom-fighters-an-evening-commemorating-the-lives-of-maya-angelou-chokwe-lumumba-general-baker-thelma-dale-and-amiri-baraka"
 ---
 

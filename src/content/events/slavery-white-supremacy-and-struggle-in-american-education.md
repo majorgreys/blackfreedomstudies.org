@@ -7,7 +7,9 @@ speakers:
   - "ansley-t--erickson"
   - "jonna-perrillo"
   - "craig-steven-wilder"
-books: []
+books:
+  - ../../assets/bookcovers/perrillouncivil.jpg
+  - ../../assets/bookcovers/wilderebony.jpg
 video: "slavery-white-supremacy-and-struggle-in-american-education"
 ---
 

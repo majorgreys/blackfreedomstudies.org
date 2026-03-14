@@ -9,7 +9,11 @@ speakers:
   - "dan-berger"
   - "shanna-greene-benjamin"
   - "patricia-romney"
-books: []
+books:
+  - ../../assets/bookcovers/everything-man.jpeg
+  - ../../assets/bookcovers/we-were-there.jpeg
+  - ../../assets/bookcovers/stayedfreedom.jpeg
+  - ../../assets/bookcovers/Half-in-Shadow.jpeg
 ---
 
 Writing Black Activist Lives. This conversation looks at new biographies, bringing us deeper understanding of more familiar freedom fighters like Paul Robeson and less known but crucial lifelong activists like Zoharah Simmons. Authors will discuss the power of individual stories to illuminate larger historical crosscurrents.

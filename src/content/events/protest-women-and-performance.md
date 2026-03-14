@@ -8,7 +8,10 @@ speakers:
   - "ruth-feldstein"
   - "tanisha-ford"
   - "sherie-randolph"
-books: []
+books:
+  - ../../assets/bookcovers/feldsteinfree.jpg
+  - ../../assets/bookcovers/randolphflorynce.jpg
+  - ../../assets/bookcovers/fordthreads.jpg
 video: "protest-women-and-performance"
 ---
 

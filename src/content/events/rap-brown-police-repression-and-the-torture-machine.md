@@ -8,7 +8,11 @@ speakers:
   - "simon-balto"
   - "arun-kundnani"
   - "flint-taylor"
-books: []
+books:
+  - ../../assets/bookcovers/occupiedterritory.jpg
+  - ../../assets/bookcovers/Rap-2.jpg
+  - ../../assets/bookcovers/Kundnani-Muslims-Are-Coming.jpg
+  - ../../assets/bookcovers/torturemachine.jpg
 video: "rap-brown-police-repression-and-the-torture-machine-1"
 ---
 

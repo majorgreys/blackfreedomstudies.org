@@ -8,7 +8,10 @@ speakers:
   - "keona-ervin"
   - "nishani-frazier"
   - "patrick-jones"
-books: []
+books:
+  - ../../assets/bookcovers/gatewaytoequality.jpg
+  - ../../assets/bookcovers/harambeecity.jpg
+  - ../../assets/bookcovers/selmanorth.jpg
 video: "the-strange-career-of-jim-crow-midwest"
 primaryResources:
   - "harambee-city-omeka-site"

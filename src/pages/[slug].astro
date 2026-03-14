@@ -5,7 +5,7 @@ import { Layout, isClassic } from '../lib/theme';
 export async function getStaticPaths() {
   const pagesCollection = await getCollection('pages');
   return pagesCollection
-    .filter(page => page.id !== 'homepage' && page.id !== 'index')
+    .filter(page => page.id !== 'homepage' && page.id !== 'index' && page.id !== 'neh-seminar-2015')
     .map(page => ({
       params: { slug: page.id },
       props: { page },
@@ -18,8 +18,16 @@ const { Content } = await render(page);
 <Layout title={page.data.title}>
   {isClassic ? (
     <div>
-      <h1>{page.data.title}</h1>
-      <Content />
+      <div class="c-event-header" style="border:0;border-bottom:1px solid var(--color-border);">
+        <div class="c-event-name">
+          <h2>{page.data.title}</h2>
+        </div>
+      </div>
+      <div class="c-about-content">
+        <div>
+          <Content />
+        </div>
+      </div>
     </div>
   ) : (
     <div>

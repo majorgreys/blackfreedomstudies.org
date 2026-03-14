@@ -9,7 +9,11 @@ speakers:
   - "quito-swan"
   - "natanya-duncan"
   - "monique-bedasse"
-books: []
+books:
+  - ../../assets/bookcovers/bedasse-book.jpeg
+  - ../../assets/bookcovers/duncan-book.jpeg
+  - ../../assets/bookcovers/Seniors-book.jpeg
+  - ../../assets/bookcovers/swan-book.jpg
 ---
 
 In this online event, four scholars will discuss anti-colonialism and global Black revolutionary struggles. Paula Marie Seniors will talk about the Monroe Defense Committee and internationalist Black women radicals. Quito Swan will discuss the Black Pacific and anti-colonial politics. Natanya Duncan will discuss her work on women in the Universal Negro Improvement association and the formation of Black nationalism and Pan-Africanism. Monique Bedasse will talk about her work on Rastafarianism in Tanzania during the age of decolonization.

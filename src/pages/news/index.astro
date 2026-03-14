@@ -1,22 +1,42 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
 import { Layout, isClassic } from '../../lib/theme';
 
 const news = (await getCollection('news'))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+// Render all news content for excerpts
+const newsWithContent = await Promise.all(
+  news.map(async (entry) => {
+    const { Content } = await render(entry);
+    return { entry, Content };
+  })
+);
 ---
 <Layout title="News">
   {isClassic ? (
     <div>
-      <h1>News</h1>
-      <ul class="c-news-list">
-        {news.map(entry => (
-          <li class="c-news-item">
-            <span class="c-news-date">{entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-            <h2><a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`}>{entry.data.title}</a></h2>
-          </li>
-        ))}
-      </ul>
+      <div class="c-page-header">
+        <h1>News</h1>
+      </div>
+      {newsWithContent.map(({ entry, Content }) => (
+        <article class="c-news-item">
+          <h2><a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`}>{entry.data.title}</a></h2>
+          <p class="c-news-date">{entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+          {entry.data.image && (
+            <div class="c-news-images">
+              <div class="c-news-images__crop">
+                <Image src={entry.data.image} alt="" width={800} />
+              </div>
+            </div>
+          )}
+          <div class="c-news-excerpt">
+            <Content />
+          </div>
+          <p><a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`}>Continue reading</a></p>
+        </article>
+      ))}
     </div>
   ) : (
     <div>

@@ -8,7 +8,9 @@ speakers:
   - "gwendolyn-zoharah-simmons"
   - "brandon-terry"
   - "traci-parker"
-books: []
+books:
+  - ../../assets/bookcovers/to-shape-a-new-world.jpg
+  - ../../assets/bookcovers/81ZAKF-ig4L._AC_UL210_SR210210.jpg
 ---
 
 A virtual conversation offering new perspectives on the lives and legacies of Coretta Scott King & Dr. Martin Luther King, Jr.

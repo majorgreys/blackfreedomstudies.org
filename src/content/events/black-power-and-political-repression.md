@@ -8,7 +8,10 @@ speakers:
   - "kenneth-janken"
   - "erik-mcduffie"
   - "rhonda-williams"
-books: []
+books:
+  - ../../assets/bookcovers/jankenwilmingtonten.jpg
+  - ../../assets/bookcovers/mcduffiesojourning.jpg
+  - ../../assets/bookcovers/williamsconcrete.jpg
 video: "black-power-and-political-repression"
 ---
 

@@ -8,7 +8,10 @@ speakers:
   - "keisha-blain"
   - "sarah-haley"
   - "keeanga-yamahtta-taylor"
-books: []
+books:
+  - ../../assets/bookcovers/charlestonsyllabus.jpg
+  - ../../assets/bookcovers/nomercyhere.jpg
+  - ../../assets/bookcovers/blacklivesmatter.jpg
 video: "black-women-and-the-criminal-justice-system"
 ---
 

@@ -8,7 +8,10 @@ speakers:
   - "tanisha-ford"
   - "shennette-garrett-scott"
   - "crystal-moten"
-books: []
+books:
+  - ../../assets/bookcovers/our-secret-society.jpeg
+  - ../../assets/bookcovers/continually-working.jpg
+  - ../../assets/bookcovers/banking-on-freedom.jpg
 ---
 
 

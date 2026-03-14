@@ -8,7 +8,9 @@ speakers:
   - "mary-frances-berry"
   - "lashawn-harris"
   - "shannon-king"
-books: []
+books:
+  - ../../assets/bookcovers/berryjustice.jpg
+  - ../../assets/bookcovers/kingharlem.jpg
 video: "problems-with-history-of-racial-policing-in-nyc"
 ---
 

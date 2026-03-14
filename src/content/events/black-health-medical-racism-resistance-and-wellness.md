@@ -8,7 +8,10 @@ speakers:
   - "deirdre-cooper-owens"
   - "stephanie-y-evans"
   - "martin-summers"
-books: []
+books:
+  - ../../assets/bookcovers/medicalbondage.jpg
+  - ../../assets/bookcovers/yogahistory.jpg
+  - ../../assets/bookcovers/madness-in-the-city.jpg
 video: "black-health-medical-racism-resistance-and-wellness"
 ---
 

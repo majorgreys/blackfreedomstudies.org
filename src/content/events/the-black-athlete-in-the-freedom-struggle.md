@@ -7,7 +7,10 @@ speakers:
   - "louis-moore"
   - "wyomia-tyus"
   - "dave-zirin"
-books: []
+books:
+  - ../../assets/bookcovers/wewillwintheday.JPG
+  - ../../assets/bookcovers/tigerbelle.jpg
+  - ../../assets/bookcovers/apeopleshistoryofsports.jpg
 video: "the-black-athlete-in-the-freedom-struggle"
 ---
 

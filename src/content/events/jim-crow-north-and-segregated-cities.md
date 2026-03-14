@@ -6,7 +6,8 @@ seasonPart: spring
 speakers:
   - "karen-miller"
   - "carl-nightingale"
-books: []
+books:
+  - ../../assets/bookcovers/nightingalesegregation.jpg
 video: "the-jim-crow-north-and-the-global-history-of-segregated-cities"
 ---
 

@@ -7,7 +7,10 @@ speakers:
   - "garrett-felber"
   - "kelly-lytle-hernandez"
   - "carl-suddler"
-books: []
+books:
+  - ../../assets/bookcovers/those-who-know-don-t-say.jpg
+  - ../../assets/bookcovers/cityofinmates.jpg
+  - ../../assets/bookcovers/presumedcriminal.jpg
 video: "resisting-carceral-cities"
 ---
 

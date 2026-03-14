@@ -7,7 +7,10 @@ speakers:
   - "robyn-spencer"
   - "akinyele-umoja"
   - "michael-west"
-books: []
+books:
+  - ../../assets/bookcovers/groundwork.jpg
+  - ../../assets/bookcovers/umojashoot.jpg
+  - ../../assets/bookcovers/westtoussaint.jpg
 video: "black-radical-internationalism"
 ---
 

@@ -8,7 +8,10 @@ speakers:
   - "matt-delmont"
   - "ansley-t--erickson"
   - "carla-shedd"
-books: []
+books:
+  - ../../assets/bookcovers/Unequal-cities.jpg
+  - ../../assets/bookcovers/Matt-Delmont.jpg
+  - ../../assets/bookcovers/Ansley.jpg
 video: "educational-injustice-and-organizing-1"
 ---
 

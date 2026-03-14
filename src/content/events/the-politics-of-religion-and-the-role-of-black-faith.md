@@ -7,7 +7,10 @@ speakers:
   - "suad-abdul-khabeer"
   - "melissa-ford"
   - "todne-thomas"
-books: []
+books:
+  - ../../assets/bookcovers/kincraft.jpeg
+  - ../../assets/bookcovers/muslim-cool.jpg
+  - ../../assets/bookcovers/brickandbible.jpeg
 ---
 
 

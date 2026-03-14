@@ -7,7 +7,9 @@ speakers:
   - "ashley-farmer"
   - "joseph-fitzgerald"
   - "gloria-richardson"
-books: []
+books:
+  - ../../assets/bookcovers/maemallory3.jpg
+  - ../../assets/bookcovers/gloriarichardson.jpg
 video: "honoring-the-legacy-of-black-women-radicals-gloria-richardson-and-mae-mallory"
 ---
 

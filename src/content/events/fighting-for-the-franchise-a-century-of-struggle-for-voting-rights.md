@@ -9,7 +9,11 @@ speakers:
   - "ari-berman"
   - "martha-jones"
   - "reverend-liz-theoharis"
-books: []
+books:
+  - ../../assets/bookcovers/oneperson.jpg
+  - ../../assets/bookcovers/giveustheballot.jpg
+  - ../../assets/bookcovers/vanguard.jpg
+  - ../../assets/bookcovers/reviveusagain.jpg
 video: "fighting-for-the-franchise"
 ---
 

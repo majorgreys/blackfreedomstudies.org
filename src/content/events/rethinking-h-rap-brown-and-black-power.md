@@ -8,7 +8,9 @@ speakers:
   - "arun-kundnani"
   - "robyn-spencer"
   - "akinyele-umoja"
-books: []
+books:
+  - ../../assets/bookcovers/Rap-2.jpg
+  - ../../assets/bookcovers/BPP.jpg
 video: "rethinking-h-rap-brown"
 ---
 

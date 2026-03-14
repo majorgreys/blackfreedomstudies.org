@@ -8,7 +8,10 @@ speakers:
   - "kristopher-burrell"
   - "james-forman"
   - "clarence-taylor"
-books: []
+books:
+  - ../../assets/bookcovers/fightthepower.jpg
+  - ../../assets/bookcovers/Jim-Crow-NY.jpg
+  - ../../assets/bookcovers/lockingupourown.jpg
 video: "the-struggle-against-police-brutality-mass-incarceration-and-educational-discrimination-in-the-jim-crow-north"
 ---
 

@@ -8,7 +8,9 @@ speakers:
   - "laura-hill"
   - "peter-levy"
   - "rosie-uyola"
-books: []
+books:
+  - ../../assets/bookcovers/hillbusiness.jpg
+  - ../../assets/bookcovers/greatuprising.jpg
 video: "revisiting-the-uprisings-of-the-1960s"
 ---
 

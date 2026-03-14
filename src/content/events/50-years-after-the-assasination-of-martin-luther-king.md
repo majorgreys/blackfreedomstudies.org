@@ -8,7 +8,11 @@ speakers:
   - "thomas-jackson"
   - "david-stein"
   - "jeanne-theoharis"
-books: []
+books:
+  - ../../assets/bookcovers/historyteaches.jpg
+  - ../../assets/bookcovers/fromcivilrights.jpg
+  - ../../assets/bookcovers/souls.JPG
+  - ../../assets/bookcovers/morebeautiful.jpg
 video: "50-years-after-the-assassination-of-martin-luther-king"
 ---
 

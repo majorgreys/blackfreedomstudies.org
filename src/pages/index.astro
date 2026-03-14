@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
 import { Layout, isClassic } from '../lib/theme';
 
 const pagesCollection = await getCollection('pages');
@@ -20,7 +21,7 @@ if (homepage) {
     <div>
       {homepage?.data.image ? (
         <div class="c-hero">
-          <img src={(homepage.data.image as any).src} alt="Conversations in Black Freedom Studies" />
+          <Image src={homepage.data.image} alt="Conversations in Black Freedom Studies" width={800} />
           <div class="c-hero__overlay">
             <ul>
               {latestNews.map(entry => (
@@ -43,7 +44,7 @@ if (homepage) {
           </ul>
         </div>
       )}
-      {HomepageContent && <div class="c-lead"><HomepageContent /></div>}
+      {HomepageContent && <div class="c-homepage-content"><HomepageContent /></div>}
     </div>
   ) : (
     <div>

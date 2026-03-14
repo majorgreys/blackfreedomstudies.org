@@ -7,7 +7,10 @@ speakers:
   - "charisse-burden-stelly"
   - "robin-d-g-kelley"
   - "barbara-smith"
-books: []
+books:
+  - ../../assets/bookcovers/ChariseBurden.jpg
+  - ../../assets/bookcovers/Hammer-and-Hoe.jpg
+  - ../../assets/bookcovers/aintgonnaletnobody.jpg
 video: "black-liberation-and-socialism"
 ---
 

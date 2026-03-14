@@ -9,7 +9,9 @@ speakers:
   - "sonia-lee"
   - "alejandra-marchevsky"
   - "fred-opie"
-books: []
+books:
+  - ../../assets/bookcovers/Building-a-Latino-Civil-Rights-Movement.jpg
+  - ../../assets/bookcovers/Alejandra-Marchevsky.jpg
 video: "black-and-brown-coalitions"
 ---
 

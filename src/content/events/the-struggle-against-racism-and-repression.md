@@ -8,7 +8,10 @@ speakers:
   - "aram-goudsouzian"
   - "aldon-morris"
   - "caleb-smith"
-books: []
+books:
+  - ../../assets/bookcovers/AG.jpg
+  - ../../assets/bookcovers/CS.jpg
+  - ../../assets/bookcovers/AM.jpg
 video: "the-struggle-against-racism-and-repression"
 ---
 

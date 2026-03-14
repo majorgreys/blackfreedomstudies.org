@@ -7,7 +7,9 @@ speakers:
   - "donna-murch"
   - "robyn-spencer"
   - "jakobi-williams"
-books: []
+books:
+  - ../../assets/bookcovers/murchliving.jpg
+  - ../../assets/bookcovers/williamsbullet.jpg
 video: "the-black-panther-party-oakland-and-chicago"
 ---
 

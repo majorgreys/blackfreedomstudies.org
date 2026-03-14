@@ -8,7 +8,11 @@ speakers:
   - "jesse-hagopian"
   - "crystal-sanders"
   - "barry-goldenberg"
-books: []
+books:
+  - ../../assets/bookcovers/black-history.jpg
+  - ../../assets/bookcovers/strength.jpg
+  - ../../assets/bookcovers/haopian-book.jpg
+  - ../../assets/bookcovers/forgotten-migration.jpg
 ---
 
 In a moment when Black history and Black studies are under attack, it is critical to hear from the scholars, organizers, and teachers steadfastly pursuing and documenting this work. This virtual panel brings together four such writers to share about their brilliant books. Brian Jones and Jesse Hagopian, both of whom are rooted in anti-racist education struggles today, will discuss the importance of Black history and organizing for anti-racist schools and educational institutions. Barry Goldenberg will dive into the history of Harlem Prep and multicultural education in the neighborhood. Crystal Sanders will discuss the economically coerced migration of Black students out of the South and the debt owed to public HBCUs.

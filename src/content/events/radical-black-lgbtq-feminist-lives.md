@@ -8,7 +8,11 @@ speakers:
   - "laura-lovett"
   - "barbara-smith"
   - "emily-thuma"
-books: []
+books:
+  - ../../assets/bookcovers/Misogynoir-Transformed.jpg
+  - ../../assets/bookcovers/With-Her-Fist-Raised.jpg
+  - ../../assets/bookcovers/aintgonnaletnobody.jpg
+  - ../../assets/bookcovers/All-Our-Trials.jpg
 video: "radical-black-lgbtq-feminist-lives"
 ---
 

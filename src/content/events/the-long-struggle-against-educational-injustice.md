@@ -7,7 +7,10 @@ speakers:
   - "rachel-devlin"
   - "devin-fergus"
   - "elizabeth-mcrae"
-books: []
+books:
+  - ../../assets/bookcovers/agirlstandsatthedoor.jpg
+  - ../../assets/bookcovers/landofthefree.jpg
+  - ../../assets/bookcovers/mothersofmassiveresistance.jpg
 video: "the-long-struggle-against-educational-injustice"
 ---
 

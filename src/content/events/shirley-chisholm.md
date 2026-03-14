@@ -7,7 +7,8 @@ eventbrite: "http://www.eventbrite.com/e/conversations-in-black-freedom-studies-
 speakers:
   - "zinga-fraser"
   - "barbara-winslow"
-books: []
+books:
+  - ../../assets/bookcovers/winslowshirley.jpg
 video: "the-political-life-and-legacy-of-shirley-chisholm"
 primaryResources:
   - "shirley-chisholm-declares-presidential-bid-january-25-1972"

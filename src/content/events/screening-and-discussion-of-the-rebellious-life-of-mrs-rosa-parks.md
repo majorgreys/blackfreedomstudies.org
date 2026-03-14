@@ -8,7 +8,8 @@ speakers:
   - "yoruba-richen"
   - "jeanne-theoharis"
   - "robyn-spencer"
-books: []
+books:
+  - ../../assets/bookcovers/Rose-Parks-Doc-Banner-scaled-1.jpeg
 ---
 
 

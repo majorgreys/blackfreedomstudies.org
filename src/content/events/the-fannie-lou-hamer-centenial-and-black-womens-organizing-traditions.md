@@ -9,7 +9,10 @@ speakers:
   - "ashley-farmer"
   - "charles-payne"
   - "gloria-richardson"
-books: []
+books:
+  - ../../assets/bookcovers/freedomsteacher.png
+  - ../../assets/bookcovers/remakingblackpower.jpg
+  - ../../assets/bookcovers/lightoffreedom.jpg
 video: "the-fannie-lou-hamer-centennial"
 ---
 

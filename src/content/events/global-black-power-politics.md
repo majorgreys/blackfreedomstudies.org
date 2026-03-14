@@ -7,7 +7,9 @@ speakers:
   - "peniel-joseph"
   - "gloria-richardson"
   - "michael-west"
-books: []
+books:
+  - ../../assets/bookcovers/josephdark.jpg
+  - ../../assets/bookcovers/westtoussaint.jpg
 ---
 
 

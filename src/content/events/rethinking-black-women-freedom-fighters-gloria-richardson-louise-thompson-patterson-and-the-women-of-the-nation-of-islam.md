@@ -8,7 +8,10 @@ speakers:
   - "joseph-fitzgerald"
   - "keith-gilyard"
   - "ula-taylor"
-books: []
+books:
+  - ../../assets/bookcovers/Fitz.jpg
+  - ../../assets/bookcovers/Taylor.png
+  - ../../assets/bookcovers/LTP.jpg
 video: "rethinking-black-women-freedom-fighters-gloria-richardson-louise-thompson-patterson-and-the-women-of-the-nation-of-islam"
 ---
 

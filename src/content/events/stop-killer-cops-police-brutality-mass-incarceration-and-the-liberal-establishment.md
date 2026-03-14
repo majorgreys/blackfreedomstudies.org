@@ -7,7 +7,10 @@ speakers:
   - "max-felker-kantor"
   - "lashawn-harris"
   - "naomi-murakawa"
-books: []
+books:
+  - ../../assets/bookcovers/firstcivilright.jpg
+  - ../../assets/bookcovers/Sexworkers.jpg
+  - ../../assets/bookcovers/policingla.jpg
 video: "stop-killer-cops-police-bfrutality-mass-incarceration-and-the-liberal-establishment"
 ---
 

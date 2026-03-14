@@ -8,7 +8,9 @@ speakers:
   - "kevin-mcgruder"
   - "genna-rae-mcneil"
   - "jennifer-scanlon"
-books: []
+books:
+  - ../../assets/bookcovers/mcgruderwitness.jpg
+  - ../../assets/bookcovers/scanlonjustice.jpeg
 video: "the-church-and-the-struggle"
 ---
 

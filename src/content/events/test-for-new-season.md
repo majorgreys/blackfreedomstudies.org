@@ -8,7 +8,10 @@ speakers:
   - "ashley-farmer"
   - "pam-horowitz"
   - "peniel-joseph"
-books: []
+books:
+  - ../../assets/bookcovers/Bond.jpg
+  - ../../assets/bookcovers/Sword.jpg
+  - ../../assets/bookcovers/remakingblackpower.jpg
 video: "civil-rights-legacies-martin-malcolm-gwen-and-julian"
 ---
 

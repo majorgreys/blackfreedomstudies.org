@@ -8,7 +8,10 @@ speakers:
   - "nathan-connelly"
   - "beryl-satter"
   - "keeanga-yamahtta-taylor"
-books: []
+books:
+  - ../../assets/bookcovers/aworldmoreconcrete.jpg
+  - ../../assets/bookcovers/familyproperties.jpg
+  - ../../assets/bookcovers/raceforprofit.jpg
 video: "housing-discrimination-in-the-jim-crow-us-and-the-case-for-reparations"
 ---
 

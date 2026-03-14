@@ -8,7 +8,10 @@ speakers:
   - "chris-hayes"
   - "cathy-schneider"
   - "clarence-taylor"
-books: []
+books:
+  - ../../assets/bookcovers/intheheat.jpg
+  - ../../assets/bookcovers/policepowerraceriots.jpg
+  - ../../assets/bookcovers/civilrightsnewyorkcity.jpg
 video: "the-long-fight-against-police-brutality"
 ---
 

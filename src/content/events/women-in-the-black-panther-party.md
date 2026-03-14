@@ -8,7 +8,8 @@ speakers:
   - "ericka-huggins"
   - "mary-phillips"
   - "robyn-spencer"
-books: []
+books:
+  - ../../assets/bookcovers/theoharisstart.jpg
 video: "women-in-the-black-panther-party"
 ---
 

@@ -7,7 +7,10 @@ speakers:
   - "amiri-baraka"
   - "ingrid-monson"
   - "john-szwed"
-books: []
+books:
+  - ../../assets/bookcovers/jonesblues.jpg
+  - ../../assets/bookcovers/monsonfreedom.jpg
+  - ../../assets/bookcovers/szwedwhat.jpg
 video: "the-blues-people-50-years-later"
 ---
 

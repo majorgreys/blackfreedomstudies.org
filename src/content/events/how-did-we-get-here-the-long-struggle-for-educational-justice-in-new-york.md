@@ -8,7 +8,9 @@ speakers:
   - "ujju-aggarwal"
   - "ernest-morrell"
   - "terrenda-white"
-books: []
+books:
+  - ../../assets/bookcovers/Whatsracegottodo-2.jpg
+  - ../../assets/bookcovers/9780231182201.jpg
 video: "the-long-struggle-for-educational-justice-in-new-york"
 ---
 

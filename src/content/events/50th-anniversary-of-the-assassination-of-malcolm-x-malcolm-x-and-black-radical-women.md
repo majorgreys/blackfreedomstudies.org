@@ -8,7 +8,8 @@ speakers:
   - "rosemari-mealy"
   - "gloria-richardson"
   - "komozi-woodard"
-books: []
+books:
+  - ../../assets/bookcovers/Mealy-Fidel-Malcolm.jpg
 video: "malcolm-x-and-black-radical-women"
 primaryResources:
   - "malcolm-x-gloria-richardson-the-women-in-malcolms-kitchen-cabinet"

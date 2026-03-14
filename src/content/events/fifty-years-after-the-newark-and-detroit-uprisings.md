@@ -8,7 +8,9 @@ speakers:
   - "say-burgin"
   - "mark-krasovic"
   - "junius-williams"
-books: []
+books:
+  - ../../assets/bookcovers/newarkfrontier.jpg
+  - ../../assets/bookcovers/Unfinished-Agenda.jpg
 video: "fifty-years-after-the-newark-and-detroit-uprisings"
 ---
 

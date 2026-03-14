@@ -8,7 +8,10 @@ speakers:
   - "john-bracey-jr"
   - "stefan-bradley-1"
   - "shirletta-kinchen"
-books: []
+books:
+  - ../../assets/bookcovers/upendingtheivorytower.jpg
+  - ../../assets/bookcovers/soscallingallblackpeople.jpg
+  - ../../assets/bookcovers/blackpowerinbluffcity.jpg
 video: "the-black-revolution-on-campus-1"
 ---
 

@@ -8,7 +8,9 @@ speakers:
   - "keisha-blain"
   - "ashley-farmer"
   - "john-portlock"
-books: []
+books:
+  - ../../assets/bookcovers/Settheworldonfire.jpg
+  - ../../assets/bookcovers/remakingblackpower.jpg
 video: "black-womens-internationalism"
 ---
 

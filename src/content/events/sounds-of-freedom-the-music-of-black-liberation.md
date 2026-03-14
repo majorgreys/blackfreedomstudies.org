@@ -7,7 +7,10 @@ speakers:
   - "hanif-abdurraquib"
   - "shana-redmond"
   - "rickey-vincent"
-books: []
+books:
+  - ../../assets/bookcovers/GoAheadintheRain.png
+  - ../../assets/bookcovers/Anthem.jpg
+  - ../../assets/bookcovers/PartyMusic.jpg
 video: "sounds-of-freedom"
 ---
 

@@ -8,7 +8,9 @@ speakers:
   - "reverend-william-barber"
   - "gloria-browne-marshall"
   - "reverend-liz-theoharis"
-books: []
+books:
+  - ../../assets/bookcovers/reviveusagain.jpg
+  - ../../assets/bookcovers/votingrightswar.jpg
 video: "the-struggle-for-voting-rights-and-the-poor-peoples-campaign"
 ---
 

@@ -8,7 +8,10 @@ speakers:
   - "ruth-wilson-gilmore"
   - "arun-kundnani"
   - "laura-whitehorn"
-books: []
+books:
+  - ../../assets/bookcovers/Gilmore-Golden-Gulags.jpg
+  - ../../assets/bookcovers/Whitehorn-War-Before.jpg
+  - ../../assets/bookcovers/Kundnani-Muslims-Are-Coming.jpg
 video: "criminal-justice-part-ii"
 ---
 

@@ -8,7 +8,10 @@ speakers:
   - "laura-hill"
   - "alondra-nelson"
   - "jessica-nembhard"
-books: []
+books:
+  - ../../assets/bookcovers/nembhardcollective.jpg
+  - ../../assets/bookcovers/nelsonbody.jpg
+  - ../../assets/bookcovers/hillbusiness.jpg
 video: "cooperative-economics"
 ---
 

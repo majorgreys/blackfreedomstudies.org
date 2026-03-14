@@ -8,7 +8,10 @@ speakers:
   - "elizabeth-hinton"
   - "alejandra-marchevsky"
   - "crystal-sanders"
-books: []
+books:
+  - ../../assets/bookcovers/waronpoverty.jpg
+  - ../../assets/bookcovers/notworking.jpg
+  - ../../assets/bookcovers/achanceforchange.jpg
 video: "the-war-on-poverty-at-50"
 ---
 

@@ -6,7 +6,9 @@ seasonPart: spring
 speakers:
   - "brian-purnell"
   - "clarence-taylor"
-books: []
+books:
+  - ../../assets/bookcovers/purnellfighting.jpg
+  - ../../assets/bookcovers/taylornyc.jpg
 video: "freedom-north-the-black-freedom-struggle-in-new-york"
 ---
 

@@ -16,12 +16,12 @@ const { name, slug, affiliation, image, email, twitter, homepage, compact = fals
 ---
 <li class="c-speaker-item">
   {image ? (
-    <Image src={image} alt={name} class="c-speaker-headshot" width={80} height={80} />
+    <Image src={image} alt={name} class="c-speaker-headshot" width={150} />
   ) : (
     <div class="c-speaker-placeholder">👤</div>
   )}
   <div class="c-speaker-info">
-    <h3><a href={`/speakers/${slug}`}>{name}</a></h3>
+    <h3>{name}</h3>
     {affiliation && <span class="affiliation">{affiliation}</span>}
     <div class="c-speaker-social">
       {homepage && <a href={homepage}>Website</a>}

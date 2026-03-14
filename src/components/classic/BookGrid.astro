@@ -10,7 +10,11 @@ const { books } = Astro.props;
 {books.length > 0 && (
   <div class="c-book-grid">
     {books.map((book) => (
-      <Image src={book} alt="Book cover" width={100} />
+      <div class="c-book-grid-item">
+        <div class="c-book-grid-img">
+          <Image src={book} alt="" width={300} />
+        </div>
+      </div>
     ))}
   </div>
 )}

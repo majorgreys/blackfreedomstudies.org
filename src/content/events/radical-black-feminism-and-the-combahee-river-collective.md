@@ -8,7 +8,10 @@ speakers:
   - "barbara-ransby"
   - "barbara-smith"
   - "keeanga-yamahtta-taylor"
-books: []
+books:
+  - ../../assets/bookcovers/makeallblacklivesmatter.jpg
+  - ../../assets/bookcovers/thetruththatneverhurts.jpg
+  - ../../assets/bookcovers/How-we-get-free.jpg
 video: "radical-black-feminism-and-the-combahee-river-collective"
 ---
 

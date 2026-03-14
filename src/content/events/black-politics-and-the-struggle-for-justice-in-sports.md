@@ -9,7 +9,9 @@ speakers:
   - "amira-rose-davis"
   - "randy-roberts"
   - "toni-smith-thompson"
-books: []
+books:
+  - ../../assets/bookcovers/theheritage.jpg
+  - ../../assets/bookcovers/bloodbrothers.jpg
 video: "black-politics-and-the-struggle-for-justice-in-sports"
 ---
 

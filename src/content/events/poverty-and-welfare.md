@@ -7,7 +7,10 @@ speakers:
   - "susan-youngblood-ashmore"
   - "premilla-nadasen"
   - "annelise-orleck"
-books: []
+books:
+  - ../../assets/bookcovers/ashmorecarry.jpg
+  - ../../assets/bookcovers/nadasenwelfare.jpg
+  - ../../assets/bookcovers/orleckstorming.jpg
 video: "the-war-on-poverty-and-the-struggle-for-welfare-rights"
 ---
 

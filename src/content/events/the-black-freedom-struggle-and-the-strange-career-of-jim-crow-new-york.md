@@ -8,7 +8,9 @@ speakers:
   - "tahir-butt"
   - "brian-purnell"
   - "christopher-tinson"
-books: []
+books:
+  - ../../assets/bookcovers/jimcrowcountykings.jpg
+  - ../../assets/bookcovers/radicalintellect.png
 video: "the-strange-career-of-jim-crow-new-york"
 ---
 

@@ -9,7 +9,11 @@ speakers:
   - "dweston-haywood"
   - "ed-onasci"
   - "monica-white"
-books: []
+books:
+  - ../../assets/bookcovers/IMG_9964.JPG
+  - ../../assets/bookcovers/IMG_9965.JPG
+  - ../../assets/bookcovers/IMG_9966.JPG
+  - ../../assets/bookcovers/IMG_9967.JPG
 video: "black-power-revisited"
 ---
 

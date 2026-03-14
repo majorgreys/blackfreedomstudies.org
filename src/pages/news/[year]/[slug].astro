@@ -20,7 +20,7 @@ const dateStr = entry.data.date.toLocaleDateString('en-US', { year: 'numeric', m
 ---
 <Layout title={entry.data.title}>
   {isClassic ? (
-    <article>
+    <article class="c-news-detail">
       {entry.data.image && (
         <figure class="c-news-banner">
           <Image src={entry.data.image} alt={entry.data.title} width={800} />

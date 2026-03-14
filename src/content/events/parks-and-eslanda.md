@@ -7,7 +7,10 @@ speakers:
   - "mary-frances-berry"
   - "barbara-ransby"
   - "jeanne-theoharis"
-books: []
+books:
+  - ../../assets/bookcovers/ransbyeslanda.jpg
+  - ../../assets/bookcovers/theoharisparks.jpg
+  - ../../assets/bookcovers/berryjustice.jpg
 ---
 
 

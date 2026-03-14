@@ -8,7 +8,10 @@ speakers:
   - "keisha-blain"
   - "treva-lindsey"
   - "erica-edwards"
-books: []
+books:
+  - ../../assets/bookcovers/until.jpeg
+  - ../../assets/bookcovers/america.jpg
+  - ../../assets/bookcovers/otherside.jpeg
 ---
 
 These authors’ books explore the violence that has shaped the lives of Black women and girls in the U.S. The conversation will center around how Black women have long fought back– organizing against disfranchisement, economic precarity, the carceral state and US empire —using everything from Black feminist analysis to Fannie’ Lou Hamer’s grassroots mobilizing to BLM organizing to demand racial justice.

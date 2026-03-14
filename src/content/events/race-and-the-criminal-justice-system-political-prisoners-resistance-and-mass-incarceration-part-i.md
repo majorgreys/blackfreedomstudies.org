@@ -8,7 +8,10 @@ speakers:
   - "dan-berger"
   - "victoria-law"
   - "bryan-stevenson"
-books: []
+books:
+  - ../../assets/bookcovers/Stevenson-Just-Mercy.jpg
+  - ../../assets/bookcovers/Berger-Captive-Nation.jpg
+  - ../../assets/bookcovers/Law-Resistance-Behind-Bars.JPG
 video: "criminal-justice-part-i"
 ---
 

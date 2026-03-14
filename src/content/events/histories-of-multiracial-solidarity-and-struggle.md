@@ -7,7 +7,10 @@ speakers:
   - "roxanne-dunbar-ortiz"
   - "johanna-fernandez"
   - "paul-ortiz"
-books: []
+books:
+  - ../../assets/bookcovers/Indigenous-people.jpg
+  - ../../assets/bookcovers/theyounglords.jpg
+  - ../../assets/bookcovers/anafricanamericanandlatinxhistoryoftheus.jpg
 video: "histories-of-multiracial-solidarity-and-struggle"
 ---
 

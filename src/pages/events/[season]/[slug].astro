@@ -24,6 +24,13 @@ const speakers = event.data.speakers
   .map((slug: string) => allSpeakers.find(s => s.id === slug))
   .filter(Boolean);
 
+// Render speaker bios
+const speakerBios = new Map();
+for (const speaker of speakers) {
+  const { Content: BioContent } = await render(speaker as any);
+  speakerBios.set(speaker.id, BioContent);
+}
+
 const allResources = await getCollection('resources');
 const video = event.data.video
   ? allResources.find(r => r.id === event.data.video)
@@ -37,14 +44,14 @@ const isFuture = event.data.date > new Date();
 ---
 <Layout title={event.data.title}>
   {isClassic ? (
-    <div>
+    <div class="c-event-single">
       <div class="c-event-header">
         <div class="c-event-date">
           <span class="c-event-date__month">{month}</span>
           <span class="c-event-date__day">{day}</span>
         </div>
-        <div>
-          <h1 style="margin:0;font-size:24px;">{event.data.title}</h1>
+        <div class="c-event-name">
+          <h2>{event.data.title}</h2>
         </div>
       </div>
 
@@ -55,50 +62,63 @@ const isFuture = event.data.date > new Date();
       <BookGrid books={event.data.books} />
 
       <section>
-        <h2>Description</h2>
-        <Content />
+        <h3 class="c-section-header">Description</h3>
+        <div>
+          <Content />
+        </div>
       </section>
 
       {speakers.length > 0 && (
         <section>
-          <h2>Speakers</h2>
-          <ul class="c-speaker-list">
-            {speakers.map((speaker: any) => (
-              <SpeakerCard
-                name={speaker.data.name}
-                slug={speaker.id}
-                affiliation={speaker.data.affiliation}
-                image={speaker.data.image}
-                email={speaker.data.email}
-                twitter={speaker.data.twitter}
-                homepage={speaker.data.homepage}
-              />
-            ))}
-          </ul>
+          <h3 class="c-section-header">Speakers</h3>
+          <div>
+            <ul class="c-event-speakers">
+              {speakers.map((speaker: any) => {
+                const BioContent = speakerBios.get(speaker.id);
+                return (
+                  <SpeakerCard
+                    name={speaker.data.name}
+                    slug={speaker.id}
+                    affiliation={speaker.data.affiliation}
+                    image={speaker.data.image}
+                    email={speaker.data.email}
+                    twitter={speaker.data.twitter}
+                    homepage={speaker.data.homepage}
+                  >
+                    {BioContent && <div class="c-speaker-bio"><BioContent /></div>}
+                  </SpeakerCard>
+                );
+              })}
+            </ul>
+          </div>
         </section>
       )}
 
       {video && (
         <section>
-          <h2>Recording</h2>
-          <VideoEmbed url={video.data.sourceUrl} embedCode={video.data.videoEmbedCode} />
+          <h3 class="c-section-header">Recording</h3>
+          <div class="c-video-embed">
+            <VideoEmbed url={video.data.sourceUrl} embedCode={video.data.videoEmbedCode} />
+          </div>
         </section>
       )}
 
       {primaryResources.length > 0 && (
         <section>
-          <h2>Primary Resources</h2>
-          <ul>
-            {primaryResources.map((resource: any) => (
-              <li>
-                {resource.data.sourceUrl ? (
-                  <a href={resource.data.sourceUrl} target="_blank" rel="noopener">{resource.data.title}</a>
-                ) : (
-                  <span>{resource.data.title}</span>
-                )}
-              </li>
-            ))}
-          </ul>
+          <h3 class="c-section-header">Primary Resources</h3>
+          <div>
+            <ul>
+              {primaryResources.map((resource: any) => (
+                <li>
+                  {resource.data.sourceUrl ? (
+                    <a href={resource.data.sourceUrl} target="_blank" rel="noopener">{resource.data.title}</a>
+                  ) : (
+                    <span>{resource.data.title}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
         </section>
       )}
     </div>

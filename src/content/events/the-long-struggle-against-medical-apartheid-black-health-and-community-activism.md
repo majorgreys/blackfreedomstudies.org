@@ -8,7 +8,9 @@ speakers:
   - "dr-julius-garvey"
   - "gabriel-mendes"
   - "alondra-nelson-1"
-books: []
+books:
+  - ../../assets/bookcovers/underthecolor.jpg
+  - ../../assets/bookcovers/bodyandsoul.jpg
 video: "black-health-and-community-activism"
 ---
 

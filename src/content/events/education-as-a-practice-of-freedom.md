@@ -8,7 +8,11 @@ speakers:
   - "jarvis-givens"
   - "jesse-hagopian"
   - "elizabeth-todd-breland"
-books: []
+books:
+  - ../../assets/bookcovers/ivory-tower.jpg
+  - ../../assets/bookcovers/fugative-pedegogy.jpg
+  - ../../assets/bookcovers/Black-Lives-Matter-at-School.jpg
+  - ../../assets/bookcovers/A-Political-Education.jpg
 video: "education-as-a-practice-of-freedom"
 ---
 

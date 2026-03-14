@@ -7,7 +7,10 @@ speakers:
   - "zakiya"
   - "steven-william-thrasher"
   - "dana-ain-davis"
-books: []
+books:
+  - ../../assets/bookcovers/viralunderclass.jpg
+  - ../../assets/bookcovers/reproductiverights.jpeg
+  - ../../assets/bookcovers/reproductiveinjustice.jpg
 ---
 
 

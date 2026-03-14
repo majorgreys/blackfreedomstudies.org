@@ -8,7 +8,11 @@ speakers:
   - "tracye-matthews"
   - "mary-phillips"
   - "robyn-spencer"
-books: []
+books:
+  - ../../assets/bookcovers/wanttostartarevolution.jpg
+  - ../../assets/bookcovers/sistersinstruggle.jpg
+  - ../../assets/bookcovers/blackpantherpartyreconsidered.jpg
+  - ../../assets/bookcovers/therevolutionhascome.jpg
 video: "intersectional-black-panther-history-project"
 ---
 

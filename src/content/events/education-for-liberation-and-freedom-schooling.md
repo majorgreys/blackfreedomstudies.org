@@ -9,7 +9,9 @@ speakers:
   - "nicole-burrowes"
   - "charles-payne"
   - "brian-purnell"
-books: []
+books:
+  - ../../assets/bookcovers/payneteach.jpg
+  - ../../assets/bookcovers/purnellfighting.jpg
 video: "education-for-liberation-and-freedom-schooling"
 primaryResources:
   - "prospectus-for-a-summer-freedom-school-program-in-mississippi"

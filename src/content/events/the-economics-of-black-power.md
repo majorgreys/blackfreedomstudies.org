@@ -7,7 +7,9 @@ speakers:
   - "david-goldberg"
   - "laura-hill"
   - "jula-rabig"
-books: []
+books:
+  - ../../assets/bookcovers/goldbergwork.jpg
+  - ../../assets/bookcovers/hillbusiness.jpg
 video: "the-economics-of-black-power"
 ---
 

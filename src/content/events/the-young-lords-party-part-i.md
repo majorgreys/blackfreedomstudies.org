@@ -9,7 +9,9 @@ speakers:
   - "jose-cha-cha-jimenez"
   - "felipe-luciano"
   - "wilson-valent-n-escobar"
-books: []
+books:
+  - ../../assets/bookcovers/manuel-ramos-march.jpg
+  - ../../assets/bookcovers/YLO.Sign-on-Church.jpg
 video: "the-young-lords-party-part-i"
 ---
 

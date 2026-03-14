@@ -9,7 +9,11 @@ speakers:
   - "mark-speltz"
   - "stephen-ward"
   - "komozi-woodard"
-books: []
+books:
+  - ../../assets/bookcovers/fergusonisamerica.jpg
+  - ../../assets/bookcovers/northofdixie.jpg
+  - ../../assets/bookcovers/inloveandstruggle.jpg
+  - ../../assets/bookcovers/blackpower50.jpg
 video: "black-power-at-50-1"
 ---
 

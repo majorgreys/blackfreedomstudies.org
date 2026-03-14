@@ -8,7 +8,10 @@ speakers:
   - "haki-madhubuti"
   - "noliwe-rooks"
   - "michael-simanga"
-books: []
+books:
+  - ../../assets/bookcovers/notourpres.jpg
+  - ../../assets/bookcovers/Cuttingschool.jpg
+  - ../../assets/bookcovers/Simanagabook.jpg
 video: "black-resistance-to-trump-tyranny"
 ---
 

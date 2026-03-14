@@ -8,7 +8,11 @@ speakers:
   - "chris-hayes"
   - "ariella-r-rotramel"
   - "paula-marie-seniors"
-books: []
+books:
+  - ../../assets/bookcovers/IMG_9959.JPG
+  - ../../assets/bookcovers/Mae-Mallory.jpeg
+  - ../../assets/bookcovers/Harlem.jpg
+  - ../../assets/bookcovers/IMG_9960.JPG
 video: "black-new-york"
 ---
 

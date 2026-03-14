@@ -6,7 +6,8 @@ seasonPart: fall
 speakers:
   - "madeline-anderson"
   - "devorah-heitner"
-books: []
+books:
+  - ../../assets/bookcovers/andersonpower.png
 video: "black-power-tv"
 ---
 

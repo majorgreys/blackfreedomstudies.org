@@ -8,7 +8,11 @@ speakers:
   - "zebulon-vance-miletsky"
   - "keith-mayes"
   - "conor-tomas-reed"
-books: []
+books:
+  - ../../assets/bookcovers/alexander-book.jpeg
+  - ../../assets/bookcovers/before-busing.jpeg
+  - ../../assets/bookcovers/unteachables.jpeg
+  - ../../assets/bookcovers/nyls.jpeg
 ---
 
 
