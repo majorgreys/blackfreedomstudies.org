@@ -33,7 +33,7 @@ const resources = defineCollection({
   schema: ({ image }) => z.object({
     title: z.string(),
     resourceType: z.enum(['video', 'document', 'external', 'text', 'image', 'audio']),
-    sourceUrl: z.string().url().optional(),
+    sourceUrl: z.string().optional(),
     videoEmbedCode: z.string().optional(),
     document: z.string().optional(),
     authorship: z.string().optional(),
