@@ -49,7 +49,7 @@ const events = defineCollection({
     title: z.string(),
     date: z.date(),
     seasonYear: z.number().int().min(2013),
-    seasonPart: z.enum(['fall', 'spring', 'special']),
+    seasonPart: z.enum(['fall', 'spring', 'special']),  // Craft stores as 'Fall'/'Spring'/'Special' — migration must lowercase
     eventbrite: z.string().url().optional(),
     speakers: z.array(reference('speakers')).default([]),
     books: z.array(image()).default([]),
