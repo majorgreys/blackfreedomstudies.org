@@ -1,0 +1,62 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import { Layout } from '../../../lib/theme';
+
+export async function getStaticPaths() {
+  const news = await getCollection('news');
+  return news.map(entry => ({
+    params: {
+      year: String(entry.data.date.getFullYear()),
+      slug: entry.id,
+    },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const isClassic = (import.meta as any).env?.THEME === 'classic';
+const dateStr = entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<Layout title={entry.data.title}>
+  {isClassic ? (
+    <article>
+      {entry.data.image && (
+        <figure class="c-news-banner">
+          <Image src={entry.data.image} alt={entry.data.title} width={800} />
+          {entry.data.imageCaption && <figcaption>{entry.data.imageCaption}</figcaption>}
+        </figure>
+      )}
+      <h1>{entry.data.title}</h1>
+      <p class="c-news-date">{dateStr}</p>
+      <Content />
+      {entry.data.tags.length > 0 && (
+        <div class="c-tags">
+          {entry.data.tags.map((tag: string) => <span class="c-tag">{tag}</span>)}
+        </div>
+      )}
+    </article>
+  ) : (
+    <article>
+      {entry.data.image && (
+        <figure class="r-news-banner">
+          <Image src={entry.data.image} alt={entry.data.title} width={900} />
+          {entry.data.imageCaption && <figcaption>{entry.data.imageCaption}</figcaption>}
+        </figure>
+      )}
+      <div class="r-page-header">
+        <span class="r-news-date">{dateStr}</span>
+        <h1>{entry.data.title}</h1>
+      </div>
+      <div class="r-prose">
+        <Content />
+      </div>
+      {entry.data.tags.length > 0 && (
+        <div class="r-tags">
+          {entry.data.tags.map((tag: string) => <span class="r-tag">{tag}</span>)}
+        </div>
+      )}
+    </article>
+  )}
+</Layout>

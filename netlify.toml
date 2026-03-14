@@ -1,0 +1,11 @@
+[build]
+  command = "npx astro build"
+  publish = "dist"
+
+[build.environment]
+  THEME = "redesign"
+
+[[redirects]]
+  from = "/admin"
+  to = "/admin/index.html"
+  status = 200

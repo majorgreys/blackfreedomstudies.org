@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  name: string;
+  slug: string;
+  affiliation?: string;
+  image?: ImageMetadata;
+  email?: string;
+  twitter?: string;
+  homepage?: string;
+  compact?: boolean;
+}
+
+const { name, slug, affiliation, image, email, twitter, homepage, compact = false } = Astro.props;
+---
+<li class="r-speaker-item">
+  {image ? (
+    <Image src={image} alt={name} class="r-speaker-headshot" width={96} height={96} />
+  ) : (
+    <div class="r-speaker-placeholder">👤</div>
+  )}
+  <div class="r-speaker-info">
+    <h3><a href={`/speakers/${slug}`}>{name}</a></h3>
+    {affiliation && <span class="affiliation">{affiliation}</span>}
+    <div class="r-speaker-social">
+      {homepage && <a href={homepage}>Website</a>}
+      {email && <a href={`mailto:${email}`}>Email</a>}
+      {twitter && <a href={`https://twitter.com/${twitter}`}>Twitter</a>}
+    </div>
+    {!compact && <slot />}
+  </div>
+</li>

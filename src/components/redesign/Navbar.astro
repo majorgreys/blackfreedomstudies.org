@@ -1,0 +1,20 @@
+---
+---
+<nav class="r-navbar">
+  <div class="r-navbar__inner">
+    <a class="r-navbar__brand" href="/">Conversations in Black Freedom Studies</a>
+    <button class="r-navbar__toggle" aria-label="Toggle navigation" id="nav-toggle">☰</button>
+    <ul class="r-navbar__links" id="nav-links">
+      <li><a href="/events/">Series</a></li>
+      <li><a href="/speakers/">Speakers</a></li>
+      <li><a href="/news/">News</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  document.getElementById('nav-toggle')?.addEventListener('click', () => {
+    document.getElementById('nav-links')?.classList.toggle('is-open');
+  });
+</script>

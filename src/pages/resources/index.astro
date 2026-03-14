@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import { Layout } from '../../lib/theme';
+
+const resources = await getCollection('resources');
+const isClassic = (import.meta as any).env?.THEME === 'classic';
+
+const grouped = {
+  video: resources.filter(r => r.data.resourceType === 'video'),
+  document: resources.filter(r => r.data.resourceType === 'document'),
+  external: resources.filter(r => !['video', 'document'].includes(r.data.resourceType)),
+};
+
+const prefix = isClassic ? 'c' : 'r';
+---
+<Layout title="Resources">
+  {isClassic ? (
+    <div>
+      <h1>Resources</h1>
+    </div>
+  ) : (
+    <div class="r-page-header">
+      <h1>Resources</h1>
+      <p>Video recordings, primary documents, and external materials</p>
+    </div>
+  )}
+
+  {grouped.video.length > 0 && (
+    <div class={`${prefix}-resource-group`}>
+      <h3>Video Recordings</h3>
+      {grouped.video.map(r => (
+        <div class={`${prefix}-resource-item`}>
+          {r.data.sourceUrl ? (
+            <a href={r.data.sourceUrl} target="_blank" rel="noopener">{r.data.title}</a>
+          ) : (
+            <span>{r.data.title}</span>
+          )}
+          {r.data.date && <span class="text-muted"> — {r.data.date.toLocaleDateString('en-US', { year: 'numeric' })}</span>}
+        </div>
+      ))}
+    </div>
+  )}
+
+  {grouped.document.length > 0 && (
+    <div class={`${prefix}-resource-group`}>
+      <h3>Primary Documents</h3>
+      {grouped.document.map(r => (
+        <div class={`${prefix}-resource-item`}>
+          {r.data.document ? (
+            <a href={r.data.document} download>{r.data.title}</a>
+          ) : (
+            <span>{r.data.title}</span>
+          )}
+          {r.data.authorship && <span class="text-muted"> — {r.data.authorship}</span>}
+        </div>
+      ))}
+    </div>
+  )}
+
+  {grouped.external.length > 0 && (
+    <div class={`${prefix}-resource-group`}>
+      <h3>External Resources</h3>
+      {grouped.external.map(r => (
+        <div class={`${prefix}-resource-item`}>
+          {r.data.sourceUrl ? (
+            <a href={r.data.sourceUrl} target="_blank" rel="noopener">{r.data.title}</a>
+          ) : (
+            <span>{r.data.title}</span>
+          )}
+        </div>
+      ))}
+    </div>
+  )}
+</Layout>

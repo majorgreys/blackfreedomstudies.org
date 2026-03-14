@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content';
+import { Layout, EventCard } from '../../lib/theme';
+
+export async function getStaticPaths() {
+  const events = await getCollection('events');
+  const seasons = new Set(events.map(e => `${e.data.seasonPart}-${e.data.seasonYear}`));
+  return [...seasons].map(season => ({
+    params: { season },
+    props: { season },
+  }));
+}
+
+const { season } = Astro.props;
+const [part, year] = season.split('-');
+const label = `${part.charAt(0).toUpperCase() + part.slice(1)} ${year}`;
+
+const events = await getCollection('events');
+const seasonEvents = events
+  .filter(e => `${e.data.seasonPart}-${e.data.seasonYear}` === season)
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+
+const isClassic = (import.meta as any).env?.THEME === 'classic';
+---
+<Layout title={label}>
+  {isClassic ? (
+    <div>
+      <h1>{label}</h1>
+      <ul class="c-events-list">
+        {seasonEvents.map(event => (
+          <EventCard
+            title={event.data.title}
+            date={event.data.date}
+            slug={event.id}
+            seasonSlug={season}
+            speakerCount={event.data.speakers.length}
+          />
+        ))}
+      </ul>
+    </div>
+  ) : (
+    <div>
+      <div class="r-page-header">
+        <h1>{label}</h1>
+      </div>
+      <ul class="r-events-list">
+        {seasonEvents.map(event => (
+          <EventCard
+            title={event.data.title}
+            date={event.data.date}
+            slug={event.id}
+            seasonSlug={season}
+            speakerCount={event.data.speakers.length}
+          />
+        ))}
+      </ul>
+    </div>
+  )}
+</Layout>

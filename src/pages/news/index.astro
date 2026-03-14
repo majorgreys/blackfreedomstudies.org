@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import { Layout } from '../../lib/theme';
+
+const news = (await getCollection('news'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const isClassic = (import.meta as any).env?.THEME === 'classic';
+---
+<Layout title="News">
+  {isClassic ? (
+    <div>
+      <h1>News</h1>
+      <ul class="c-news-list">
+        {news.map(entry => (
+          <li class="c-news-item">
+            <span class="c-news-date">{entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            <h2><a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`}>{entry.data.title}</a></h2>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ) : (
+    <div>
+      <div class="r-page-header">
+        <h1>News</h1>
+      </div>
+      <ul class="r-news-list">
+        {news.map(entry => (
+          <li class="r-news-item">
+            <span class="r-news-date">{entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            <h2><a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`}>{entry.data.title}</a></h2>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</Layout>

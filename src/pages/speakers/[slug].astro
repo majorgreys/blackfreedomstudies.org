@@ -1,0 +1,89 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import { Layout } from '../../lib/theme';
+
+export async function getStaticPaths() {
+  const speakers = await getCollection('speakers');
+  return speakers.map(speaker => ({
+    params: { slug: speaker.id },
+    props: { speaker },
+  }));
+}
+
+const { speaker } = Astro.props;
+const { Content } = await render(speaker);
+const isClassic = (import.meta as any).env?.THEME === 'classic';
+
+const events = await getCollection('events');
+const appearances = events
+  .filter(e => e.data.speakers.includes(speaker.id))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+<Layout title={speaker.data.name}>
+  {isClassic ? (
+    <div>
+      <div style="display:flex;gap:20px;margin-bottom:20px;">
+        {speaker.data.image && (
+          <Image src={speaker.data.image} alt={speaker.data.name} width={150} height={150} style="border-radius:50%;object-fit:cover;" />
+        )}
+        <div>
+          <h1 style="margin-top:0">{speaker.data.name}</h1>
+          {speaker.data.affiliation && <p class="text-muted" style="font-style:italic">{speaker.data.affiliation}</p>}
+          <div style="display:flex;gap:10px;">
+            {speaker.data.homepage && <a href={speaker.data.homepage}>Website</a>}
+            {speaker.data.email && <a href={`mailto:${speaker.data.email}`}>Email</a>}
+            {speaker.data.twitter && <a href={`https://twitter.com/${speaker.data.twitter}`}>Twitter</a>}
+          </div>
+        </div>
+      </div>
+      <Content />
+      {appearances.length > 0 && (
+        <section>
+          <h2>Events</h2>
+          <ul>
+            {appearances.map(event => (
+              <li>
+                <a href={`/events/${event.data.seasonPart}-${event.data.seasonYear}/${event.id}`}>{event.data.title}</a>
+                <span class="text-muted"> — {event.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </div>
+  ) : (
+    <div>
+      <div class="r-speaker-profile">
+        {speaker.data.image && (
+          <Image src={speaker.data.image} alt={speaker.data.name} width={160} height={160} />
+        )}
+        <div>
+          <h1>{speaker.data.name}</h1>
+          {speaker.data.affiliation && <span class="affiliation">{speaker.data.affiliation}</span>}
+          <div class="r-speaker-social" style="margin-top:12px;">
+            {speaker.data.homepage && <a href={speaker.data.homepage}>Website</a>}
+            {speaker.data.email && <a href={`mailto:${speaker.data.email}`}>Email</a>}
+            {speaker.data.twitter && <a href={`https://twitter.com/${speaker.data.twitter}`}>Twitter</a>}
+          </div>
+        </div>
+      </div>
+      <div class="r-prose">
+        <Content />
+      </div>
+      {appearances.length > 0 && (
+        <section>
+          <h2>Appearances</h2>
+          <ul class="r-appearances">
+            {appearances.map(event => (
+              <li>
+                <a href={`/events/${event.data.seasonPart}-${event.data.seasonYear}/${event.id}`}>{event.data.title}</a>
+                <span class="date">{event.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </div>
+  )}
+</Layout>

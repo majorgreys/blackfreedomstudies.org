@@ -1,0 +1,16 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  books: ImageMetadata[];
+}
+
+const { books } = Astro.props;
+---
+{books.length > 0 && (
+  <div class="r-book-grid">
+    {books.map((book) => (
+      <Image src={book} alt="Book cover" width={140} />
+    ))}
+  </div>
+)}

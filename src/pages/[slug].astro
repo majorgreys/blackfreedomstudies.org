@@ -1,0 +1,35 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Layout } from '../lib/theme';
+
+export async function getStaticPaths() {
+  const pagesCollection = await getCollection('pages');
+  return pagesCollection
+    .filter(page => page.id !== 'homepage' && page.id !== 'index')
+    .map(page => ({
+      params: { slug: page.id },
+      props: { page },
+    }));
+}
+
+const { page } = Astro.props;
+const { Content } = await render(page);
+const isClassic = (import.meta as any).env?.THEME === 'classic';
+---
+<Layout title={page.data.title}>
+  {isClassic ? (
+    <div>
+      <h1>{page.data.title}</h1>
+      <Content />
+    </div>
+  ) : (
+    <div>
+      <div class="r-page-header">
+        <h1>{page.data.title}</h1>
+      </div>
+      <div class="r-prose">
+        <Content />
+      </div>
+    </div>
+  )}
+</Layout>

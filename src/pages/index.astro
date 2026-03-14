@@ -1,0 +1,60 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Layout } from '../lib/theme';
+
+const pagesCollection = await getCollection('pages');
+const homepage = pagesCollection.find(p => p.id === 'homepage' || p.id === 'index');
+const newsEntries = await getCollection('news');
+const latestNews = newsEntries
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 2);
+
+const isClassic = (import.meta as any).env?.THEME === 'classic';
+
+let HomepageContent: any = null;
+if (homepage) {
+  const rendered = await render(homepage);
+  HomepageContent = rendered.Content;
+}
+---
+<Layout title="Conversations in Black Freedom Studies">
+  {isClassic ? (
+    <div>
+      <div class="c-hero">
+        {homepage?.data.image && (
+          <img src={(homepage.data.image as any).src} alt="Conversations in Black Freedom Studies" />
+        )}
+        <div class="c-hero__overlay">
+          <ul>
+            {latestNews.map(entry => (
+              <li>
+                <a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`}>{entry.data.title}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      {HomepageContent && <div class="c-lead"><HomepageContent /></div>}
+    </div>
+  ) : (
+    <div>
+      <div class="r-hero">
+        {homepage?.data.image && (
+          <img src={(homepage.data.image as any).src} alt="" />
+        )}
+        <div class="r-hero__content">
+          <h1 class="r-hero__title">Conversations in<br/>Black Freedom Studies</h1>
+          <p class="r-hero__subtitle">A monthly roundtable discussion at the Schomburg Center with authors and experts in Black history.</p>
+          {latestNews.length > 0 && (
+            <div class="r-hero__news">
+              {latestNews.map(entry => (
+                <a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`}>{entry.data.title}</a>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+      {HomepageContent && <div class="r-prose"><HomepageContent /></div>}
+    </div>
+  )}
+</Layout>

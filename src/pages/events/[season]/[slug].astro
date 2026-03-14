@@ -1,0 +1,174 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Layout, SpeakerCard, BookGrid } from '../../../lib/theme';
+import VideoEmbed from '../../../components/shared/VideoEmbed.astro';
+
+export async function getStaticPaths() {
+  const events = await getCollection('events');
+  return events.map(event => ({
+    params: {
+      season: `${event.data.seasonPart}-${event.data.seasonYear}`,
+      slug: event.id,
+    },
+    props: { event },
+  }));
+}
+
+const { event } = Astro.props;
+const { Content } = await render(event);
+const month = event.data.date.toLocaleDateString('en-US', { month: 'short' });
+const day = event.data.date.getDate();
+
+const allSpeakers = await getCollection('speakers');
+const speakers = event.data.speakers
+  .map((slug: string) => allSpeakers.find(s => s.id === slug))
+  .filter(Boolean);
+
+const allResources = await getCollection('resources');
+const video = event.data.video
+  ? allResources.find(r => r.id === event.data.video)
+  : null;
+
+const primaryResources = event.data.primaryResources
+  .map((slug: string) => allResources.find(r => r.id === slug))
+  .filter(Boolean);
+
+const isFuture = event.data.date > new Date();
+const isClassic = (import.meta as any).env?.THEME === 'classic';
+---
+<Layout title={event.data.title}>
+  {isClassic ? (
+    <div>
+      <div class="c-event-header">
+        <div class="c-event-date">
+          <span class="c-event-date__month">{month}</span>
+          <span class="c-event-date__day">{day}</span>
+        </div>
+        <div>
+          <h1 style="margin:0;font-size:24px;">{event.data.title}</h1>
+        </div>
+      </div>
+
+      {isFuture && event.data.eventbrite && (
+        <a href={event.data.eventbrite} target="_blank" rel="noopener" class="c-btn-register">Register on Eventbrite</a>
+      )}
+
+      <BookGrid books={event.data.books} />
+
+      <section>
+        <h2>Description</h2>
+        <Content />
+      </section>
+
+      {speakers.length > 0 && (
+        <section>
+          <h2>Speakers</h2>
+          <ul class="c-speaker-list">
+            {speakers.map((speaker: any) => (
+              <SpeakerCard
+                name={speaker.data.name}
+                slug={speaker.id}
+                affiliation={speaker.data.affiliation}
+                image={speaker.data.image}
+                email={speaker.data.email}
+                twitter={speaker.data.twitter}
+                homepage={speaker.data.homepage}
+              />
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {video && (
+        <section>
+          <h2>Recording</h2>
+          <VideoEmbed url={video.data.sourceUrl} embedCode={video.data.videoEmbedCode} />
+        </section>
+      )}
+
+      {primaryResources.length > 0 && (
+        <section>
+          <h2>Primary Resources</h2>
+          <ul>
+            {primaryResources.map((resource: any) => (
+              <li>
+                {resource.data.sourceUrl ? (
+                  <a href={resource.data.sourceUrl} target="_blank" rel="noopener">{resource.data.title}</a>
+                ) : (
+                  <span>{resource.data.title}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </div>
+  ) : (
+    <div>
+      <div class="r-event-hero">
+        <div class="container" style="display:flex;align-items:flex-start;gap:24px;">
+          <div class="r-event-hero__date">
+            <span class="r-event-hero__month">{month}</span>
+            <span class="r-event-hero__day">{day}</span>
+          </div>
+          <div>
+            <h1>{event.data.title}</h1>
+          </div>
+        </div>
+      </div>
+
+      {isFuture && event.data.eventbrite && (
+        <a href={event.data.eventbrite} target="_blank" rel="noopener" class="r-btn-register">→ Register on Eventbrite</a>
+      )}
+
+      <BookGrid books={event.data.books} />
+
+      <div class="r-prose">
+        <Content />
+      </div>
+
+      {speakers.length > 0 && (
+        <section>
+          <h2>Speakers</h2>
+          <ul class="r-speaker-list">
+            {speakers.map((speaker: any) => (
+              <SpeakerCard
+                name={speaker.data.name}
+                slug={speaker.id}
+                affiliation={speaker.data.affiliation}
+                image={speaker.data.image}
+                email={speaker.data.email}
+                twitter={speaker.data.twitter}
+                homepage={speaker.data.homepage}
+              />
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {video && (
+        <section>
+          <h2>Recording</h2>
+          <VideoEmbed url={video.data.sourceUrl} embedCode={video.data.videoEmbedCode} />
+        </section>
+      )}
+
+      {primaryResources.length > 0 && (
+        <section>
+          <h2>Primary Resources</h2>
+          <ul class="r-appearances">
+            {primaryResources.map((resource: any) => (
+              <li>
+                {resource.data.sourceUrl ? (
+                  <a href={resource.data.sourceUrl} target="_blank" rel="noopener">{resource.data.title}</a>
+                ) : (
+                  <span>{resource.data.title}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </div>
+  )}
+</Layout>

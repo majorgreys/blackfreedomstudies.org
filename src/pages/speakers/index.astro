@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import { Layout } from '../../lib/theme';
+
+const speakers = (await getCollection('speakers'))
+  .sort((a, b) => a.data.name.localeCompare(b.data.name));
+const isClassic = (import.meta as any).env?.THEME === 'classic';
+---
+<Layout title="Speakers">
+  {isClassic ? (
+    <div>
+      <h1>Speakers</h1>
+      <ul class="c-speaker-grid">
+        {speakers.map(speaker => (
+          <li class="c-speaker-grid-item">
+            {speaker.data.image && (
+              <Image src={speaker.data.image} alt={speaker.data.name} width={100} height={100} />
+            )}
+            <h3><a href={`/speakers/${speaker.id}`}>{speaker.data.name}</a></h3>
+            {speaker.data.affiliation && <span class="affiliation">{speaker.data.affiliation}</span>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  ) : (
+    <div>
+      <div class="r-page-header">
+        <h1>Speakers</h1>
+        <p>Authors, scholars, and experts in Black history</p>
+      </div>
+      <ul class="r-speaker-grid">
+        {speakers.map(speaker => (
+          <li class="r-speaker-grid-item">
+            {speaker.data.image && (
+              <Image src={speaker.data.image} alt={speaker.data.name} width={120} height={120} />
+            )}
+            <h3><a href={`/speakers/${speaker.id}`}>{speaker.data.name}</a></h3>
+            {speaker.data.affiliation && <span class="affiliation">{speaker.data.affiliation}</span>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</Layout>

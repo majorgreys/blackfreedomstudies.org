@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string;
+  date: Date;
+  slug: string;
+  seasonSlug: string;
+  speakerCount?: number;
+}
+
+const { title, date, slug, seasonSlug, speakerCount } = Astro.props;
+const month = date.toLocaleDateString('en-US', { month: 'short' });
+const day = date.getDate();
+---
+<li class="c-event-card">
+  <a href={`/events/${seasonSlug}/${slug}`}>
+    <div class="c-event-header">
+      <div class="c-event-date">
+        <span class="c-event-date__month">{month}</span>
+        <span class="c-event-date__day">{day}</span>
+      </div>
+      <div>
+        <h3>{title}</h3>
+        {speakerCount != null && speakerCount > 0 && (
+          <span class="c-event-meta">{speakerCount} speaker{speakerCount > 1 ? 's' : ''}</span>
+        )}
+      </div>
+    </div>
+  </a>
+</li>

@@ -1,0 +1,103 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: src/assets
+public_folder: /src/assets
+
+collections:
+  - name: events
+    label: Events
+    folder: src/content/events
+    create: true
+    extension: md
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: date, label: Date, widget: datetime }
+      - { name: seasonYear, label: Season Year, widget: number, value_type: int }
+      - { name: seasonPart, label: Season, widget: select, options: [fall, spring, special] }
+      - { name: eventbrite, label: Eventbrite URL, widget: string, required: false }
+      - name: speakers
+        label: Speakers
+        widget: relation
+        collection: speakers
+        search_fields: [name]
+        value_field: "{{slug}}"
+        display_fields: [name]
+        multiple: true
+        required: false
+      - { name: books, label: Book Covers, widget: list, field: { name: image, widget: image }, required: false }
+      - name: video
+        label: Video Recording
+        widget: relation
+        collection: resources
+        search_fields: [title]
+        value_field: "{{slug}}"
+        display_fields: [title]
+        required: false
+      - name: primaryResources
+        label: Primary Resources
+        widget: relation
+        collection: resources
+        search_fields: [title]
+        value_field: "{{slug}}"
+        display_fields: [title]
+        multiple: true
+        required: false
+      - { name: body, label: Description, widget: markdown }
+
+  - name: speakers
+    label: Speakers
+    folder: src/content/speakers
+    create: true
+    extension: md
+    identifier_field: name
+    fields:
+      - { name: name, label: Name, widget: string }
+      - { name: affiliation, label: Affiliation, widget: string, required: false }
+      - { name: image, label: Photo, widget: image, required: false }
+      - { name: email, label: Email, widget: string, required: false }
+      - { name: twitter, label: Twitter Handle, widget: string, required: false }
+      - { name: homepage, label: Website, widget: string, required: false }
+      - { name: body, label: Bio, widget: markdown }
+
+  - name: resources
+    label: Resources
+    folder: src/content/resources
+    create: true
+    extension: md
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: resourceType, label: Type, widget: select, options: [video, document, external, text, image, audio] }
+      - { name: sourceUrl, label: Source URL, widget: string, required: false }
+      - { name: videoEmbedCode, label: Embed Code, widget: text, required: false }
+      - { name: document, label: Document Path, widget: string, required: false }
+      - { name: authorship, label: Author, widget: string, required: false }
+      - { name: publicationDate, label: Publication Date, widget: string, required: false }
+      - { name: tags, label: Tags, widget: list, required: false }
+      - { name: date, label: Recording Date, widget: datetime, required: false }
+      - { name: body, label: Description, widget: markdown }
+
+  - name: news
+    label: News
+    folder: src/content/news
+    create: true
+    extension: md
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: date, label: Date, widget: datetime }
+      - { name: image, label: Banner Image, widget: image, required: false }
+      - { name: imageCaption, label: Image Caption, widget: string, required: false }
+      - { name: tags, label: Tags, widget: list, required: false }
+      - { name: body, label: Body, widget: markdown }
+
+  - name: pages
+    label: Pages
+    folder: src/content/pages
+    create: false
+    extension: md
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: heading, label: Heading, widget: string, required: false }
+      - { name: image, label: Image, widget: image, required: false }
+      - { name: body, label: Content, widget: markdown }

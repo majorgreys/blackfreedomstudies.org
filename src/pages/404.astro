@@ -1,0 +1,19 @@
+---
+import { Layout } from '../lib/theme';
+const isClassic = (import.meta as any).env?.THEME === 'classic';
+---
+<Layout title="Page Not Found">
+  {isClassic ? (
+    <div class="c-not-found">
+      <h1>404</h1>
+      <p>The page you're looking for doesn't exist.</p>
+      <p><a href="/">Return to homepage</a></p>
+    </div>
+  ) : (
+    <div class="r-not-found">
+      <h1>404</h1>
+      <p>The page you're looking for doesn't exist.</p>
+      <a href="/">Return to homepage</a>
+    </div>
+  )}
+</Layout>

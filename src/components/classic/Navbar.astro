@@ -1,0 +1,20 @@
+---
+---
+<nav class="c-navbar">
+  <div class="c-navbar__inner">
+    <a class="c-navbar__brand" href="/">Black<br/>Freedom<br/>Studies</a>
+    <button class="c-navbar__toggle" aria-label="Toggle navigation" id="nav-toggle">☰</button>
+    <ul class="c-navbar__links" id="nav-links">
+      <li><a href="/events/">Conversations Series</a></li>
+      <li><a href="/neh-seminar-2015">NEH Summer Seminar</a></li>
+      <li><a href="/news/">News</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  document.getElementById('nav-toggle')?.addEventListener('click', () => {
+    document.getElementById('nav-links')?.classList.toggle('is-open');
+  });
+</script>

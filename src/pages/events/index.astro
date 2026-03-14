@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content';
+import { Layout } from '../../lib/theme';
+
+const events = await getCollection('events');
+const isClassic = (import.meta as any).env?.THEME === 'classic';
+
+const seasons = new Map<string, typeof events>();
+for (const event of events) {
+  const key = `${event.data.seasonPart}-${event.data.seasonYear}`;
+  if (!seasons.has(key)) seasons.set(key, []);
+  seasons.get(key)!.push(event);
+}
+
+const partOrder: Record<string, number> = { fall: 2, spring: 1, special: 0 };
+const sortedSeasons = [...seasons.entries()].sort((a, b) => {
+  const aYear = parseInt(a[0].split('-')[1]);
+  const bYear = parseInt(b[0].split('-')[1]);
+  if (aYear !== bYear) return bYear - aYear;
+  const aPart = a[0].split('-')[0];
+  const bPart = b[0].split('-')[0];
+  return (partOrder[bPart] ?? 0) - (partOrder[aPart] ?? 0);
+});
+
+const seasonData = sortedSeasons.map(([slug, evts]) => {
+  const [part, year] = slug.split('-');
+  return {
+    slug,
+    label: `${part.charAt(0).toUpperCase() + part.slice(1)} ${year}`,
+    eventCount: evts.length,
+  };
+});
+---
+<Layout title="Conversations Series">
+  {isClassic ? (
+    <div>
+      <h1>Conversations at the Schomburg</h1>
+      <ul style="list-style:none;padding:0;">
+        {seasonData.map(season => (
+          <li style="margin-bottom:15px;">
+            <h2 class="c-season-header"><a href={`/events/${season.slug}`}>{season.label}</a></h2>
+            <span class="text-muted">{season.eventCount} event{season.eventCount > 1 ? 's' : ''}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ) : (
+    <div>
+      <div class="r-page-header">
+        <h1>Conversations Series</h1>
+        <p>Monthly roundtable discussions at the Schomburg Center</p>
+      </div>
+      {(async () => {
+        const { default: SeasonTimeline } = await import('../../components/redesign/SeasonTimeline.astro');
+        return <SeasonTimeline seasons={seasonData} />;
+      })()}
+    </div>
+  )}
+</Layout>
