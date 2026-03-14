@@ -1,0 +1,27 @@
+{#
+ # Speaker entry template
+ #}
+
+{% extends "_layout" %}
+
+{% block content %}
+	<article>
+    <h1>{{ entry.title }}</h2>
+		<div class="event-speakers-item-affiliation">
+			<i class="fa fa-institution"></i> {{ event_speaker.affiliation }}
+		</div>
+		{% if event_speaker.homepage %}
+		<span><a href="{{ event_speaker.homepage }}"><i class="fa fa-home"></i></a></span>
+		{% endif %}
+		{% if event_speaker.email %}
+		<span><a href="mailto:{{ event_speaker.email }}"><i class="fa fa-envelope"></i></a></span>
+		{% endif %}
+		{% if event_speaker.twitter %}
+		<span><a href="http://twitter.com/{{ event_speaker.twitter }}"><i class="fa fa-twitter"></i></a></span>
+		{% endif %}
+		<div class="event-speakers-item-bio">
+			{{ event_speaker.bio }}
+		</div>
+		</li>
+	</article>
+{% endblock %}

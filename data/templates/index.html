@@ -1,0 +1,24 @@
+{#
+ # Homepage template
+ # ---------------
+ #}
+
+{% extends "_layout" %}
+
+{% block content %}
+  <div class="homepage-header">
+    <div class="homepage-header-image">
+      <img src="{{ entry.image.first().url() }}"/>
+      <div class="homepage-header-image-overlay">
+        <ul class="list-unstyled">
+          {% for entry in craft.entries.section('news').limit(2) %}
+          <li class="homepage-header-highlight"> <a href="{{ entry.url }}">{{ entry.title }}</a> </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <p class="lead">
+      {{ entry.body }}
+    </p>
+  </div>
+{% endblock %}

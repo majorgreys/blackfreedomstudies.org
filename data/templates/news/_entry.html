@@ -1,0 +1,40 @@
+{#
+ # News entry template
+ # -------------------
+ #
+ # This template gets loaded whenever a News entry’s URL is
+ # requested. That’s because the News section’s Template setting is
+ # set to “news/_entry”, the path to this template.
+ #
+ # When this template is loaded, it will already have an ‘entry’
+ # variable, set to the requested News entry.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://buildwithcraft.com/docs/routing
+ #}
+
+{% extends "_layout" %}
+{% set title = entry.title %}
+{% set url = entry.url %}
+{% set description = entry.body|striptags %}
+{% set image = graphics.image.first().getUrl() %}
+
+{% block content %}
+	<article>
+          <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='9754669' data-title='{{ entry.title }}' data-link='{{ entry.url }}' style="top: 0px; position: fixed;" ></div>
+                <div class="news">
+		<h1>{{ entry.title }}</h1>
+                <p><i class="fa fa-clock-o"></i> {{ entry.postDate.format('F d, Y') }}</p>
+                {% if entry.imagebanner is not empty %}
+                <div class="horizontalimages">
+                  <ul class="list-unstyled">
+                  {% for block in entry.imagebanner.type('image') %}
+                  <li> <div class="img-container"> <img src="{{ block.imageasset.first().getUrl('fullWidth') }}" alt="{{ block.caption }}"/> </div> </li>
+                  {% endfor %}
+                  </ul>
+                </div>
+                {% endif %}
+                  {{ entry.body }}
+                </div>
+	</article>
+{% endblock %}

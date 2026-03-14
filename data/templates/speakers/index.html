@@ -1,0 +1,20 @@
+{#
+ # Speakers index template
+ #}
+
+{% extends "_layout" %}
+{% set title = "Speakers" %}
+
+{% block content %}
+	<h1>Speakers</h1>
+
+	<ul class="events-list clearfix">
+	{% for speaker in craft.entries.type('speakers') %}
+		<li>
+			<img src="{{ speaker.image.first().getUrl('thumbcc') }}"  class="img-thumbnail"/>
+			<h2>{{ speaker.title }}</h2>
+			{{ speaker.affiliation }}
+  	</li>
+	{% endfor %}
+	</ul>
+{% endblock %}

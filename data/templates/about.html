@@ -1,0 +1,22 @@
+{#
+ # Homepage template
+ # ---------------
+ #}
+
+{% extends "_layout" %}
+{% set title = "About" %}
+
+{% block content %}
+<div class="event-header b0" id="nav-page-sections">
+  <div class="event-header-name p1">
+    <h2> {{ title }} </h2>
+  </div>
+</div>
+<article>
+  <section class="clearfix bt2">
+    <div class="clearfix b0 p1 bt1">
+      {{ entry.body }}
+    </div>
+  </section>
+</article>
+{% endblock %}
