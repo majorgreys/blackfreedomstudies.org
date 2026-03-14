@@ -1,0 +1,90 @@
+---
+import SEOHead from '../components/shared/SEOHead.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const { title, description, image } = Astro.props;
+const theme = (import.meta as any).env?.THEME || 'redesign';
+const isClassic = theme === 'classic';
+const cssPath = isClassic ? '/css/classic.css' : '/css/redesign.css';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href={cssPath} />
+  <SEOHead title={title} description={description} image={image} url={Astro.url.href} />
+</head>
+<body>
+  {isClassic ? (
+    <nav class="c-navbar">
+      <div class="c-navbar__inner">
+        <a class="c-navbar__brand" href="/">Black<br/>Freedom<br/>Studies</a>
+        <button class="c-navbar__toggle" aria-label="Toggle navigation" id="nav-toggle">☰</button>
+        <ul class="c-navbar__links" id="nav-links">
+          <li><a href="/events/">Conversations Series</a></li>
+          <li><a href="/neh-seminar-2015">NEH Summer Seminar</a></li>
+          <li><a href="/news/">News</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
+    </nav>
+  ) : (
+    <nav class="r-navbar">
+      <div class="r-navbar__inner">
+        <a class="r-navbar__brand" href="/">Conversations in Black Freedom Studies</a>
+        <button class="r-navbar__toggle" aria-label="Toggle navigation" id="nav-toggle">☰</button>
+        <ul class="r-navbar__links" id="nav-links">
+          <li><a href="/events/">Series</a></li>
+          <li><a href="/speakers/">Speakers</a></li>
+          <li><a href="/news/">News</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
+    </nav>
+  )}
+
+  <main class="container">
+    <slot />
+  </main>
+
+  {isClassic ? (
+    <footer class="c-footer">
+      <div class="container">
+        <p>Follow us on <a href="https://twitter.com/SchomburgCBFS">@SchomburgCBFS</a></p>
+        <p>Send comments and questions to <a href="mailto:blackfreedomstudies@gmail.com">blackfreedomstudies@gmail.com</a></p>
+        <p>CBFS is supported by the <a href="https://www.nypl.org/locations/schomburg">Schomburg Center for Research in Black Culture</a> and the <a href="https://gc.cuny.edu">City University of New York (CUNY) Graduate Center</a>.</p>
+      </div>
+    </footer>
+  ) : (
+    <footer class="r-footer">
+      <div class="r-footer__inner">
+        <div class="r-footer__info">
+          <p><strong>Conversations in Black Freedom Studies</strong></p>
+          <p>A monthly roundtable at the Schomburg Center</p>
+          <p>Contact: <a href="mailto:blackfreedomstudies@gmail.com">blackfreedomstudies@gmail.com</a></p>
+        </div>
+        <div class="r-footer__social">
+          <a href="https://twitter.com/SchomburgCBFS" aria-label="Twitter">𝕏</a>
+          <a href="mailto:blackfreedomstudies@gmail.com" aria-label="Email">✉</a>
+        </div>
+        <div class="r-footer__sponsors">
+          Supported by the <a href="https://www.nypl.org/locations/schomburg">Schomburg Center for Research in Black Culture</a> and the <a href="https://gc.cuny.edu">CUNY Graduate Center</a>
+        </div>
+      </div>
+    </footer>
+  )}
+
+  <script>
+    document.getElementById('nav-toggle')?.addEventListener('click', () => {
+      document.getElementById('nav-links')?.classList.toggle('is-open');
+    });
+  </script>
+</body>
+</html>

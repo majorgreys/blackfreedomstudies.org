@@ -1,9 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import { Layout } from '../../lib/theme';
+import { Layout, isClassic } from '../../lib/theme';
 
 const resources = await getCollection('resources');
-const isClassic = (import.meta as any).env?.THEME === 'classic';
 
 const grouped = {
   video: resources.filter(r => r.data.resourceType === 'video'),

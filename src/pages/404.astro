@@ -1,6 +1,5 @@
 ---
-import { Layout } from '../lib/theme';
-const isClassic = (import.meta as any).env?.THEME === 'classic';
+import { Layout, isClassic } from '../lib/theme';
 ---
 <Layout title="Page Not Found">
   {isClassic ? (

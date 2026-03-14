@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
-import { Layout, SpeakerCard, BookGrid } from '../../../lib/theme';
+import { Layout, SpeakerCard, BookGrid, isClassic } from '../../../lib/theme';
 import VideoEmbed from '../../../components/shared/VideoEmbed.astro';
 
 export async function getStaticPaths() {
@@ -34,7 +34,6 @@ const primaryResources = event.data.primaryResources
   .filter(Boolean);
 
 const isFuture = event.data.date > new Date();
-const isClassic = (import.meta as any).env?.THEME === 'classic';
 ---
 <Layout title={event.data.title}>
   {isClassic ? (

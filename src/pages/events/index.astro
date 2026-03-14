@@ -1,9 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import { Layout } from '../../lib/theme';
+import { Layout, isClassic } from '../../lib/theme';
 
 const events = await getCollection('events');
-const isClassic = (import.meta as any).env?.THEME === 'classic';
 
 const seasons = new Map<string, typeof events>();
 for (const event of events) {

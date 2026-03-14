@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
-import { Layout } from '../lib/theme';
+import { Layout, isClassic } from '../lib/theme';
 
 const pagesCollection = await getCollection('pages');
 const homepage = pagesCollection.find(p => p.id === 'homepage' || p.id === 'index');
@@ -8,8 +8,6 @@ const newsEntries = await getCollection('news');
 const latestNews = newsEntries
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 2);
-
-const isClassic = (import.meta as any).env?.THEME === 'classic';
 
 let HomepageContent: any = null;
 if (homepage) {
@@ -20,20 +18,31 @@ if (homepage) {
 <Layout title="Conversations in Black Freedom Studies">
   {isClassic ? (
     <div>
-      <div class="c-hero">
-        {homepage?.data.image && (
+      {homepage?.data.image ? (
+        <div class="c-hero">
           <img src={(homepage.data.image as any).src} alt="Conversations in Black Freedom Studies" />
-        )}
-        <div class="c-hero__overlay">
-          <ul>
+          <div class="c-hero__overlay">
+            <ul>
+              {latestNews.map(entry => (
+                <li>
+                  <a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`}>{entry.data.title}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ) : (
+        <div>
+          <h1>Conversations in Black Freedom Studies</h1>
+          <ul style="list-style:none;padding:0;margin:0 0 20px;">
             {latestNews.map(entry => (
-              <li>
+              <li style="margin-bottom:6px;">
                 <a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`}>{entry.data.title}</a>
               </li>
             ))}
           </ul>
         </div>
-      </div>
+      )}
       {HomepageContent && <div class="c-lead"><HomepageContent /></div>}
     </div>
   ) : (

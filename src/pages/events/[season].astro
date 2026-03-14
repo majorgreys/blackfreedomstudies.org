@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { Layout, EventCard } from '../../lib/theme';
+import { Layout, EventCard, isClassic } from '../../lib/theme';
 
 export async function getStaticPaths() {
   const events = await getCollection('events');
@@ -20,7 +20,6 @@ const seasonEvents = events
   .filter(e => `${e.data.seasonPart}-${e.data.seasonYear}` === season)
   .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
 
-const isClassic = (import.meta as any).env?.THEME === 'classic';
 ---
 <Layout title={label}>
   {isClassic ? (

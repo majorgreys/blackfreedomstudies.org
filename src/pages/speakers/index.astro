@@ -1,11 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
-import { Layout } from '../../lib/theme';
+import { Layout, isClassic } from '../../lib/theme';
 
 const speakers = (await getCollection('speakers'))
   .sort((a, b) => a.data.name.localeCompare(b.data.name));
-const isClassic = (import.meta as any).env?.THEME === 'classic';
 ---
 <Layout title="Speakers">
   {isClassic ? (
