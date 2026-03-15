@@ -8,7 +8,7 @@ Shanna Greene Benjamin is a biographer and scholar who studies the literature, l
 
  
 
-Her book, *Half in Shadow*, a biography of *Norton Anthology of African American Literature *co-editor Nellie Y. McKay, is forthcoming from the University of North Carolina Press.
+Her book, *Half in Shadow*, a biography of *Norton Anthology of African American Literature*co-editor Nellie Y. McKay, is forthcoming from the University of North Carolina Press.
 
  
 

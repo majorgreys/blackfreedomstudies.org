@@ -9,7 +9,7 @@ Join us this fall for these exciting and urgent conversations. CBFS is held from
 
 **September 5**
 
- **Stop Killer Cops: Police Brutality, Mass Incarceration, and the Liberal Establishment
+**Stop Killer Cops: Police Brutality, Mass Incarceration, and the Liberal Establishment
 **
 
 featuring 

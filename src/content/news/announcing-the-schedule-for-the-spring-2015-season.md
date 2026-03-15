@@ -6,7 +6,7 @@ image: "../../assets/graphics/BlackIncarceration.jpg"
 
 Our next season is shaping out to be another excellent series of conversations at the Schomburg Center for Research in Black Culture. Our events are held the first Thursday of the month from 6-8 pm. Be sure to stay in touch with us through this website and follow us on Twitter at [@SchomburgCBFS](https://twitter.com/SchomburgCBFS).
 
-	**February 5 -- ****50th anniversary of the assassination of Malcolm X: Malcolm X and Black Radical Women** 
+	**February 5 --****50th anniversary of the assassination of Malcolm X: Malcolm X and Black Radical Women** 
 	
 
 	with Rosemary Mealy, Komozi Woodard and Gloria Richardson

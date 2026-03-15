@@ -6,11 +6,11 @@ image: "../../assets/graphics/policinglifeanddeath.jpg"
 
 We've got some exciting updates to the season. We've added Marisol LeBrón to our October discussion on policing and surveillance. In addition Laura Lovett will be joining us in December along with Emily Thuma who will now be part of that conversation on Radical Black, LGBTQ+ Feminist Lives. Looking forward to our first conversation of the season next Thursday!
 
-**September 2nd: Black Health - Medical Racism, Resistance, and Wellness ** 
+**September 2nd: Black Health - Medical Racism, Resistance, and Wellness** 
 
 With George Aumoithe, Deirdre Cooper Owens, Stephanie Evans, and Martin Summers
 
-**October 7th: Understanding Policing and Surveillance in America ** 
+**October 7th: Understanding Policing and Surveillance in America** 
 
 Daniel Chard, Marisol LeBrón, Victoria Law, and Stuart Schrader 
 

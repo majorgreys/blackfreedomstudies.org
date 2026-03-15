@@ -5,7 +5,7 @@ twitter: "https://twitter.com/jonathaneig?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp
 homepage: "https://www.jonathaneig.com/"
 ---
 
-Jonathan Eig is the bestselling author of six books, including his most recent *King: A Life*, which *The New York Times *hailed as a "monumental" new biography of Martin Luther King Jr.
+Jonathan Eig is the bestselling author of six books, including his most recent *King: A Life*, which *The New York Times*hailed as a "monumental" new biography of Martin Luther King Jr.
 
  
 
@@ -13,7 +13,7 @@ Jonathan's previous book, *Ali: A Life*, won a 2018 PEN America Literary Award a
 
  
 
-He served as consulting producer for the PBS series "Muhammad Ali," which was directed by Ken Burns. *Esquire *magazine named *Ali: A Life *one of the 25 greatest biographies of all time. Joyce Carol Oates called it "an epic of a biography" that "reads like a novel."
+He served as consulting producer for the PBS series "Muhammad Ali," which was directed by Ken Burns. *Esquire*magazine named *Ali: A Life*one of the 25 greatest biographies of all time. Joyce Carol Oates called it "an epic of a biography" that "reads like a novel."
 
  
 

@@ -106,14 +106,46 @@ const seasonData = sortedSeasons.map(([slug, evts]) => {
   ) : (
     <div>
       <div class="r-page-header">
-        <h1>Conversations Series</h1>
+        <h1>Conversations</h1>
         <p>Monthly roundtable discussions at the Schomburg Center</p>
       </div>
-      {(async () => {
-        const { default: SeasonTimeline } = await import('../../components/redesign/SeasonTimeline.astro');
-        const simpleSeasonData = seasonData.map(s => ({ slug: s.slug, label: s.label, eventCount: s.events.length }));
-        return <SeasonTimeline seasons={simpleSeasonData} />;
-      })()}
+      {seasonData.map(season => (
+        <div class="r-season-group">
+          <h2 class="r-season-group__label">{season.label}</h2>
+          <div class="r-season-group__events">
+            {season.events.map(event => {
+              const month = event.data.date.toLocaleDateString('en-US', { month: 'short' });
+              const day = event.data.date.getDate();
+              const eventSpeakers = event.data.speakers
+                .map((slug: string) => allSpeakers.find(s => s.id === slug))
+                .filter(Boolean);
+              return (
+                <a href={`/events/${season.slug}/${event.id}`} class="r-event-row">
+                  <div class="r-event-row__date">
+                    <span class="r-event-row__month">{month}</span>
+                    <span class="r-event-row__day">{day}</span>
+                  </div>
+                  <div class="r-event-row__content">
+                    <h3 class="r-event-row__title">{event.data.title}</h3>
+                    <div class="r-event-row__speakers">
+                      {eventSpeakers.map((s: any, i: number) => (
+                        <span>{s.data.name}{i < eventSpeakers.length - 1 ? ', ' : ''}</span>
+                      ))}
+                    </div>
+                  </div>
+                  {event.data.books.length > 0 && (
+                    <div class="r-event-row__books">
+                      {event.data.books.slice(0, 3).map((book: any) => (
+                        <Image src={book} alt="" width={50} />
+                      ))}
+                    </div>
+                  )}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      ))}
     </div>
   )}
 </Layout>

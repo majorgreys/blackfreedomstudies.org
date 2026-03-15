@@ -10,17 +10,31 @@ interface Props {
 }
 
 const { seasons } = Astro.props;
+
+// Group seasons by year
+const byYear = new Map<string, Season[]>();
+for (const season of seasons) {
+  const parts = season.label.split(' ');
+  const year = parts[0];
+  if (!byYear.has(year)) byYear.set(year, []);
+  byYear.get(year)!.push(season);
+}
 ---
-<ul class="r-seasons-list">
-  {seasons.map(season => (
-    <li>
-      <a href={`/events/${season.slug}`} class="r-season-card">
-        <div class="r-season-card__accent"></div>
-        <div class="r-season-card__info">
-          <h3>{season.label}</h3>
-          <span class="r-season-card__meta">{season.eventCount} conversation{season.eventCount !== 1 ? 's' : ''}</span>
-        </div>
-      </a>
-    </li>
+<div class="r-seasons-timeline">
+  {[...byYear.entries()].map(([year, yearSeasons]) => (
+    <div class="r-year-row">
+      <div class="r-year-label">{year}</div>
+      <div class="r-year-seasons">
+        {yearSeasons.map(season => {
+          const part = season.label.split(' ')[1];
+          return (
+            <a href={`/events/${season.slug}`} class="r-season-chip">
+              <span class="r-season-chip__part">{part}</span>
+              <span class="r-season-chip__count">{season.eventCount}</span>
+            </a>
+          );
+        })}
+      </div>
+    </div>
   ))}
-</ul>
+</div>

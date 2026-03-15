@@ -12,7 +12,7 @@ We're looking forward to welcoming all of our guests and our online audience to 
 
 With Deirdre Cooper Owens, Stephanie Evans, Martin Summers, and George Aumoithe 
 
-**October 7th: Understanding Policing and Surveillance in America ** 
+**October 7th: Understanding Policing and Surveillance in America** 
 
 Victoria Law, Emily Thuma, Stuart Schrader, Daniel Chard
  

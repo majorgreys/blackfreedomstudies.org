@@ -3,7 +3,7 @@ title: "Black History, Anticolonialism and Global Revolutions"
 date: 2024-11-07
 seasonYear: 2024
 seasonPart: fall
-eventbrite: "https://www.eventbrite.com/e/cbfs-black-history-anticolonialism-and-global-revolutions-tickets-1041084360347?aff=ebdsoporgprofile&_gl=1*19rsgwt*_up*MQ..*_ga*NjYzMTcyNDMwLjE3MzAyMjM0OTM.*_ga_TQVES5V6SH*MTczMDIyMzQ5Mi4xLjAuMTczMDIyMzQ5Mi4wLjAuMA.."
+eventbrite: "https://www.eventbrite.com/e/cbfs-black-history-anticolonialism-and-global-revolutions-tickets-1041084360347?aff=ebdsoporgprofile&_gl=1*19rsgwt*_up *MQ..*_ga *NjYzMTcyNDMwLjE3MzAyMjM0OTM.*_ga_TQVES5V6SH *MTczMDIyMzQ5Mi4xLjAuMTczMDIyMzQ5Mi4wLjAuMA.."
 speakers:
   - "paula-marie-seniors"
   - "quito-swan"

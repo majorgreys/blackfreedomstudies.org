@@ -34,7 +34,7 @@ featuring Saidiya Hartman, Imani Perry, and Barbara Smith
  
  
 
-**May 7: ****The Poor People's Campaign, the Young Lords, and Black Brown Yellow White and Red Organizing**
+**May 7:****The Poor People's Campaign, the Young Lords, and Black Brown Yellow White and Red Organizing**
  
 
 featuring Johanna Fernandez, Paul Ortiz, and Liz Theoharis 

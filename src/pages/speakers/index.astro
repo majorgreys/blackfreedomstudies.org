@@ -34,7 +34,7 @@ const speakers = (await getCollection('speakers'))
             {speaker.data.image && (
               <Image src={speaker.data.image} alt={speaker.data.name} width={120} height={120} />
             )}
-            <h3><a href={`/speakers/${speaker.id}`}>{speaker.data.name}</a></h3>
+            <h2><a href={`/speakers/${speaker.id}`}>{speaker.data.name}</a></h2>
             {speaker.data.affiliation && <span class="affiliation">{speaker.data.affiliation}</span>}
           </li>
         ))}

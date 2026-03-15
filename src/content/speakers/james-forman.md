@@ -11,4 +11,4 @@ James Forman Jr. is a Professor of Law at Yale Law School. He attended public sc
 
 At Yale Law School, where he has taught since 2011, Forman teaches Constitutional Law and a course called Race, Class, and Punishment. Last year he took his teaching behind prison walls, offering a seminar called Inside-Out Prison Exchange: Issues in Criminal Justice, which brought together, in the same classroom, 10 Yale Law students and 10 men incarcerated in a CT prison.
 
-Professor Forman has written many law review articles, in addition to op-eds and essays for the *New York Times*, *the Atlantic*, *the New Republic*, *the Nation*, and *the Washington Post*. *Locking Up Our Own *is his first book*.*
+Professor Forman has written many law review articles, in addition to op-eds and essays for the *New York Times*,*the Atlantic*,*the New Republic*,*the Nation*, and*the Washington Post*. *Locking Up Our Own*is his first book*.*
