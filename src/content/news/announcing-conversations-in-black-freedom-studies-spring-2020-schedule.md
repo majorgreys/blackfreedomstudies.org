@@ -3,8 +3,6 @@ title: "Announcing Conversations in Black Freedom Studies Spring 2020 Schedule"
 date: 2019-12-30
 ---
 
-![]({asset:820:url})
-
 We're so excited to announce our Spring 2020 schedule, welcoming back some previous guests including Keeanga-Yamahtta Taylor, Barbara Smith, Johanna Fernandez, and Liz Theoharis. And we're thrilled for some new voices joining Conversations this year, including Nathan Connolly, Saidiya Hartman, Imani Perry, and Paul Ortiz. Mark your calendars, tell your friends, and we hope to see you this spring at the Schomburg! 
 
 **February 6: Housing Discrimination in Jim Crow America and the Case for Reparations**
@@ -38,5 +36,3 @@ featuring Saidiya Hartman, Imani Perry, and Barbara Smith
  
 
 featuring Johanna Fernandez, Paul Ortiz, and Liz Theoharis 
-
-![]({asset:821:url})

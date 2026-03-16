@@ -4,7 +4,7 @@ date: 2014-09-02
 ---
 
 CBFS is set to kick off the Fall 2014 season this Thursday September 4th with a timely 
-	[conversation on the urban crisis and the Black Revolt]({entry:68:url}). 
+	[conversation on the urban crisis and the Black Revolt](/events/fall-2014/). 
 
 	*The time is ripe to revisit the unfinished agenda of the Black Revolt against the urban crisis: What is to be done? The Stop Killer Cops Campaign has a rich yet neglected history from the shooting of black children in Brooklyn in the 1970s to the shooting of Michael Brown in Ferguson in 2014.  
 	

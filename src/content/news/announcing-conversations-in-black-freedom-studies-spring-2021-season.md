@@ -11,7 +11,6 @@ date: 2021-01-04
 New scholarship is deepening our understanding of both well-known and lesser-known activists in the Civil Rights Movement. In this discussion, Ashley Farmer, Pam Horowitz, and Peniel Joseph will discuss their research related to the legacies of civil rights activists Martin Luther King, Jr., Malcolm X, Gwen Patton, and Julian Bond.
  
 
-![]({asset:935:photo})
 
 **March 4th**
 
@@ -31,7 +30,6 @@ ___________________________________________________________________
 How can we understand the historical connections between Black activism and the socialist movement? How do we navigate the relationship between race and class? Join Charisse Burden-Stelley, Robin D.G. Kelley, and Barbara Smith in a conversation about what we can learn from Black and Red histories.
  
 
-![]({asset:936:photo})
 
 **May 6th
 **

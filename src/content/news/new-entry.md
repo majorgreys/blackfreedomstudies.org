@@ -3,8 +3,6 @@ title: "Announcing the Conversations in Black Freedom Studies Fall 2019 Schedule
 date: 2019-07-24
 ---
 
-![]({asset:758:fullWidth})
-
 Join us this fall for these exciting and urgent conversations. CBFS is held from 6:30-8:30 on the first Thursday of each month at the Schomburg Center for Research in Black Culture. Check back later this summer for further details.
 
 **September 5**

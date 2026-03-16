@@ -3,8 +3,6 @@ title: "Announcing Conversations in Black Freedom Studies Spring 2022 Season"
 date: 2021-12-12
 ---
 
-![]({asset:1044:fullWidth})
-
 We're thrilled to launch our tenth season, starting in February 2022! And to celebrate, we're adding a special June session where we'll try something new, exploring the work of two new documentaries on the Black freedom struggle.
  
 

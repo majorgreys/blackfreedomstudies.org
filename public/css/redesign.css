@@ -41,7 +41,7 @@
   --color-border: var(--color-stone-200);
 
   --max-width: 1100px;
-  --content-width: 740px;
+  --content-width: 900px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }

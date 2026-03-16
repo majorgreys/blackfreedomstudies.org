@@ -3,8 +3,6 @@ title: "Announcing Conversations in Black Freedom Studies Spring 2019 Schedule"
 date: 2018-12-14
 ---
 
-![]({asset:704:photo})
-
 ### February 7 - Rethinking Black Women Freedom Fighters Gloria Richardson, Louise Thompson Patterson and the Women of the Nation of Islam
  
 
