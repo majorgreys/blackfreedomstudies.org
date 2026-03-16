@@ -37,8 +37,8 @@ const cssPath = isClassic ? '/css/classic.css' : '/css/redesign.css';
     </nav>
   ) : (
     <nav class="r-navbar">
-      <div class="r-navbar__inner">
-        <a class="r-navbar__brand" href="/">Black Freedom Studies</a>
+      <a class="r-navbar__brand" href="/"><span class="r-brand-line1">Black</span><br/><span class="r-brand-line2">Freedom</span><br/><span class="r-brand-line3">Studies</span></a>
+      <div class="r-navbar__bar">
         <button class="r-navbar__toggle" aria-label="Toggle navigation" id="nav-toggle">☰</button>
         <ul class="r-navbar__links" id="nav-links">
           <li><a href="/events/">Conversations</a></li>
@@ -64,18 +64,21 @@ const cssPath = isClassic ? '/css/classic.css' : '/css/redesign.css';
     </footer>
   ) : (
     <footer class="r-footer">
-      <div class="r-footer__inner">
-        <div class="r-footer__info">
-          <p><strong>Conversations in Black Freedom Studies</strong></p>
-          <p>A monthly roundtable at the Schomburg Center</p>
-          <p>Contact: <a href="mailto:blackfreedomstudies@gmail.com">blackfreedomstudies@gmail.com</a></p>
+      <div class="r-footer__bar">
+        <div class="r-footer__content">
+          <div class="r-footer__info">
+            <a href="mailto:blackfreedomstudies@gmail.com">Email us</a>
+            <span class="r-footer__sep">·</span>
+            <a href="https://twitter.com/SchomburgCBFS">Follow us on X</a>
+          </div>
+          <div class="r-footer__sponsors">
+            Supported by the <a href="https://www.nypl.org/locations/schomburg">Schomburg Center for Research in Black Culture</a> and the <a href="https://gc.cuny.edu">CUNY Graduate Center</a>
+          </div>
         </div>
-        <div class="r-footer__social">
-          <a href="https://twitter.com/SchomburgCBFS" aria-label="Follow us on X (formerly Twitter)">𝕏</a>
-          <a href="mailto:blackfreedomstudies@gmail.com" aria-label="Send us an email">✉</a>
-        </div>
-        <div class="r-footer__sponsors">
-          Supported by the <a href="https://www.nypl.org/locations/schomburg">Schomburg Center for Research in Black Culture</a> and the <a href="https://gc.cuny.edu">CUNY Graduate Center</a>
+        <div class="r-footer__brand">
+          <span class="r-brand-line1">Black</span><br/>
+          <span class="r-brand-line2">Freedom</span><br/>
+          <span class="r-brand-line3">Studies</span>
         </div>
       </div>
     </footer>
