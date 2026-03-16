@@ -1,6 +1,7 @@
 ---
 title: "Mae Mallory, the Monroe Defense Committee, and World Revolutions: An Interview with Paula Marie Seniors"
 date: 2024-11-08
+relatedEvent: "honoring-the-legacy-of-black-women-radicals-gloria-richardson-and-may-mallory"
 ---
 
 Paula Marie Seniors is a Historian, Ethnic Studies Scholar, and Associate Professor of Africana Studies at Virginia Tech University. She is the biographer of Mae Mallory and The Monroe Defense Committee. Her parents Audrey Proctor Seniors and Clarence Henry Seniors founded the Monroe Defense Committee which bound them together with Mae and Pat Mallory as family.

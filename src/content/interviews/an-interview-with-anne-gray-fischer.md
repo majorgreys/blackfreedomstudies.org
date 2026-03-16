@@ -2,6 +2,7 @@
 title: "An Interview with Anne Gray Fischer"
 date: 2022-10-03
 image: "../../assets/graphics/streetsbelongtous.jpeg"
+relatedEvent: "from-cps-to-dobbs-to-the-carceral-system-what-history-shows-us-for-challenging-systems-of-oppression-today"
 ---
 
 *[Conversations in Black Freedom Studies](http://blackfreedomstudies.org/) (CBFS) is a monthly discussion series held at the [Schomburg Center for Research in Black Culture](https://www.nypl.org/locations/schomburg). Curated by [Jeanne Theoharis](http://www.brooklyn.cuny.edu/web/academics/faculty/faculty_profile.jsp?faculty=510) and [Robyn Spencer](https://www.lehman.edu/academics/arts-humanities/history/historyspencer.php) with [Komozi Woodard](https://www.sarahlawrence.edu/faculty/woodard-komozi.html), the series was established as a space to discuss the latest scholarship in Black freedom studies, bringing the campus and community together as scholars and activists challenge the older geography, leadership, ideology, culture, and chronology of Civil Rights historiography. In anticipation of the discussion ["From CPS to Dobbs to the Carceral System--What History Shows Us for Challenging Systems of Oppression Today"](/events/fall-2022/from-cps-to-dobbs-to-the-carceral-system-what-history-shows-us-for-challenging-systems-of-oppression-today) scheduled for October 6th, we are highlighting the scholarship of one of the guests, Anne Gray Fischer, author of The Streets Belong To Us: Sex, Race, and Police Power from Segregation to Gentrification.*

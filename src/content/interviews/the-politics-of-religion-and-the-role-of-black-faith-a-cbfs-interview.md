@@ -1,6 +1,7 @@
 ---
 title: "The Politics of Religion and the Role of Black Faith: A CBFS Interview"
 date: 2023-05-02
+relatedEvent: "the-politics-of-religion-and-the-role-of-black-faith"
 ---
 
 *Conversations in Black Freedom Studies* [(CBFS)](https://www.aaihs.org/?s=CBFS) is a monthly discussion series held at [the Schomburg Center for Research in Black Culture](https://www.nypl.org/locations/schomburg). Curated by [Jeanne Theoharis](http://www.brooklyn.cuny.edu/web/academics/faculty/faculty_profile.jsp?faculty=510) and [Robyn C. Spencer-Antoine](https://www.lehman.edu/academics/arts-humanities/history/historyspencer.php) with Komozi Woodard, the series was established as a space to discuss the latest scholarship in Black freedom studies, bringing the campus and community together as scholars and activists challenge the older geography, leadership, ideology, culture, and chronology of Civil Rights historiography. In anticipation of the discussion on "The Politics of Religion and the Role of Black faith," scheduled for May 4th, we are highlighting the scholarship of two of the guests.

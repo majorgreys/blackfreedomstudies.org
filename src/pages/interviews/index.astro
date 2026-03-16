@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import { Layout, isClassic } from '../../lib/theme';
+
+const interviews = (await getCollection('interviews'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+<Layout title="Interviews">
+  {isClassic ? (
+    <div>
+      <div class="c-page-header">
+        <h1>Interviews</h1>
+      </div>
+      {interviews.map(entry => (
+        <article class="c-news-item">
+          <h2><a href={`/interviews/${entry.id}`}>{entry.data.title}</a></h2>
+          <p class="c-news-date">{entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+        </article>
+      ))}
+    </div>
+  ) : (
+    <div>
+      <div class="r-page-header">
+        <h1>Interviews</h1>
+        <p>In-depth conversations with scholars featured in the series</p>
+      </div>
+      <ul class="r-news-list">
+        {interviews.map(entry => (
+          <li class="r-news-item">
+            <span class="r-news-date">{entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            <h2><a href={`/interviews/${entry.id}`}>{entry.data.title}</a></h2>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</Layout>

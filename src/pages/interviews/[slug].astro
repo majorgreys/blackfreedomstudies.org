@@ -1,0 +1,59 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import { Layout, isClassic } from '../../lib/theme';
+
+export async function getStaticPaths() {
+  const interviews = await getCollection('interviews');
+  return interviews.map(entry => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const dateStr = entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+// Find related event if specified
+let relatedEvent = null;
+if (entry.data.relatedEvent) {
+  const events = await getCollection('events');
+  relatedEvent = events.find(e => e.id === entry.data.relatedEvent);
+}
+---
+<Layout title={entry.data.title}>
+  {isClassic ? (
+    <article class="c-news-detail">
+      {entry.data.image && (
+        <figure class="c-news-banner">
+          <Image src={entry.data.image} alt={entry.data.title} width={800} />
+        </figure>
+      )}
+      <h1>{entry.data.title}</h1>
+      <p class="c-news-date">{dateStr}</p>
+      {relatedEvent && (
+        <p>Related event: <a href={`/events/${relatedEvent.data.seasonPart}-${relatedEvent.data.seasonYear}/${relatedEvent.id}`}>{relatedEvent.data.title}</a></p>
+      )}
+      <Content />
+    </article>
+  ) : (
+    <article>
+      {entry.data.image && (
+        <figure class="r-news-banner">
+          <Image src={entry.data.image} alt={entry.data.title} width={900} />
+        </figure>
+      )}
+      <div class="r-page-header">
+        <span class="r-news-date">{dateStr}</span>
+        <h1>{entry.data.title}</h1>
+      </div>
+      {relatedEvent && (
+        <p style="margin-bottom:24px;">Related event: <a href={`/events/${relatedEvent.data.seasonPart}-${relatedEvent.data.seasonYear}/${relatedEvent.id}`}>{relatedEvent.data.title}</a></p>
+      )}
+      <div class="r-prose" style="max-width:none;">
+        <Content />
+      </div>
+    </article>
+  )}
+</Layout>

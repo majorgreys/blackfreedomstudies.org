@@ -1,6 +1,7 @@
 ---
 title: "Interview: Stop Killer Cops: Police Brutality, Mass Incarceration, and the Liberal Establishment"
 date: 2019-09-01
+relatedEvent: "stop-killer-cops-police-brutality-mass-incarceration-and-the-liberal-establishment"
 ---
 
 Stop Killer Cops: Police Brutality, Mass Incarceration, and the Liberal Establishment

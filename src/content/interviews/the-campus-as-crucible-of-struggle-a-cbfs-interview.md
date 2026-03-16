@@ -2,6 +2,7 @@
 title: "The Campus as Crucible of Struggle: A CBFS Interview"
 date: 2024-09-04
 image: "../../assets/graphics/five_demands_poster-5.jpeg"
+relatedEvent: "the-campus-as-crucible-of-struggle"
 ---
 
 *Conversations in Black Freedom Studies* [(CBFS)](https://www.aaihs.org/?s=CBFS) is a monthly discussion series held at [the Schomburg Center for Research in Black Culture](https://www.nypl.org/locations/schomburg). Curated by [Jeanne Theoharis](http://www.brooklyn.cuny.edu/web/academics/faculty/faculty_profile.jsp?faculty=510) and [Robyn C. Spencer-Antoine](https://www.lehman.edu/academics/arts-humanities/history/historyspencer.php) with Komozi Woodard, the series was established as a space to discuss the latest scholarship in Black freedom studies, bringing the campus and community together as scholars and activists challenge the older geography, leadership, ideology, culture, and chronology of Civil Rights historiography. In anticipation of the discussion on ["The Campus as Crucible of Struggle,"](/events/fall-2024/the-campus-as-crucible-of-struggle) scheduled for September 5th, we are highlighting the scholarship of three of the guests alongside Black studies scholar Joshua Myers.

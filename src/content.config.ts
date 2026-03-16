@@ -54,6 +54,17 @@ const news = defineCollection({
   }),
 });
 
+const interviews = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/interviews' }),
+  schema: ({ image }) => z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    image: image().optional(),
+    relatedEvent: z.string().optional(),
+    tags: z.array(z.string()).default([]),
+  }),
+});
+
 const pages = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
   schema: ({ image }) => z.object({
@@ -63,4 +74,4 @@ const pages = defineCollection({
   }),
 });
 
-export const collections = { events, speakers, resources, news, pages };
+export const collections = { events, speakers, resources, news, interviews, pages };
