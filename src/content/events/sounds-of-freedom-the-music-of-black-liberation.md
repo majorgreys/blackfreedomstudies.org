@@ -4,13 +4,13 @@ date: 2021-05-06
 seasonYear: 2021
 seasonPart: spring
 speakers:
-  - "hanif-abdurraquib"
-  - "shana-redmond"
-  - "rickey-vincent"
+ - "hanif-abdurraquib"
+ - "shana-redmond"
+ - "rickey-vincent"
 books:
-  - ../../assets/bookcovers/GoAheadintheRain.png
-  - ../../assets/bookcovers/Anthem.jpg
-  - ../../assets/bookcovers/PartyMusic.jpg
+ - ../../assets/bookcovers/GoAheadintheRain.png
+ - ../../assets/bookcovers/Anthem.jpg
+ - ../../assets/bookcovers/PartyMusic.jpg
 video: "sounds-of-freedom"
 ---
 

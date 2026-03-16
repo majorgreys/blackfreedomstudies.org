@@ -6,7 +6,7 @@ videoEmbedCode: "<iframe src=\"//player.vimeo.com/video/108378714?title=0&amp;by
 publicationDate: "6/5/2014"
 date: 2014-06-05
 tags:
-  - "Education"
+ - "Education"
 ---
 
 

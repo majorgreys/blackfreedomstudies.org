@@ -6,8 +6,8 @@ videoEmbedCode: "<iframe src=\"//player.vimeo.com/video/107559137?title=0&amp;by
 publicationDate: "4/4/2013"
 date: 2013-04-04
 tags:
-  - "Black Panther Party"
-  - "Economics"
+ - "Black Panther Party"
+ - "Economics"
 ---
 
 

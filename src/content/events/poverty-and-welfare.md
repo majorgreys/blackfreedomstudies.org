@@ -4,13 +4,13 @@ date: 2013-11-07
 seasonYear: 2013
 seasonPart: fall
 speakers:
-  - "susan-youngblood-ashmore"
-  - "premilla-nadasen"
-  - "annelise-orleck"
+ - "susan-youngblood-ashmore"
+ - "premilla-nadasen"
+ - "annelise-orleck"
 books:
-  - ../../assets/bookcovers/ashmorecarry.jpg
-  - ../../assets/bookcovers/nadasenwelfare.jpg
-  - ../../assets/bookcovers/orleckstorming.jpg
+ - ../../assets/bookcovers/ashmorecarry.jpg
+ - ../../assets/bookcovers/nadasenwelfare.jpg
+ - ../../assets/bookcovers/orleckstorming.jpg
 video: "the-war-on-poverty-and-the-struggle-for-welfare-rights"
 ---
 

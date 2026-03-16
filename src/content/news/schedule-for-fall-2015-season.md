@@ -10,9 +10,9 @@ Do RSVP through Eventbrite to reserve your seats.
 
 ## September 3rd
 
-### [Fallen Freedom Fighters: An Evening Commemorating the Lives of Maya Angelou, Chokwe Lumumba,  General Baker, Thelma Dale and Amiri Baraka](http://www.eventbrite.com/e/conversations-in-black-freedom-studies-fallen-freedom-fighters-an-evening-commemorating-the-lives-tickets-18101814013)
+### [Fallen Freedom Fighters: An Evening Commemorating the Lives of Maya Angelou, Chokwe Lumumba, General Baker, Thelma Dale and Amiri Baraka](http://www.eventbrite.com/e/conversations-in-black-freedom-studies-fallen-freedom-fighters-an-evening-commemorating-the-lives-tickets-18101814013)
 
-with Farah Jasmine Griffin, Dayo Gore, Robyn Spencer, Akinyele Umoja  and Komozi Woodard
+with Farah Jasmine Griffin, Dayo Gore, Robyn Spencer, Akinyele Umoja and Komozi Woodard
 
 ### October 1st
 

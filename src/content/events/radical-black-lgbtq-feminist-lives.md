@@ -4,15 +4,15 @@ date: 2021-12-02
 seasonYear: 2021
 seasonPart: fall
 speakers:
-  - "moya-bailey"
-  - "laura-lovett"
-  - "barbara-smith"
-  - "emily-thuma"
+ - "moya-bailey"
+ - "laura-lovett"
+ - "barbara-smith"
+ - "emily-thuma"
 books:
-  - ../../assets/bookcovers/Misogynoir-Transformed.jpg
-  - ../../assets/bookcovers/With-Her-Fist-Raised.jpg
-  - ../../assets/bookcovers/aintgonnaletnobody.jpg
-  - ../../assets/bookcovers/All-Our-Trials.jpg
+ - ../../assets/bookcovers/Misogynoir-Transformed.jpg
+ - ../../assets/bookcovers/With-Her-Fist-Raised.jpg
+ - ../../assets/bookcovers/aintgonnaletnobody.jpg
+ - ../../assets/bookcovers/All-Our-Trials.jpg
 video: "radical-black-lgbtq-feminist-lives"
 ---
 

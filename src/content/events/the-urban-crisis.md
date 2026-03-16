@@ -5,13 +5,13 @@ seasonYear: 2014
 seasonPart: fall
 eventbrite: "http://www.eventbrite.com/e/conversations-in-black-freedom-studies-the-urban-crisis-an-unfinished-agenda-tickets-12747039739"
 speakers:
-  - "robert-curvin"
-  - "clarence-taylor"
-  - "junius-williams"
+ - "robert-curvin"
+ - "clarence-taylor"
+ - "junius-williams"
 books:
-  - ../../assets/bookcovers/curvinnewark.jpg
-  - ../../assets/bookcovers/williamsagenda.jpg
-  - ../../assets/bookcovers/taylornyc.jpg
+ - ../../assets/bookcovers/curvinnewark.jpg
+ - ../../assets/bookcovers/williamsagenda.jpg
+ - ../../assets/bookcovers/taylornyc.jpg
 video: "the-urban-crisis-an-unfinished-agenda"
 ---
 

@@ -4,12 +4,12 @@ date: 2014-02-06
 seasonYear: 2014
 seasonPart: spring
 speakers:
-  - "ansley-t--erickson"
-  - "jonna-perrillo"
-  - "craig-steven-wilder"
+ - "ansley-t--erickson"
+ - "jonna-perrillo"
+ - "craig-steven-wilder"
 books:
-  - ../../assets/bookcovers/perrillouncivil.jpg
-  - ../../assets/bookcovers/wilderebony.jpg
+ - ../../assets/bookcovers/perrillouncivil.jpg
+ - ../../assets/bookcovers/wilderebony.jpg
 video: "slavery-white-supremacy-and-struggle-in-american-education"
 ---
 

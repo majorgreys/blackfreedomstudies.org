@@ -5,13 +5,13 @@ seasonYear: 2018
 seasonPart: fall
 eventbrite: "https://www.eventbrite.com/e/conversations-in-black-freedom-studies-black-politics-the-struggle-for-justice-in-sports-tickets-49491159390"
 speakers:
-  - "howard-bryant"
-  - "amira-rose-davis"
-  - "randy-roberts"
-  - "toni-smith-thompson"
+ - "howard-bryant"
+ - "amira-rose-davis"
+ - "randy-roberts"
+ - "toni-smith-thompson"
 books:
-  - ../../assets/bookcovers/theheritage.jpg
-  - ../../assets/bookcovers/bloodbrothers.jpg
+ - ../../assets/bookcovers/theheritage.jpg
+ - ../../assets/bookcovers/bloodbrothers.jpg
 video: "black-politics-and-the-struggle-for-justice-in-sports"
 ---
 

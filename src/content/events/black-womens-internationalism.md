@@ -5,12 +5,12 @@ seasonYear: 2019
 seasonPart: spring
 eventbrite: "https://www.eventbrite.com/e/conversation-in-black-freedom-studies-black-womens-internationalism-tickets-54182033922"
 speakers:
-  - "keisha-blain"
-  - "ashley-farmer"
-  - "john-portlock"
+ - "keisha-blain"
+ - "ashley-farmer"
+ - "john-portlock"
 books:
-  - ../../assets/bookcovers/Settheworldonfire.jpg
-  - ../../assets/bookcovers/remakingblackpower.jpg
+ - ../../assets/bookcovers/Settheworldonfire.jpg
+ - ../../assets/bookcovers/remakingblackpower.jpg
 video: "black-womens-internationalism"
 ---
 

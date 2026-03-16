@@ -5,13 +5,13 @@ seasonYear: 2016
 seasonPart: fall
 eventbrite: "https://www.eventbrite.com/e/conversations-in-black-freedom-studies-the-war-on-poverty-at-50-tickets-28403575860"
 speakers:
-  - "elizabeth-hinton"
-  - "alejandra-marchevsky"
-  - "crystal-sanders"
+ - "elizabeth-hinton"
+ - "alejandra-marchevsky"
+ - "crystal-sanders"
 books:
-  - ../../assets/bookcovers/waronpoverty.jpg
-  - ../../assets/bookcovers/notworking.jpg
-  - ../../assets/bookcovers/achanceforchange.jpg
+ - ../../assets/bookcovers/waronpoverty.jpg
+ - ../../assets/bookcovers/notworking.jpg
+ - ../../assets/bookcovers/achanceforchange.jpg
 video: "the-war-on-poverty-at-50"
 ---
 

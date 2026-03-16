@@ -4,13 +4,13 @@ date: 2020-12-03
 seasonYear: 2020
 seasonPart: fall
 speakers:
-  - "garrett-felber"
-  - "kelly-lytle-hernandez"
-  - "carl-suddler"
+ - "garrett-felber"
+ - "kelly-lytle-hernandez"
+ - "carl-suddler"
 books:
-  - ../../assets/bookcovers/those-who-know-don-t-say.jpg
-  - ../../assets/bookcovers/cityofinmates.jpg
-  - ../../assets/bookcovers/presumedcriminal.jpg
+ - ../../assets/bookcovers/those-who-know-don-t-say.jpg
+ - ../../assets/bookcovers/cityofinmates.jpg
+ - ../../assets/bookcovers/presumedcriminal.jpg
 video: "resisting-carceral-cities"
 ---
 

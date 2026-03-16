@@ -4,15 +4,15 @@ date: 2021-11-04
 seasonYear: 2021
 seasonPart: fall
 speakers:
-  - "davarian-baldwin"
-  - "jarvis-givens"
-  - "jesse-hagopian"
-  - "elizabeth-todd-breland"
+ - "davarian-baldwin"
+ - "jarvis-givens"
+ - "jesse-hagopian"
+ - "elizabeth-todd-breland"
 books:
-  - ../../assets/bookcovers/ivory-tower.jpg
-  - ../../assets/bookcovers/fugative-pedegogy.jpg
-  - ../../assets/bookcovers/Black-Lives-Matter-at-School.jpg
-  - ../../assets/bookcovers/A-Political-Education.jpg
+ - ../../assets/bookcovers/ivory-tower.jpg
+ - ../../assets/bookcovers/fugative-pedegogy.jpg
+ - ../../assets/bookcovers/Black-Lives-Matter-at-School.jpg
+ - ../../assets/bookcovers/A-Political-Education.jpg
 video: "education-as-a-practice-of-freedom"
 ---
 

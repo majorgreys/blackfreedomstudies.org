@@ -5,13 +5,13 @@ seasonYear: 2014
 seasonPart: fall
 eventbrite: "http://www.eventbrite.com/e/conversations-in-black-freedom-studies-building-cooperative-economics-and-movement-community-tickets-13705025099"
 speakers:
-  - "laura-hill"
-  - "alondra-nelson"
-  - "jessica-nembhard"
+ - "laura-hill"
+ - "alondra-nelson"
+ - "jessica-nembhard"
 books:
-  - ../../assets/bookcovers/nembhardcollective.jpg
-  - ../../assets/bookcovers/nelsonbody.jpg
-  - ../../assets/bookcovers/hillbusiness.jpg
+ - ../../assets/bookcovers/nembhardcollective.jpg
+ - ../../assets/bookcovers/nelsonbody.jpg
+ - ../../assets/bookcovers/hillbusiness.jpg
 video: "cooperative-economics"
 ---
 

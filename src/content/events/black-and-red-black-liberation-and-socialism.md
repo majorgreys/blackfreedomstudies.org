@@ -4,13 +4,13 @@ date: 2021-04-01
 seasonYear: 2021
 seasonPart: spring
 speakers:
-  - "charisse-burden-stelly"
-  - "robin-d-g-kelley"
-  - "barbara-smith"
+ - "charisse-burden-stelly"
+ - "robin-d-g-kelley"
+ - "barbara-smith"
 books:
-  - ../../assets/bookcovers/ChariseBurden.jpg
-  - ../../assets/bookcovers/Hammer-and-Hoe.jpg
-  - ../../assets/bookcovers/aintgonnaletnobody.jpg
+ - ../../assets/bookcovers/ChariseBurden.jpg
+ - ../../assets/bookcovers/Hammer-and-Hoe.jpg
+ - ../../assets/bookcovers/aintgonnaletnobody.jpg
 video: "black-liberation-and-socialism"
 ---
 

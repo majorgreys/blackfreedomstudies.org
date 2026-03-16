@@ -4,13 +4,13 @@ date: 2014-03-06
 seasonYear: 2014
 seasonPart: spring
 speakers:
-  - "emilye-crosby"
-  - "mary-phillips"
-  - "sherie-randolph"
-  - "robyn-spencer"
+ - "emilye-crosby"
+ - "mary-phillips"
+ - "sherie-randolph"
+ - "robyn-spencer"
 books:
-  - ../../assets/bookcovers/crosbyground.jpg
-  - ../../assets/bookcovers/theoharisstart.jpg
+ - ../../assets/bookcovers/crosbyground.jpg
+ - ../../assets/bookcovers/theoharisstart.jpg
 ---
 
 

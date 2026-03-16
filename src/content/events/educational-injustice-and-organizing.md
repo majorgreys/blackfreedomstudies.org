@@ -5,13 +5,13 @@ seasonYear: 2016
 seasonPart: spring
 eventbrite: "http://www.eventbrite.com/e/conversations-in-black-freedom-studies-educational-injustice-and-organizing-tickets-20629540511"
 speakers:
-  - "matt-delmont"
-  - "ansley-t--erickson"
-  - "carla-shedd"
+ - "matt-delmont"
+ - "ansley-t--erickson"
+ - "carla-shedd"
 books:
-  - ../../assets/bookcovers/Unequal-cities.jpg
-  - ../../assets/bookcovers/Matt-Delmont.jpg
-  - ../../assets/bookcovers/Ansley.jpg
+ - ../../assets/bookcovers/Unequal-cities.jpg
+ - ../../assets/bookcovers/Matt-Delmont.jpg
+ - ../../assets/bookcovers/Ansley.jpg
 video: "educational-injustice-and-organizing-1"
 ---
 

@@ -4,13 +4,13 @@ title: "NEH Seminar 2015: Rethinking Black Freedom Studies from the Jim Crow Nor
 
 ## Description
 
-**An NEH Summer Seminar for College and University Teachers**
+ **An NEH Summer Seminar for College and University Teachers**
 
-**June 15 - June 26, 2015 (2 weeks)**
+ **June 15 - June 26, 2015 (2 weeks)**
 
-**Deadline: March 2, 2015**
+ **Deadline: March 2, 2015**
 
-**Bronxville, NY**
+ **Bronxville, NY**
 
 *Updates on application process coming soon*
 
@@ -42,11 +42,11 @@ The first week emphasizes the emerging research agenda and conceptualization in 
 
 ## Directors
 
-**Komozi Woodard**
+ **Komozi Woodard**
 
-Komozi Woodard is Professor of History, Public Policy and Africana Studies at Sarah Lawrence College. Earning a Ph.D. in History at the University of Pennsylvania and B.A. in Sociology-Anthropology, Dr. Woodard held the Esther Raushenbush Professorship in History at Sarah Lawrence College; served on the Board of Directors of the Urban History Association; edited a few African American newspapers and cultural journals as well as Black Power & Black Arts Movement archives; directed an international news service and a radio news program; curated library, museum and college programs; and published hundreds of news and scholarly articles as well as six books, including these: *A Nation within a Nation: Amiri Baraka (LeRoi Jones) and Black Power Politics*; *The Making of the New Ark; The Black Power Movement: Amiri Baraka from Black Arts to Black Radicalism*, *Freedom North,**Groundwork* and *Want to Start a Revolution: Radical Women in the Black Freedom Struggle?*
+Komozi Woodard is Professor of History, Public Policy and Africana Studies at Sarah Lawrence College. Earning a Ph.D. in History at the University of Pennsylvania and B.A. in Sociology-Anthropology, Dr. Woodard held the Esther Raushenbush Professorship in History at Sarah Lawrence College; served on the Board of Directors of the Urban History Association; edited a few African American newspapers and cultural journals as well as Black Power & Black Arts Movement archives; directed an international news service and a radio news program; curated library, museum and college programs; and published hundreds of news and scholarly articles as well as six books, including these: *A Nation within a Nation: Amiri Baraka (LeRoi Jones) and Black Power Politics*; *The Making of the New Ark; The Black Power Movement: Amiri Baraka from Black Arts to Black Radicalism*, *Freedom North, **Groundwork* and *Want to Start a Revolution: Radical Women in the Black Freedom Struggle?*
 
-**Jeanne Theoharis**
+ **Jeanne Theoharis**
 
 Jeanne Theoharis is Distinguished Professor of Political Science at Brooklyn College of the City University of New York. Her most recent book is *The Rebellious Life of Mrs. Rosa Parks* which won a 2014 NAACP Image Award for Outstanding Literary Work in Biography/Autobiography. She and Komozi Woodard have edited three collections of new scholarship on the Black Freedom Struggle: *Freedom North: Black Freedom Struggles Outside of the South, 1940-1980*; *Groundwork: Local Black Freedom Movements in America* and *Want to Start A Revolution?: Radical Women in the Black Freedom Struggle* with Dayo Gore.
 
@@ -63,7 +63,7 @@ The application requires the following:
 - A 1000-word essay outlining why you want to take part in the seminar, what you bring to the seminar, and what project you will be working on during the seminar (book chapter; article-in-progress; syllabus; other pedagogical project). A key part of the seminar is workshopping each participant's project and so everyone is required to have a project directly related to the seminar to workshop. This project must be briefly outlined in your application essay.
 - A letter of recommendation that addresses what you will gain/bring to the seminar and how it will aid in your teaching or research agenda.
 
-**Applications must be postmarked by March 2, 2015. Applicants will be notified by March 30.**
+ **Applications must be postmarked by March 2, 2015. Applicants will be notified by March 30.**
 
 ## Housing
 

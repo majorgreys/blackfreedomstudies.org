@@ -4,13 +4,13 @@ date: 2019-09-05
 seasonYear: 2019
 seasonPart: fall
 speakers:
-  - "max-felker-kantor"
-  - "lashawn-harris"
-  - "naomi-murakawa"
+ - "max-felker-kantor"
+ - "lashawn-harris"
+ - "naomi-murakawa"
 books:
-  - ../../assets/bookcovers/firstcivilright.jpg
-  - ../../assets/bookcovers/Sexworkers.jpg
-  - ../../assets/bookcovers/policingla.jpg
+ - ../../assets/bookcovers/firstcivilright.jpg
+ - ../../assets/bookcovers/Sexworkers.jpg
+ - ../../assets/bookcovers/policingla.jpg
 video: "stop-killer-cops-police-bfrutality-mass-incarceration-and-the-liberal-establishment"
 ---
 

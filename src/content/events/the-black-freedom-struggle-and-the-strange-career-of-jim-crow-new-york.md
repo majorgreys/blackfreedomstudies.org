@@ -5,12 +5,12 @@ seasonYear: 2017
 seasonPart: fall
 eventbrite: "https://www.eventbrite.com/e/conversations-in-black-freedom-studies-the-strange-career-of-jim-crow-new-york-tickets-36844066595"
 speakers:
-  - "tahir-butt"
-  - "brian-purnell"
-  - "christopher-tinson"
+ - "tahir-butt"
+ - "brian-purnell"
+ - "christopher-tinson"
 books:
-  - ../../assets/bookcovers/jimcrowcountykings.jpg
-  - ../../assets/bookcovers/radicalintellect.png
+ - ../../assets/bookcovers/jimcrowcountykings.jpg
+ - ../../assets/bookcovers/radicalintellect.png
 video: "the-strange-career-of-jim-crow-new-york"
 ---
 

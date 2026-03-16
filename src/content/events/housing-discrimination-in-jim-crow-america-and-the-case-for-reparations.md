@@ -5,13 +5,13 @@ seasonYear: 2020
 seasonPart: spring
 eventbrite: "https://www.eventbrite.com/e/cbfs-housing-discrimination-in-the-jim-crow-north-and-the-case-for-reparations-tickets-88777047539"
 speakers:
-  - "nathan-connelly"
-  - "beryl-satter"
-  - "keeanga-yamahtta-taylor"
+ - "nathan-connelly"
+ - "beryl-satter"
+ - "keeanga-yamahtta-taylor"
 books:
-  - ../../assets/bookcovers/aworldmoreconcrete.jpg
-  - ../../assets/bookcovers/familyproperties.jpg
-  - ../../assets/bookcovers/raceforprofit.jpg
+ - ../../assets/bookcovers/aworldmoreconcrete.jpg
+ - ../../assets/bookcovers/familyproperties.jpg
+ - ../../assets/bookcovers/raceforprofit.jpg
 video: "housing-discrimination-in-the-jim-crow-us-and-the-case-for-reparations"
 ---
 

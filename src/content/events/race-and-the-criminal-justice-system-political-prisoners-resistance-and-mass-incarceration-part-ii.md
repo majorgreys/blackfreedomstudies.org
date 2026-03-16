@@ -5,13 +5,13 @@ seasonYear: 2015
 seasonPart: spring
 eventbrite: "http://www.eventbrite.com/e/race-and-the-criminal-justice-system-political-prisoners-resistance-and-mass-incarceration-part-ii-tickets-15184667750"
 speakers:
-  - "ruth-wilson-gilmore"
-  - "arun-kundnani"
-  - "laura-whitehorn"
+ - "ruth-wilson-gilmore"
+ - "arun-kundnani"
+ - "laura-whitehorn"
 books:
-  - ../../assets/bookcovers/Gilmore-Golden-Gulags.jpg
-  - ../../assets/bookcovers/Whitehorn-War-Before.jpg
-  - ../../assets/bookcovers/Kundnani-Muslims-Are-Coming.jpg
+ - ../../assets/bookcovers/Gilmore-Golden-Gulags.jpg
+ - ../../assets/bookcovers/Whitehorn-War-Before.jpg
+ - ../../assets/bookcovers/Kundnani-Muslims-Are-Coming.jpg
 video: "criminal-justice-part-ii"
 ---
 

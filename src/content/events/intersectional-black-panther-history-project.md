@@ -4,15 +4,15 @@ date: 2017-03-02
 seasonYear: 2017
 seasonPart: spring
 speakers:
-  - "angela-leblanc-ernest"
-  - "tracye-matthews"
-  - "mary-phillips"
-  - "robyn-spencer"
+ - "angela-leblanc-ernest"
+ - "tracye-matthews"
+ - "mary-phillips"
+ - "robyn-spencer"
 books:
-  - ../../assets/bookcovers/wanttostartarevolution.jpg
-  - ../../assets/bookcovers/sistersinstruggle.jpg
-  - ../../assets/bookcovers/blackpantherpartyreconsidered.jpg
-  - ../../assets/bookcovers/therevolutionhascome.jpg
+ - ../../assets/bookcovers/wanttostartarevolution.jpg
+ - ../../assets/bookcovers/sistersinstruggle.jpg
+ - ../../assets/bookcovers/blackpantherpartyreconsidered.jpg
+ - ../../assets/bookcovers/therevolutionhascome.jpg
 video: "intersectional-black-panther-history-project"
 ---
 

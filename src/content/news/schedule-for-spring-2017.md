@@ -18,7 +18,7 @@ Angela LeBlanc Ernest,
 Robyn Spencer, 
 Mary Phillips, and Tracye Matthews 
 
-###  April 6: Black Athletes and the Freedom Struggle 
+### April 6: Black Athletes and the Freedom Struggle 
 
 With John Smith
 and Jennifer Lansbury 

@@ -5,13 +5,13 @@ seasonYear: 2021
 seasonPart: spring
 eventbrite: "https://www.eventbrite.com/e/civil-rights-legacies-martin-malcolm-gwen-and-julian-cbfs-registration-136304527511"
 speakers:
-  - "ashley-farmer"
-  - "pam-horowitz"
-  - "peniel-joseph"
+ - "ashley-farmer"
+ - "pam-horowitz"
+ - "peniel-joseph"
 books:
-  - ../../assets/bookcovers/Bond.jpg
-  - ../../assets/bookcovers/Sword.jpg
-  - ../../assets/bookcovers/remakingblackpower.jpg
+ - ../../assets/bookcovers/Bond.jpg
+ - ../../assets/bookcovers/Sword.jpg
+ - ../../assets/bookcovers/remakingblackpower.jpg
 video: "civil-rights-legacies-martin-malcolm-gwen-and-julian"
 ---
 

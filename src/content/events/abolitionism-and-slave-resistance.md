@@ -4,13 +4,13 @@ date: 2018-05-03
 seasonYear: 2018
 seasonPart: spring
 speakers:
-  - "sowande-mustakeem"
-  - "manisha-sinha"
-  - "sasha-turner"
+ - "sowande-mustakeem"
+ - "manisha-sinha"
+ - "sasha-turner"
 books:
-  - ../../assets/bookcovers/slaveryatsea.jpg
-  - ../../assets/bookcovers/slavescause.jpg
-  - ../../assets/bookcovers/contestedbodies.jpg
+ - ../../assets/bookcovers/slaveryatsea.jpg
+ - ../../assets/bookcovers/slavescause.jpg
+ - ../../assets/bookcovers/contestedbodies.jpg
 video: "abolitionism-and-slave-resistance"
 ---
 

@@ -5,14 +5,14 @@ seasonYear: 2017
 seasonPart: fall
 eventbrite: "https://www.eventbrite.com/e/conversations-in-black-freedom-studies-the-fannie-lou-hamer-centennial-black-womens-organizing-tickets-36843584152"
 speakers:
-  - "katherine-charron"
-  - "ashley-farmer"
-  - "charles-payne"
-  - "gloria-richardson"
+ - "katherine-charron"
+ - "ashley-farmer"
+ - "charles-payne"
+ - "gloria-richardson"
 books:
-  - ../../assets/bookcovers/freedomsteacher.png
-  - ../../assets/bookcovers/remakingblackpower.jpg
-  - ../../assets/bookcovers/lightoffreedom.jpg
+ - ../../assets/bookcovers/freedomsteacher.png
+ - ../../assets/bookcovers/remakingblackpower.jpg
+ - ../../assets/bookcovers/lightoffreedom.jpg
 video: "the-fannie-lou-hamer-centennial"
 ---
 

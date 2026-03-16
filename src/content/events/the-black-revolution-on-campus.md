@@ -5,13 +5,13 @@ seasonYear: 2019
 seasonPart: fall
 eventbrite: "https://www.eventbrite.com/e/cbfs-black-revolution-on-campus-tickets-77361730017"
 speakers:
-  - "john-bracey-jr"
-  - "stefan-bradley-1"
-  - "shirletta-kinchen"
+ - "john-bracey-jr"
+ - "stefan-bradley-1"
+ - "shirletta-kinchen"
 books:
-  - ../../assets/bookcovers/upendingtheivorytower.jpg
-  - ../../assets/bookcovers/soscallingallblackpeople.jpg
-  - ../../assets/bookcovers/blackpowerinbluffcity.jpg
+ - ../../assets/bookcovers/upendingtheivorytower.jpg
+ - ../../assets/bookcovers/soscallingallblackpeople.jpg
+ - ../../assets/bookcovers/blackpowerinbluffcity.jpg
 video: "the-black-revolution-on-campus-1"
 ---
 

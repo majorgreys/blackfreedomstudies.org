@@ -5,13 +5,13 @@ seasonYear: 2016
 seasonPart: spring
 eventbrite: "http://www.eventbrite.com/e/conversations-in-black-freedom-studies-the-struggle-against-racism-and-repression-tickets-20629728072"
 speakers:
-  - "aram-goudsouzian"
-  - "aldon-morris"
-  - "caleb-smith"
+ - "aram-goudsouzian"
+ - "aldon-morris"
+ - "caleb-smith"
 books:
-  - ../../assets/bookcovers/AG.jpg
-  - ../../assets/bookcovers/CS.jpg
-  - ../../assets/bookcovers/AM.jpg
+ - ../../assets/bookcovers/AG.jpg
+ - ../../assets/bookcovers/CS.jpg
+ - ../../assets/bookcovers/AM.jpg
 video: "the-struggle-against-racism-and-repression"
 ---
 

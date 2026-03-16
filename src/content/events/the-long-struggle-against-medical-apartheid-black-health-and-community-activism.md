@@ -5,12 +5,12 @@ seasonYear: 2018
 seasonPart: fall
 eventbrite: "https://www.eventbrite.com/e/conversations-in-black-freedom-studies-black-health-community-activism-tickets-49183136084"
 speakers:
-  - "dr-julius-garvey"
-  - "gabriel-mendes"
-  - "alondra-nelson-1"
+ - "dr-julius-garvey"
+ - "gabriel-mendes"
+ - "alondra-nelson-1"
 books:
-  - ../../assets/bookcovers/underthecolor.jpg
-  - ../../assets/bookcovers/bodyandsoul.jpg
+ - ../../assets/bookcovers/underthecolor.jpg
+ - ../../assets/bookcovers/bodyandsoul.jpg
 video: "black-health-and-community-activism"
 ---
 

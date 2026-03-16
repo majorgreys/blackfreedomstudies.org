@@ -5,13 +5,13 @@ seasonYear: 2015
 seasonPart: fall
 eventbrite: "http://www.eventbrite.com/e/conversations-in-black-freedom-studies-the-young-lords-party-part-i-tickets-18102558239"
 speakers:
-  - "johanna-fernandez"
-  - "jose-cha-cha-jimenez"
-  - "felipe-luciano"
-  - "wilson-valent-n-escobar"
+ - "johanna-fernandez"
+ - "jose-cha-cha-jimenez"
+ - "felipe-luciano"
+ - "wilson-valent-n-escobar"
 books:
-  - ../../assets/bookcovers/manuel-ramos-march.jpg
-  - ../../assets/bookcovers/YLO.Sign-on-Church.jpg
+ - ../../assets/bookcovers/manuel-ramos-march.jpg
+ - ../../assets/bookcovers/YLO.Sign-on-Church.jpg
 video: "the-young-lords-party-part-i"
 ---
 

@@ -4,13 +4,13 @@ date: 2019-12-05
 seasonYear: 2019
 seasonPart: fall
 speakers:
-  - "louis-moore"
-  - "wyomia-tyus"
-  - "dave-zirin"
+ - "louis-moore"
+ - "wyomia-tyus"
+ - "dave-zirin"
 books:
-  - ../../assets/bookcovers/wewillwintheday.JPG
-  - ../../assets/bookcovers/tigerbelle.jpg
-  - ../../assets/bookcovers/apeopleshistoryofsports.jpg
+ - ../../assets/bookcovers/wewillwintheday.JPG
+ - ../../assets/bookcovers/tigerbelle.jpg
+ - ../../assets/bookcovers/apeopleshistoryofsports.jpg
 video: "the-black-athlete-in-the-freedom-struggle"
 ---
 

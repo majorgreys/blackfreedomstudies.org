@@ -4,13 +4,13 @@ date: 2018-03-01
 seasonYear: 2018
 seasonPart: spring
 speakers:
-  - "aliyah-dunn-salahuddin"
-  - "laura-hill"
-  - "peter-levy"
-  - "rosie-uyola"
+ - "aliyah-dunn-salahuddin"
+ - "laura-hill"
+ - "peter-levy"
+ - "rosie-uyola"
 books:
-  - ../../assets/bookcovers/hillbusiness.jpg
-  - ../../assets/bookcovers/greatuprising.jpg
+ - ../../assets/bookcovers/hillbusiness.jpg
+ - ../../assets/bookcovers/greatuprising.jpg
 video: "revisiting-the-uprisings-of-the-1960s"
 ---
 

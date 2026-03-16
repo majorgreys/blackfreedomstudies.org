@@ -4,13 +4,13 @@ date: 2020-03-05
 seasonYear: 2020
 seasonPart: spring
 speakers:
-  - "rachel-devlin"
-  - "devin-fergus"
-  - "elizabeth-mcrae"
+ - "rachel-devlin"
+ - "devin-fergus"
+ - "elizabeth-mcrae"
 books:
-  - ../../assets/bookcovers/agirlstandsatthedoor.jpg
-  - ../../assets/bookcovers/landofthefree.jpg
-  - ../../assets/bookcovers/mothersofmassiveresistance.jpg
+ - ../../assets/bookcovers/agirlstandsatthedoor.jpg
+ - ../../assets/bookcovers/landofthefree.jpg
+ - ../../assets/bookcovers/mothersofmassiveresistance.jpg
 video: "the-long-struggle-against-educational-injustice"
 ---
 

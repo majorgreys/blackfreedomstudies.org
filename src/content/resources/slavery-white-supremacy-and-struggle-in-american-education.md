@@ -6,8 +6,8 @@ videoEmbedCode: "<iframe src=\"//player.vimeo.com/video/108324717?title=0&amp;by
 publicationDate: "2/6/2014"
 date: 2014-02-06
 tags:
-  - "Slavery"
-  - "Education"
+ - "Slavery"
+ - "Education"
 ---
 
 

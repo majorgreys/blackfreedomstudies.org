@@ -4,13 +4,13 @@ date: 2022-11-03
 seasonYear: 2022
 seasonPart: fall
 speakers:
-  - "zakiya"
-  - "steven-william-thrasher"
-  - "dana-ain-davis"
+ - "zakiya"
+ - "steven-william-thrasher"
+ - "dana-ain-davis"
 books:
-  - ../../assets/bookcovers/viralunderclass.jpg
-  - ../../assets/bookcovers/reproductiverights.jpeg
-  - ../../assets/bookcovers/reproductiveinjustice.jpg
+ - ../../assets/bookcovers/viralunderclass.jpg
+ - ../../assets/bookcovers/reproductiverights.jpeg
+ - ../../assets/bookcovers/reproductiveinjustice.jpg
 ---
 
 

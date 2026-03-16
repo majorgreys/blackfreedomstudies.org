@@ -6,7 +6,7 @@ email: "conortomasreed@gmail.com"
 homepage: "https://conortomasreed.com/"
 ---
 
-**Conor ‘Coco’ Tomás Reed**(all) is a Puerto Rican/Irish gender-fluid scholar-organizer of radical cultural/pedagogical movements in the Americas and the Caribbean, and the Program Director of the [Shape of Cities to Come Institute](https://www.shapeofcitiestocome.org/).
+ **Conor ‘Coco’ Tomás Reed**(all) is a Puerto Rican/Irish gender-fluid scholar-organizer of radical cultural/pedagogical movements in the Americas and the Caribbean, and the Program Director of the [Shape of Cities to Come Institute](https://www.shapeofcitiestocome.org/).
 
 Coco’s new book*[New York Liberation School: Study and Movement for the People’s University](https://www.commonnotions.org/new-york-liberation-school)*(Common Notions) chronicles the rise of Black, Puerto Rican, and Women’s Studies and movements at the City College of New York and in New York City, as well as CUNY’s post-9/11 opposition to US imperialism, colonialism, and carcerality. Coco is also developing the quadrilingual anthology *Black Feminist Studies in the Americas and the Caribbean* ([Malpa](http://malpaisediciones.com/sitio/)[í](http://malpaisediciones.com/sitio/)[s Ediciones](http://malpaisediciones.com/sitio/)) with co-editors Diarenis Calderón Tartabull, Makeba Lavan, Tito Mitjans Alayón, Violeta Orozco Barrera, and Layla Zami. They are the current co-managing editor of*[LÁPIZ Journal](https://www.lapes.org/publications)* and a contributing editor of [*Lost & Found:**The CUNY Poetics Document Initiative.*](https://www.centerforthehumanities.org/lost-and-found)
 
@@ -14,7 +14,7 @@ Coco has been immersed in almost two decades of struggles at the City University
 
 ~~~~~~~~~~
 
-**Conor ‘Coco’ Tomás Reed** (tode) es un puertorriqueñe / irlandés de múltiples géneros erudite y organizadore de movimientos culturales pedagógicos radicales en las Americas y el Caribe, y directore del programa del Instituto Shape of Cities to Come.
+ **Conor ‘Coco’ Tomás Reed** (tode) es un puertorriqueñe / irlandés de múltiples géneros erudite y organizadore de movimientos culturales pedagógicos radicales en las Americas y el Caribe, y directore del programa del Instituto Shape of Cities to Come.
 
 El libro nuevo de Coco, [*New York Liberation School: Study and Movement for the People’s University*](https://www.commonnotions.org/new-york-liberation-school) (Common Notions), relata el surgimiento de los estudios y movimientos negros, puertorriqueños, y de mujeres en el City College de Nueva York y en la ciudad de Nueva York, así como la relación de oposición de CUNY posterior al 11 de septiembre con el imperialismo, colonialismo, y carceralidad estadounidense. Coco también está desarrollando la antología cuatrilingüe *Black Feminist Studies in the Americas and the Caribbean* ([Malpa](http://malpaisediciones.com/sitio/)[í](http://malpaisediciones.com/sitio/)[s Ediciones](http://malpaisediciones.com/sitio/)) con les coeditores Diarenis Calderón Tartabull, Makeba Lavan, Tito Mitjans Alayón, Violeta Orozco Barrera y Layla Zami. Elle es el editore codirector actual de [*LÁPIZ**Journal*](https://www.lapes.org/publications) y editore colaborador de [*Lost & Found: The CUNY Poetics Document Initiative*](https://www.centerforthehumanities.org/lost-and-found).
 

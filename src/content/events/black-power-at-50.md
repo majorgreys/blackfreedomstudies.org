@@ -5,15 +5,15 @@ seasonYear: 2017
 seasonPart: spring
 eventbrite: "https://www.eventbrite.com/e/conversations-in-black-freedom-studies-black-power-at-50-tickets-30863421324"
 speakers:
-  - "jamala-rogers"
-  - "mark-speltz"
-  - "stephen-ward"
-  - "komozi-woodard"
+ - "jamala-rogers"
+ - "mark-speltz"
+ - "stephen-ward"
+ - "komozi-woodard"
 books:
-  - ../../assets/bookcovers/fergusonisamerica.jpg
-  - ../../assets/bookcovers/northofdixie.jpg
-  - ../../assets/bookcovers/inloveandstruggle.jpg
-  - ../../assets/bookcovers/blackpower50.jpg
+ - ../../assets/bookcovers/fergusonisamerica.jpg
+ - ../../assets/bookcovers/northofdixie.jpg
+ - ../../assets/bookcovers/inloveandstruggle.jpg
+ - ../../assets/bookcovers/blackpower50.jpg
 video: "black-power-at-50-1"
 ---
 

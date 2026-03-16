@@ -4,13 +4,13 @@ date: 2013-10-03
 seasonYear: 2013
 seasonPart: fall
 speakers:
-  - "amiri-baraka"
-  - "ingrid-monson"
-  - "john-szwed"
+ - "amiri-baraka"
+ - "ingrid-monson"
+ - "john-szwed"
 books:
-  - ../../assets/bookcovers/jonesblues.jpg
-  - ../../assets/bookcovers/monsonfreedom.jpg
-  - ../../assets/bookcovers/szwedwhat.jpg
+ - ../../assets/bookcovers/jonesblues.jpg
+ - ../../assets/bookcovers/monsonfreedom.jpg
+ - ../../assets/bookcovers/szwedwhat.jpg
 video: "the-blues-people-50-years-later"
 ---
 

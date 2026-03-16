@@ -5,12 +5,12 @@ seasonYear: 2016
 seasonPart: spring
 eventbrite: "http://www.eventbrite.com/e/conversations-in-black-freedom-studies-the-church-and-the-struggle-tickets-20628077134"
 speakers:
-  - "kevin-mcgruder"
-  - "genna-rae-mcneil"
-  - "jennifer-scanlon"
+ - "kevin-mcgruder"
+ - "genna-rae-mcneil"
+ - "jennifer-scanlon"
 books:
-  - ../../assets/bookcovers/mcgruderwitness.jpg
-  - ../../assets/bookcovers/scanlonjustice.jpeg
+ - ../../assets/bookcovers/mcgruderwitness.jpg
+ - ../../assets/bookcovers/scanlonjustice.jpeg
 video: "the-church-and-the-struggle"
 ---
 

@@ -5,15 +5,15 @@ seasonYear: 2020
 seasonPart: fall
 eventbrite: "https://www.eventbrite.com/e/cbfs-fighting-for-the-franchise-a-century-of-struggle-for-voting-rights-registration-120405160075?aff=ebdssbonlinesearch"
 speakers:
-  - "carol-anderson"
-  - "ari-berman"
-  - "martha-jones"
-  - "reverend-liz-theoharis"
+ - "carol-anderson"
+ - "ari-berman"
+ - "martha-jones"
+ - "reverend-liz-theoharis"
 books:
-  - ../../assets/bookcovers/oneperson.jpg
-  - ../../assets/bookcovers/giveustheballot.jpg
-  - ../../assets/bookcovers/vanguard.jpg
-  - ../../assets/bookcovers/reviveusagain.jpg
+ - ../../assets/bookcovers/oneperson.jpg
+ - ../../assets/bookcovers/giveustheballot.jpg
+ - ../../assets/bookcovers/vanguard.jpg
+ - ../../assets/bookcovers/reviveusagain.jpg
 video: "fighting-for-the-franchise"
 ---
 

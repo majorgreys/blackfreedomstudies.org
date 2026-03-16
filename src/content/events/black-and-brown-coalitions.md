@@ -5,13 +5,13 @@ seasonYear: 2015
 seasonPart: spring
 eventbrite: "http://www.nypl.org/events/programs/2015/05/07/conversations-black-freedom-studies-black-and-brown-coalitions"
 speakers:
-  - "johanna-fernandez"
-  - "sonia-lee"
-  - "alejandra-marchevsky"
-  - "fred-opie"
+ - "johanna-fernandez"
+ - "sonia-lee"
+ - "alejandra-marchevsky"
+ - "fred-opie"
 books:
-  - ../../assets/bookcovers/Building-a-Latino-Civil-Rights-Movement.jpg
-  - ../../assets/bookcovers/Alejandra-Marchevsky.jpg
+ - ../../assets/bookcovers/Building-a-Latino-Civil-Rights-Movement.jpg
+ - ../../assets/bookcovers/Alejandra-Marchevsky.jpg
 video: "black-and-brown-coalitions"
 ---
 

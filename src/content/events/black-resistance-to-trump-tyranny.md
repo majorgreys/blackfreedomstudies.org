@@ -5,13 +5,13 @@ seasonYear: 2018
 seasonPart: spring
 eventbrite: "https://www.eventbrite.com/e/conversations-in-black-freedom-studies-black-resistance-to-trump-tyranny-tickets-41507145991"
 speakers:
-  - "haki-madhubuti"
-  - "noliwe-rooks"
-  - "michael-simanga"
+ - "haki-madhubuti"
+ - "noliwe-rooks"
+ - "michael-simanga"
 books:
-  - ../../assets/bookcovers/notourpres.jpg
-  - ../../assets/bookcovers/Cuttingschool.jpg
-  - ../../assets/bookcovers/Simanagabook.jpg
+ - ../../assets/bookcovers/notourpres.jpg
+ - ../../assets/bookcovers/Cuttingschool.jpg
+ - ../../assets/bookcovers/Simanagabook.jpg
 video: "black-resistance-to-trump-tyranny"
 ---
 

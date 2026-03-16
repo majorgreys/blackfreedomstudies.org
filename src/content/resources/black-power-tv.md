@@ -6,7 +6,7 @@ videoEmbedCode: "<iframe src=\"//player.vimeo.com/video/108307386?title=0&amp;by
 publicationDate: "12/5/2013"
 date: 2013-12-05
 tags:
-  - "black power"
+ - "black power"
 ---
 
 

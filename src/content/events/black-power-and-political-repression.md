@@ -5,13 +5,13 @@ seasonYear: 2016
 seasonPart: spring
 eventbrite: "http://www.eventbrite.com/e/conversations-in-black-freedom-studies-black-power-and-radical-repression-tickets-20286580709"
 speakers:
-  - "kenneth-janken"
-  - "erik-mcduffie"
-  - "rhonda-williams"
+ - "kenneth-janken"
+ - "erik-mcduffie"
+ - "rhonda-williams"
 books:
-  - ../../assets/bookcovers/jankenwilmingtonten.jpg
-  - ../../assets/bookcovers/mcduffiesojourning.jpg
-  - ../../assets/bookcovers/williamsconcrete.jpg
+ - ../../assets/bookcovers/jankenwilmingtonten.jpg
+ - ../../assets/bookcovers/mcduffiesojourning.jpg
+ - ../../assets/bookcovers/williamsconcrete.jpg
 video: "black-power-and-political-repression"
 ---
 

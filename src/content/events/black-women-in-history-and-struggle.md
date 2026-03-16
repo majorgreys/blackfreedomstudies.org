@@ -4,12 +4,12 @@ date: 2021-03-04
 seasonYear: 2021
 seasonPart: spring
 speakers:
-  - "daina-ramey-berry"
-  - "kali-nicole-gross"
-  - "jeanne-theoharis"
+ - "daina-ramey-berry"
+ - "kali-nicole-gross"
+ - "jeanne-theoharis"
 books:
-  - ../../assets/bookcovers/Berry-and-Gross.jpg
-  - ../../assets/bookcovers/RosaParksYA.jpg
+ - ../../assets/bookcovers/Berry-and-Gross.jpg
+ - ../../assets/bookcovers/RosaParksYA.jpg
 video: "black-women-in-history-and-struggle"
 ---
 

@@ -15,7 +15,7 @@ We'll continue to remain online for the spring, with our guests and audiences dr
 **
 **
 
-**February 3rd - Black New York**
+ ** February 3rd - Black New York **
 
 -Tammy Brown on her book, *City of Islands: Caribbean Intellectuals in New York*
  
@@ -31,7 +31,7 @@ We'll continue to remain online for the spring, with our guests and audiences dr
  
  
 
-**March 3rd - Black Power Revisited
+ ** March 3rd - Black Power Revisited
 **
 
 *-*Robin Hayes on her book, *Love for Liberation: African Independence, Black Power, and a Diaspora Underground*
@@ -49,7 +49,7 @@ We'll continue to remain online for the spring, with our guests and audiences dr
  
  
 
-**April 7th - Slavery, Capitalism, and Empire
+ ** April 7th - Slavery, Capitalism, and Empire
 **
 
 -Justene Edwards on her book, *Unfree Markets: The Slaves' Economy and the Rise of Capitalism in South Carolina* 
@@ -65,7 +65,7 @@ We'll continue to remain online for the spring, with our guests and audiences dr
  
  
 
-**May 5th - Racism and Resistance in the Post Civil Rights Era
+ ** May 5th - Racism and Resistance in the Post Civil Rights Era
 ** 
 
 -Carol Anderson on her book, *The Second: Race and Guns in a Fatefully Unequal America* 
@@ -80,7 +80,7 @@ We'll continue to remain online for the spring, with our guests and audiences dr
  
  
 
-**June 2nd – Films of Black Struggle
+ ** June 2nd – Films of Black Struggle
 **
 
 -Tayo Giwa on his film, *The Sun Rises in the East

@@ -5,12 +5,12 @@ seasonYear: 2018
 seasonPart: fall
 eventbrite: "https://www.eventbrite.com/e/cbfs-rethinking-h-rap-brown-black-power-tickets-49489897616"
 speakers:
-  - "arun-kundnani"
-  - "robyn-spencer"
-  - "akinyele-umoja"
+ - "arun-kundnani"
+ - "robyn-spencer"
+ - "akinyele-umoja"
 books:
-  - ../../assets/bookcovers/Rap-2.jpg
-  - ../../assets/bookcovers/BPP.jpg
+ - ../../assets/bookcovers/Rap-2.jpg
+ - ../../assets/bookcovers/BPP.jpg
 video: "rethinking-h-rap-brown"
 ---
 

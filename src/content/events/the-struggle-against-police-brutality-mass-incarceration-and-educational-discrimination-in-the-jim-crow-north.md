@@ -5,13 +5,13 @@ seasonYear: 2019
 seasonPart: spring
 eventbrite: "https://www.eventbrite.com/e/the-struggle-against-jim-crow-north-police-brutality-mass-incarceration-and-educational-tickets-54182147261"
 speakers:
-  - "kristopher-burrell"
-  - "james-forman"
-  - "clarence-taylor"
+ - "kristopher-burrell"
+ - "james-forman"
+ - "clarence-taylor"
 books:
-  - ../../assets/bookcovers/fightthepower.jpg
-  - ../../assets/bookcovers/Jim-Crow-NY.jpg
-  - ../../assets/bookcovers/lockingupourown.jpg
+ - ../../assets/bookcovers/fightthepower.jpg
+ - ../../assets/bookcovers/Jim-Crow-NY.jpg
+ - ../../assets/bookcovers/lockingupourown.jpg
 video: "the-struggle-against-police-brutality-mass-incarceration-and-educational-discrimination-in-the-jim-crow-north"
 ---
 

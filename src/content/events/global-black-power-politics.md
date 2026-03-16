@@ -4,12 +4,12 @@ date: 2014-05-01
 seasonYear: 2014
 seasonPart: spring
 speakers:
-  - "peniel-joseph"
-  - "gloria-richardson"
-  - "michael-west"
+ - "peniel-joseph"
+ - "gloria-richardson"
+ - "michael-west"
 books:
-  - ../../assets/bookcovers/josephdark.jpg
-  - ../../assets/bookcovers/westtoussaint.jpg
+ - ../../assets/bookcovers/josephdark.jpg
+ - ../../assets/bookcovers/westtoussaint.jpg
 ---
 
 

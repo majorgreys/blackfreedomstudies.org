@@ -6,7 +6,7 @@ videoEmbedCode: "<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/em
 publicationDate: "6/6/2013"
 date: 2013-06-06
 tags:
-  - "Internationalism"
+ - "Internationalism"
 ---
 
 

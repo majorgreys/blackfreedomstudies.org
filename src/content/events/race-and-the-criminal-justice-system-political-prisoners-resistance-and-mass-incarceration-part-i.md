@@ -5,13 +5,13 @@ seasonYear: 2015
 seasonPart: spring
 eventbrite: "http://www.eventbrite.com/e/conversations-in-black-freedom-studies-race-and-the-criminal-justice-system-political-prisoners-tickets-15183150211"
 speakers:
-  - "dan-berger"
-  - "victoria-law"
-  - "bryan-stevenson"
+ - "dan-berger"
+ - "victoria-law"
+ - "bryan-stevenson"
 books:
-  - ../../assets/bookcovers/Stevenson-Just-Mercy.jpg
-  - ../../assets/bookcovers/Berger-Captive-Nation.jpg
-  - ../../assets/bookcovers/Law-Resistance-Behind-Bars.JPG
+ - ../../assets/bookcovers/Stevenson-Just-Mercy.jpg
+ - ../../assets/bookcovers/Berger-Captive-Nation.jpg
+ - ../../assets/bookcovers/Law-Resistance-Behind-Bars.JPG
 video: "criminal-justice-part-i"
 ---
 

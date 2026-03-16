@@ -5,13 +5,13 @@ seasonYear: 2019
 seasonPart: spring
 eventbrite: "https://www.eventbrite.com/e/rethinking-black-women-freedom-fighters-gloria-richardson-louise-thompson-patterson-the-women-of-tickets-54181573545"
 speakers:
-  - "joseph-fitzgerald"
-  - "keith-gilyard"
-  - "ula-taylor"
+ - "joseph-fitzgerald"
+ - "keith-gilyard"
+ - "ula-taylor"
 books:
-  - ../../assets/bookcovers/Fitz.jpg
-  - ../../assets/bookcovers/Taylor.png
-  - ../../assets/bookcovers/LTP.jpg
+ - ../../assets/bookcovers/Fitz.jpg
+ - ../../assets/bookcovers/Taylor.png
+ - ../../assets/bookcovers/LTP.jpg
 video: "rethinking-black-women-freedom-fighters-gloria-richardson-louise-thompson-patterson-and-the-women-of-the-nation-of-islam"
 ---
 

@@ -55,7 +55,7 @@ Ashley Farmer, author of *Remaking Black Power: How Black Women Transformed an E
 John Portlock, author of "Charlotta Bass and the *California Eagle" (in The Strange Careers of the Jim Crow North: Segregation and Struggle Outside of the South)
 *
 
-###**May 2 - The Struggle Against Police Brutality, Mass Incarceration, and Educational Discrimination in the Jim Crow North**
+###** May 2 - The Struggle Against Police Brutality, Mass Incarceration, and Educational Discrimination in the Jim Crow North **
 
 Asked to name the heroes of New York's civil rights movement, most New Yorkers would be hardpressed. And yet institutional segregation and systemic inequality defined the city in housing, schools, and policing so activists like Mae Mallory and Ella Baker and organizations from the NAACP, to the Nation of Islam, to the Communist Party built movements to address these inequalities. Join us as we examine the history of the Jim Crow North and the long struggle to right the injustices of the criminal justice and educational systems.
 

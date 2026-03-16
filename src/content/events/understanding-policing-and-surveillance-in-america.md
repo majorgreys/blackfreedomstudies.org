@@ -4,15 +4,15 @@ date: 2021-10-07
 seasonYear: 2021
 seasonPart: fall
 speakers:
-  - "daniel-s-chard"
-  - "victoria-law"
-  - "marisol-lebr-n"
-  - "stuart-schrader"
+ - "daniel-s-chard"
+ - "victoria-law"
+ - "marisol-lebr-n"
+ - "stuart-schrader"
 books:
-  - ../../assets/bookcovers/badges-without-borders.jpg
-  - ../../assets/bookcovers/prisons-make-us-safer.jpg
-  - ../../assets/bookcovers/policinglifeanddeath.jpg
-  - ../../assets/bookcovers/Nixons-war-at-home.jpg
+ - ../../assets/bookcovers/badges-without-borders.jpg
+ - ../../assets/bookcovers/prisons-make-us-safer.jpg
+ - ../../assets/bookcovers/policinglifeanddeath.jpg
+ - ../../assets/bookcovers/Nixons-war-at-home.jpg
 video: "understanding-policing-and-surveillance-in-america"
 ---
 

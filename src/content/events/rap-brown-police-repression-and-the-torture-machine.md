@@ -5,14 +5,14 @@ seasonYear: 2019
 seasonPart: fall
 eventbrite: "https://www.eventbrite.com/e/cbfs-rap-brown-police-repression-and-the-torture-machine-tickets-73483863213"
 speakers:
-  - "simon-balto"
-  - "arun-kundnani"
-  - "flint-taylor"
+ - "simon-balto"
+ - "arun-kundnani"
+ - "flint-taylor"
 books:
-  - ../../assets/bookcovers/occupiedterritory.jpg
-  - ../../assets/bookcovers/Rap-2.jpg
-  - ../../assets/bookcovers/Kundnani-Muslims-Are-Coming.jpg
-  - ../../assets/bookcovers/torturemachine.jpg
+ - ../../assets/bookcovers/occupiedterritory.jpg
+ - ../../assets/bookcovers/Rap-2.jpg
+ - ../../assets/bookcovers/Kundnani-Muslims-Are-Coming.jpg
+ - ../../assets/bookcovers/torturemachine.jpg
 video: "rap-brown-police-repression-and-the-torture-machine-1"
 ---
 

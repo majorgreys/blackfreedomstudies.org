@@ -5,12 +5,12 @@ seasonYear: 2018
 seasonPart: fall
 eventbrite: "https://www.eventbrite.com/e/conversations-in-black-freedom-studies-the-struggle-for-voting-rights-the-poor-peoples-campaign-tickets-49490863505"
 speakers:
-  - "reverend-william-barber"
-  - "gloria-browne-marshall"
-  - "reverend-liz-theoharis"
+ - "reverend-william-barber"
+ - "gloria-browne-marshall"
+ - "reverend-liz-theoharis"
 books:
-  - ../../assets/bookcovers/reviveusagain.jpg
-  - ../../assets/bookcovers/votingrightswar.jpg
+ - ../../assets/bookcovers/reviveusagain.jpg
+ - ../../assets/bookcovers/votingrightswar.jpg
 video: "the-struggle-for-voting-rights-and-the-poor-peoples-campaign"
 ---
 

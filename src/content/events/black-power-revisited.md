@@ -5,15 +5,15 @@ seasonYear: 2022
 seasonPart: spring
 eventbrite: "https://www.eventbrite.com/e/black-power-revisited-cbfs-registration-272218662347?aff=ebdsoporgprofile"
 speakers:
-  - "robin-hayes"
-  - "dweston-haywood"
-  - "ed-onasci"
-  - "monica-white"
+ - "robin-hayes"
+ - "dweston-haywood"
+ - "ed-onasci"
+ - "monica-white"
 books:
-  - ../../assets/bookcovers/IMG_9964.JPG
-  - ../../assets/bookcovers/IMG_9965.JPG
-  - ../../assets/bookcovers/IMG_9966.JPG
-  - ../../assets/bookcovers/IMG_9967.JPG
+ - ../../assets/bookcovers/IMG_9964.JPG
+ - ../../assets/bookcovers/IMG_9965.JPG
+ - ../../assets/bookcovers/IMG_9966.JPG
+ - ../../assets/bookcovers/IMG_9967.JPG
 video: "black-power-revisited"
 ---
 

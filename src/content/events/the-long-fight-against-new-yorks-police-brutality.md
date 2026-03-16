@@ -4,14 +4,14 @@ date: 2017-05-04
 seasonYear: 2017
 seasonPart: spring
 speakers:
-  - "michael-flamm"
-  - "chris-hayes"
-  - "cathy-schneider"
-  - "clarence-taylor"
+ - "michael-flamm"
+ - "chris-hayes"
+ - "cathy-schneider"
+ - "clarence-taylor"
 books:
-  - ../../assets/bookcovers/intheheat.jpg
-  - ../../assets/bookcovers/policepowerraceriots.jpg
-  - ../../assets/bookcovers/civilrightsnewyorkcity.jpg
+ - ../../assets/bookcovers/intheheat.jpg
+ - ../../assets/bookcovers/policepowerraceriots.jpg
+ - ../../assets/bookcovers/civilrightsnewyorkcity.jpg
 video: "the-long-fight-against-police-brutality"
 ---
 

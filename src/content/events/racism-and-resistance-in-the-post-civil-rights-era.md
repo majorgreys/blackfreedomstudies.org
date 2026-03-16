@@ -5,15 +5,15 @@ seasonYear: 2022
 seasonPart: spring
 eventbrite: "https://www.eventbrite.com/e/racism-and-resistance-in-the-post-civil-rights-era-cbfs-registration-272237839707?aff=ebdsoporgprofile"
 speakers:
-  - "carol-anderson"
-  - "elizabeth-hinton"
-  - "emily-hobeson"
-  - "daniel-lucks"
+ - "carol-anderson"
+ - "elizabeth-hinton"
+ - "emily-hobeson"
+ - "daniel-lucks"
 books:
-  - ../../assets/bookcovers/IMG_9975.JPG
-  - ../../assets/bookcovers/IMG_9974.JPG
-  - ../../assets/bookcovers/IMG_9972.JPG
-  - ../../assets/bookcovers/IMG_9976.JPG
+ - ../../assets/bookcovers/IMG_9975.JPG
+ - ../../assets/bookcovers/IMG_9974.JPG
+ - ../../assets/bookcovers/IMG_9972.JPG
+ - ../../assets/bookcovers/IMG_9976.JPG
 video: "racism-and-resistance-in-the-post-civil-rights-era"
 ---
 

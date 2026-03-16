@@ -5,13 +5,13 @@ seasonYear: 2023
 seasonPart: fall
 eventbrite: "https://www.eventbrite.com/e/cbfs-financing-freedom-black-women-and-economic-self-determination-tickets-751173459037?aff=ebdsoporgprofile"
 speakers:
-  - "tanisha-ford"
-  - "shennette-garrett-scott"
-  - "crystal-moten"
+ - "tanisha-ford"
+ - "shennette-garrett-scott"
+ - "crystal-moten"
 books:
-  - ../../assets/bookcovers/our-secret-society.jpeg
-  - ../../assets/bookcovers/continually-working.jpg
-  - ../../assets/bookcovers/banking-on-freedom.jpg
+ - ../../assets/bookcovers/our-secret-society.jpeg
+ - ../../assets/bookcovers/continually-working.jpg
+ - ../../assets/bookcovers/banking-on-freedom.jpg
 ---
 
 

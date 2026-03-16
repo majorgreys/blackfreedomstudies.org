@@ -5,12 +5,12 @@ seasonYear: 2020
 seasonPart: fall
 eventbrite: "https://www.eventbrite.com/e/cbfs-how-did-we-get-here-the-long-struggle-for-educational-justice-in-ny-registration-117563841615"
 speakers:
-  - "ujju-aggarwal"
-  - "ernest-morrell"
-  - "terrenda-white"
+ - "ujju-aggarwal"
+ - "ernest-morrell"
+ - "terrenda-white"
 books:
-  - ../../assets/bookcovers/Whatsracegottodo-2.jpg
-  - ../../assets/bookcovers/9780231182201.jpg
+ - ../../assets/bookcovers/Whatsracegottodo-2.jpg
+ - ../../assets/bookcovers/9780231182201.jpg
 video: "the-long-struggle-for-educational-justice-in-new-york"
 ---
 

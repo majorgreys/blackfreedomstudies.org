@@ -4,15 +4,15 @@ date: 2018-04-05
 seasonYear: 2018
 seasonPart: spring
 speakers:
-  - "mary-frances-berry"
-  - "thomas-jackson"
-  - "david-stein"
-  - "jeanne-theoharis"
+ - "mary-frances-berry"
+ - "thomas-jackson"
+ - "david-stein"
+ - "jeanne-theoharis"
 books:
-  - ../../assets/bookcovers/historyteaches.jpg
-  - ../../assets/bookcovers/fromcivilrights.jpg
-  - ../../assets/bookcovers/souls.JPG
-  - ../../assets/bookcovers/morebeautiful.jpg
+ - ../../assets/bookcovers/historyteaches.jpg
+ - ../../assets/bookcovers/fromcivilrights.jpg
+ - ../../assets/bookcovers/souls.JPG
+ - ../../assets/bookcovers/morebeautiful.jpg
 video: "50-years-after-the-assassination-of-martin-luther-king"
 ---
 

@@ -4,11 +4,11 @@ date: 2013-05-02
 seasonYear: 2013
 seasonPart: spring
 speakers:
-  - "brian-purnell"
-  - "clarence-taylor"
+ - "brian-purnell"
+ - "clarence-taylor"
 books:
-  - ../../assets/bookcovers/purnellfighting.jpg
-  - ../../assets/bookcovers/taylornyc.jpg
+ - ../../assets/bookcovers/purnellfighting.jpg
+ - ../../assets/bookcovers/taylornyc.jpg
 video: "freedom-north-the-black-freedom-struggle-in-new-york"
 ---
 

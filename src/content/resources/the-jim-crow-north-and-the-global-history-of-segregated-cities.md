@@ -6,7 +6,7 @@ videoEmbedCode: "<iframe src=\"//player.vimeo.com/video/108378709?title=0&amp;by
 publicationDate: "4/3/2014"
 date: 2014-04-03
 tags:
-  - "Segregation"
+ - "Segregation"
 ---
 
 

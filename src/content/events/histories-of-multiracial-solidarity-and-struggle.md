@@ -4,13 +4,13 @@ date: 2020-11-05
 seasonYear: 2020
 seasonPart: fall
 speakers:
-  - "roxanne-dunbar-ortiz"
-  - "johanna-fernandez"
-  - "paul-ortiz"
+ - "roxanne-dunbar-ortiz"
+ - "johanna-fernandez"
+ - "paul-ortiz"
 books:
-  - ../../assets/bookcovers/Indigenous-people.jpg
-  - ../../assets/bookcovers/theyounglords.jpg
-  - ../../assets/bookcovers/anafricanamericanandlatinxhistoryoftheus.jpg
+ - ../../assets/bookcovers/Indigenous-people.jpg
+ - ../../assets/bookcovers/theyounglords.jpg
+ - ../../assets/bookcovers/anafricanamericanandlatinxhistoryoftheus.jpg
 video: "histories-of-multiracial-solidarity-and-struggle"
 ---
 

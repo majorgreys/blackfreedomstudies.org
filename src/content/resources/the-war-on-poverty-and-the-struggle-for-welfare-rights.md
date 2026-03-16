@@ -6,7 +6,7 @@ videoEmbedCode: "<iframe src=\"//player.vimeo.com/video/107667890?title=0&amp;by
 publicationDate: "11/7/2013"
 date: 2013-11-07
 tags:
-  - "Economics"
+ - "Economics"
 ---
 
 

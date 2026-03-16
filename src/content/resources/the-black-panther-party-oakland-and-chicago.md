@@ -6,7 +6,7 @@ videoEmbedCode: "<iframe src=\"//player.vimeo.com/video/107315452?title=0&amp;by
 publicationDate: "3/7/2013"
 date: 2013-03-07
 tags:
-  - "Black Panther Party"
+ - "Black Panther Party"
 ---
 
 

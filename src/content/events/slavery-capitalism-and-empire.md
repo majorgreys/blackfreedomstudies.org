@@ -5,15 +5,15 @@ seasonYear: 2022
 seasonPart: spring
 eventbrite: "https://www.eventbrite.com/e/slavery-capitalism-and-empire-cbfs-registration-272232413477"
 speakers:
-  - "justene-edwards"
-  - "adom-getachew"
-  - "peter-james-hudson"
-  - "daniel-immerwahr"
+ - "justene-edwards"
+ - "adom-getachew"
+ - "peter-james-hudson"
+ - "daniel-immerwahr"
 books:
-  - ../../assets/bookcovers/IMG_9969.JPG
-  - ../../assets/bookcovers/IMG_9971.JPG
-  - ../../assets/bookcovers/IMG_9968.JPG
-  - ../../assets/bookcovers/IMG_9970.JPG
+ - ../../assets/bookcovers/IMG_9969.JPG
+ - ../../assets/bookcovers/IMG_9971.JPG
+ - ../../assets/bookcovers/IMG_9968.JPG
+ - ../../assets/bookcovers/IMG_9970.JPG
 video: "slavery-capitalism-and-empire"
 ---
 

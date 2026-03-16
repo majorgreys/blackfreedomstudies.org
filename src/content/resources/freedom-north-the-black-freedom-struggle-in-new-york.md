@@ -6,7 +6,7 @@ videoEmbedCode: "<iframe src=\"//player.vimeo.com/video/107566466?title=0&amp;by
 publicationDate: "5/2/2013"
 date: 2013-05-02
 tags:
-  - "New York"
+ - "New York"
 ---
 
 

@@ -5,12 +5,12 @@ seasonYear: 2017
 seasonPart: fall
 eventbrite: "https://www.eventbrite.com/e/conversations-in-black-freedom-studies-fifty-years-after-the-newark-and-detroit-uprisings-tickets-36835013517"
 speakers:
-  - "say-burgin"
-  - "mark-krasovic"
-  - "junius-williams"
+ - "say-burgin"
+ - "mark-krasovic"
+ - "junius-williams"
 books:
-  - ../../assets/bookcovers/newarkfrontier.jpg
-  - ../../assets/bookcovers/Unfinished-Agenda.jpg
+ - ../../assets/bookcovers/newarkfrontier.jpg
+ - ../../assets/bookcovers/Unfinished-Agenda.jpg
 video: "fifty-years-after-the-newark-and-detroit-uprisings"
 ---
 
