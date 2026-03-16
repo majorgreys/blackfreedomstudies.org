@@ -7,7 +7,7 @@ twitter: "Uno_Collison"
 homepage: "https://www.chrisbonastia.com/"
 ---
 
-I am Professor and Chair of the Sociology Department at Lehman College-City University of New York. In case you’re curious, Lehman is the only four-year public college in the Bronx. Our undergraduate enrollment is roughly 50 percent Latino and 31 percent Black. Women make up approximately two-thirds of our undergraduate enrollment. Teaching our students is a blessing and an honor. 
+I am Professor and Chair of the Sociology Department at Lehman College-City University of New York. In case you’re curious, Lehman is the only four-year public college in the Bronx. Our undergraduate enrollment is roughly 50 percent Latino and 31 percent Black. Women make up approximately two-thirds of our undergraduate enrollment. Teaching our students is a blessing and an honor.
 
 My research focuses on the politics of racial inequality in education and housing. My first book, [*Knocking on the Door: The Federal Government’s Attempt to Desegregate the Suburbs*](https://www.chrisbonastia.com/knocking-on-the-door-chrisbonastia), was published in 2006 by Princeton University Press. [Southern Stalemate: Five Years without Public Education in Prince Edward County, Virginia](https://www.chrisbonastia.com/southern-stalemate-chrisbonastia) was published in 2012 by the University of Chicago Press. My work has reached non-academic audiences with published essays in *Slate* and the *Huffington Post*. PBS Newshour used *Southern Stalemate* as its sole source for a widely distributed school handout on the abandonment of public education Prince Edward County, Virginia.
 

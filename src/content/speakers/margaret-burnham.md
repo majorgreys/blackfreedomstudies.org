@@ -14,17 +14,16 @@ Professor Burnham began her career at the NAACP Legal Defense and Educational Fu
 
 A former fellow of the Bunting Institute at Radcliffe College and Harvard University's W.E.B. DuBois Institute for Afro-American Studies, Professor Burnham has written extensively on contemporary legal and political issues. In 2016, Professor Burnham was selected for the competitive and prestigious Carnegie Fellows Program. Provided to just 33 recipients nationwide that year, the fellowship provides the “country’s most creative thinkers with grants of up to $200,000 each to support research on challenges to democracy and international order.” Professor Burnham used the funding to deepen and extend CRRJ’s work and research dedicated to seeking justice for crimes of the civil rights era. Among her many honors, *Massachusetts Lawyers Weekly* inducted Professor Burnham into its Hall of Fame in 2023. Also in 2023, she was honored with a Mass Humanities Governor’s Award for her “dedication to exploring history, illuminating truth and confronting injustice in order to protect civil and human rights locally, nationally and internationally.”
 
-Professor Burnham’s book,*[By Hands Now Known: Jim Crow’s Legal Executioners](https://law.northeastern.edu/margaret-burnham-new-book-by-hands-now-known/)* (W.W. Norton, 2022), was nominated for or awarded a number of prizes, including:
+Professor Burnham’s book, *[By Hands Now Known: Jim Crow’s Legal Executioners](https://law.northeastern.edu/margaret-burnham-new-book-by-hands-now-known/)* (W.W. Norton, 2022), was nominated for or awarded a number of prizes, including:
 
--*Los Angeles Times *Book Prize: winner in the history category*
-*
+- *Los Angeles Times* Book Prize: winner in the history category
 - Hillman Prize: book category
 - Nautilus Book Award: gold medal for journalism and investigative reporting
 - Hurston/Wright Legacy Award
 - NPR: Books We Love in 2022
-- Named a Best Book of the Year: *The New Yorker**, Oprah Daily, Kirkus**, *Chicago Public Library and *Publishers Weekly*
+- Named a Best Book of the Year: *The New Yorker*, Oprah Daily, Kirkus, *Chicago Public Library* and *Publishers Weekly*
 - Massachusetts Book Awards Must-Read Nonfiction: long listed
 - Kirkus Prize: finalist in nonfiction
 - Andrew Carnegie Medal for Excellence in Nonfiction: long listed
 
-The book is a paradigm-shifting investigation of Jim Crow-era violence, the legal apparatus that sustained it, and its enduring legacy. *Publishers Weekly*, which reviewed it with a coveted “star,” called it, “An essential reckoning with America’s history of racial violence.” Legendary activist Angela Davis has said, “*By Hands Now Known: Jim Crow’s Legal Executioners*needs to be read by everyone who recognizes the historic mandate of our time: to interrupt cycles of racist violence that are rooted in slavery and have repeatedly found new modes of expression, even as the unresolved old forms plague our historical memory.”
+The book is a paradigm-shifting investigation of Jim Crow-era violence, the legal apparatus that sustained it, and its enduring legacy. *Publishers Weekly*, which reviewed it with a coveted “star,” called it, “An essential reckoning with America’s history of racial violence.” Legendary activist Angela Davis has said, “*By Hands Now Known: Jim Crow’s Legal Executioners* needs to be read by everyone who recognizes the historic mandate of our time: to interrupt cycles of racist violence that are rooted in slavery and have repeatedly found new modes of expression, even as the unresolved old forms plague our historical memory.”
