@@ -22,7 +22,7 @@ Professor Burnham’s book,*[By Hands Now Known: Jim Crow’s Legal Executioners
 - Nautilus Book Award: gold medal for journalism and investigative reporting
 - Hurston/Wright Legacy Award
 - NPR: Books We Love in 2022
-- Named a Best Book of the Year: *The New Yorker**, Oprah Daily, Kirkus**,* Chicago Public Library and *Publishers Weekly*
+- Named a Best Book of the Year: *The New Yorker**, Oprah Daily, Kirkus**, *Chicago Public Library and *Publishers Weekly*
 - Massachusetts Book Awards Must-Read Nonfiction: long listed
 - Kirkus Prize: finalist in nonfiction
 - Andrew Carnegie Medal for Excellence in Nonfiction: long listed

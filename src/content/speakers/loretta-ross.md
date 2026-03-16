@@ -8,7 +8,7 @@ homepage: "https://lorettajross.com/"
 
 Loretta J. Ross teaches a course on White Supremacy, Human Rights and Calling In the Calling Out Culture as a visiting associate professor at Smith College. Since beginning her academic career in 2017, she has taught at Hampshire College, Arizona State University and Smith College as a visiting professor of clinical practice teaching courses on White Supremacy in the Age of Trump, Race and Culture in America and Reproductive Justice.
 
-She has co-written three books on reproductive justice: *Undivided Rights: Women of Color Organize for Reproductive Justice*; *Reproductive Justice: An Introduction*; and *Radical Reproductive Justice: Foundations, Theory, Practice, Critique*. Her current book,* Calling in the Calling Out Culture,* is forthcoming in 2021.
+She has co-written three books on reproductive justice: *Undivided Rights: Women of Color Organize for Reproductive Justice*;*Reproductive Justice: An Introduction*; and *Radical Reproductive Justice: Foundations, Theory, Practice, Critique*. Her current book, *Calling in the Calling Out Culture,* is forthcoming in 2021.
 
 Ross has appeared on CNN, BET, "Lead Story," "Good Morning America," "The Donahue Show," the National Geographic Channel, and “The Charlie Rose Show.” She has appeared in *The New York Times, Time Magazine*, *The Los Angeles Times*, *The Washington Post*and* Oprah Winfrey Radio,*among others.
 

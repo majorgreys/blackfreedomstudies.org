@@ -12,7 +12,7 @@ SEPTEMBER 3: How Did We Get Here? The Long Struggle for Educational Justice in N
 - Terrenda White, contributor to both books
 
 OCTOBER 1: Fighting for the Franchise: A Century of Struggle for Voting Rights
-- Carol Anderson,* One Person, No Vote: How Voter Suppression is Destroying Our Democracy*- Ari Berman, *Give Us the Ballot: The Modern Struggle for Voting Rights in America*
+- Carol Anderson, *One Person, No Vote: How Voter Suppression is Destroying Our Democracy*- Ari Berman, *Give Us the Ballot: The Modern Struggle for Voting Rights in America*
 - Martha Jones, *Vanguard: How Black Women Broke Barriers, Won the Vote, and Insisted on Equality for All*
 - Liz Theoharis, co-organizer of The Poor People’s Campaign and co-author, *Revive Us Again: Vision and Action in Moral Organizing*
 
