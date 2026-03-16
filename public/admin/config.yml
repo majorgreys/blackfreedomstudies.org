@@ -2,56 +2,67 @@ backend:
   name: git-gateway
   branch: main
 
+# Enable local backend for development testing (run npx decap-server)
+local_backend: true
+
+# Editorial workflow: draft -> in review -> ready -> published
+publish_mode: editorial_workflow
+
+# Media files live in src/assets, served from /assets
 media_folder: src/assets
-public_folder: /src/assets
+public_folder: /assets
+
+# Use unicode slug encoding for non-ASCII characters
+slug:
+  encoding: unicode
+  clean_accents: false
 
 collections:
+  # ─── Events ───────────────────────────────────────────────
   - name: events
     label: Events
     folder: src/content/events
     create: true
     extension: md
+    slug: "{{slug}}"
     fields:
       - { name: title, label: Title, widget: string }
       - { name: date, label: Date, widget: datetime }
-      - { name: seasonYear, label: Season Year, widget: number, value_type: int }
-      - { name: seasonPart, label: Season, widget: select, options: [fall, spring, special] }
+      - { name: seasonYear, label: Season Year, widget: number, value_type: int, default: 2026 }
+      - name: seasonPart
+        label: Season
+        widget: select
+        options:
+          - { label: Spring, value: spring }
+          - { label: Fall, value: fall }
+          - { label: Special, value: special }
       - { name: eventbrite, label: Eventbrite URL, widget: string, required: false }
       - name: speakers
         label: Speakers
-        widget: relation
-        collection: speakers
-        search_fields: [name]
-        value_field: "{{slug}}"
-        display_fields: [name]
-        multiple: true
+        widget: list
+        field: { name: speaker, label: Speaker Slug, widget: string }
         required: false
-      - { name: books, label: Book Covers, widget: list, field: { name: image, widget: image }, required: false }
-      - name: video
-        label: Video Recording
-        widget: relation
-        collection: resources
-        search_fields: [title]
-        value_field: "{{slug}}"
-        display_fields: [title]
+      - name: books
+        label: Book Covers
+        widget: list
+        field: { name: image, label: Image, widget: image }
         required: false
+      - { name: video, label: Video Slug, widget: string, required: false }
       - name: primaryResources
         label: Primary Resources
-        widget: relation
-        collection: resources
-        search_fields: [title]
-        value_field: "{{slug}}"
-        display_fields: [title]
-        multiple: true
+        widget: list
+        field: { name: resource, label: Resource Slug, widget: string }
         required: false
       - { name: body, label: Description, widget: markdown }
 
+  # ─── Speakers ─────────────────────────────────────────────
   - name: speakers
     label: Speakers
     folder: src/content/speakers
     create: true
     extension: md
     identifier_field: name
+    slug: "{{slug}}"
     fields:
       - { name: name, label: Name, widget: string }
       - { name: affiliation, label: Affiliation, widget: string, required: false }
@@ -61,36 +72,40 @@ collections:
       - { name: homepage, label: Website, widget: string, required: false }
       - { name: body, label: Bio, widget: markdown }
 
-  - name: resources
-    label: Resources
-    folder: src/content/resources
-    create: true
-    extension: md
-    fields:
-      - { name: title, label: Title, widget: string }
-      - { name: resourceType, label: Type, widget: select, options: [video, document, external, text, image, audio] }
-      - { name: sourceUrl, label: Source URL, widget: string, required: false }
-      - { name: videoEmbedCode, label: Embed Code, widget: text, required: false }
-      - { name: document, label: Document Path, widget: string, required: false }
-      - { name: authorship, label: Author, widget: string, required: false }
-      - { name: publicationDate, label: Publication Date, widget: string, required: false }
-      - { name: tags, label: Tags, widget: list, required: false }
-      - { name: date, label: Recording Date, widget: datetime, required: false }
-      - { name: body, label: Description, widget: markdown }
-
+  # ─── News ─────────────────────────────────────────────────
   - name: news
     label: News
     folder: src/content/news
     create: true
     extension: md
+    slug: "{{slug}}"
     fields:
       - { name: title, label: Title, widget: string }
       - { name: date, label: Date, widget: datetime }
       - { name: image, label: Banner Image, widget: image, required: false }
       - { name: imageCaption, label: Image Caption, widget: string, required: false }
-      - { name: tags, label: Tags, widget: list, required: false }
+      - name: tags
+        label: Tags
+        widget: list
+        field: { name: tag, label: Tag, widget: string }
+        required: false
       - { name: body, label: Body, widget: markdown }
 
+  # ─── Interviews (NEW) ────────────────────────────────────
+  - name: interviews
+    label: Interviews
+    folder: src/content/interviews
+    create: true
+    extension: md
+    slug: "{{slug}}"
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: date, label: Date, widget: datetime }
+      - { name: image, label: Image, widget: image, required: false }
+      - { name: relatedEvent, label: Related Event Slug, widget: string, required: false, hint: "The slug of the event this interview is about" }
+      - { name: body, label: Body, widget: markdown }
+
+  # ─── Pages ────────────────────────────────────────────────
   - name: pages
     label: Pages
     folder: src/content/pages
