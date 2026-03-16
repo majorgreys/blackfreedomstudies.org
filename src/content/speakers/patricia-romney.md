@@ -9,7 +9,7 @@ homepage: "https://romneyassociates.com/about.html"
 
 For twenty years she taught at the college level,** achieving tenure at [Hampshire College](https://www.hampshire.edu/) where she taught for 10 years.** Subsequently she held a**10 year appointment as Visiting Associate Professor of Psychology and Education at [Mount Holyoke College.](https://www.mtholyoke.edu/)** Courses taught included: The Psychology of Oppression, Psychology of Racism, and The Social Psychology of Organizations.
 
-Dr. Romney has authored over 20 articles and papers. Her co-edited volume**Understanding Power: An Imperative for Human Services** was published in 2017 by NASW Press. Her book**We Were There: The Third World Women’s Alliance and the Second Wave of Feminism** was published by Feminist Press in October 2021.
+Dr. Romney has authored over 20 articles and papers. Her co-edited volume **Understanding Power: An Imperative for Human Services** was published in 2017 by NASW Press. Her book **We Were There: The Third World Women’s Alliance and the Second Wave of Feminism** was published by Feminist Press in October 2021.
 
 For the past 30 years she has been engaged in dialogue work, large scale diversity initiatives, leadership development and team building, as well as professional coaching of individual faculty and administrators in academia.
 
