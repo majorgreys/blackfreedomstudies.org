@@ -4,7 +4,7 @@ date: 2015-08-26
 image: "../../assets/graphics/deniseoliver.jpg"
 ---
 
-The Fall 2015 Season will begin on September 3rd! This is the next in our series of conversations at the Schomburg Center for Research in Black Culture. Our events are held the first Thursday of the month from 6-8 pm. Be sure to stay in touch with us through this website and follow us on Twitter at [@SchomburgCBFS](https://twitter.com/SchomburgCBFS).We have posted the [full schedule](http://www.blackfreedomstudies.org/events/#303).
+The Fall 2015 Season will begin on September 3rd! This is the next in our series of conversations at the Schomburg Center for Research in Black Culture. Our events are held the first Thursday of the month from 6-8 pm. Be sure to stay in touch with us through this website and follow us on Twitter at [@SchomburgCBFS](https://twitter.com/SchomburgCBFS). We have posted the [full schedule](http://www.blackfreedomstudies.org/events/#303).
 
 Do RSVP through Eventbrite to reserve your seats.
 
