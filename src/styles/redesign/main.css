@@ -161,6 +161,19 @@ img { max-width: 100%; height: auto; }
 .r-navbar__dropdown {
   position: relative;
 }
+.r-navbar__dropdown-trigger {
+  display: block;
+  padding: 4px 16px;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-stone-400);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.r-navbar__dropdown:hover .r-navbar__dropdown-trigger {
+  color: #fff;
+}
 .r-navbar__dropdown-menu {
   display: none;
   position: absolute;
