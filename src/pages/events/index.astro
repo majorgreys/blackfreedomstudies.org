@@ -41,7 +41,7 @@ const seasonData = sortedSeasons.map(([slug, evts]) => {
   };
 });
 ---
-<Layout title="Conversations Series">
+<Layout title="Conversations Series" description="Browse the complete archive of Conversations in Black Freedom Studies events at the Schomburg Center, featuring roundtable discussions with leading scholars in Black history.">
   {isClassic ? (
     <div>
       <div class="c-page-header">
@@ -80,7 +80,7 @@ const seasonData = sortedSeasons.map(([slug, evts]) => {
                       <div class="c-book-grid">
                         {event.data.books.map((book: any) => (
                           <div class="c-book-grid-item">
-                            <Image src={book} alt="" width={200} />
+                            <Image src={book} alt="Book cover" width={200} />
                           </div>
                         ))}
                       </div>
@@ -136,7 +136,7 @@ const seasonData = sortedSeasons.map(([slug, evts]) => {
                   {event.data.books.length > 0 && (
                     <div class="r-event-row__books">
                       {event.data.books.slice(0, 3).map((book: any) => (
-                        <Image src={book} alt="" width={50} />
+                        <Image src={book} alt="Book cover" width={50} />
                       ))}
                     </div>
                   )}

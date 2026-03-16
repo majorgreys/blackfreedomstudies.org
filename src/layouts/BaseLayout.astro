@@ -5,9 +5,11 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  ogType?: string;
+  jsonLd?: Record<string, unknown>;
 }
 
-const { title, description, image } = Astro.props;
+const { title, description, image, ogType, jsonLd } = Astro.props;
 const theme = (import.meta as any).env?.THEME || 'redesign';
 const isClassic = theme === 'classic';
 const cssPath = isClassic ? '/css/classic.css' : '/css/redesign.css';
@@ -19,7 +21,7 @@ const cssPath = isClassic ? '/css/classic.css' : '/css/redesign.css';
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="stylesheet" href={cssPath} />
-  <SEOHead title={title} description={description} image={image} url={Astro.url.href} />
+  <SEOHead title={title} description={description} image={image} url={Astro.url.href} type={ogType} jsonLd={jsonLd} />
 </head>
 <body>
   {isClassic ? (
@@ -44,6 +46,7 @@ const cssPath = isClassic ? '/css/classic.css' : '/css/redesign.css';
           <li><a href="/events/">Conversations</a></li>
           <li><a href="/speakers/">Speakers</a></li>
           <li><a href="/interviews/">Interviews</a></li>
+          <li><a href="/books">Books</a></li>
           <li><a href="/news/">News</a></li>
           <li><a href="/about">About</a></li>
         </ul>

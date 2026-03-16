@@ -14,7 +14,7 @@ const newsWithContent = await Promise.all(
   })
 );
 ---
-<Layout title="News">
+<Layout title="News" description="Latest news, announcements, and updates from Conversations in Black Freedom Studies.">
   {isClassic ? (
     <div>
       <div class="c-page-header">
@@ -27,7 +27,7 @@ const newsWithContent = await Promise.all(
           {entry.data.image && (
             <div class="c-news-images">
               <div class="c-news-images__crop">
-                <Image src={entry.data.image} alt="" width={800} />
+                <Image src={entry.data.image} alt={entry.data.title} width={800} />
               </div>
             </div>
           )}

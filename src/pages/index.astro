@@ -10,13 +10,48 @@ const latestNews = newsEntries
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 2);
 
+// Find next upcoming event for the hero CTA
+const allEvents = await getCollection('events');
+const now = new Date();
+const nextEvent = allEvents
+  .filter(e => e.data.date > now)
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime())[0];
+
 let HomepageContent: any = null;
 if (homepage) {
   const rendered = await render(homepage);
   HomepageContent = rendered.Content;
 }
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Conversations in Black Freedom Studies",
+  "url": "https://blackfreedomstudies.org",
+  "description": "A monthly roundtable discussion at the Schomburg Center for Research in Black Culture with authors and experts in Black history.",
+  "logo": "https://blackfreedomstudies.org/images/CBFS-Logo-2.png",
+  "sameAs": [
+    "https://twitter.com/SchomburgCBFS"
+  ],
+  "parentOrganization": [
+    {
+      "@type": "Organization",
+      "name": "Schomburg Center for Research in Black Culture",
+      "url": "https://www.nypl.org/locations/schomburg"
+    },
+    {
+      "@type": "Organization",
+      "name": "City University of New York (CUNY) Graduate Center",
+      "url": "https://gc.cuny.edu"
+    }
+  ]
+};
 ---
-<Layout title="Conversations in Black Freedom Studies">
+<Layout
+  title="Conversations in Black Freedom Studies"
+  description="A monthly roundtable discussion at the Schomburg Center for Research in Black Culture with authors and experts in Black history."
+  jsonLd={organizationJsonLd}
+>
   {isClassic ? (
     <div>
       {homepage?.data.image ? (
@@ -50,18 +85,25 @@ if (homepage) {
     <div>
       <div class="r-hero">
         {homepage?.data.image && (
-          <img src={(homepage.data.image as any).src} alt="" />
+          <img src={(homepage.data.image as any).src} alt="Conversations in Black Freedom Studies" />
         )}
         <div class="r-hero__content">
           <h1 class="r-hero__title">Conversations in<br/>Black Freedom Studies</h1>
           <p class="r-hero__subtitle">A monthly roundtable discussion at the Schomburg Center with authors and experts in Black history.</p>
-          {latestNews.length > 0 && (
-            <div class="r-hero__news">
-              {latestNews.map(entry => (
-                <a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`}>{entry.data.title}</a>
-              ))}
-            </div>
-          )}
+          <div class="r-hero__actions">
+            {nextEvent && (
+              <a href={`/events/${nextEvent.data.seasonPart}-${nextEvent.data.seasonYear}/${nextEvent.id}`} class="r-hero__cta">
+                Next: {nextEvent.data.title} — {nextEvent.data.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+              </a>
+            )}
+            {latestNews.length > 0 && (
+              <div class="r-hero__news">
+                {latestNews.map(entry => (
+                  <a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`}>{entry.data.title}</a>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
       {HomepageContent && <div class="r-prose"><HomepageContent /></div>}

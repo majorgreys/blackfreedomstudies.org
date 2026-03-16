@@ -5,7 +5,7 @@ import { Layout, isClassic } from '../../lib/theme';
 const interviews = (await getCollection('interviews'))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
-<Layout title="Interviews">
+<Layout title="Interviews" description="In-depth interviews with scholars and authors featured in Conversations in Black Freedom Studies.">
   {isClassic ? (
     <div>
       <div class="c-page-header">

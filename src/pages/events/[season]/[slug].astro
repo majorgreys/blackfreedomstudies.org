@@ -41,8 +41,44 @@ const primaryResources = event.data.primaryResources
   .filter(Boolean);
 
 const isFuture = event.data.date > new Date();
+
+const speakerNames = speakers.map((s: any) => s.data.name).join(', ');
+const eventDescription = `${event.data.title} — featuring ${speakerNames || 'guest speakers'}. A Conversations in Black Freedom Studies event at the Schomburg Center.`;
+const eventDate = event.data.date.toISOString().split('T')[0];
+
+const eventJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": event.data.title,
+  "description": eventDescription,
+  "startDate": eventDate,
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": "Schomburg Center for Research in Black Culture",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "515 Malcolm X Blvd",
+      "addressLocality": "New York",
+      "addressRegion": "NY",
+      "postalCode": "10037",
+      "addressCountry": "US"
+    }
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "Conversations in Black Freedom Studies",
+    "url": "https://blackfreedomstudies.org"
+  },
+  "performer": speakers.map((s: any) => ({
+    "@type": "Person",
+    "name": s.data.name,
+    ...(s.data.affiliation ? { "affiliation": { "@type": "Organization", "name": s.data.affiliation } } : {})
+  })),
+};
 ---
-<Layout title={event.data.title}>
+<Layout title={event.data.title} description={eventDescription} ogType="article" jsonLd={eventJsonLd}>
   {isClassic ? (
     <div class="c-event-single">
       <div class="c-event-header">

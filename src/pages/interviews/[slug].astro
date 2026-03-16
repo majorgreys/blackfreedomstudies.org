@@ -22,7 +22,7 @@ if (entry.data.relatedEvent) {
   relatedEvent = events.find(e => e.id === entry.data.relatedEvent);
 }
 ---
-<Layout title={entry.data.title}>
+<Layout title={entry.data.title} description={`${entry.data.title} — a Conversations in Black Freedom Studies interview, ${dateStr}.`} ogType="article">
   {isClassic ? (
     <article class="c-news-detail">
       {entry.data.image && (

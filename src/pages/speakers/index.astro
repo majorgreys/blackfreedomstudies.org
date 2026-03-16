@@ -6,7 +6,7 @@ import { Layout, isClassic } from '../../lib/theme';
 const speakers = (await getCollection('speakers'))
   .sort((a, b) => a.data.name.localeCompare(b.data.name));
 ---
-<Layout title="Speakers">
+<Layout title="Speakers" description="Authors, scholars, and experts who have participated in Conversations in Black Freedom Studies at the Schomburg Center.">
   {isClassic ? (
     <div>
       <h1>Speakers</h1>
@@ -14,7 +14,7 @@ const speakers = (await getCollection('speakers'))
         {speakers.map(speaker => (
           <li class="c-speaker-grid-item">
             {speaker.data.image && (
-              <Image src={speaker.data.image} alt={speaker.data.name} width={100} height={100} />
+              <Image src={speaker.data.image} alt={speaker.data.name} width={320} height={320} />
             )}
             <h3><a href={`/speakers/${speaker.id}`}>{speaker.data.name}</a></h3>
             {speaker.data.affiliation && <span class="affiliation">{speaker.data.affiliation}</span>}
@@ -32,7 +32,7 @@ const speakers = (await getCollection('speakers'))
         {speakers.map(speaker => (
           <li class="r-speaker-grid-item">
             {speaker.data.image && (
-              <Image src={speaker.data.image} alt={speaker.data.name} width={120} height={120} />
+              <Image src={speaker.data.image} alt={speaker.data.name} width={240} height={240} />
             )}
             <h2><a href={`/speakers/${speaker.id}`}>{speaker.data.name}</a></h2>
             {speaker.data.affiliation && <span class="affiliation">{speaker.data.affiliation}</span>}

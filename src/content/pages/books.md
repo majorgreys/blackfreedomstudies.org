@@ -1,0 +1,195 @@
+---
+title: "Books Featured in Conversations in Black Freedom Studies"
+---
+
+The following is a curated bibliography of books featured in the Conversations in Black Freedom Studies series from February 2013 through December 2022. Over the course of a decade, CBFS brought together authors, scholars, and activists to discuss these works -- spanning topics from civil rights and Black Power to education, policing, abolition, culture, and internationalism.
+
+- *Living for the City: Migration, Education, and the Rise of the Black Panther Party in Oakland, California* by Donna Murch
+- *From the Bullet to the Ballot: The Illinois Chapter of the Black Panther Party and Racial Coalition Politics in Chicago* by Jakobi Williams
+- *Black Power at Work: Community Control, Affirmative Action, and the Construction Industry* edited by Trevor Griffey and David Goldberg
+- *Fighting Jim Crow in the County of Kings: The Congress of Racial Equality in Brooklyn* by Brian Purnell
+- *Civil Rights in New York City: From World War II to the Giuliani Era* by Clarence Taylor
+- *From Toussaint to Tupac: The Black International since the Age of Revolution* edited by Michael O. West, William G. Martin, and Fanon Che Wilkins
+- *We Will Shoot Back: Armed Resistance in the Mississippi Freedom Movement* by Akinyele Umoja
+- *And Justice for All: The United States Commission on Civil Rights and the Continuing Struggle for Freedom in America* by Mary Frances Berry
+- *Eslanda: The Large and Unconventional Life of Mrs. Paul Robeson* by Barbara Ransby
+- *The Rebellious Life of Mrs. Rosa Parks* by Jeanne Theoharis
+- *Bruce Grit: The Black Nationalist Writings Of John Edward Bruce* by William Seraile
+- *Hubert Harrison* by Jeffrey Perry
+- *Grassroots Garveyism: The Universal Negro Improvement Association in the Rural South, 1920-1927* by Mary Rolinson
+- *Blues People: Negro Music in White America* by Amiri Baraka
+- *So What: The Life of Miles Davis* by John Szwed
+- *Freedom Sounds: Civil Rights Call out to Jazz and Africa* by Ingrid Monson
+- *Storming Caesars Palace: How Black Mothers Fought Their Own War on Poverty* by Annelise Orleck
+- *Welfare Warriors: The Welfare Rights Movement in the United States* by Premilla Nadasen
+- *Carry It On: The War on Poverty and the Civil Rights Movement in Alabama, 1964-1972* by Susan Youngblood Ashmore
+- *Black Power TV* by Devorah Heitner
+- *Uncivil Rights: Teachers, Unions, and Race in the Battle for School Equity* by Jonna Perrillo
+- *Ebony and Ivy: Race, Slavery, and the Troubled History of America's Universities* by Craig Steven Wilder
+- *Civil Rights History from the Ground Up: Local Struggles, a National Movement* edited by Emilye Crosby
+- *Want to Start a Revolution? Radical Women in the Black Freedom Struggle* edited by Jeanne Theoharis, Komozi Woodard, and Dayo Gore
+- *Segregation: A Global History of Divided Cities* by Carl Nightingale
+- *Dark Days, Bright Nights: From Black Power to Barack Obama* by Peniel Joseph
+- *Harlem vs Columbia University: Black Student Power in the Late 1960s* by Stefan Bradley
+- *Bloody Lowndes: Civil Rights and Black Power in Alabama's Black Belt* by Hasan Kwame Jeffries
+- *Inside Newark: Decline, Rebellion, and the Search for Transformation* by Robert Curvin
+- *Unfinished Agenda: Urban Politics in the Era of Black Power* by Junius Williams
+- *Teach Freedom: Education for Liberation in the African-American Tradition* edited by Charles Payne and Carol Sills Strickland
+- *Shirley Chisholm: Catalyst for Change* by Barbara Winslow
+- *The Business of Black Power: Community Development, Capitalism, and Corporate Responsibility in Postwar America* edited by Laura Hill and Julia Rabig
+- *Body and Soul: The Black Panther Party and the Fight against Medical Discrimination* by Alondra Nelson
+- *Collective Courage: A History of African American Cooperative Economic Thought and Practice* by Jessica Gordon Nembhard
+- *Fidel and Malcolm X: Memories of a Meeting* by Rosemari Mealy
+- *Just Mercy: A Story of Justice and Redemption* by Bryan Stevenson
+- *Resistance Behind Bars: The Struggles of Incarcerated Women* by Victoria Law
+- *Captive Nation: Black Prison Organizing in the Civil Rights Era* by Dan Berger
+- *Golden Gulag: Prisons, Surplus, Crisis, and Opposition in Globalizing California* by Ruth Wilson Gilmore
+- *The War Before: The True Life Story of Becoming a Black Panther, Keeping the Faith in Prison, and Fighting for Those Left Behind* by Safiya Bukhari, edited by Laura Whitehorn
+- *The Muslims are Coming: Islamophobia, Extremism, and the Domestic War on Terror* by Arun Kundnani
+- *Not Working: Latina Immigrants, Low-Wage Jobs, and the Failure of Welfare Reform* by Alejandra Marchevsky and Jeanne Theoharis
+- *Building a Latino Civil Rights Movement: Puerto Ricans, African Americans, and the Pursuit of Racial Justice in New York City* by Sonia Song-Ha Lee
+- *Harlem Nocturne: Women Artists and Progressive Politics During World War II* by Farah Jasmine Griffin
+- *Radicalism at the Crossroads: African American Women Activists in the Cold War* by Dayo Gore
+- *How It Feels To Be Free: Black Women Entertainers and the Civil Rights Movement* by Ruth Feldstein
+- *Liberated Threads: Black Women, Style, and the Global Politics of Soul* by Tanisha Ford
+- *Florence "Flo" Kennedy: The Life of a Black Feminist Radical* by Sherie Randolph
+- *Whose Harlem Is This Anyway? Community Politics and Grassroots Activism during the New Negro Era* by Shannon King
+- *Concrete Demands: The Search for Black Power in the 20th Century* by Rhonda Williams
+- *Sojourning for Freedom: Black Women, American Communism, and the Making of Black Left Feminism* by Erik McDuffie
+- *The Wilmington Ten: Violence, Injustice, and the Rise of Black Politics in the 1970s* by Kenneth Janken
+- *Witness: Two Hundred Years of African-American Faith and Practice at the Abyssinian Baptist Church of Harlem, New York* by Kevin McGruder, Genna Rae McNeil, Houston Bryan Roberson, and Quinton Hosford Dixie
+- *Until There Is Justice: The Life of Anna Arnold Hedgeman* by Jennifer Scanlon
+- *Why Busing Failed: Race, Media, and the National Resistance to School Desegregation* by Matthew Delmont
+- *Unequal City: Race, Schools, and Perceptions of Injustice* by Carla Shedd
+- *Making the Unequal Metropolis: School Desegregation and Its Limits* by Ansley Erickson
+- *The Life and the Adventures of a Haunted Convict* by Austin Reed, edited by Caleb Smith
+- *The Scholar Denied: W. E. B. Du Bois and the Birth of Modern Sociology* by Aldon Morris
+- *Down to the Crossroads: Civil Rights, Black Power, and the Meredith March Against Fear* by Aram Goudsouzian
+- *Charleston Syllabus: Readings on Race, Racism, and Racial Violence* edited by Keisha N. Blain, Kidada E. Williams, and Chad Williams
+- *From #BlackLivesMatter to Black Liberation* by Keeanga-Yamahtta Taylor
+- *No Mercy Here: Gender, Punishment, and the Making of Jim Crow Modernity* by Sarah Haley
+- *The Chicago Black Renaissance and Women's Activism* by Anne Meis Knupfer
+- *Death Blow to Jim Crow: The National Negro Congress and the Rise of Militant Civil Rights* by Erik Gellman
+- *A Chance for Change: Head Start and Mississippi's Black Freedom Struggle* by Crystal Sanders
+- *From the War on Poverty to the War on Crime: The Making of Mass Incarceration in America* by Elizabeth Hinton
+- *In Love and Struggle: The Revolutionary Lives of James and Grace Lee Boggs* by Stephen Ward
+- *Ferguson is America: Roots of Rebellion* by Jamala Rogers
+- *Black Power 50* edited by Sylviane A. Diouf and Komozi Woodard
+- *North of Dixie: Civil Rights Photography Beyond the South* by Mark Speltz
+- *Sisters in the Struggle: African-American Women in the Civil Rights-Black Power Movement* edited by V. P. Franklin and Bettye Collier-Thomas
+- *The Black Panther Party Reconsidered* edited by Charles E. Jones
+- *The Revolution Has Come: Black Power, Gender, and the Black Panther Party in Oakland* by Robyn C. Spencer
+- *A Spectacular Leap: Black Women Athletes in Twentieth-Century America* by Jennifer H. Lansbury
+- *Blood Brothers: The Fatal Friendship Between Muhammad Ali and Malcolm X* by Johnny Smith
+- *In the Heat of the Summer: The New York Riots of 1964 and the War on Crime* by Michael Flamm
+- *Police Power and Race Riots: Urban Unrest in Paris and New York* by Cathy Schneider
+- *The Newark Frontier: Community Action in the Great Society* by Mark Krasovic
+- *Freedom's Teacher: The Life of Septima Clark* by Katherine Charron
+- *Remaking Black Power: How Black Women Transformed an Era* by Ashley Farmer
+- *I've Got the Light of Freedom: The Organizing Tradition and the Mississippi Freedom Struggle* by Charles Payne
+- *Radical Intellect: Liberator Magazine and Black Activism in the 1960s* by Christopher Tinson
+- *Gateway to Equality: Black Women and the Struggle for Economic Justice in St. Louis* by Keona Ervin
+- *Harambee City: The Congress of Racial Equality in Cleveland and the Rise of Black Power Populism* by Nishani Frazier
+- *The Selma of the North: Civil Rights Insurgency in Milwaukee* by Patrick Jones
+- *Brilliant Flame! Amiri Baraka: Poems, Plays, Politics for the People* edited by Haki Madhubuti and Michael Simanga
+- *Not Our President: New directions from the Pushed Out, The Others and the Clear Majority in Trump's Stolen America* edited by Haki Madhubuti and Lasana Kazembe
+- *Cutting School: The Segrenomics of American Education* by Noliwe Rooks
+- *The Strange Careers of the Jim Crow North: Segregation and Struggle outside of the South* edited by Jeanne Theoharis, Brian Purnell, and Komozi Woodard
+- *History Teaches Us to Resist: How Progressive Movements Have Succeeded in Challenging Times* by Mary Frances Berry
+- *A More Beautiful and Terrible History: The Uses and Misuses of Civil Rights History* by Jeanne Theoharis
+- *From Civil Rights to Human Rights: Martin Luther King, Jr., and the Struggle for Economic Justice* by Thomas Jackson
+- *Contested Bodies: Pregnancy, Childrearing, and Slavery in Jamaica* by Sasha Turner
+- *The Slave's Cause: A History of Abolition* by Manisha Sinha
+- *Slavery at Sea: Terror, Sex, and Sickness in the Middle Passage* by Sowande' Mustakeem
+- *Under the Strain of Color: Harlem's Lafargue Clinic and the Promise of an Antiracist Psychiatry* by Gabriel Mendes
+- *The Voting Rights War: The NAACP and the Ongoing Struggle for Justice* by Gloria Browne-Marshall
+- *Revive Us Again: Vision and Action in Moral Organizing* by Liz Theoharis, Rick Lowery, and William Barber
+- *The Heritage: Black Athletes, a Divided America, and the Politics of Patriotism* by Howard Bryant
+- *The Struggle is Eternal: Gloria Richardson and Black Liberation* by Joseph R. Fitzgerald
+- *Louise Thompson Patterson: A Life of Struggle for Justice* by Keith Gilyard
+- *The Promise of Patriarchy: Women and the Nation of Islam* by Ula Taylor
+- *Set the World on Fire: Black Nationalist Women and the Global Struggle for Freedom* by Keisha N. Blain
+- *Fight the Power: African Americans and the Long History of Police Brutality in New York City* by Clarence Taylor
+- *Locking Up Our Own: Crime and Punishment in Black America* by James Forman Jr.
+- *The First Civil Right: How Liberals Built Prison America* by Naomi Murakawa
+- *Policing Los Angeles: Race, Resistance, and the Rise of the LAPD* by Max Felker-Kantor
+- *Sex Workers, Psychics, and Numbers Runners: Black Women in New York City's Underground Economy* by LaShawn Harris
+- *Occupied Territory: Policing Black Chicago from Red Summer to Black Power* by Simon Balto
+- *The Torture Machine: Racism and Police Violence in Chicago* by Flint Taylor
+- *Upending the Ivory Tower: Civil Rights, Black Power, and the Ivy League* by Stefan Bradley
+- *SOS--Calling All Black People: A Black Arts Movement Reader* edited by John Bracey, Sonia Sanchez, and James Smethurst
+- *Black Power in the Bluff City: African American Youth and Student Activism in Memphis, 1965-1975* by Shirletta Kinchen
+- *We Will Win the Day: The Civil Rights Movement, the Black Athlete, and the Quest for Equality* by Louis Moore
+- *A People's History of Sports in the United States: 250 Years of Politics, Protest, People, and Play* by Dave Zirin
+- *Tigerbelle: The Wyomia Tyus Story* by Wyomia Tyus
+- *Family Properties: How the Struggle Over Race and Real Estate Transformed Chicago and Urban America* by Beryl Satter
+- *Race for Profit: How Banks and the Real Estate Industry Undermined Black Homeownership* by Keeanga-Yamahtta Taylor
+- *A World More Concrete: Real Estate and the Remaking of Jim Crow South Florida* by Nathan Connolly
+- *A Girl Stands at the Door: The Generation of Young Women Who Desegregated America's Schools* by Rachel Devlin
+- *Land of the Fee: Hidden Costs and the Decline of the American Middle Class* by Devin Fergus
+- *Mothers of Massive Resistance: White Women and the Politics of White Supremacy* by Elizabeth Gillespie McRae
+- *Wayward Lives, Beautiful Experiments: Intimate Histories of Social Upheaval* by Saidiya Hartman
+- *Looking for Lorraine: The Radiant and Radical Life of Lorraine Hansberry* by Imani Perry
+- *Ain't Gonna Let Nobody Turn Me Around: Forty Years of Movement Building* with Barbara Smith
+- *An African American and Latinx History of the United States* by Paul Ortiz
+- *The Young Lords: A Radical History* by Johanna Fernandez
+- *What's Race Got To Do with It? How Current School Reform Policy Maintains Racial and Economic Inequality* edited by Bree Picower, Edwin Mayorga, and Ujju Aggarwal
+- *Educating Harlem: A Century of Schooling and Resistance in a Black Community* edited by Ernest Morell and Ansley Erickson
+- *One Person, No Vote: How Voter Suppression Is Destroying Our Democracy* by Carol Anderson
+- *Vanguard: How Black Women Broke Barriers, Won the Vote, and Insisted on Equality for All* by Martha Jones
+- *Give Us the Ballot: The Modern Struggle for Voting Rights in America* by Ari Berman
+- *An Indigenous People's History of the United States* by Roxanne Dunbar-Ortiz
+- *Those Who Know Don't Say: The Nation of Islam, the Black Freedom Movement, and the Carceral State* by Garrett Felber
+- *Presumed Criminal: Black Youth and the Justice System in Postwar New York* by Carl Suddler
+- *City of Inmates: Conquest, Rebellion, and the Rise of Human Caging in Los Angeles, 1771-1965* by Kelly Lytle Hernandez
+- *Julian Bond's Time to Teach: A History of the Southern Civil Rights Movement* edited by Pamela Horowitz and Jeanne Theoharis
+- *The Sword and the Shield: The Revolutionary Lives of Malcolm X and Martin Luther King Jr.* by Peniel Joseph
+- *A Black Women's History of the United States* by Kali Gross and Daina Ramey Berry
+- *The Rebellious Life of Mrs. Rosa Parks Young Readers Edition* by Jeanne Theoharis
+- *Hammer and Hoe: Alabama Communists during the Great Depression* by Robin D. G. Kelley
+- *W.E.B. Du Bois: A Life in American History* by Charisse Burden-Stelly and Gerald Horne
+- *Anthem: Social Movements and the Sound of Solidarity in the African Diaspora* by Shana Redmond
+- *Party Music: The Inside Story of the Black Panthers' Band and How Black Power Transformed Soul Music* by Rickey Vincent
+- *Go Ahead in the Rain: Notes to A Tribe Called Quest* by Hanif Abdurraqib
+- *Medical Bondage: Race, Gender, and the Origins of American Gynecology* by Dierdre Cooper Owens
+- *Black Women's Yoga History: Memoirs of Inner Peace* by Stephanie Y. Evans
+- *Madness in the City of Magnificent Intentions: A History of Race and Mental Illness in the Nation's Capital* by Martin Summers
+- *Badges Without Borders: How Global Counterinsurgency Transformed American Policing* by Stuart Schrader
+- *"Prisons Make Us Safer": And 20 Other Myths about Mass Incarceration* by Victoria Law
+- *Nixon's War at Home: The FBI, Leftist Guerrillas, and the Origins of Counterterrorism* by Daniel Chard
+- *Policing Life and Death: Race, Violence, and Resistance in Puerto Rico* by Marisol LeBron
+- *In the Shadow of the Ivory Tower: How Universities Are Plundering Our Cities* by Davarian Baldwin
+- *Fugitive Pedagogy: Carter G. Woodson and the Art of Black Teaching* by Jarvis Givens
+- *A Political Education: Black Politics and Education Reform in Chicago since the 1960s* by Elizabeth Todd-Breland
+- *Black Lives Matter at School: An Uprising for Educational Justice* edited by Denisha Jones and Jesse Hagopian
+- *Misogynoir Transformed: Black Women's Digital Resistance* by Moya Bailey
+- *All Our Trials: Prisons, Policing, and the Feminist Fight to End Violence* by Emily Thuma
+- *With Her Fist Raised: Dorothy Pitman Hughes and the Transformative Power of Black Community Activism* by Laura Lovett
+- *City of Islands: Caribbean Intellectuals in New York* by Tammy L. Brown
+- *The Harlem Uprising: Segregation and Inequality in Postwar New York City* by Christopher Hayes
+- *Pushing Back: Women of Color-Led Grassroots Activism in New York City* by Ariella Rotramel
+- *Love for Liberation: African Independence, Black Power, and a Diaspora Underground* by Robin Hayes
+- *Free the Land: The Republic of New Afrika and the Pursuit of a Black Nation-State* by Edward Onaci
+- *Freedom Farmers: Agricultural Resistance and the Black Freedom Movement* by Monica White
+- *Let Us Make Men: The Twentieth-Century Black Press and a Manly Vision for Racial Advancement* by D'Weston Haywood
+- *How to Hide an Empire: A History of the Greater United States* by Daniel Immerwahr
+- *Worldmaking after Empire: The Rise and Fall of Self-Determination* by Adom Getachew
+- *Unfree Markets: The Slaves' Economy and the Rise of Capitalism in South Carolina* by Justene Edwards
+- *Bankers and Empire: How Wall Street Colonized the Caribbean* by Peter James Hudson
+- *Reconsidering Reagan: Racism, Republicans, and the Road to Trump* by Daniel Lucks
+- *America on Fire: The Untold History of Police Violence and Black Rebellion Since the 1960s* by Elizabeth Hinton
+- *The Second: Race and Guns in a Fatally Unequal America* by Carol Anderson
+- *Remaking Radicalism: A Grassroots Documentary Reader of the United States, 1973-2001* edited by Dan Berger and Emily Hobson
+- *The Other Side of Terror: Black Women and the Culture of US Empire* by Erica R. Edwards
+- *America Goddam: Violence, Black Women, and the Struggle for Justice* by Treva Lindsey
+- *Until I Am Free: Fannie Lou Hamer's Enduring Message to America* by Keisha N. Blain
+- *Torn Apart: How the Child Welfare System Destroys Black Families--and How Abolition Can Build a Safer World* by Dorothy Roberts
+- *Radical Reproductive Justice* edited by Loretta J. Ross, Lynn Roberts, Erika Derkas, Whitney Peoples, and Pamela Bridgewater Toure
+- *The Streets Belong To Us: Sex, Race, and Police Power from Segregation to Gentrification* by Anne Gray Fischer
+- *The Viral Underclass: The Human Toll When Inequality and Disease Collide* by Steven William Thrasher
+- *Reproductive Rights as Human Rights: Women of Color and the Fight for Reproductive Justice* by Zakiya Luna
+- *Reproductive Injustice: Racism, Pregnancy, and Premature Birth* by Dana-Ain Davis
+- *In Pursuit of Knowledge: Black Women and Educational Activism in Antebellum America* by Kabria Baumgartner
+- *A Worthy Piece of Work: The Untold Story of Madeline Morgan and the Fight for Black History in Schools* by Michael Hines
+- *The Tuskegee Student Uprising: A History* by Brian Jones
+- *The Battle Nearer to Home: The Persistence of School Segregation in New York City* by Christopher Bonastia

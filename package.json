@@ -21,6 +21,7 @@
     "@astrojs/check": "^0.9.7",
     "@astrojs/sitemap": "^3.7.1",
     "astro": "^6.0.4",
+    "decap-cms-app": "^3.10.1",
     "typescript": "^5.9.3"
   }
 }

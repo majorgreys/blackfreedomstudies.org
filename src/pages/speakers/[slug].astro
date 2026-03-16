@@ -18,7 +18,7 @@ const appearances = events
   .filter(e => e.data.speakers.includes(speaker.id))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
-<Layout title={speaker.data.name}>
+<Layout title={speaker.data.name} description={`${speaker.data.name}${speaker.data.affiliation ? ', ' + speaker.data.affiliation : ''} — speaker at Conversations in Black Freedom Studies.`}>
   {isClassic ? (
     <div>
       <div style="display:flex;gap:20px;margin-bottom:20px;">

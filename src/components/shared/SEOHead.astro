@@ -4,16 +4,46 @@ interface Props {
   description?: string;
   image?: string;
   url?: string;
+  type?: string;
+  jsonLd?: Record<string, unknown>;
 }
 
-const { title, description = 'Conversations in Black Freedom Studies', image, url } = Astro.props;
-const siteName = 'Black Freedom Studies';
+const {
+  title,
+  description,
+  image,
+  url,
+  type = 'website',
+  jsonLd,
+} = Astro.props;
+
+const siteName = 'Conversations in Black Freedom Studies';
+const siteUrl = Astro.site?.origin || 'https://blackfreedomstudies.org';
 const fullTitle = title === siteName ? title : `${title} - ${siteName}`;
+const metaDescription = description || `${title} — ${siteName}`;
+const canonicalUrl = url || Astro.url.href;
+const ogImage = image || `${siteUrl}/images/CBFS-Landing-Photo-1.jpg`;
 ---
 <title>{fullTitle}</title>
-<meta name="description" content={description} />
+<meta name="description" content={metaDescription} />
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- Open Graph -->
 <meta property="og:title" content={fullTitle} />
-<meta property="og:description" content={description} />
-<meta property="og:type" content="website" />
-{url && <meta property="og:url" content={url} />}
-{image && <meta property="og:image" content={image} />}
+<meta property="og:description" content={metaDescription} />
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:site_name" content={siteName} />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@SchomburgCBFS" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={metaDescription} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- JSON-LD Structured Data -->
+{jsonLd && (
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+)}

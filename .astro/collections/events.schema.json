@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "seasonYear": {
+      "type": "integer",
+      "minimum": 2013,
+      "maximum": 9007199254740991
+    },
+    "seasonPart": {
+      "type": "string",
+      "enum": [
+        "fall",
+        "spring",
+        "special"
+      ]
+    },
+    "eventbrite": {
+      "type": "string",
+      "format": "uri"
+    },
+    "speakers": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "books": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "video": {
+      "type": "string"
+    },
+    "primaryResources": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "date",
+    "seasonYear",
+    "seasonPart",
+    "speakers",
+    "books",
+    "primaryResources"
+  ],
+  "additionalProperties": false
+}

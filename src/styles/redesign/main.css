@@ -279,8 +279,30 @@ main { padding: 48px 0; }
   margin: 0;
   max-width: 540px;
 }
+.r-hero__actions {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.r-hero__cta {
+  display: inline-block;
+  padding: 8px 16px;
+  background: var(--color-accent);
+  color: #fff !important;
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  border-radius: 4px;
+  align-self: flex-start;
+  transition: background 0.2s;
+}
+.r-hero__cta:hover {
+  background: var(--color-accent-hover);
+  color: #fff !important;
+}
 .r-hero__news {
-  margin-top: 32px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -863,6 +885,88 @@ section h2::after {
 .r-not-found a:hover {
   background: var(--color-accent);
   color: #fff;
+}
+
+/* ── Mobile responsive ── */
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+
+  .r-page-header {
+    padding: 16px 16px;
+  }
+  .r-page-header h1 { font-size: 1.8rem; }
+
+  .r-speaker-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 20px;
+  }
+
+  .r-event-hero .container {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .r-event-hero__date {
+    border-right: none;
+    border-bottom: 3px solid var(--color-accent);
+    padding-right: 0;
+    padding-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: auto;
+    text-align: left;
+  }
+  .r-event-hero__day { font-size: 2rem; }
+
+  .r-event-row {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px 12px;
+  }
+  .r-event-row__speakers {
+    white-space: normal;
+  }
+
+  .r-season-group__label {
+    font-size: 0.95rem;
+    padding: 6px 12px;
+  }
+
+  main { padding: 24px 0; }
+}
+
+@media (max-width: 640px) {
+  .r-page-header {
+    padding: 12px 12px;
+  }
+  .r-page-header h1 { font-size: 1.5rem; }
+
+  .r-speaker-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 16px;
+  }
+  .r-speaker-grid-item img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .r-speaker-item {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .r-hero { min-height: 280px; }
+  .r-hero__content { padding: 32px 16px 24px; }
+
+  .r-event-card a { padding: 16px; }
+
+  .r-event-card__top { gap: 12px; }
+
+  .r-appearances li {
+    flex-direction: column;
+    gap: 4px;
+  }
 }
 
 /* ── Video embed ── */
