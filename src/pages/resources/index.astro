@@ -4,70 +4,72 @@ import { Layout, isClassic } from '../../lib/theme';
 
 const resources = await getCollection('resources');
 
-const grouped = {
-  video: resources.filter(r => r.data.resourceType === 'video'),
-  document: resources.filter(r => r.data.resourceType === 'document'),
-  external: resources.filter(r => !['video', 'document'].includes(r.data.resourceType)),
-};
+// All video and external resources are recordings — combine them
+const recordings = resources
+  .filter(r => r.data.resourceType === 'video' || r.data.resourceType === 'external')
+  .filter(r => r.data.sourceUrl)
+  .sort((a, b) => {
+    const dateA = a.data.date ? a.data.date.getTime() : 0;
+    const dateB = b.data.date ? b.data.date.getTime() : 0;
+    return dateB - dateA;
+  });
+
+const documents = resources.filter(r => r.data.resourceType === 'document');
 
 const prefix = isClassic ? 'c' : 'r';
 ---
-<Layout title="Resources" description="Video recordings, primary documents, and external materials from Conversations in Black Freedom Studies.">
+<Layout title="Recordings" description="Video recordings of past Conversations in Black Freedom Studies events at the Schomburg Center.">
   {isClassic ? (
     <div>
-      <h1>Resources</h1>
-    </div>
-  ) : (
-    <div class="r-page-header">
-      <h1>Resources</h1>
-      <p>Video recordings, primary documents, and external materials</p>
-    </div>
-  )}
-
-  {grouped.video.length > 0 && (
-    <div class={`${prefix}-resource-group`}>
-      <h3>Video Recordings</h3>
-      {grouped.video.map(r => (
-        <div class={`${prefix}-resource-item`}>
-          {r.data.sourceUrl ? (
-            <a href={r.data.sourceUrl} target="_blank" rel="noopener">{r.data.title}</a>
-          ) : (
-            <span>{r.data.title}</span>
-          )}
+      <div class="c-page-header">
+        <h1>Recordings</h1>
+      </div>
+      {recordings.map(r => (
+        <div class="c-resource-item">
+          <a href={r.data.sourceUrl} target="_blank" rel="noopener">{r.data.title}</a>
           {r.data.date && <span class="text-muted"> — {r.data.date.toLocaleDateString('en-US', { year: 'numeric' })}</span>}
         </div>
       ))}
     </div>
-  )}
+  ) : (
+    <div>
+      <div class="r-page-header">
+        <h1>Recordings</h1>
+        <p>Video recordings of past conversations at the Schomburg Center</p>
+      </div>
+      <div class="r-resource-list">
+        {recordings.map((r, i) => (
+          <a href={r.data.sourceUrl} target="_blank" rel="noopener" class={`r-resource-row ${i % 2 === 0 ? '' : 'r-resource-row--alt'}`}>
+            <div class="r-resource-row__icon">▶</div>
+            <div class="r-resource-row__title">{r.data.title}</div>
+            {r.data.date && (
+              <div class="r-resource-row__date">
+                {r.data.date.toLocaleDateString('en-US', { year: 'numeric' })}
+              </div>
+            )}
+          </a>
+        ))}
+      </div>
 
-  {grouped.document.length > 0 && (
-    <div class={`${prefix}-resource-group`}>
-      <h3>Primary Documents</h3>
-      {grouped.document.map(r => (
-        <div class={`${prefix}-resource-item`}>
-          {r.data.document ? (
-            <a href={r.data.document} download>{r.data.title}</a>
-          ) : (
-            <span>{r.data.title}</span>
-          )}
-          {r.data.authorship && <span class="text-muted"> — {r.data.authorship}</span>}
+      {documents.length > 0 && (
+        <div style="margin-top:48px;">
+          <h2 class="r-section-heading">Documents</h2>
+          <div class="r-resource-list">
+            {documents.map((r, i) => (
+              <div class={`r-resource-row ${i % 2 === 0 ? '' : 'r-resource-row--alt'}`}>
+                <div class="r-resource-row__title">
+                  {r.data.document ? (
+                    <a href={r.data.document} download>{r.data.title}</a>
+                  ) : (
+                    <span>{r.data.title}</span>
+                  )}
+                </div>
+                {r.data.authorship && <div class="r-resource-row__author">{r.data.authorship}</div>}
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-  )}
-
-  {grouped.external.length > 0 && (
-    <div class={`${prefix}-resource-group`}>
-      <h3>External Resources</h3>
-      {grouped.external.map(r => (
-        <div class={`${prefix}-resource-item`}>
-          {r.data.sourceUrl ? (
-            <a href={r.data.sourceUrl} target="_blank" rel="noopener">{r.data.title}</a>
-          ) : (
-            <span>{r.data.title}</span>
-          )}
-        </div>
-      ))}
+      )}
     </div>
   )}
 </Layout>

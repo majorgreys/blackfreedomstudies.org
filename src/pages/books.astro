@@ -1,0 +1,54 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Layout, isClassic } from '../lib/theme';
+
+const pagesCollection = await getCollection('pages');
+const booksPage = pagesCollection.find(p => p.id === 'books');
+const { Content } = booksPage ? await render(booksPage) : { Content: null };
+
+// Parse the markdown list into structured data
+// Each line is: - *Title* by Author  OR  - *Title* edited by Editor
+const booksRaw = await import('../content/pages/books.md?raw');
+const lines = (booksRaw.default || '').split('\n').filter((l: string) => l.startsWith('- '));
+
+const books = lines.map((line: string, i: number) => {
+  // Remove leading "- "
+  let text = line.substring(2).trim();
+  // Extract title (between * *)
+  const titleMatch = text.match(/\*([^*]+)\*/);
+  const title = titleMatch ? titleMatch[1] : text;
+  // Extract author (after "by " or "edited by ")
+  const authorMatch = text.match(/(?:edited )?by (.+)$/);
+  const author = authorMatch ? authorMatch[1] : '';
+  return { title, author };
+});
+---
+<Layout title="Books" description="A decade of scholarship featured in Conversations in Black Freedom Studies — nearly 200 books spanning civil rights, Black Power, education, policing, culture, and internationalism.">
+  {isClassic ? (
+    <div>
+      <div class="c-page-header">
+        <h1>Books</h1>
+      </div>
+      <div class="c-about-content">
+        <div>
+          {Content && <Content />}
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div>
+      <div class="r-page-header">
+        <h1>Books</h1>
+        <p>Nearly 200 books spanning civil rights, Black Power, education, policing, abolition, culture, and internationalism</p>
+      </div>
+      <div class="r-resource-list">
+        {books.map((book, i) => (
+          <div class={`r-resource-row ${i % 2 === 0 ? '' : 'r-resource-row--alt'}`}>
+            <div class="r-resource-row__title">{book.title}</div>
+            {book.author && <div class="r-resource-row__author">{book.author}</div>}
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+</Layout>

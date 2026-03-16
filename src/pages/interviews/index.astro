@@ -4,6 +4,8 @@ import { Layout, isClassic } from '../../lib/theme';
 
 const interviews = (await getCollection('interviews'))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const allEvents = await getCollection('events');
 ---
 <Layout title="Interviews" description="In-depth interviews with scholars and authors featured in Conversations in Black Freedom Studies.">
   {isClassic ? (
@@ -24,14 +26,26 @@ const interviews = (await getCollection('interviews'))
         <h1>Interviews</h1>
         <p>In-depth conversations with scholars featured in the series</p>
       </div>
-      <ul class="r-news-list">
-        {interviews.map(entry => (
-          <li class="r-news-item">
-            <span class="r-news-date">{entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-            <h2><a href={`/interviews/${entry.id}`}>{entry.data.title}</a></h2>
-          </li>
-        ))}
-      </ul>
+      <div class="r-resource-list">
+        {interviews.map((entry, i) => {
+          const relatedEvent = entry.data.relatedEvent
+            ? allEvents.find(e => e.id === entry.data.relatedEvent)
+            : null;
+          return (
+            <a href={`/interviews/${entry.id}`} class={`r-resource-row ${i % 2 === 0 ? '' : 'r-resource-row--alt'}`}>
+              <div class="r-resource-row__date">
+                {entry.data.date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+              </div>
+              <div class="r-resource-row__content">
+                <div class="r-resource-row__title">{entry.data.title}</div>
+                {relatedEvent && (
+                  <div class="r-resource-row__related">Related: {relatedEvent.data.title}</div>
+                )}
+              </div>
+            </a>
+          );
+        })}
+      </div>
     </div>
   )}
 </Layout>

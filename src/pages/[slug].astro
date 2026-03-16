@@ -5,7 +5,7 @@ import { Layout, isClassic } from '../lib/theme';
 export async function getStaticPaths() {
   const pagesCollection = await getCollection('pages');
   return pagesCollection
-    .filter(page => page.id !== 'homepage' && page.id !== 'index' && page.id !== 'neh-seminar-2015')
+    .filter(page => page.id !== 'homepage' && page.id !== 'index' && page.id !== 'neh-seminar-2015' && page.id !== 'books')
     .map(page => ({
       params: { slug: page.id },
       props: { page },

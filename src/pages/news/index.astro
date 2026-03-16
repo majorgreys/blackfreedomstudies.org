@@ -42,15 +42,18 @@ const newsWithContent = await Promise.all(
     <div>
       <div class="r-page-header">
         <h1>News</h1>
+        <p>Announcements and updates from the series</p>
       </div>
-      <ul class="r-news-list">
-        {news.map(entry => (
-          <li class="r-news-item">
-            <span class="r-news-date">{entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-            <h2><a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`}>{entry.data.title}</a></h2>
-          </li>
+      <div class="r-resource-list">
+        {news.map((entry, i) => (
+          <a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`} class={`r-resource-row ${i % 2 === 0 ? '' : 'r-resource-row--alt'}`}>
+            <div class="r-resource-row__date">
+              {entry.data.date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+            </div>
+            <div class="r-resource-row__title">{entry.data.title}</div>
+          </a>
         ))}
-      </ul>
+      </div>
     </div>
   )}
 </Layout>
