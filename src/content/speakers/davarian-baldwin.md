@@ -3,7 +3,7 @@ name: "Davarian Baldwin"
 affiliation: "Trinity College"
 image: "../../assets/speakers/Davarian-Baldwin.jpg"
 email: "davarian.baldwin@trincoll.edu"
-twitter: "@DavarianBaldwin"
+twitter: "DavarianBaldwin"
 homepage: "https://internet3.trincoll.edu/facProfiles/Default.aspx?fid=1361623"
 ---
 

@@ -3,7 +3,7 @@ name: "Ashley Howard"
 affiliation: "University of Iowa"
 image: "../../assets/speakers/ashley-howard-1.jpg"
 email: "ashley-howard@uiowa.edu"
-twitter: "https://x.com/DrAshleyHoward"
+twitter: "DrAshleyHoward"
 homepage: "https://africanamericanstudies.uiowa.edu/people/ashley-howard"
 ---
 

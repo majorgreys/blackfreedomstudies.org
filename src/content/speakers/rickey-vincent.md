@@ -3,7 +3,7 @@ name: "Rickey Vincent"
 affiliation: "University of California, Berkeley"
 image: "../../assets/speakers/RickeyVincent.jpg"
 email: "rvincent@berkeley.edu"
-twitter: "@rickeyvincent"
+twitter: "rickeyvincent"
 homepage: "http://www.rickeyvincent.com/"
 ---
 

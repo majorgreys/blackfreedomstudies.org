@@ -3,7 +3,7 @@ name: "Keeanga-Yamahtta Taylor"
 affiliation: "Princeton University"
 image: "../../assets/bookCovers/keeangataylor.jpg"
 email: "kytaylor@princeton.edu"
-twitter: "@KeeangaYamahtta"
+twitter: "KeeangaYamahtta"
 homepage: "http://www.Keeangataylor.com"
 ---
 

@@ -1,7 +1,7 @@
 ---
 name: "Anna Malaika Tubbs"
 image: "../../assets/speakers/tubbs.png"
-twitter: "@annas_tea_"
+twitter: "annas_tea_"
 homepage: "https://annamalaikatubbs.com/"
 ---
 

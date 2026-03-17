@@ -3,7 +3,7 @@ name: "Carl Suddler"
 affiliation: "Emory University"
 image: "../../assets/speakers/carlsuddler.jpg"
 email: "carl.suddler@emory.edu"
-twitter: "@Prof_Suddler"
+twitter: "Prof_Suddler"
 homepage: "https://www.carlsuddler.com/"
 ---
 

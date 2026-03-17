@@ -3,7 +3,7 @@ name: "Stefan Bradley"
 affiliation: "Amherst College"
 image: "../../assets/speakers/stefanbradley.jpg"
 email: "stefanbradley@amherst.edu"
-twitter: "@ProfSBradley"
+twitter: "ProfSBradley"
 homepage: "https://stefanbradley.com/"
 ---
 

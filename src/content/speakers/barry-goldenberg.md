@@ -3,7 +3,7 @@ name: "Barry Goldenberg"
 affiliation: "University of California, Irvine"
 image: "../../assets/speakers/barry-goldberg.jpg"
 email: "goldenbb@uci.edu"
-twitter: "https://x.com/barrygoldenberg?lang=en"
+twitter: "barrygoldenberg"
 homepage: "https://www.barrygoldenberg.com/"
 ---
 

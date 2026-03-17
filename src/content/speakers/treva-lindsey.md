@@ -3,7 +3,7 @@ name: "Treva Lindsey"
 affiliation: "The Ohio State University"
 image: "../../assets/bookCovers/lindsey.268.JPG"
 email: "lindsey.268@osu.edu"
-twitter: "@divafeminist"
+twitter: "divafeminist"
 homepage: "https://wgss.osu.edu/people/lindsey.268"
 ---
 

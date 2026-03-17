@@ -3,7 +3,7 @@ name: "Noliwe Rooks"
 affiliation: "Brown University"
 image: "../../assets/speakers/noliwerooks.png"
 email: "noliwe_rooks@brown.edu"
-twitter: "@nrookie"
+twitter: "nrookie"
 homepage: "https://www.noliwerooks.com/"
 ---
 

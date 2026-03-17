@@ -3,7 +3,7 @@ name: "Suzanne Cope"
 affiliation: "New York University"
 image: "../../assets/bookCovers/F36AF86A-ED0B-41FB-8325-68487158B261.jpeg"
 email: "prof.cope@gmail.com"
-twitter: "@suzannecope_phd"
+twitter: "suzannecope_phd"
 homepage: "https://www.suzannecope.com/"
 ---
 

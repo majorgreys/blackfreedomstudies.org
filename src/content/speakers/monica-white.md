@@ -3,7 +3,7 @@ name: "Monica White"
 affiliation: "University of Wisconsin"
 image: "../../assets/speakers/Monica-White.jpg"
 email: "mmwhite3@wisc.edu"
-twitter: "@thegardengriot"
+twitter: "thegardengriot"
 homepage: "http://monicamariewhite.com/"
 ---
 

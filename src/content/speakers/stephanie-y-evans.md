@@ -3,7 +3,7 @@ name: "Stephanie Y. Evans"
 affiliation: "Georgia State University"
 image: "../../assets/speakers/Stephanie-Evans.jpg"
 email: "sevans62@gsu.edu"
-twitter: " @Prof_Evans"
+twitter: "Prof_Evans"
 homepage: "http://www.professorevans.net/home.html"
 ---
 

@@ -3,7 +3,7 @@ name: "Shirletta Kinchen"
 affiliation: "University of Louisville"
 image: "../../assets/speakers/shirlettakichen.jpg"
 email: "Email Dr. Shirletta Kinchen"
-twitter: "@DoctahKay"
+twitter: "DoctahKay"
 homepage: "https://louisville.edu/panafricanstudies/faculty-and-staff/kinchen"
 ---
 

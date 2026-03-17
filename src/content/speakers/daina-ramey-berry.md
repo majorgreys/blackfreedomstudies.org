@@ -3,7 +3,7 @@ name: "Daina Ramey Berry"
 affiliation: "University of Texas at Austin"
 image: "../../assets/speakers/Daina-Ramey-Berry.jpg"
 email: "drb@austin.utexas.edu"
-twitter: "@DainaRameyBerry"
+twitter: "DainaRameyBerry"
 homepage: "http://www.drdainarameyberry.com/home"
 ---
 

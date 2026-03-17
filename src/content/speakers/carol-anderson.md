@@ -2,7 +2,7 @@
 name: "Carol Anderson"
 affiliation: "Emory University"
 image: "../../assets/speakers/carolanderson.jpg"
-twitter: "@ProfCAnderson"
+twitter: "ProfCAnderson"
 homepage: "https://www.professorcarolanderson.org/"
 ---
 

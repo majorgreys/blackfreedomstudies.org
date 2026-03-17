@@ -3,7 +3,7 @@ name: "Traci Parker"
 affiliation: "UC Davis"
 image: "../../assets/speakers/traci-parker.jpeg"
 email: "tparker@ucdavis.edu"
-twitter: "https://twitter.com/tracilynnea?lang=en"
+twitter: "tracilynnea"
 homepage: "https://traciparker.com/"
 ---
 

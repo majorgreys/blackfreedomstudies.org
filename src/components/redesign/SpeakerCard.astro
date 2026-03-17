@@ -8,11 +8,12 @@ interface Props {
   image?: ImageMetadata;
   email?: string;
   twitter?: string;
+  social?: string;
   homepage?: string;
   compact?: boolean;
 }
 
-const { name, slug, affiliation, image, email, twitter, homepage, compact = false } = Astro.props;
+const { name, slug, affiliation, image, email, twitter, social, homepage, compact = false } = Astro.props;
 ---
 <li class="r-speaker-item">
   {image ? (
@@ -27,6 +28,7 @@ const { name, slug, affiliation, image, email, twitter, homepage, compact = fals
       {homepage && <a href={homepage}>Website</a>}
       {email && <a href={`mailto:${email}`}>Email</a>}
       {twitter && <a href={`https://twitter.com/${twitter}`}>Twitter</a>}
+      {social && <a href={social}>Social</a>}
     </div>
     {!compact && <slot />}
   </div>

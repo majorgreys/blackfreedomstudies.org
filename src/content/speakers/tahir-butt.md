@@ -3,7 +3,7 @@ name: "Tahir Butt"
 affiliation: "CUNY Graduate Center"
 image: "../../assets/speakers/Tahirbutt.jpg"
 email: "me@tahirbutt.com"
-twitter: "@majorgreys"
+twitter: "majorgreys"
 homepage: "http://tahirbutt.com/"
 ---
 

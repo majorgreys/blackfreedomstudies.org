@@ -3,7 +3,7 @@ name: "Say Burgin"
 affiliation: "Dickinson College"
 image: "../../assets/speakers/sayburgin_170815_131125.jpg"
 email: "burgins@dickinson.edu"
-twitter: "@sayburgin"
+twitter: "sayburgin"
 homepage: "https://www.dickinson.edu/site/custom_scripts/dc_faculty_profile_index.php?fac=burgins"
 ---
 

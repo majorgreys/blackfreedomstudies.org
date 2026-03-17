@@ -3,7 +3,7 @@ name: "Daniel Immerwahr"
 affiliation: "Northwestern University"
 image: "../../assets/speakers/Daniel-Immerwahr.png"
 email: "daniel.immerwahr@northwestern.edu"
-twitter: "@dimmerwahr"
+twitter: "dimmerwahr"
 homepage: "https://faculty.wcas.northwestern.edu/daniel-immerwahr/"
 ---
 

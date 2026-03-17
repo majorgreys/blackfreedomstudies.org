@@ -3,7 +3,7 @@ name: "Yoruba Richen"
 affiliation: "CUNY Newmark School of Journalism"
 image: "../../assets/speakers/Yoruba_Richen_7311549170_cropped.jpeg"
 email: "yoruba.richen@journalism.cuny.edu"
-twitter: "https://twitter.com/redrubes14"
+twitter: "redrubes14"
 homepage: "https://www.journalism.cuny.edu/faculty/yoruba-richen/"
 ---
 

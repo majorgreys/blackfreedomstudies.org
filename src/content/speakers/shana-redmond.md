@@ -3,7 +3,7 @@ name: "Shana Redmond"
 affiliation: "Columbia University"
 image: "../../assets/speakers/ShanaRedmond.jpg"
 email: "shana.redmond@schoolofmusic.ucla.edu"
-twitter: "@ShanaRedmond"
+twitter: "ShanaRedmond"
 homepage: "http://drshanaredmond.com/"
 ---
 

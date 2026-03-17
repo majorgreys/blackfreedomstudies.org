@@ -3,7 +3,7 @@ name: "Roxanne Dunbar-Ortiz"
 affiliation: "California State University, Hayward"
 image: "../../assets/speakers/RDO.jpg"
 email: "rdunbaro@pacbell.net"
-twitter: "@rdunbaro"
+twitter: "rdunbaro"
 homepage: "https://www.reddirtsite.com/"
 ---
 

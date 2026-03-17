@@ -3,7 +3,7 @@ name: "Moya Bailey"
 affiliation: "Northwestern University"
 image: "../../assets/speakers/Moya-Bailey.jpg"
 email: "moya.bailey@northwestern.edu"
-twitter: "@MoyazB"
+twitter: "MoyazB"
 homepage: "https://www.moyabailey.com/"
 ---
 

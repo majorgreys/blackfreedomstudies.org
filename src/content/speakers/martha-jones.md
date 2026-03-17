@@ -3,7 +3,7 @@ name: "Martha Jones"
 affiliation: "Johns Hopkins University"
 image: "../../assets/speakers/marthajones.jpg"
 email: "msjonz@jhu.edu"
-twitter: "@marthasjonesUM"
+twitter: "marthasjonesUM"
 homepage: "https://marthasjones.com/"
 ---
 

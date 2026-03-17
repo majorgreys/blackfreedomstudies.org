@@ -2,7 +2,7 @@
 name: "David Stein"
 affiliation: "University of California, Los Angeles"
 image: "../../assets/speakers/davidstein.jpg"
-twitter: " @davidpstein "
+twitter: "davidpstein"
 homepage: "https://davidpstein.wordpress.com/"
 ---
 

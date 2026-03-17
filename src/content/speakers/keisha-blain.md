@@ -3,7 +3,7 @@ name: "Keisha N. Blain"
 affiliation: "Brown University"
 image: "../../assets/speakers/Keisha_Blain-300x300.jpg"
 email: "keisha_blain@brown.edu"
-twitter: "@KeishaBlain"
+twitter: "KeishaBlain"
 homepage: "http://www.keishablain.com/"
 ---
 

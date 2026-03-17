@@ -3,7 +3,7 @@ name: "Daniel Lucks"
 affiliation: "Independent Scholar"
 image: "../../assets/speakers/Daniel-Lucks.jpg"
 email: "daniellucks08@gmail.com"
-twitter: "@DanielLucks3"
+twitter: "DanielLucks3"
 homepage: "https://www.daniellucks.com/"
 ---
 

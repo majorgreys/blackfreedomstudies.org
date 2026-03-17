@@ -3,7 +3,7 @@ name: "Ariella R. Rotramel"
 affiliation: "Connecticut College"
 image: "../../assets/speakers/Ariella-Rotremal.jpg"
 email: "arotrame@conncoll.edu"
-twitter: "@AriellaRotramel"
+twitter: "AriellaRotramel"
 homepage: "https://www.conncoll.edu/directories/faculty-profiles/ariella-rotramel/"
 ---
 

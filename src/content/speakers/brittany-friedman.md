@@ -3,7 +3,7 @@ name: "Brittany Friedman"
 affiliation: "University of Southern California"
 image: "../../assets/speakers/Brittany_Friedman_web-resized.jpg"
 email: "brittany.friedman@usc.edu"
-twitter: "https://x.com/CurlyProfessor"
+twitter: "CurlyProfessor"
 homepage: "https://dornsife.usc.edu/profile/brittany-friedman/"
 ---
 

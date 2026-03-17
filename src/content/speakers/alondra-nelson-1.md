@@ -3,7 +3,7 @@ name: "Alondra Nelson"
 affiliation: "Columbia University"
 image: "../../assets/speakers/AlondraNelson.jpg"
 email: "alondra.nelson@columbia.edu"
-twitter: "@alondra"
+twitter: "alondra"
 homepage: "http://www.alondranelson.com/"
 ---
 

@@ -3,7 +3,7 @@ name: "Sasha Turner"
 affiliation: "Quinnipiac University"
 image: "../../assets/speakers/sashaturner.jpg"
 email: "Sasha.Turner@quinnipiac.edu"
-twitter: "@drsashaturner"
+twitter: "drsashaturner"
 homepage: "https://www.qu.edu/student-resources/directory/staff.53880.html"
 ---
 

@@ -3,7 +3,7 @@ name: "Michelle Adams"
 affiliation: "University of Michigan"
 image: "../../assets/speakers/michelle_adams-1.jpg"
 email: "michadam@umich.edu"
-twitter: "https://x.com/mvadams12"
+twitter: "mvadams12"
 homepage: "https://michigan.law.umich.edu/faculty-and-scholarship/our-faculty/michelle-adams"
 ---
 

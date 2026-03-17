@@ -3,7 +3,7 @@ name: "Devin Fergus"
 affiliation: "University of Missouri"
 image: "../../assets/speakers/devinfergus.jpg"
 email: "fergusd@missouri.edu"
-twitter: "@Devin_Fergus"
+twitter: "Devin_Fergus"
 homepage: "https://history.missouri.edu/people/fergus"
 ---
 

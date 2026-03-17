@@ -3,7 +3,7 @@ name: "D'Weston Haywood"
 affiliation: "Hunter College, CUNY"
 image: "../../assets/speakers/Dweston-Haywood.jpg"
 email: "dh2036@hunter.cuny.edu"
-twitter: "@DwestonHaywood"
+twitter: "DwestonHaywood"
 homepage: "https://www.dwestonhaywood.com/"
 ---
 

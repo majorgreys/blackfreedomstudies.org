@@ -3,7 +3,7 @@ name: "Cookie Woolner"
 affiliation: "University of Memphis"
 image: "../../assets/speakers/woolner_cookie22.jpeg"
 email: "cwoolner@memphis.edu"
-twitter: "@CookieWoolner"
+twitter: "CookieWoolner"
 homepage: "https://cookiewoolner.com/"
 ---
 

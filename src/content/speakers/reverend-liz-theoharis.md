@@ -2,7 +2,7 @@
 name: "Reverend Liz Theoharis"
 affiliation: "Poor People's Campaign"
 image: "../../assets/speakers/liztheoharis3.jpg"
-twitter: "@liztheo"
+twitter: "liztheo"
 homepage: "http://liztheoharis.org/"
 ---
 

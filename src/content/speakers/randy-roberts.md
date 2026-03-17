@@ -3,7 +3,7 @@ name: "Randy Roberts"
 affiliation: "Purdue University"
 image: "../../assets/speakers/rroberts.jpg"
 email: "rroberts@purdue.edu"
-twitter: "@RrobertsSports"
+twitter: "RrobertsSports"
 homepage: "https://www.cla.purdue.edu/history/directory/?p=Randy_Roberts"
 ---
 

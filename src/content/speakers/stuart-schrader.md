@@ -3,7 +3,7 @@ name: "Stuart Schrader"
 affiliation: "Johns Hopkins University"
 image: "../../assets/speakers/Stuart-Schrader.jpg"
 email: "stuart.schrader@jhu.edu"
-twitter: "@stschrader1"
+twitter: "stschrader1"
 homepage: "https://soc.jhu.edu/directory/stuart-schrader/"
 ---
 

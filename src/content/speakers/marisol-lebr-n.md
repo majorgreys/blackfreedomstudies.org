@@ -3,7 +3,7 @@ name: "Marisol LeBrón"
 affiliation: "University of California, Santa Cruz"
 image: "../../assets/speakers/Marisol-Lebron.jpg"
 email: "malebron@ucsc.edu"
-twitter: "@marisollebron"
+twitter: "marisollebron"
 homepage: "http://marisollebron.com/"
 ---
 

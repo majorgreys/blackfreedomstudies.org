@@ -2,7 +2,7 @@
 name: "Reverend William Barber"
 affiliation: "Poor People's Campaign"
 image: "../../assets/speakers/barber-2.jpeg"
-twitter: "@RevDrBarber"
+twitter: "RevDrBarber"
 homepage: "https://www.breachrepairers.org/"
 ---
 

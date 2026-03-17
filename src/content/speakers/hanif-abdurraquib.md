@@ -2,7 +2,7 @@
 name: "Hanif Abdurraqib"
 affiliation: "Author, Poet, Critic"
 image: "../../assets/speakers/Hanif.jpg"
-twitter: "@NifMuhammad"
+twitter: "NifMuhammad"
 homepage: "http://www.abdurraqib.com/"
 ---
 

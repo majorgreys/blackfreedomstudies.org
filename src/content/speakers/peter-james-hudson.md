@@ -3,7 +3,7 @@ name: "Peter James Hudson"
 affiliation: "University of California, Los Angeles"
 image: "../../assets/speakers/Peter-James-Hudson.jpg"
 email: "PJHUDSON@UCLA.EDU"
-twitter: "@darkfinance"
+twitter: "darkfinance"
 homepage: "https://history.ucla.edu/faculty/peter-james-hudson"
 ---
 

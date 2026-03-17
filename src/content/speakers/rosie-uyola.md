@@ -3,7 +3,7 @@ name: "Rosie Uyola"
 affiliation: "Rutgers University"
 image: "../../assets/speakers/rosieuyola.jpg"
 email: "rosie.uyola@gmail.com"
-twitter: "@rosieuyola"
+twitter: "rosieuyola"
 homepage: "https://www.rosieuyola.com"
 ---
 

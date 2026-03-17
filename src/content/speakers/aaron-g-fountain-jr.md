@@ -2,7 +2,7 @@
 name: "Aaron G. Fountain Jr."
 image: "../../assets/speakers/aaron-fountain-1.jpg"
 email: "aafounta@gmail.com"
-twitter: "https://bsky.app/profile/aaronfountainjr.bsky.social"
+social: "https://bsky.app/profile/aaronfountainjr.bsky.social"
 homepage: "https://aaronfountainjr.com/"
 ---
 

@@ -3,7 +3,7 @@ name: "Kelly Lytle Hernandez"
 affiliation: "University of California, Los Angeles"
 image: "../../assets/speakers/kellyhernandez.jpg"
 email: "HERNANDEZ@HISTORY.UCLA.EDU"
-twitter: "@klytlehernandez"
+twitter: "klytlehernandez"
 homepage: "https://history.ucla.edu/faculty/kelly-lytle-hernandez"
 ---
 

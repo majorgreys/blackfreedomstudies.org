@@ -3,7 +3,7 @@ name: "Joshua Clark Davis"
 affiliation: "University of Baltimore"
 image: "../../assets/speakers/joshua_clark_davis-1.jpg"
 email: "jdavis@ubalt.edu"
-twitter: "https://x.com/joshclarkdavis"
+twitter: "joshclarkdavis"
 homepage: "https://www.joshuaclarkdavis.com/"
 ---
 

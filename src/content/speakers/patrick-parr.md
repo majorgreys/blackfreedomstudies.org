@@ -3,7 +3,7 @@ name: "Patrick Parr"
 affiliation: "Lakeland University Japan"
 image: "../../assets/speakers/parr.jpg"
 email: "pdparr14@gmail.com"
-twitter: "https://x.com/pdparrwriter"
+twitter: "pdparrwriter"
 homepage: "https://patrickparr.com/"
 ---
 

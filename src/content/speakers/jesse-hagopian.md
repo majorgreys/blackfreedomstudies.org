@@ -3,7 +3,7 @@ name: "Jesse Hagopian"
 affiliation: "Teacher, Author, Editor, Activist"
 image: "../../assets/speakers/jesse-Hagopian.jpg"
 email: "jesse@rethinkingschools.org "
-twitter: "@jessedhagopian"
+twitter: "jessedhagopian"
 homepage: "https://iamaneducator.com/"
 ---
 

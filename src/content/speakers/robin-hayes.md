@@ -2,7 +2,7 @@
 name: "Robin Hayes"
 affiliation: "Author and Filmaker"
 image: "../../assets/speakers/Robin-Hayes.jpg"
-twitter: "@PPupil"
+twitter: "PPupil"
 homepage: "http://progressivepupil.org/drrobinjhayes/"
 ---
 

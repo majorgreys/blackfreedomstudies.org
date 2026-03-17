@@ -3,7 +3,7 @@ name: "Ernest Morrell"
 affiliation: "University of Notre Dame"
 image: "../../assets/speakers/Ernest-Morrell.jpg"
 email: "emorrel1@nd.edu"
-twitter: "@ernestmorrell"
+twitter: "ernestmorrell"
 homepage: "https://english.nd.edu/people/faculty/morrell/"
 ---
 

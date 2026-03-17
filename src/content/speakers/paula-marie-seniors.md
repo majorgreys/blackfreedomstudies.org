@@ -3,7 +3,7 @@ name: "Paula Marie Seniors"
 affiliation: "Virginia Tech University"
 image: "../../assets/speakers/Paula-Marie-Seniors-2.jpg"
 email: "pseniors@vt.edu"
-twitter: "@pseniors"
+twitter: "pseniors"
 homepage: "https://www.paulamarieseniors.com/"
 ---
 

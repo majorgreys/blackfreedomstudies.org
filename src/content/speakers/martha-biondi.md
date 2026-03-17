@@ -3,7 +3,7 @@ name: "Martha Biondi"
 affiliation: "Northwestern University"
 image: "../../assets/speakers/marthabiondi.jpg"
 email: "m-biondi@northwestern.edu"
-twitter: "@MarthaBiondi"
+twitter: "MarthaBiondi"
 homepage: "https://www.afam.northwestern.edu/people/faculty/martha-biondi.html"
 ---
 

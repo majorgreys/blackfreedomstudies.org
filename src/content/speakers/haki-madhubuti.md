@@ -2,7 +2,7 @@
 name: "Haki Madhubuti"
 affiliation: "Third World Press Foundation"
 image: "../../assets/speakers/Haki-headshot-BW.png"
-twitter: "@HakiMadhubuti"
+twitter: "HakiMadhubuti"
 homepage: "http://thirdworldpressfoundation.com/our-publisher/"
 ---
 

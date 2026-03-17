@@ -3,7 +3,7 @@ name: "Edward Onaci"
 affiliation: "Ursinus College"
 image: "../../assets/speakers/Ed-Onasci.jpg"
 email: "eonaci@ursinus.edu"
-twitter: "@onaci7"
+twitter: "onaci7"
 homepage: "https://www.ursinus.edu/live/profiles/122-edward-onaci"
 ---
 

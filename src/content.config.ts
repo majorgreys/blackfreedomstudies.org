@@ -24,6 +24,7 @@ const speakers = defineCollection({
     image: image().optional(),
     email: z.string().optional(),
     twitter: z.string().optional(),
+    social: z.string().url().optional(),
     homepage: z.string().url().optional(),
   }),
 });

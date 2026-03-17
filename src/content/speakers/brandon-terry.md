@@ -3,7 +3,7 @@ name: "Brandon Terry"
 affiliation: "Harvard University"
 image: "../../assets/speakers/brandon-terry.jpeg"
 email: "bterry@fas.harvard.edu"
-twitter: "https://twitter.com/brandonmterry?lang=en"
+twitter: "brandonmterry"
 homepage: "https://aaas.fas.harvard.edu/people/brandon-terry"
 ---
 

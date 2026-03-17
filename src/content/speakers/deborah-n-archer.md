@@ -2,7 +2,7 @@
 name: "Deborah N. Archer"
 affiliation: "New York University"
 image: "../../assets/speakers/Deborah_N._Archer-1.jpg"
-twitter: "https://x.com/DeborahNArcher"
+twitter: "DeborahNArcher"
 homepage: "https://its.law.nyu.edu/facultyprofiles/index.cfm?fuseaction=profile.overview&personid=47170"
 ---
 

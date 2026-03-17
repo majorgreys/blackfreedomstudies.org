@@ -3,7 +3,7 @@ name: "Jarvis Givens"
 affiliation: "Harvard University"
 image: "../../assets/speakers/Jarvis-Givens.jpg"
 email: "jarvis_givens@gse.harvard.edu"
-twitter: "@jarvisrgivens"
+twitter: "jarvisrgivens"
 homepage: "https://www.jarvisgivens.com/"
 ---
 

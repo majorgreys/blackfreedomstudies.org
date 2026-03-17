@@ -3,7 +3,7 @@ name: "Sowande' Mustakeem"
 affiliation: "Washington University, St. Louis"
 image: "../../assets/speakers/sowande.jpg"
 email: "mustakee@wustl.edu"
-twitter: "@somustakeem"
+twitter: "somustakeem"
 homepage: "https://history.artsci.wustl.edu/mustakeem"
 ---
 

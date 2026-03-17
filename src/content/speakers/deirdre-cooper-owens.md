@@ -3,7 +3,7 @@ name: "Deirdre Cooper Owens"
 affiliation: "University of Nebraska, Lincoln"
 image: "../../assets/speakers/deidre-cooper-owens-2.jpg"
 email: "dcooperowens2@unl.edu"
-twitter: "@drcooperowens"
+twitter: "drcooperowens"
 homepage: "https://www.deirdrecooperowens.com/"
 ---
 

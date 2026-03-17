@@ -3,7 +3,7 @@ name: "Max Felker-Kantor"
 affiliation: "Ball State University"
 image: "../../assets/speakers/Maxfelkerkantor.jpg"
 email: "mfkantor@bsu.edu"
-twitter: "@mfkantor"
+twitter: "mfkantor"
 homepage: "https://www.maxfelkerkantor.com/"
 ---
 

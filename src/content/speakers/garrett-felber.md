@@ -3,7 +3,7 @@ name: "Garrett Felber"
 affiliation: "University of Mississippi"
 image: "../../assets/speakers/garrettfelber.jpg"
 email: "felber@olemiss.edu"
-twitter: "@garrett_felber"
+twitter: "garrett_felber"
 homepage: "https://history.olemiss.edu/garrett-felber/"
 ---
 

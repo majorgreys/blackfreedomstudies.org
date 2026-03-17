@@ -2,7 +2,7 @@
 name: "Toni Smith-Thompson"
 affiliation: "Activist Athlete, New York Civil Liberties Union"
 image: "../../assets/speakers/Toni.jpg"
-twitter: "@mstonij"
+twitter: "mstonij"
 homepage: "https://www.nyclu.org/en/biographies/toni-smith-thompson"
 ---
 

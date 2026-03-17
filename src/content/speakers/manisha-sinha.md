@@ -3,7 +3,7 @@ name: "Manisha Sinha"
 affiliation: "University of Connecticut"
 image: "../../assets/speakers/sinha.jpg"
 email: "manisha.sinha@uconn.edu"
-twitter: "@ProfMSinha"
+twitter: "ProfMSinha"
 homepage: "https://history.uconn.edu/faculty-by-name/manisha-sinha/"
 ---
 

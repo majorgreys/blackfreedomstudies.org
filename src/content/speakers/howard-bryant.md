@@ -3,7 +3,7 @@ name: "Howard Bryant"
 affiliation: "ESPN"
 image: "../../assets/speakers/howard-bryant-2.jpg"
 email: "HB@howardbryant.net"
-twitter: "@hbryant42"
+twitter: "hbryant42"
 homepage: "https://www.howardbryant.net/"
 ---
 

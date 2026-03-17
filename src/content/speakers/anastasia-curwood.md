@@ -3,7 +3,7 @@ name: "Anastasia Curwood"
 affiliation: "University of Kentucky"
 image: "../../assets/speakers/curwood.jpeg"
 email: "a.curwood@uky.edu"
-twitter: "@CurwoodA"
+twitter: "CurwoodA"
 homepage: "https://history.as.uky.edu/users/accu226"
 ---
 

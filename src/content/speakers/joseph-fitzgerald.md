@@ -3,7 +3,7 @@ name: "Joseph R. Fitzgerald"
 affiliation: "Cabrini University"
 image: "../../assets/speakers/J.Fitzgerald_HeadShot_2018.jpg"
 email: "doctorfitzgerald@ymail.com "
-twitter: "@StrugIsEternal "
+twitter: "StrugIsEternal"
 homepage: "http://gloriarichardson.com/"
 ---
 

@@ -3,7 +3,7 @@ name: "Saidiya Hartman"
 affiliation: "Columbia University"
 image: "../../assets/speakers/saidiyahartman2.jpg"
 email: "svh2102@columbia.edu"
-twitter: "@sojournerlife"
+twitter: "sojournerlife"
 homepage: "https://english.columbia.edu/content/saidiya-v-hartman"
 ---
 

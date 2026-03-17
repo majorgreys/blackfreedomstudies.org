@@ -3,7 +3,7 @@ name: "Emily Hobson"
 affiliation: "University of Nevada, Reno"
 image: "../../assets/speakers/emily-hobson.jpg"
 email: "ehobson@unr.edu"
-twitter: "@ekhobson"
+twitter: "ekhobson"
 homepage: "https://www.unr.edu/history/faculty-staff/emily-hobson"
 ---
 

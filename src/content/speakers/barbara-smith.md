@@ -3,7 +3,7 @@ name: "Barbara Smith"
 affiliation: "Author, Editor, Activist, Teacher"
 image: "../../assets/speakers/Barbara-Smith-3.png"
 email: "BarbaraSmithProject@gmail.com"
-twitter: "@AintGonnaLet"
+twitter: "AintGonnaLet"
 homepage: "https://barbarasmithaintgonna.com/"
 ---
 

@@ -3,7 +3,7 @@ name: "Charisse Burden-Stelly"
 affiliation: "Wayne State University"
 image: "../../assets/speakers/CharisseBurden.jpg"
 email: "cburden@carleton.edu"
-twitter: "@blackleftaf"
+twitter: "blackleftaf"
 homepage: "https://www.charisseburdenstelly.com/"
 ---
 

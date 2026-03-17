@@ -3,7 +3,7 @@ name: "James Forman"
 affiliation: "Yale Law School"
 image: "../../assets/speakers/james-forman-web.jpg"
 email: "james.forman@yale.edu"
-twitter: "@JFormanJr"
+twitter: "JFormanJr"
 homepage: "https://www.jamesformanjr.com/"
 ---
 

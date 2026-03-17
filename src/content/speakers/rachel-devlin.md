@@ -3,7 +3,7 @@ name: "Rachel Devlin"
 affiliation: "Rutgers University, New Brunswick"
 image: "../../assets/speakers/racheldevlin.jpg"
 email: "rachel.devlin@rutgers.edu"
-twitter: "@racheldevlin9"
+twitter: "racheldevlin9"
 homepage: "https://history.rutgers.edu/people/faculty/details/56-professors/462-devlin-rachel"
 ---
 

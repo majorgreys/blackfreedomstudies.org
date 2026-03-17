@@ -3,7 +3,7 @@ name: "Tammy L. Brown"
 affiliation: "Miami University"
 image: "../../assets/speakers/TLBrown-closeup.png"
 email: "browntl3@MiamiOH.edu"
-twitter: "@browntammy"
+twitter: "browntammy"
 homepage: "https://www.miamioh.edu/cas/academics/departments/history/about/faculty/brown/index.html"
 ---
 

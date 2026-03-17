@@ -3,7 +3,7 @@ name: "Christopher Tinson"
 affiliation: "Hampshire College"
 image: "../../assets/speakers/christinson.jpg"
 email: "cmtHA@hampshire.edu"
-twitter: "@Dahktin"
+twitter: "Dahktin"
 homepage: "https://www.hampshire.edu/faculty/christopher-tinson"
 ---
 

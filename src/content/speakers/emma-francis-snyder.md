@@ -3,7 +3,7 @@ name: "Emma Francis Snyder"
 affiliation: "Filmaker"
 image: "../../assets/speakers/emmafrancissnyder.jpg"
 email: "EmmaCFS@gmail.com"
-twitter: "@takeoverthefilm"
+twitter: "takeoverthefilm"
 homepage: "https://www.emmacfs.com/"
 ---
 

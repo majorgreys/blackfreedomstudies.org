@@ -3,7 +3,7 @@ name: "Mia Bay"
 affiliation: "University of Cambridge"
 image: "../../assets/speakers/mia_bay-1.jpg"
 email: " mb2739@cam.ac.uk"
-twitter: "https://x.com/mia__bay/"
+twitter: "mia__bay"
 homepage: "https://www.hist.cam.ac.uk/people/professor-mia-bay"
 ---
 

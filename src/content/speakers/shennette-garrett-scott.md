@@ -3,7 +3,7 @@ name: "Shennette Garrett Scott"
 affiliation: "Tulane University"
 image: "../../assets/speakers/Garrett-Scott-sm.jpeg"
 email: "sgs@tulane.edu"
-twitter: "https://twitter.com/EbonRebel"
+twitter: "EbonRebel"
 homepage: "https://liberalarts.tulane.edu/departments/history/people/shennette-garrett-scott"
 ---
 

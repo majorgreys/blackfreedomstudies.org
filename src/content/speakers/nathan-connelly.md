@@ -3,7 +3,7 @@ name: "Nathan Connolly"
 affiliation: "Johns Hopkins University"
 image: "../../assets/speakers/nathanconnelly.jpg"
 email: "nconnol2@jhu.edu"
-twitter: "@ndbconnolly"
+twitter: "ndbconnolly"
 homepage: "https://history.jhu.edu/directory/nathan-connolly/"
 ---
 

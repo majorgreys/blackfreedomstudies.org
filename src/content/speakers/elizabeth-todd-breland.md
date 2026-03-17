@@ -3,7 +3,7 @@ name: "Elizabeth Todd-Breland"
 affiliation: "University of Illinois, Chicago"
 image: "../../assets/speakers/Elizabeth-Todd-Breland.jpg"
 email: "etoddbre@uic.edu"
-twitter: "@EToddBreland"
+twitter: "EToddBreland"
 homepage: "https://hist.uic.edu/profiles/todd-breland-elizabeth/"
 ---
 

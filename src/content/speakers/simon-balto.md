@@ -3,7 +3,7 @@ name: "Simon Balto"
 affiliation: "The University of Iowa"
 image: "../../assets/speakers/simonbalto.JPG"
 email: "simon-balto@uiowa.edu"
-twitter: "@SimonBalto"
+twitter: "SimonBalto"
 homepage: "https://clas.uiowa.edu/history/people/simon-balto"
 ---
 

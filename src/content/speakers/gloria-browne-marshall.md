@@ -3,7 +3,7 @@ name: "Gloria Browne-Marshall"
 affiliation: "John Jay College, CUNY"
 image: "../../assets/speakers/GloriaBrownejpg.jpg"
 email: "gbmarshall@jjay.cuny.edu"
-twitter: "@GBrowneMarshall"
+twitter: "GBrowneMarshall"
 homepage: "https://www.jjay.cuny.edu/faculty/gloria-browne-marshall"
 ---
 

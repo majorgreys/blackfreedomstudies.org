@@ -3,7 +3,7 @@ name: "Keona Ervin"
 affiliation: "University of Missouri"
 image: "../../assets/speakers/keonaervin.jpg"
 email: "ervink@missouri.edu"
-twitter: "@KeonaKErvin"
+twitter: "KeonaKErvin"
 homepage: "https://history.missouri.edu/people/ervin"
 ---
 

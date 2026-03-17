@@ -3,7 +3,7 @@ name: "Lerone Martin"
 affiliation: "Stanford University"
 image: "../../assets/speakers/lerone-martin.png"
 email: "lerone@stanford.edu"
-twitter: "https://twitter.com/DirectorMLK"
+twitter: "DirectorMLK"
 homepage: "https://kinginstitute.stanford.edu/people/lerone-martin"
 ---
 

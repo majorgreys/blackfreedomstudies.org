@@ -2,7 +2,7 @@
 name: "Ari Berman"
 affiliation: "Type Media Center"
 image: "../../assets/speakers/ariberman.jpg"
-twitter: "@AriBerman"
+twitter: "AriBerman"
 homepage: "https://typemediacenter.org/project/ari-berman/"
 ---
 

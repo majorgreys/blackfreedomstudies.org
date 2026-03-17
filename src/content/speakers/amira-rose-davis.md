@@ -3,7 +3,7 @@ name: "Amira Rose Davis"
 affiliation: "Pennsylvania State University"
 image: "../../assets/speakers/amiradavis.jpg"
 email: "ard51@psu.edu"
-twitter: "@mirarose88"
+twitter: "mirarose88"
 homepage: "http://history.psu.edu/directory/ard51"
 ---
 

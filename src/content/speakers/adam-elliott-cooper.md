@@ -3,7 +3,7 @@ name: "Adam Elliott-Cooper"
 affiliation: "Queen Mary, University of London"
 image: "../../assets/speakers/Adam-elliott-cooper.jpeg"
 email: "a.elliott-cooper@qmul.ac.uk"
-twitter: "https://twitter.com/adamec87?lang=en"
+twitter: "adamec87"
 homepage: "https://www.qmul.ac.uk/politics/staff/profiles/elliottcooperadam.html"
 ---
 

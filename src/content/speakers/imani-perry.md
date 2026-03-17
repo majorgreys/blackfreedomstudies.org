@@ -2,7 +2,7 @@
 name: "Imani Perry"
 affiliation: "Princeton University"
 image: "../../assets/speakers/imaniperry.jpg"
-twitter: "@imaniperry"
+twitter: "imaniperry"
 homepage: "https://aas.princeton.edu/people/imani-perry"
 ---
 

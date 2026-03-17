@@ -2,7 +2,7 @@
 name: "Daniel S. Chard"
 affiliation: "Western Washington University"
 image: "../../assets/speakers/Daniel-Chard-2.jpg"
-twitter: "@danielschard"
+twitter: "danielschard"
 homepage: "https://danielschard.com/"
 ---
 

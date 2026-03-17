@@ -2,7 +2,7 @@
 name: "Dr. Julius Garvey"
 affiliation: "Queens Hospital Center"
 image: "../../assets/speakers/juliusgarvey.jpg"
-twitter: "@DrJuliusGarvey"
+twitter: "DrJuliusGarvey"
 ---
 
 Thoracic surgeon and medical professor Dr. Julius W. Garvey was born in Kingston, Jamaica to United Negro Improvement Association founder Marcus Garvey, and activist Amy Jacques Garvey. He earned his B.S. from McGill University in Montréal, Quebec in 1957, and his M.D., C.M. from McGill University Faculty of Medicine in 1961.

@@ -3,7 +3,7 @@ name: "LaShawn Harris"
 affiliation: "Michigan State University"
 image: "../../assets/speakers/LaShawn-Harris-headshot-1.jpg"
 email: "harri859@msu.edu"
-twitter: "@madameclair08"
+twitter: "madameclair08"
 homepage: "http://history.msu.edu/people/faculty/lashawn-d-harris/"
 ---
 

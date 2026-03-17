@@ -3,7 +3,7 @@ name: "Dave Zirin"
 affiliation: "Sports Editor, ​The Nation"
 image: "../../assets/speakers/davezirin.jpg"
 email: "dave@edgeofsports.com"
-twitter: "@edgeofsports"
+twitter: "edgeofsports"
 homepage: "http://www.davezirin.com/"
 ---
 

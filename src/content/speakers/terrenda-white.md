@@ -3,7 +3,7 @@ name: "Terrenda White"
 affiliation: "University of Colorado, Boulder"
 image: "../../assets/speakers/Terrendawhite.jpg"
 email: "Terrenda.White@colorado.edu"
-twitter: "@terrenda1980"
+twitter: "terrenda1980"
 homepage: "https://www.colorado.edu/education/terrenda-c-white"
 ---
 

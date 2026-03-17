@@ -1,7 +1,7 @@
 ---
 name: "Jonathan Eig"
 image: "../../assets/speakers/eig.jpeg"
-twitter: "https://twitter.com/jonathaneig?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+twitter: "jonathaneig"
 homepage: "https://www.jonathaneig.com/"
 ---
 
