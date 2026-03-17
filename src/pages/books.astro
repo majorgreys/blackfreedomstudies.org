@@ -41,7 +41,7 @@ const books = lines.map((line: string, i: number) => {
         <h1>Books</h1>
         <p>Nearly 200 books spanning civil rights, Black Power, education, policing, abolition, culture, and internationalism</p>
       </div>
-      <div class="r-resource-list">
+      <div class="r-resource-list" data-show-more="25">
         {books.map((book, i) => (
           <div class={`r-resource-row ${i % 2 === 0 ? '' : 'r-resource-row--alt'}`}>
             <div class="r-resource-row__title">{book.title}</div>
@@ -52,3 +52,32 @@ const books = lines.map((line: string, i: number) => {
     </div>
   )}
 </Layout>
+
+<script>
+  document.querySelectorAll('[data-show-more]').forEach(function (list) {
+    var limit = parseInt(list.getAttribute('data-show-more'), 10);
+    var items = Array.from(list.children).filter(function (el) {
+      return !el.classList.contains('r-show-more-btn');
+    });
+    if (items.length <= limit) return;
+
+    // Hide items beyond the limit
+    items.forEach(function (item, i) {
+      if (i >= limit) item.style.display = 'none';
+    });
+
+    // Create the button
+    var btn = document.createElement('button');
+    btn.className = 'r-show-more-btn';
+    btn.textContent = 'Show all ' + items.length + ' items';
+    btn.type = 'button';
+    list.parentNode.insertBefore(btn, list.nextSibling);
+
+    btn.addEventListener('click', function () {
+      items.forEach(function (item) {
+        item.style.display = '';
+      });
+      btn.remove();
+    });
+  });
+</script>

@@ -37,7 +37,7 @@ const prefix = isClassic ? 'c' : 'r';
         <h1>Recordings</h1>
         <p>Video recordings of past conversations at the Schomburg Center</p>
       </div>
-      <div class="r-resource-list">
+      <div class="r-resource-list" data-show-more="25">
         {recordings.map((r, i) => (
           <a href={r.data.sourceUrl} target="_blank" rel="noopener" class={`r-resource-row ${i % 2 === 0 ? '' : 'r-resource-row--alt'}`}>
             <div class="r-resource-row__icon">▶</div>
@@ -73,3 +73,32 @@ const prefix = isClassic ? 'c' : 'r';
     </div>
   )}
 </Layout>
+
+<script>
+  document.querySelectorAll('[data-show-more]').forEach(function (list) {
+    var limit = parseInt(list.getAttribute('data-show-more'), 10);
+    var items = Array.from(list.children).filter(function (el) {
+      return !el.classList.contains('r-show-more-btn');
+    });
+    if (items.length <= limit) return;
+
+    // Hide items beyond the limit
+    items.forEach(function (item, i) {
+      if (i >= limit) item.style.display = 'none';
+    });
+
+    // Create the button
+    var btn = document.createElement('button');
+    btn.className = 'r-show-more-btn';
+    btn.textContent = 'Show all ' + items.length + ' items';
+    btn.type = 'button';
+    list.parentNode.insertBefore(btn, list.nextSibling);
+
+    btn.addEventListener('click', function () {
+      items.forEach(function (item) {
+        item.style.display = '';
+      });
+      btn.remove();
+    });
+  });
+</script>
