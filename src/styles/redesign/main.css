@@ -743,16 +743,19 @@ main { padding: 48px 0; }
 .r-page-header {
   margin: 0 0 32px;
   padding: 12px clamp(20px, 4vw, 48px);
-  background: var(--color-bg);
-  border-bottom: 1px solid var(--color-border);
+  background: var(--color-stone-900);
+  color: #fff;
+  border-bottom: none;
   border-left: 4px solid var(--color-accent-red);
 }
-.r-page-header h1 { margin: 0; color: var(--color-stone-900); font-size: 1.8rem; }
+.r-page-header h1 { margin: 0; color: #fff; font-size: 1.8rem; }
 .r-page-header p {
   margin: 4px 0 0;
-  color: var(--color-text-muted);
+  color: var(--color-stone-400);
   font-size: 1rem;
 }
+.r-page-header .r-news-date { color: var(--color-stone-400); }
+.r-page-header a { color: var(--color-teal-500); }
 
 section h2 {
   position: relative;
