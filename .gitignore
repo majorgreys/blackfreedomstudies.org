@@ -3,3 +3,9 @@ data/config/license.key
 **/.DS_Store
 node_modules/
 dist/
+.astro/
+.claude/
+.superpowers/
+.beads/dolt/
+.beads/dolt-server.log
+screenshots/
