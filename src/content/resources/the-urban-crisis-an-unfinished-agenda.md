@@ -2,7 +2,7 @@
 title: "The Urban Crisis: An Unfinished Agenda"
 resourceType: external
 sourceUrl: "https://vimeo.com/108487348"
-videoEmbedCode: "<iframe src=\"//player.vimeo.com/video/108487348?title=0&amp;byline=0&amp;portrait=0\" width=\"500\" height=\"281\" frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>"
+videoEmbedCode: "<iframe src=\"//player.vimeo.com/video/108487348?title=0&byline=0&portrait=0\" width=\"500\" height=\"281\" frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>"
 publicationDate: "10/4/2014"
 date: 2014-09-04
 ---
