@@ -41,6 +41,7 @@ const seasonEvents = events
     <div>
       <div class="r-page-header">
         <h1>{label}</h1>
+        <p>{seasonEvents.length} conversation{seasonEvents.length !== 1 ? 's' : ''} · <a href="/events/">View all seasons</a></p>
       </div>
       <ul class="r-events-list">
         {seasonEvents.map(event => (
