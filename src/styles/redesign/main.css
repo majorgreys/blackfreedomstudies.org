@@ -1030,5 +1030,97 @@ section h2::after {
   }
 }
 
+/* ── Book tags (flowing chips) ── */
+.r-book-tags {
+  line-height: 2.4;
+}
+.r-book-tag {
+  display: inline;
+  margin-right: 4px;
+}
+.r-book-tag__title {
+  display: inline;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 3px;
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+.r-book-tag__author {
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  margin-left: 4px;
+}
+
+/* ── Resource list (striped rows) ── */
+.r-resource-list {
+  border-left: 4px solid var(--color-accent);
+}
+.r-resource-list--red {
+  border-left-color: var(--color-accent-red);
+}
+.r-resource-list--teal {
+  border-left-color: var(--color-accent);
+}
+.r-resource-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  text-decoration: none !important;
+  color: inherit;
+  transition: background 0.15s;
+}
+.r-resource-row--alt {
+  background: var(--color-stone-100);
+}
+.r-resource-row:hover {
+  background: var(--color-teal-50);
+}
+.r-resource-row__icon {
+  background: var(--color-stone-900);
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+.r-resource-row__title {
+  flex: 1;
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-stone-900);
+}
+.r-resource-row:hover .r-resource-row__title {
+  color: var(--color-accent);
+}
+.r-resource-row__date {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.r-resource-row__content {
+  flex: 1;
+}
+.r-resource-row__related {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
 /* ── Video embed ── */
 .video-embed { margin: 24px 0; border-radius: 8px; overflow: hidden; }
