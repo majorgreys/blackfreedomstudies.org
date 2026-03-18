@@ -89,6 +89,16 @@ img { max-width: 100%; height: auto; }
   background: var(--color-stone-900);
   max-width: var(--max-width);
   margin: 0 auto;
+  position: relative;
+}
+.r-navbar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-accent-red) 0%, var(--color-accent-red) 30%, var(--color-accent) 30%, var(--color-accent) 100%);
 }
 .r-navbar__brand {
   display: block;
