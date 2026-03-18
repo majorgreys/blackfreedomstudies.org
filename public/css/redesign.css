@@ -388,6 +388,7 @@ main { padding: 48px 0; }
   gap: 6px;
   background: rgba(248, 32, 4, 0.85);
   padding: 2px 8px;
+  text-decoration: none;
 }
 .r-hero__news a:hover { background: rgba(248, 32, 4, 1); color: #fff; }
 .r-hero__news a::before {
