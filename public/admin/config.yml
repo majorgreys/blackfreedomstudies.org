@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: main
 
-# Enable local backend for development testing (run npx decap-server)
+# Enable local backend for development (run: npx decap-server)
 local_backend: true
 
 # Editorial workflow: draft -> in review -> ready -> published
@@ -69,6 +69,7 @@ collections:
       - { name: image, label: Photo, widget: image, required: false }
       - { name: email, label: Email, widget: string, required: false }
       - { name: twitter, label: Twitter Handle, widget: string, required: false }
+      - { name: social, label: Social URL, widget: string, required: false, hint: "Bluesky or other social profile URL" }
       - { name: homepage, label: Website, widget: string, required: false }
       - { name: body, label: Bio, widget: markdown }
 
@@ -91,7 +92,7 @@ collections:
         required: false
       - { name: body, label: Body, widget: markdown }
 
-  # ─── Interviews (NEW) ────────────────────────────────────
+  # ─── Interviews ───────────────────────────────────────────
   - name: interviews
     label: Interviews
     folder: src/content/interviews
@@ -103,7 +104,44 @@ collections:
       - { name: date, label: Date, widget: datetime }
       - { name: image, label: Image, widget: image, required: false }
       - { name: relatedEvent, label: Related Event Slug, widget: string, required: false, hint: "The slug of the event this interview is about" }
+      - name: tags
+        label: Tags
+        widget: list
+        field: { name: tag, label: Tag, widget: string }
+        required: false
       - { name: body, label: Body, widget: markdown }
+
+  # ─── Resources ────────────────────────────────────────────
+  - name: resources
+    label: Resources
+    folder: src/content/resources
+    create: true
+    extension: md
+    slug: "{{slug}}"
+    fields:
+      - { name: title, label: Title, widget: string }
+      - name: resourceType
+        label: Type
+        widget: select
+        options:
+          - { label: Video, value: video }
+          - { label: Document, value: document }
+          - { label: External, value: external }
+          - { label: Text, value: text }
+          - { label: Image, value: image }
+          - { label: Audio, value: audio }
+      - { name: sourceUrl, label: Source URL, widget: string, required: false }
+      - { name: videoEmbedCode, label: Video Embed Code, widget: text, required: false }
+      - { name: document, label: Document Path, widget: string, required: false }
+      - { name: authorship, label: Authorship, widget: string, required: false }
+      - { name: publicationDate, label: Publication Date, widget: string, required: false }
+      - name: tags
+        label: Tags
+        widget: list
+        field: { name: tag, label: Tag, widget: string }
+        required: false
+      - { name: date, label: Date, widget: datetime, required: false }
+      - { name: body, label: Content, widget: markdown }
 
   # ─── Pages ────────────────────────────────────────────────
   - name: pages
