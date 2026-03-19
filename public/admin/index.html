@@ -25,117 +25,84 @@
       if (isNaN(date)) return String(d);
       return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     }
-    function capitalize(s) {
-      return s ? s.charAt(0).toUpperCase() + s.slice(1) : '';
+    function formatMonth(d) {
+      if (!d) return '';
+      var date = new Date(d);
+      if (isNaN(date)) return '';
+      return date.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
     }
+    function formatDay(d) {
+      if (!d) return '';
+      var date = new Date(d);
+      if (isNaN(date)) return '';
+      return date.getDate();
+    }
+    function capitalize(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
     function slugToName(slug) {
       if (!slug) return '';
-      return slug.split('-').map(function(w) {
-        return w.charAt(0).toUpperCase() + w.slice(1);
-      }).join(' ');
+      return slug.split('-').map(function(w) { return w.charAt(0).toUpperCase() + w.slice(1); }).join(' ');
     }
 
     // ── Preview styles ──
     CMS.registerPreviewStyle('https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&display=swap');
     CMS.registerPreviewStyle(`
-      * { box-sizing: border-box; }
-      body {
-        font-family: 'Archivo', 'Open Sans', sans-serif;
-        color: #1c1917;
-        line-height: 1.7;
-        margin: 0;
-        padding: 0;
-        background: #fafaf9;
-      }
-      .preview-header {
-        background: #1c1917;
-        color: #fff;
-        padding: 20px 28px;
-        border-left: 4px solid #d82125;
-        margin-bottom: 0;
-      }
-      .preview-header h1 {
-        font-family: 'Archivo', sans-serif;
-        font-size: 1.7rem;
-        font-weight: 800;
-        margin: 0;
-        color: #fff;
-        line-height: 1.25;
-      }
-      .preview-header .subtitle {
-        margin: 6px 0 0;
-        color: #a8a29e;
-        font-size: 0.88rem;
-      }
-      .preview-accent-bar {
-        height: 3px;
-        background: linear-gradient(90deg, #d82125 0%, #d82125 30%, #097367 30%, #097367 100%);
-        margin-bottom: 24px;
-      }
-      .preview-body {
-        padding: 0 28px 28px;
-        max-width: 760px;
-      }
-      .preview-body h2 { font-size: 1.3rem; font-weight: 700; margin: 24px 0 8px; color: #1c1917; }
-      .preview-body h3 { font-size: 1.1rem; font-weight: 700; margin: 20px 0 6px; color: #1c1917; }
-      .preview-body p { margin: 0 0 12px; }
-      .preview-body a { color: #097367; text-decoration: underline; text-underline-offset: 3px; }
-      .preview-body a:hover { color: #0a8576; }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { font-family: 'Archivo', sans-serif; color: #1c1917; line-height: 1.7; background: #fafaf9; }
+      a { color: #097367; text-decoration: underline; text-underline-offset: 3px; }
+      a:hover { color: #0a8576; }
 
-      /* Speaker chips */
-      .preview-speakers { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-      .preview-speaker-chip {
-        background: #097367; color: #fff;
-        padding: 5px 14px; border-radius: 4px;
-        font-size: 0.85rem; font-weight: 700;
-        letter-spacing: 0.01em;
-      }
+      /* Event hero — matches r-event-hero */
+      .ev-hero { background: #1c1917; color: #fff; padding: 20px 28px; border-left: 4px solid #d82125; display: flex; align-items: flex-start; gap: 20px; }
+      .ev-hero-date { text-align: center; flex-shrink: 0; line-height: 1.1; }
+      .ev-hero-month { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #a8a29e; }
+      .ev-hero-day { display: block; font-size: 2.2rem; font-weight: 800; color: #fff; }
+      .ev-hero h1 { font-size: 1.6rem; font-weight: 800; line-height: 1.25; margin: 0; }
+      .ev-hero .subtitle { color: #a8a29e; font-size: 0.85rem; margin-top: 4px; }
+      .accent-bar { height: 3px; background: linear-gradient(90deg, #d82125 30%, #097367 30%); }
 
-      /* Book covers */
-      .preview-books { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 28px; }
-      .preview-books img {
-        height: 190px; border-radius: 4px;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.18);
-        transition: transform 0.15s;
-      }
+      /* Book grid — matches r-book-grid */
+      .book-grid { display: flex; flex-wrap: wrap; gap: 16px; padding: 24px 28px; }
+      .book-grid img { width: 140px; height: auto; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
 
-      /* Speaker detail */
-      .preview-speaker-layout { display: flex; gap: 28px; align-items: flex-start; margin-bottom: 24px; }
-      .preview-photo {
-        width: 150px; height: 150px;
-        border-radius: 50%; object-fit: cover;
-        border: 3px solid #097367;
-        flex-shrink: 0;
-      }
-      .preview-speaker-info { flex: 1; }
-      .preview-speaker-info .label {
-        font-size: 0.75rem; font-weight: 700;
-        text-transform: uppercase; letter-spacing: 0.08em;
-        color: #78716c; margin: 0 0 2px;
-      }
-      .preview-speaker-info .value { font-size: 0.9rem; margin: 0 0 10px; }
-      .preview-speaker-info .value a { color: #097367; text-decoration: none; }
+      /* Body content */
+      .body { padding: 0 28px 28px; max-width: 760px; }
+      .body p { margin: 0 0 12px; }
+      .body h2 { font-size: 1.3rem; font-weight: 700; margin: 24px 0 8px; }
 
-      /* News banner */
-      .preview-banner { width: 100%; border-radius: 8px; margin-bottom: 8px; }
-      .preview-caption { font-size: 0.8rem; color: #78716c; font-style: italic; margin: 0 0 20px; }
+      /* Section heading — matches site h2 */
+      .section-h2 { font-size: 1.25rem; font-weight: 700; color: #1c1917; margin: 28px 28px 12px; padding-bottom: 6px; border-bottom: 1px solid #e7e5e4; }
 
-      /* Section divider */
-      .preview-section {
-        font-size: 0.75rem; font-weight: 700;
-        text-transform: uppercase; letter-spacing: 0.1em;
-        color: #78716c; margin: 24px 0 10px;
-        padding-bottom: 4px; border-bottom: 1px solid #e7e5e4;
-      }
+      /* Speaker item — matches r-speaker-item */
+      .speaker-list { list-style: none; padding: 0 28px; }
+      .speaker-item { display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid #e7e5e4; align-items: flex-start; }
+      .speaker-headshot { width: 80px; height: 80px; border-radius: 6px; object-fit: cover; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+      .speaker-placeholder { width: 80px; height: 80px; border-radius: 6px; background: #e7e5e4; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #a8a29e; flex-shrink: 0; }
+      .speaker-name { font-size: 1.1rem; font-weight: 700; color: #097367; margin: 0 0 2px; }
+      .speaker-name a { color: #097367; text-decoration: none; }
+      .speaker-affil { font-size: 0.88rem; color: #78716c; margin: 0 0 6px; }
+      .speaker-links { display: flex; gap: 8px; flex-wrap: wrap; }
+      .speaker-links a { font-size: 0.78rem; background: #1c1917; color: #fff; padding: 2px 10px; border-radius: 3px; text-decoration: none; font-weight: 600; }
+      .speaker-links a:hover { background: #d82125; color: #fff; }
 
-      /* Meta badge */
-      .preview-badge {
-        display: inline-block;
-        background: #f5f5f4; border: 1px solid #e7e5e4;
-        padding: 2px 10px; border-radius: 3px;
-        font-size: 0.78rem; font-weight: 600;
-        color: #78716c; margin-right: 6px;
-      }
+      /* Speaker detail page preview */
+      .sp-header { background: #1c1917; color: #fff; padding: 20px 28px; border-left: 4px solid #d82125; }
+      .sp-header h1 { font-size: 1.7rem; font-weight: 800; }
+      .sp-header .affil { color: #a8a29e; font-size: 0.9rem; margin-top: 4px; }
+      .sp-detail { display: flex; gap: 28px; align-items: flex-start; padding: 24px 28px; }
+      .sp-photo { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid #097367; flex-shrink: 0; }
+      .sp-photo-placeholder { width: 150px; height: 150px; border-radius: 50%; background: #e7e5e4; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; color: #a8a29e; flex-shrink: 0; border: 3px solid #097367; }
+      .sp-links { margin-top: 8px; }
+      .sp-links .label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #78716c; margin: 0 0 1px; }
+      .sp-links .value { font-size: 0.88rem; margin: 0 0 8px; }
+      .sp-links a { color: #097367; text-decoration: none; }
+
+      /* News / Interview */
+      .news-header { background: #1c1917; color: #fff; padding: 20px 28px; border-left: 4px solid #d82125; }
+      .news-header .date { color: #a8a29e; font-size: 0.85rem; margin: 0 0 6px; }
+      .news-header h1 { font-size: 1.7rem; font-weight: 800; line-height: 1.25; }
+      .banner { width: 100%; border-radius: 8px; margin: 0 0 8px; }
+      .caption { font-size: 0.8rem; color: #78716c; font-style: italic; margin: 0 0 16px; padding: 0 28px; }
+      .badge { display: inline-block; background: #f5f5f4; border: 1px solid #e7e5e4; padding: 2px 10px; border-radius: 3px; font-size: 0.78rem; font-weight: 600; color: #78716c; margin-right: 6px; }
     `, { raw: true });
 
     // ── Event Preview ──
@@ -148,6 +115,7 @@
         var seasonYear = entry.getIn(['data', 'seasonYear']) || '';
         var speakers = entry.getIn(['data', 'speakers']);
         var books = entry.getIn(['data', 'books']);
+        var video = entry.getIn(['data', 'video']);
         var body = this.props.widgetFor('body');
 
         var bookImages = [];
@@ -158,32 +126,62 @@
           }.bind(this));
         }
 
-        return h('div', {},
-          h('div', { className: 'preview-header' },
+        var sections = [];
+
+        // 1. Hero header with date block
+        sections.push(h('div', { className: 'ev-hero', key: 'hero' },
+          date ? h('div', { className: 'ev-hero-date' },
+            h('span', { className: 'ev-hero-month' }, formatMonth(date)),
+            h('span', { className: 'ev-hero-day' }, formatDay(date))
+          ) : null,
+          h('div', {},
             h('h1', {}, title),
-            h('p', { className: 'subtitle' }, formatDate(date) + '  ·  ' + capitalize(seasonPart) + ' ' + seasonYear)
-          ),
-          h('div', { className: 'preview-accent-bar' }),
-          h('div', { className: 'preview-body' },
-            speakers && speakers.size > 0 && [
-              h('p', { className: 'preview-section', key: 'speakers-label' }, 'Speakers'),
-              h('div', { className: 'preview-speakers', key: 'speakers-list' },
-                speakers.map(function(s, i) {
-                  return h('span', { key: i, className: 'preview-speaker-chip' }, slugToName(s));
-                })
-              )
-            ],
-            bookImages.length > 0 && [
-              h('p', { className: 'preview-section', key: 'books-label' }, 'Featured Books'),
-              h('div', { className: 'preview-books', key: 'books-list' },
-                bookImages.map(function(img, i) {
-                  return h('img', { key: i, src: img.toString() });
-                })
-              )
-            ],
-            h('div', {}, body)
+            h('p', { className: 'subtitle' }, capitalize(seasonPart) + ' ' + seasonYear)
           )
-        );
+        ));
+        sections.push(h('div', { className: 'accent-bar', key: 'bar' }));
+
+        // 2. Book covers
+        if (bookImages.length > 0) {
+          sections.push(h('div', { className: 'book-grid', key: 'books' },
+            bookImages.map(function(img, i) {
+              return h('img', { key: i, src: img.toString(), alt: 'Book cover' });
+            })
+          ));
+        }
+
+        // 3. Description
+        sections.push(h('div', { className: 'body', key: 'body' }, body));
+
+        // 4. Speakers
+        if (speakers && speakers.size > 0) {
+          sections.push(h('h2', { className: 'section-h2', key: 'sp-h' }, 'Speakers'));
+          sections.push(h('ul', { className: 'speaker-list', key: 'sp-list' },
+            speakers.map(function(slug, i) {
+              return h('li', { className: 'speaker-item', key: i },
+                h('div', { className: 'speaker-placeholder' }, '👤'),
+                h('div', {},
+                  h('p', { className: 'speaker-name' }, h('a', { href: '#' }, slugToName(slug))),
+                  h('p', { className: 'speaker-affil' }, 'University'),
+                  h('div', { className: 'speaker-links' },
+                    h('a', { href: '#' }, 'Website'),
+                    h('a', { href: '#' }, 'Twitter')
+                  )
+                )
+              );
+            })
+          ));
+        }
+
+        // 5. Video
+        if (video) {
+          sections.push(h('h2', { className: 'section-h2', key: 'vid-h' }, 'Recording'));
+          sections.push(h('div', { key: 'vid-body', style: { padding: '12px 28px 28px', color: '#78716c', fontSize: '0.9rem' } },
+            h('p', {}, '▶ Video recording linked')
+          ));
+        }
+
+        return h('div', {}, sections);
       }
     });
     CMS.registerPreviewTemplate('events', EventPreview);
@@ -192,7 +190,7 @@
     var SpeakerPreview = createClass({
       render: function() {
         var entry = this.props.entry;
-        var name = entry.getIn(['data', 'name']) || '';
+        var name = entry.getIn(['data', 'name']) || 'Speaker Name';
         var affiliation = entry.getIn(['data', 'affiliation']) || '';
         var image = entry.getIn(['data', 'image']);
         var twitter = entry.getIn(['data', 'twitter']) || '';
@@ -203,37 +201,31 @@
         var photo = image ? this.props.getAsset(image) : null;
 
         return h('div', {},
-          h('div', { className: 'preview-header' },
+          h('div', { className: 'sp-header' },
             h('h1', {}, name),
-            affiliation && h('p', { className: 'subtitle' }, affiliation)
+            affiliation && h('p', { className: 'affil' }, affiliation)
           ),
-          h('div', { className: 'preview-accent-bar' }),
-          h('div', { className: 'preview-body' },
-            h('div', { className: 'preview-speaker-layout' },
-              photo && h('img', { src: photo.toString(), className: 'preview-photo' }),
-              h('div', { className: 'preview-speaker-info' },
-                twitter && [
-                  h('p', { className: 'label', key: 'tw-l' }, 'Twitter / X'),
-                  h('p', { className: 'value', key: 'tw-v' }, h('a', { href: 'https://twitter.com/' + twitter }, '@' + twitter))
-                ],
-                social && [
-                  h('p', { className: 'label', key: 'so-l' }, 'Social'),
-                  h('p', { className: 'value', key: 'so-v' }, h('a', { href: social }, social))
-                ],
-                homepage && [
-                  h('p', { className: 'label', key: 'hp-l' }, 'Website'),
-                  h('p', { className: 'value', key: 'hp-v' }, h('a', { href: homepage }, homepage))
-                ],
-                email && [
-                  h('p', { className: 'label', key: 'em-l' }, 'Email'),
-                  h('p', { className: 'value', key: 'em-v' }, h('a', { href: 'mailto:' + email }, email))
-                ]
-              )
-            ),
-            body && [
-              h('p', { className: 'preview-section', key: 'bio-label' }, 'Biography'),
-              h('div', { key: 'bio-body' }, body)
-            ]
+          h('div', { className: 'accent-bar' }),
+          h('div', { className: 'sp-detail' },
+            photo
+              ? h('img', { src: photo.toString(), className: 'sp-photo' })
+              : h('div', { className: 'sp-photo-placeholder' }, '👤'),
+            h('div', { className: 'sp-links' },
+              homepage
+                ? [h('p', { className: 'label', key: 'hp-l' }, 'Website'), h('p', { className: 'value', key: 'hp-v' }, h('a', { href: homepage }, homepage))]
+                : [h('p', { className: 'label', key: 'hp-l' }, 'Website'), h('p', { className: 'value', key: 'hp-v', style: { color: '#a8a29e' } }, 'example.edu/faculty/name')],
+              twitter
+                ? [h('p', { className: 'label', key: 'tw-l' }, 'Twitter / X'), h('p', { className: 'value', key: 'tw-v' }, h('a', { href: '#' }, '@' + twitter))]
+                : [h('p', { className: 'label', key: 'tw-l' }, 'Twitter / X'), h('p', { className: 'value', key: 'tw-v', style: { color: '#a8a29e' } }, '@handle')],
+              email
+                ? [h('p', { className: 'label', key: 'em-l' }, 'Email'), h('p', { className: 'value', key: 'em-v' }, h('a', { href: 'mailto:' + email }, email))]
+                : [h('p', { className: 'label', key: 'em-l' }, 'Email'), h('p', { className: 'value', key: 'em-v', style: { color: '#a8a29e' } }, 'name@university.edu')],
+              social && [h('p', { className: 'label', key: 'so-l' }, 'Social'), h('p', { className: 'value', key: 'so-v' }, h('a', { href: social }, social))]
+            )
+          ),
+          body && h('div', {},
+            h('h2', { className: 'section-h2' }, 'Biography'),
+            h('div', { className: 'body' }, body)
           )
         );
       }
@@ -253,21 +245,19 @@
         var banner = image ? this.props.getAsset(image) : null;
 
         return h('div', {},
-          h('div', { className: 'preview-header' },
-            h('p', { className: 'subtitle' }, formatDate(date)),
+          h('div', { className: 'news-header' },
+            h('p', { className: 'date' }, formatDate(date)),
             h('h1', {}, title)
           ),
-          h('div', { className: 'preview-accent-bar' }),
-          h('div', { className: 'preview-body' },
-            banner && h('img', { src: banner.toString(), className: 'preview-banner' }),
-            imageCaption && h('p', { className: 'preview-caption' }, imageCaption),
-            tags && tags.size > 0 && h('div', { style: { marginBottom: '16px' } },
-              tags.map(function(t, i) {
-                return h('span', { key: i, className: 'preview-badge' }, t);
-              })
-            ),
-            h('div', {}, body)
-          )
+          h('div', { className: 'accent-bar' }),
+          h('div', { style: { padding: '24px 28px 0' } },
+            banner && h('img', { src: banner.toString(), className: 'banner' })
+          ),
+          imageCaption && h('p', { className: 'caption' }, imageCaption),
+          tags && tags.size > 0 && h('div', { style: { padding: '0 28px 12px' } },
+            tags.map(function(t, i) { return h('span', { key: i, className: 'badge' }, t); })
+          ),
+          h('div', { className: 'body' }, body)
         );
       }
     });
@@ -286,23 +276,21 @@
         var img = image ? this.props.getAsset(image) : null;
 
         return h('div', {},
-          h('div', { className: 'preview-header' },
-            h('p', { className: 'subtitle' }, formatDate(date)),
+          h('div', { className: 'news-header' },
+            h('p', { className: 'date' }, formatDate(date)),
             h('h1', {}, title)
           ),
-          h('div', { className: 'preview-accent-bar' }),
-          h('div', { className: 'preview-body' },
-            relatedEvent && h('p', { style: { marginBottom: '16px' } },
-              h('span', { className: 'preview-badge' }, 'Related: ' + slugToName(relatedEvent))
+          h('div', { className: 'accent-bar' }),
+          h('div', { style: { padding: '24px 28px 0' } },
+            relatedEvent && h('p', { style: { marginBottom: '12px' } },
+              h('span', { className: 'badge' }, 'Related: ' + slugToName(relatedEvent))
             ),
-            img && h('img', { src: img.toString(), className: 'preview-banner' }),
-            tags && tags.size > 0 && h('div', { style: { marginBottom: '16px' } },
-              tags.map(function(t, i) {
-                return h('span', { key: i, className: 'preview-badge' }, t);
-              })
-            ),
-            h('div', {}, body)
-          )
+            img && h('img', { src: img.toString(), className: 'banner' })
+          ),
+          tags && tags.size > 0 && h('div', { style: { padding: '12px 28px 0' } },
+            tags.map(function(t, i) { return h('span', { key: i, className: 'badge' }, t); })
+          ),
+          h('div', { className: 'body' }, body)
         );
       }
     });
