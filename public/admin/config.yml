@@ -24,12 +24,16 @@ collections:
   # ─── Events ───────────────────────────────────────────────
   - name: events
     label: Events
+    label_singular: Event
     folder: src/content/events
     create: true
     extension: md
     slug: "{{slug}}"
     summary: "{{title}} — {{seasonPart}} {{seasonYear}}"
     sortable_fields: [title, date, seasonYear]
+    view_groups:
+      - { label: Season, field: seasonPart }
+      - { label: Year, field: seasonYear }
     fields:
       - { name: title, label: Title, widget: string }
       - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
@@ -41,10 +45,13 @@ collections:
           - { label: Spring, value: spring }
           - { label: Fall, value: fall }
           - { label: Special, value: special }
-      - { name: eventbrite, label: Eventbrite URL, widget: string, required: false }
+      - { name: eventbrite, label: Eventbrite URL, widget: string, required: false, hint: "Link for event registration" }
       - name: speakers
         label: Speakers
+        label_singular: Speaker
         widget: list
+        summary: "{{fields.speaker}}"
+        collapsed: true
         field:
           name: speaker
           label: Speaker
@@ -56,7 +63,10 @@ collections:
         required: false
       - name: books
         label: Book Covers
+        label_singular: Book Cover
         widget: list
+        summary: "{{fields.image}}"
+        collapsed: true
         field: { name: image, label: Image, widget: image }
         required: false
       - name: video
@@ -67,9 +77,13 @@ collections:
         value_field: "{{slug}}"
         display_fields: [title]
         required: false
+        hint: "Link to a recording in the Resources collection"
       - name: primaryResources
         label: Primary Resources
+        label_singular: Resource
         widget: list
+        summary: "{{fields.resource}}"
+        collapsed: true
         field:
           name: resource
           label: Resource
@@ -84,6 +98,7 @@ collections:
   # ─── Speakers ─────────────────────────────────────────────
   - name: speakers
     label: Speakers
+    label_singular: Speaker
     folder: src/content/speakers
     create: true
     extension: md
@@ -91,12 +106,14 @@ collections:
     slug: "{{slug}}"
     summary: "{{name}} — {{affiliation}}"
     sortable_fields: [name, affiliation]
+    view_filters:
+      - { label: "Has photo", field: image, pattern: "." }
     fields:
       - { name: name, label: Name, widget: string }
-      - { name: affiliation, label: Affiliation, widget: string, required: false }
+      - { name: affiliation, label: Affiliation, widget: string, required: false, hint: "University or institution" }
       - { name: image, label: Photo, widget: image, required: false }
       - { name: email, label: Email, widget: string, required: false }
-      - { name: twitter, label: Twitter Handle, widget: string, required: false, hint: "Handle only, without the @ symbol" }
+      - { name: twitter, label: Twitter/X Handle, widget: string, required: false, hint: "Handle only, without the @ symbol" }
       - { name: social, label: Social URL, widget: string, required: false, hint: "Full URL for Bluesky or other social profile" }
       - { name: homepage, label: Website, widget: string, required: false }
       - { name: body, label: Bio, widget: markdown }
@@ -104,6 +121,7 @@ collections:
   # ─── News ─────────────────────────────────────────────────
   - name: news
     label: News
+    label_singular: Post
     folder: src/content/news
     create: true
     extension: md
@@ -117,7 +135,9 @@ collections:
       - { name: imageCaption, label: Image Caption, widget: string, required: false }
       - name: tags
         label: Tags
+        label_singular: Tag
         widget: list
+        add_to_top: true
         field: { name: tag, label: Tag, widget: string }
         required: false
       - { name: body, label: Body, widget: markdown }
@@ -125,6 +145,7 @@ collections:
   # ─── Interviews ───────────────────────────────────────────
   - name: interviews
     label: Interviews
+    label_singular: Interview
     folder: src/content/interviews
     create: true
     extension: md
@@ -143,9 +164,12 @@ collections:
         value_field: "{{slug}}"
         display_fields: [title]
         required: false
+        hint: "The conversation this interview is about"
       - name: tags
         label: Tags
+        label_singular: Tag
         widget: list
+        add_to_top: true
         field: { name: tag, label: Tag, widget: string }
         required: false
       - { name: body, label: Body, widget: markdown }
@@ -153,12 +177,15 @@ collections:
   # ─── Resources ────────────────────────────────────────────
   - name: resources
     label: Resources
+    label_singular: Resource
     folder: src/content/resources
     create: true
     extension: md
     slug: "{{slug}}"
     summary: "{{title}} ({{resourceType}})"
     sortable_fields: [title, resourceType, date]
+    view_groups:
+      - { label: Type, field: resourceType }
     fields:
       - { name: title, label: Title, widget: string }
       - name: resourceType
@@ -171,27 +198,31 @@ collections:
           - { label: Text, value: text }
           - { label: Image, value: image }
           - { label: Audio, value: audio }
-      - { name: sourceUrl, label: Source URL, widget: string, required: false }
+      - { name: sourceUrl, label: Source URL, widget: string, required: false, hint: "Vimeo, YouTube, or external link" }
+      - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: false }
+      - { name: authorship, label: Author, widget: string, required: false }
       - { name: videoEmbedCode, label: Video Embed Code, widget: text, required: false }
       - { name: document, label: Document Path, widget: string, required: false }
-      - { name: authorship, label: Authorship, widget: string, required: false }
       - { name: publicationDate, label: Publication Date, widget: string, required: false }
+      - { name: body, label: Content, widget: markdown }
       - name: tags
         label: Tags
+        label_singular: Tag
         widget: list
+        add_to_top: true
+        collapsed: true
         field: { name: tag, label: Tag, widget: string }
         required: false
-      - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: false }
-      - { name: body, label: Content, widget: markdown }
 
   # ─── Pages ────────────────────────────────────────────────
   - name: pages
     label: Pages
+    label_singular: Page
     folder: src/content/pages
     create: false
     extension: md
     fields:
       - { name: title, label: Title, widget: string }
-      - { name: heading, label: Heading, widget: string, required: false }
+      - { name: heading, label: Heading, widget: string, required: false, hint: "Override the page title display" }
       - { name: image, label: Image, widget: image, required: false }
       - { name: body, label: Content, widget: markdown }
