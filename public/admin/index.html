@@ -8,5 +8,102 @@
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // Custom preview template for Events
+    var EventPreview = createClass({
+      render: function() {
+        var entry = this.props.entry;
+        var title = entry.getIn(['data', 'title']) || '';
+        var date = entry.getIn(['data', 'date']) || '';
+        var seasonPart = entry.getIn(['data', 'seasonPart']) || '';
+        var seasonYear = entry.getIn(['data', 'seasonYear']) || '';
+        var speakers = entry.getIn(['data', 'speakers']);
+        var books = entry.getIn(['data', 'books']);
+        var body = this.props.widgetFor('body');
+
+        var bookImages = [];
+        if (books) {
+          books.forEach(function(book) {
+            var img = this.props.getAsset(book);
+            if (img) bookImages.push(img);
+          }.bind(this));
+        }
+
+        return h('div', { style: { fontFamily: 'system-ui, sans-serif', padding: '20px', maxWidth: '700px' } },
+          h('h1', { style: { fontSize: '1.8rem', marginBottom: '8px' } }, title),
+          h('p', { style: { color: '#78716c', fontSize: '0.9rem', marginBottom: '16px' } },
+            date + ' · ' + seasonPart + ' ' + seasonYear
+          ),
+          speakers && speakers.size > 0 && h('div', { style: { marginBottom: '16px' } },
+            h('strong', {}, 'Speakers: '),
+            speakers.join(', ')
+          ),
+          bookImages.length > 0 && h('div', { style: { display: 'flex', gap: '12px', marginBottom: '20px', flexWrap: 'wrap' } },
+            bookImages.map(function(img, i) {
+              return h('img', { key: i, src: img.toString(), style: { height: '160px', borderRadius: '4px', boxShadow: '0 2px 6px rgba(0,0,0,0.15)' } });
+            })
+          ),
+          h('div', {}, body)
+        );
+      }
+    });
+    CMS.registerPreviewTemplate('events', EventPreview);
+
+    // Custom preview template for Speakers
+    var SpeakerPreview = createClass({
+      render: function() {
+        var entry = this.props.entry;
+        var name = entry.getIn(['data', 'name']) || '';
+        var affiliation = entry.getIn(['data', 'affiliation']) || '';
+        var image = entry.getIn(['data', 'image']);
+        var twitter = entry.getIn(['data', 'twitter']) || '';
+        var homepage = entry.getIn(['data', 'homepage']) || '';
+        var body = this.props.widgetFor('body');
+
+        var photo = image ? this.props.getAsset(image) : null;
+
+        return h('div', { style: { fontFamily: 'system-ui, sans-serif', padding: '20px', maxWidth: '700px' } },
+          h('div', { style: { display: 'flex', gap: '20px', alignItems: 'flex-start', marginBottom: '20px' } },
+            photo && h('img', { src: photo.toString(), style: { width: '120px', height: '120px', borderRadius: '50%', objectFit: 'cover' } }),
+            h('div', {},
+              h('h1', { style: { fontSize: '1.6rem', margin: '0 0 4px' } }, name),
+              affiliation && h('p', { style: { color: '#78716c', margin: '0 0 8px' } }, affiliation),
+              twitter && h('p', { style: { fontSize: '0.85rem', margin: '0' } }, '🐦 @' + twitter),
+              homepage && h('p', { style: { fontSize: '0.85rem', margin: '0' } },
+                h('a', { href: homepage }, homepage)
+              )
+            )
+          ),
+          h('div', {}, body)
+        );
+      }
+    });
+    CMS.registerPreviewTemplate('speakers', SpeakerPreview);
+
+    // Custom preview template for News
+    var NewsPreview = createClass({
+      render: function() {
+        var entry = this.props.entry;
+        var title = entry.getIn(['data', 'title']) || '';
+        var date = entry.getIn(['data', 'date']) || '';
+        var image = entry.getIn(['data', 'image']);
+        var imageCaption = entry.getIn(['data', 'imageCaption']) || '';
+        var body = this.props.widgetFor('body');
+
+        var banner = image ? this.props.getAsset(image) : null;
+
+        return h('div', { style: { fontFamily: 'system-ui, sans-serif', padding: '20px', maxWidth: '700px' } },
+          h('p', { style: { color: '#78716c', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.06em' } }, date),
+          h('h1', { style: { fontSize: '1.8rem', marginBottom: '16px' } }, title),
+          banner && h('figure', { style: { margin: '0 0 20px' } },
+            h('img', { src: banner.toString(), style: { width: '100%', borderRadius: '6px' } }),
+            imageCaption && h('figcaption', { style: { fontSize: '0.8rem', color: '#78716c', marginTop: '6px' } }, imageCaption)
+          ),
+          h('div', {}, body)
+        );
+      }
+    });
+    CMS.registerPreviewTemplate('news', NewsPreview);
+  </script>
 </body>
 </html>

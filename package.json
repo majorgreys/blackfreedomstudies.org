@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && cp -r src/assets dist/assets",
     "preview": "astro preview",
     "build:classic": "THEME=classic astro build",
     "build:redesign": "THEME=redesign astro build"

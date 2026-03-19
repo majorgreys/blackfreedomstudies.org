@@ -8,10 +8,10 @@ backend:
 # Enable local backend for development (run: npx decap-server)
 local_backend: true
 
-# Editorial workflow: draft -> in review -> ready -> published
-publish_mode: editorial_workflow
+# Simple publish mode (editorial_workflow not supported by GitHub backend)
+publish_mode: simple
 
-# Media files live in src/assets, served from /assets
+# Media files in src/assets, preview served via public/assets symlink
 media_folder: src/assets
 public_folder: /assets
 
@@ -28,9 +28,11 @@ collections:
     create: true
     extension: md
     slug: "{{slug}}"
+    summary: "{{title}} — {{seasonPart}} {{seasonYear}}"
+    sortable_fields: [title, date, seasonYear]
     fields:
       - { name: title, label: Title, widget: string }
-      - { name: date, label: Date, widget: datetime }
+      - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
       - { name: seasonYear, label: Season Year, widget: number, value_type: int, default: 2026 }
       - name: seasonPart
         label: Season
@@ -43,18 +45,39 @@ collections:
       - name: speakers
         label: Speakers
         widget: list
-        field: { name: speaker, label: Speaker Slug, widget: string }
+        field:
+          name: speaker
+          label: Speaker
+          widget: relation
+          collection: speakers
+          search_fields: [name, affiliation]
+          value_field: "{{slug}}"
+          display_fields: [name, affiliation]
         required: false
       - name: books
         label: Book Covers
         widget: list
         field: { name: image, label: Image, widget: image }
         required: false
-      - { name: video, label: Video Slug, widget: string, required: false }
+      - name: video
+        label: Video Recording
+        widget: relation
+        collection: resources
+        search_fields: [title]
+        value_field: "{{slug}}"
+        display_fields: [title]
+        required: false
       - name: primaryResources
         label: Primary Resources
         widget: list
-        field: { name: resource, label: Resource Slug, widget: string }
+        field:
+          name: resource
+          label: Resource
+          widget: relation
+          collection: resources
+          search_fields: [title]
+          value_field: "{{slug}}"
+          display_fields: [title]
         required: false
       - { name: body, label: Description, widget: markdown }
 
@@ -66,13 +89,15 @@ collections:
     extension: md
     identifier_field: name
     slug: "{{slug}}"
+    summary: "{{name}} — {{affiliation}}"
+    sortable_fields: [name, affiliation]
     fields:
       - { name: name, label: Name, widget: string }
       - { name: affiliation, label: Affiliation, widget: string, required: false }
       - { name: image, label: Photo, widget: image, required: false }
       - { name: email, label: Email, widget: string, required: false }
-      - { name: twitter, label: Twitter Handle, widget: string, required: false }
-      - { name: social, label: Social URL, widget: string, required: false, hint: "Bluesky or other social profile URL" }
+      - { name: twitter, label: Twitter Handle, widget: string, required: false, hint: "Handle only, without the @ symbol" }
+      - { name: social, label: Social URL, widget: string, required: false, hint: "Full URL for Bluesky or other social profile" }
       - { name: homepage, label: Website, widget: string, required: false }
       - { name: body, label: Bio, widget: markdown }
 
@@ -83,9 +108,11 @@ collections:
     create: true
     extension: md
     slug: "{{slug}}"
+    summary: "{{title}} — {{date}}"
+    sortable_fields: [title, date]
     fields:
       - { name: title, label: Title, widget: string }
-      - { name: date, label: Date, widget: datetime }
+      - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
       - { name: image, label: Banner Image, widget: image, required: false }
       - { name: imageCaption, label: Image Caption, widget: string, required: false }
       - name: tags
@@ -102,11 +129,20 @@ collections:
     create: true
     extension: md
     slug: "{{slug}}"
+    summary: "{{title}} — {{date}}"
+    sortable_fields: [title, date]
     fields:
       - { name: title, label: Title, widget: string }
-      - { name: date, label: Date, widget: datetime }
+      - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
       - { name: image, label: Image, widget: image, required: false }
-      - { name: relatedEvent, label: Related Event Slug, widget: string, required: false, hint: "The slug of the event this interview is about" }
+      - name: relatedEvent
+        label: Related Event
+        widget: relation
+        collection: events
+        search_fields: [title]
+        value_field: "{{slug}}"
+        display_fields: [title]
+        required: false
       - name: tags
         label: Tags
         widget: list
@@ -121,6 +157,8 @@ collections:
     create: true
     extension: md
     slug: "{{slug}}"
+    summary: "{{title}} ({{resourceType}})"
+    sortable_fields: [title, resourceType, date]
     fields:
       - { name: title, label: Title, widget: string }
       - name: resourceType
@@ -143,7 +181,7 @@ collections:
         widget: list
         field: { name: tag, label: Tag, widget: string }
         required: false
-      - { name: date, label: Date, widget: datetime, required: false }
+      - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: false }
       - { name: body, label: Content, widget: markdown }
 
   # ─── Pages ────────────────────────────────────────────────

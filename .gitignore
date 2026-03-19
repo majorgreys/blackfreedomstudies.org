@@ -9,3 +9,4 @@ dist/
 .beads/dolt/
 .beads/dolt-server.log
 screenshots/
+public/assets
