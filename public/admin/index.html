@@ -52,13 +52,17 @@
       a:hover { color: #0a8576; }
 
       /* Event hero — matches r-event-hero */
-      .ev-hero { background: #1c1917; color: #fff; padding: 20px 28px; border-left: 4px solid #d82125; display: flex; align-items: flex-start; gap: 20px; }
-      .ev-hero-date { text-align: center; flex-shrink: 0; line-height: 1.1; }
-      .ev-hero-month { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #a8a29e; }
-      .ev-hero-day { display: block; font-size: 2.2rem; font-weight: 800; color: #fff; }
-      .ev-hero h1 { font-size: 1.6rem; font-weight: 800; line-height: 1.25; margin: 0; }
+      .ev-hero { background: #1c1917; color: #fff; padding: 28px 28px; display: flex; align-items: flex-start; gap: 24px; }
+      .ev-hero-date { text-align: center; flex-shrink: 0; line-height: 1.1; min-width: 60px; padding-right: 24px; border-right: 3px solid #097367; }
+      .ev-hero-month { display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #a8a29e; }
+      .ev-hero-day { display: block; font-size: 2.8rem; font-weight: 700; color: #fff; line-height: 1; }
+      .ev-hero h1 { font-size: 1.7rem; font-weight: 800; line-height: 1.25; margin: 0; }
       .ev-hero .subtitle { color: #a8a29e; font-size: 0.85rem; margin-top: 4px; }
-      .accent-bar { height: 3px; background: linear-gradient(90deg, #d82125 30%, #097367 30%); }
+
+      /* Page header — matches r-page-header (News, Interviews, Speakers) */
+      .page-header { background: #1c1917; color: #fff; padding: 16px 28px; border-left: 4px solid #d82125; }
+      .page-header h1 { font-size: 1.7rem; font-weight: 800; margin: 0; }
+      .page-header .subtitle { color: #a8a29e; font-size: 0.9rem; margin-top: 4px; }
 
       /* Book grid — matches r-book-grid */
       .book-grid { display: flex; flex-wrap: wrap; gap: 16px; padding: 24px 28px; }
@@ -84,10 +88,7 @@
       .speaker-links a { font-size: 0.78rem; background: #1c1917; color: #fff; padding: 2px 10px; border-radius: 3px; text-decoration: none; font-weight: 600; }
       .speaker-links a:hover { background: #d82125; color: #fff; }
 
-      /* Speaker detail page preview */
-      .sp-header { background: #1c1917; color: #fff; padding: 20px 28px; border-left: 4px solid #d82125; }
-      .sp-header h1 { font-size: 1.7rem; font-weight: 800; }
-      .sp-header .affil { color: #a8a29e; font-size: 0.9rem; margin-top: 4px; }
+      /* Speaker detail — reuses page-header */
       .sp-detail { display: flex; gap: 28px; align-items: flex-start; padding: 24px 28px; }
       .sp-photo { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid #097367; flex-shrink: 0; }
       .sp-photo-placeholder { width: 150px; height: 150px; border-radius: 50%; background: #e7e5e4; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; color: #a8a29e; flex-shrink: 0; border: 3px solid #097367; }
@@ -96,10 +97,8 @@
       .sp-links .value { font-size: 0.88rem; margin: 0 0 8px; }
       .sp-links a { color: #097367; text-decoration: none; }
 
-      /* News / Interview */
-      .news-header { background: #1c1917; color: #fff; padding: 20px 28px; border-left: 4px solid #d82125; }
-      .news-header .date { color: #a8a29e; font-size: 0.85rem; margin: 0 0 6px; }
-      .news-header h1 { font-size: 1.7rem; font-weight: 800; line-height: 1.25; }
+      /* News / Interview — reuses page-header */
+      .page-header .date { color: #a8a29e; font-size: 0.85rem; margin: 0 0 6px; }
       .banner { width: 100%; border-radius: 8px; margin: 0 0 8px; }
       .caption { font-size: 0.8rem; color: #78716c; font-style: italic; margin: 0 0 16px; padding: 0 28px; }
       .badge { display: inline-block; background: #f5f5f4; border: 1px solid #e7e5e4; padding: 2px 10px; border-radius: 3px; font-size: 0.78rem; font-weight: 600; color: #78716c; margin-right: 6px; }
@@ -139,7 +138,7 @@
             h('p', { className: 'subtitle' }, capitalize(seasonPart) + ' ' + seasonYear)
           )
         ));
-        sections.push(h('div', { className: 'accent-bar', key: 'bar' }));
+        // no accent bar — event hero uses teal date divider instead
 
         // 2. Book covers
         if (bookImages.length > 0) {
@@ -201,11 +200,10 @@
         var photo = image ? this.props.getAsset(image) : null;
 
         return h('div', {},
-          h('div', { className: 'sp-header' },
+          h('div', { className: 'page-header' },
             h('h1', {}, name),
-            affiliation && h('p', { className: 'affil' }, affiliation)
+            affiliation && h('p', { className: 'subtitle' }, affiliation)
           ),
-          h('div', { className: 'accent-bar' }),
           h('div', { className: 'sp-detail' },
             photo
               ? h('img', { src: photo.toString(), className: 'sp-photo' })
@@ -245,11 +243,10 @@
         var banner = image ? this.props.getAsset(image) : null;
 
         return h('div', {},
-          h('div', { className: 'news-header' },
+          h('div', { className: 'page-header' },
             h('p', { className: 'date' }, formatDate(date)),
             h('h1', {}, title)
           ),
-          h('div', { className: 'accent-bar' }),
           h('div', { style: { padding: '24px 28px 0' } },
             banner && h('img', { src: banner.toString(), className: 'banner' })
           ),
@@ -276,11 +273,10 @@
         var img = image ? this.props.getAsset(image) : null;
 
         return h('div', {},
-          h('div', { className: 'news-header' },
+          h('div', { className: 'page-header' },
             h('p', { className: 'date' }, formatDate(date)),
             h('h1', {}, title)
           ),
-          h('div', { className: 'accent-bar' }),
           h('div', { style: { padding: '24px 28px 0' } },
             relatedEvent && h('p', { style: { marginBottom: '12px' } },
               h('span', { className: 'badge' }, 'Related: ' + slugToName(relatedEvent))
