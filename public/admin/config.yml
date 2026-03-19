@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: majorgreys/cbfs
   branch: main
+  base_url: https://blackfreedomstudies.pages.dev
+  auth_endpoint: /auth
 
 # Enable local backend for development (run: npx decap-server)
 local_backend: true
