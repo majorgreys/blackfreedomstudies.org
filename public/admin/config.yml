@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: majorgreys/cbfs
+  repo: majorgreys/blackfreedomstudies.org
   branch: main
   base_url: https://blackfreedomstudies.pages.dev
   auth_endpoint: /auth
