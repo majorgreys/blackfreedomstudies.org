@@ -8,6 +8,7 @@ speakers:
   - ashley-farmer
   - alison-parker
   - elizabeth-todd-breland
+  - susana-morris
 books:
   - https://uncpress-us-new.imgix.net/covers/9781469684055.jpg
   - https://i.ebayimg.com/images/g/uiEAAeSwD-lqWizj/s-l960.webp
