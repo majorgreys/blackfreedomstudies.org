@@ -1,7 +1,7 @@
 ---
 name: "Erica R. Edwards"
 affiliation: "Yale University"
-image: "../../assets/bookCovers/Erica-Edwards.jpeg"
+image: "../../assets/bookcovers/Erica-Edwards.jpeg"
 email: "erica.edwards@yale.edu"
 twitter: "EricaREdwards2"
 ---

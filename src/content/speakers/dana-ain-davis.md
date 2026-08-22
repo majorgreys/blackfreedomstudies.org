@@ -1,7 +1,7 @@
 ---
 name: "Dana-Ain Davis"
 affiliation: "CUNY Graduate Center"
-image: "../../assets/bookCovers/Dana-Ain-Davis_0.jpg"
+image: "../../assets/bookcovers/Dana-Ain-Davis_0.jpg"
 email: "dana.davis@qc.cuny.edu"
 homepage: "https://www.gc.cuny.edu/people/dana-ain-davis"
 ---

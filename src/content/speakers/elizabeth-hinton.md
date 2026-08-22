@@ -1,7 +1,7 @@
 ---
 name: "Elizabeth Hinton"
 affiliation: "Yale University"
-image: "../../assets/speakers/elizabethhinton.jpg"
+image: "../../assets/speakers/ElizabethHinton.jpg"
 email: "elizabeth.hinton@yale.edu"
 twitter: "elizabhinton"
 homepage: "https://history.yale.edu/people/elizabeth-hinton"

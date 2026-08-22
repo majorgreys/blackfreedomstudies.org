@@ -1,7 +1,7 @@
 ---
 name: "Steven William Thrasher"
 affiliation: "Northwestern University"
-image: "../../assets/bookCovers/steven-thrasher.jpg"
+image: "../../assets/bookcovers/steven-thrasher.jpg"
 email: "steven.thrasher@northwestern.edu"
 twitter: "thrasherxy"
 homepage: "http://steventhrasher.com/"

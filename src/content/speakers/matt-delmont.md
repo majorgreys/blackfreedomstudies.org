@@ -1,7 +1,7 @@
 ---
 name: "Matt Delmont"
 affiliation: "Dartmouth College"
-image: "../../assets/bookCovers/mattdelmont.jpg"
+image: "../../assets/bookcovers/mattdelmont.jpg"
 email: "Matthew.F.Delmont@dartmouth.edu"
 twitter: "mattdelmont"
 homepage: "https://mattdelmont.com/"

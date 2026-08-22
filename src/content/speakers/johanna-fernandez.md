@@ -1,7 +1,7 @@
 ---
 name: "Johanna Fernandez"
 affiliation: "Baruch College CUNY"
-image: "../../assets/bookCovers/Fernandez.jpg"
+image: "../../assets/bookcovers/Fernandez.jpg"
 email: "Johanna.Fernandez@baruch.cuny.edu"
 twitter: "johannafernand"
 homepage: "https://www.baruch.cuny.edu/wsas/academics/history/jfernandez.htm"

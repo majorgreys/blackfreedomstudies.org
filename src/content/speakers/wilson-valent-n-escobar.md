@@ -1,7 +1,7 @@
 ---
 name: "​Wilson Valentín-Escobar"
 affiliation: "Hampshire College"
-image: "../../assets/bookCovers/wilsonvalentinescobar_160615_111620.JPG"
+image: "../../assets/bookcovers/wilsonvalentinescobar_160615_111620.JPG"
 homepage: "http://sites.hampshire.edu/wvalentin/"
 ---
 

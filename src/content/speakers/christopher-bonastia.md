@@ -1,7 +1,7 @@
 ---
 name: "Christopher Bonastia"
 affiliation: "Lehman College"
-image: "../../assets/bookCovers/bonastia.jpg"
+image: "../../assets/bookcovers/bonastia.jpg"
 email: "Christopher.Bonastia@lehman.cuny.edu"
 twitter: "Uno_Collison"
 homepage: "https://www.chrisbonastia.com/"

@@ -1,7 +1,7 @@
 ---
 name: "Zakiya Luna"
 affiliation: "Washington University in St. Louis"
-image: "../../assets/bookCovers/zakiyaluna.jpg"
+image: "../../assets/bookcovers/zakiyaluna.jpg"
 email: "lunaz@wustl.edu"
 twitter: "zakiyaluna"
 homepage: "http://www.zakiyaluna.com/"

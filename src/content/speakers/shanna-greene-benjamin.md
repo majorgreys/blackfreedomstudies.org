@@ -1,6 +1,6 @@
 ---
 name: "Shanna Greene Benjamin"
-image: "../../assets/bookCovers/shannagreenebenjamin.jpeg"
+image: "../../assets/bookcovers/shannagreenebenjamin.jpeg"
 homepage: "https://www.shannabenjamin.com/"
 ---
 

@@ -1,7 +1,7 @@
 ---
 name: "Anne Gray Fischer"
 affiliation: "University of Texas at Dallas"
-image: "../../assets/bookCovers/AnneGrayFischerheadshot.jpg"
+image: "../../assets/bookcovers/AnneGrayFischerheadshot.jpg"
 email: "annegrayfischer@utdallas.edu"
 twitter: "annegrayfischer"
 homepage: "https://www.annegrayfischer.com/"

@@ -1,7 +1,7 @@
 ---
 name: "Michael Hines"
 affiliation: "Stanford University"
-image: "../../assets/bookCovers/michael-hines_profilephoto.jpg"
+image: "../../assets/bookcovers/michael-hines_profilephoto.jpg"
 email: "mhines2@stanford.edu"
 twitter: "hines_historic"
 homepage: "https://profiles.stanford.edu/michael-hines"

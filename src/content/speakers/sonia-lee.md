@@ -1,7 +1,7 @@
 ---
 name: "Sonia Lee"
 affiliation: "Washington University in St. Louis"
-image: "../../assets/bookCovers/sonialee.jpg"
+image: "../../assets/bookcovers/sonialee.jpg"
 email: "solee@wustl.edu"
 homepage: "https://history.artsci.wustl.edu/lee"
 ---

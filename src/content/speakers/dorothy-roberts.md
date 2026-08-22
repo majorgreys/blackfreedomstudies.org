@@ -1,7 +1,7 @@
 ---
 name: "Dorothy Roberts"
 affiliation: "University of Pennsylvania"
-image: "../../assets/bookCovers/roberts.jpg"
+image: "../../assets/bookcovers/roberts.jpg"
 email: "dorothyroberts@law.upenn.edu"
 twitter: "DorothyERoberts"
 homepage: "https://www.law.upenn.edu/faculty/roberts1"

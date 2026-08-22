@@ -1,7 +1,7 @@
 ---
 name: "Erik McDuffie"
 affiliation: "University of Illinois at Urbana-Champaign"
-image: "../../assets/bookCovers/Erik_McDuffie_2023_jpg.jpg"
+image: "../../assets/bookcovers/Erik_McDuffie_2023_jpg.jpg"
 email: "emcduffi@illinois.edu"
 twitter: "ErikSMcDuffie"
 homepage: "http://www.history.illinois.edu/people/emcduffi"

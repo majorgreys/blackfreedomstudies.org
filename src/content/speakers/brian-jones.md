@@ -1,7 +1,7 @@
 ---
 name: "Brian Jones"
 affiliation: "New York Public Library"
-image: "../../assets/bookCovers/Brian_Jones.jpg"
+image: "../../assets/bookcovers/Brian_Jones.jpg"
 email: "brianjones@nypl.org"
 twitter: "brainyandbrawny"
 ---

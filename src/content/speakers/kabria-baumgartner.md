@@ -1,7 +1,7 @@
 ---
 name: "Kabria Baumgartner"
 affiliation: "Northeastern University"
-image: "../../assets/bookCovers/kabriabaumgartner.jpg"
+image: "../../assets/bookcovers/kabriabaumgartner.jpg"
 email: " k.baumgartner@northeastern.edu"
 twitter: "ksbaumg"
 homepage: "https://kabriabaumgartner.com/"

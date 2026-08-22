@@ -1,7 +1,7 @@
 ---
 name: "Loretta Ross"
 affiliation: "Smith College"
-image: "../../assets/bookCovers/Loretta-Ross-crop.jpg"
+image: "../../assets/bookcovers/Loretta-Ross-crop.jpg"
 twitter: "LorettaJRoss"
 homepage: "https://lorettajross.com/"
 ---
