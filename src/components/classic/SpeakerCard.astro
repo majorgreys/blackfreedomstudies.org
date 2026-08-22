@@ -5,7 +5,7 @@ interface Props {
   name: string;
   slug: string;
   affiliation?: string;
-  image?: ImageMetadata;
+  image?: ImageMetadata | string;
   email?: string;
   twitter?: string;
   social?: string;
@@ -17,7 +17,7 @@ const { name, slug, affiliation, image, email, twitter, social, homepage, compac
 ---
 <li class="c-speaker-item">
   {image ? (
-    <Image src={image} alt={name} class="c-speaker-headshot" width={300} />
+    <Image src={image} alt={name} class="c-speaker-headshot" width={300} height={300} />
   ) : (
     <div class="c-speaker-placeholder">👤</div>
   )}

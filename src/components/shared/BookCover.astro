@@ -1,0 +1,26 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: ImageMetadata | string;
+  width: number;
+  height?: number;
+  alt?: string;
+}
+
+const { src, width, height = Math.round(width * 1.5), alt = 'Book cover' } = Astro.props;
+const isRemote = typeof src === 'string' && /^https?:\/\//.test(src);
+---
+{isRemote ? (
+  <img
+    src={src as string}
+    {alt}
+    {width}
+    {height}
+    loading="lazy"
+    decoding="async"
+    referrerpolicy="no-referrer"
+  />
+) : (
+  <Image src={src as ImageMetadata} {alt} {width} />
+)}

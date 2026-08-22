@@ -1,8 +1,8 @@
 ---
-import { Image } from 'astro:assets';
+import BookCover from '../shared/BookCover.astro';
 
 interface Props {
-  books: ImageMetadata[];
+  books: Array<ImageMetadata | string>;
 }
 
 const { books } = Astro.props;
@@ -12,7 +12,7 @@ const { books } = Astro.props;
     {books.map((book) => (
       <div class="c-book-grid-item">
         <div class="c-book-grid-img">
-          <Image src={book} alt="Book cover" width={200} />
+          <BookCover src={book} width={200} />
         </div>
       </div>
     ))}
