@@ -6,6 +6,7 @@ seasonPart: fall
 speakers:
   - martha-biondi
   - akinyele-umoja
+  - sam-klug
 books:
   - https://www.ucpress.edu/_next/image?url=https%3A%2F%2Fwebfiles.ucpress.edu%2Fcoverimage%2Fisbn13%2F9780520417717.jpg&w=1920&q=90
   - https://burningbooks.com/cdn/shop/files/915cCBwt00L._SL1500_1200x1200.jpg?v=1784322857
