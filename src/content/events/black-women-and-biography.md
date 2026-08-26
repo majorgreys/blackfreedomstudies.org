@@ -1,6 +1,6 @@
 ---
 title: Black Women and Biography
-date: 2026-09-04
+date: 2026-09-03
 seasonYear: 2026
 seasonPart: fall
 eventbrite: https://www.eventbrite.com/e/conversations-in-black-freedom-studies-black-women-and-biography-tickets-1992956751292
