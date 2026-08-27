@@ -5,6 +5,9 @@ seasonYear: 2026
 seasonPart: fall
 speakers:
   - quito-swan
+  - soyica-diggs-colbert
+  - reiland-rabaka
+  - jibola-fagbamiye
 books:
   - https://images.routledge.com/common/jackets/crclarge/978103218/9781032184319.jpg
   - https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsAaTC-2p8a6TSa_W8PMNzQNr4OF_uDjLqdzl1qOU_kg&s=10
