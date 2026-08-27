@@ -1,9 +1,9 @@
 ---
-name: "Louis Moore"
-affiliation: "Grand Valley State University"
-image: "../../assets/speakers/louismoore2.jpg"
-email: "moorelou@gvsu.edu"
-homepage: "https://www.gvsu.edu/history/louis-moore-47.htm"
+name: Louis Moore
+affiliation: Michigan State University
+image: ../../assets/speakers/louismoore2.jpg
+email: profloumoore@gmail.com
+twitter: loumoore12
+homepage: https://www.profloumoore.com/
 ---
-
-Louis Moore is Associate Professor of History at Grand Valley State University. He teaches courses in African American History, Sports History, and Gender History. He earned his PhD from the University of California, Davis in 2008. His books include [I Fight for a Living: Boxing and the Battle for Black Manhood, 1880-1915](https://www.press.uillinois.edu/books/catalog/85zhc7cg9780252041341.html) and *[We Will Win the Day: The Civil Rights Movement, the Black Athlete, and the Quest for Equality](https://www.abc-clio.com/ABC-CLIOCorporate/product.aspx?pc=A4844C)*.
+Louis Moore is a Professor of History at Michigan State University. He teaches African American History, Civil Rights, Sports History, and US History. His research and writing examines the interconnections between race and sports.  He is the author of three books, I Fight for a Living: Boxing and the Battle for Black Manhood, 1880-1915 and We Will Win the Day: The Civil Rights Movement, the Black Athlete, and the Quest for Equality, and The Great Black Hope: Doug Williams, Vince Evans, and the Making of the Black Quarterback. In addition, he has two audible lectures; African American Athletes Who Made History and A Pastime of Their Own: The Story of Negro League Baseball. He has also written for various online outlets including The New York Daily News, Vox, The Global Sports Institute, First and Pen, and the African American Intellectual Historical Society, and he has appeared on NPR, MSNBC, CNN, and BBC Sports. The co-host of the Black Athlete Podcast.
