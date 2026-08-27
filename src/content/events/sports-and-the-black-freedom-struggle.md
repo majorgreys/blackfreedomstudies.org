@@ -5,6 +5,9 @@ seasonYear: 2026
 seasonPart: fall
 speakers:
   - louis-moore
+  - derrick-e-white
+  - gregory-j-kaliss
+  - letisha-engracia-cardoso-brown
 books:
   - https://m.media-amazon.com/images/I/61VEt1j67DL._AC_UF1000,1000_QL80_.jpg
   - https://www.press.uillinois.edu/books/images/p087066_lg.jpg
