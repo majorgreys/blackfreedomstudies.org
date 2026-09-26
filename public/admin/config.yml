@@ -145,7 +145,7 @@ collections:
       - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
       - { name: image, label: Banner Image, widget: image, required: false, choose_url: false, hint: "Upload the image file. If it is on another website, download it first: links to images on other sites are not allowed." }
       - { name: imageCaption, label: Image Caption, widget: string, required: false }
-      - { name: imageFocus, label: Banner Focus, widget: select, required: false, options: [top, upper, center, lower, bottom], hint: "Wide banners are cropped top-to-bottom to a fixed shape. Pick which band of the image to keep (default: center). Small or portrait images are shown beside the text instead." }
+      - { name: bannerCrop, label: Banner Crop, widget: banner-crop, required: false, hint: "Drag the box to choose what the banner shows; drag its corner to zoom in. The solid box is always visible; the dashed box shows the extra area visible on phones and narrower screens." }
       - name: tags
         label: Tags
         label_singular: Tag

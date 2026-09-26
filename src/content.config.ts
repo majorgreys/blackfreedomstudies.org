@@ -51,8 +51,13 @@ const news = defineCollection({
     date: z.coerce.date(),
     image: image().optional(),
     imageCaption: z.string().optional(),
-    // Which band of the image to keep when it's cropped to the wide banner shape
-    imageFocus: z.enum(['top', 'upper', 'center', 'lower', 'bottom']).optional(),
+    // Banner crop set in Decap: centre of the crop (% of image width/height) and
+    // zoom (1 = the whole image width). Null/absent means centred, not zoomed.
+    bannerCrop: z.object({
+      x: z.number().min(0).max(100),
+      y: z.number().min(0).max(100),
+      zoom: z.number().min(1),
+    }).nullish(),
     tags: z.array(z.string()).default([]),
   }),
 });

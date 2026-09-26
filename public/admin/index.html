@@ -13,6 +13,20 @@
     [class*="ToolbarButton"] { background: #097367 !important; color: #fff !important; border: none !important; }
     [class*="ToolbarButton"]:hover { background: #0a8576 !important; }
     [class*="ToolbarDeleteButton"] { background: #d82125 !important; }
+
+    /* Banner crop widget */
+    .bc-stage { position: relative; overflow: hidden; border-radius: 4px; background: #e7e5e4; touch-action: none; user-select: none; outline: none; }
+    .bc-stage:focus-visible { box-shadow: 0 0 0 3px #097367; }
+    .bc-img { display: block; width: 100%; height: auto; pointer-events: none; }
+    .bc-box { position: absolute; box-sizing: border-box; border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(0,0,0,0.4), 0 0 0 9999px rgba(0,0,0,0.45); cursor: move; }
+    .bc-narrow { position: absolute; box-sizing: border-box; border: 1px dashed rgba(255,255,255,0.9); pointer-events: none; }
+    .bc-handle { position: absolute; right: -8px; bottom: -8px; width: 16px; height: 16px; background: #fff; border: 2px solid #097367; border-radius: 3px; cursor: nwse-resize; }
+    .bc-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 8px; font-size: 13px; color: #57534e; }
+    .bc-q { font-weight: 700; padding: 1px 8px; border-radius: 999px; }
+    .bc-q.ok { background: #dcfce7; color: #166534; }
+    .bc-q.soft { background: #fef9c3; color: #854d0e; }
+    .bc-reset { margin-left: auto; font: inherit; font-weight: 600; padding: 3px 10px; border: 1px solid #d6d3d1; border-radius: 4px; background: #fff; cursor: pointer; }
+    .bc-note { margin: 0; padding: 12px; font-size: 13px; color: #57534e; }
   </style>
 </head>
 <body>
@@ -115,9 +129,18 @@
       /* News / Interview — reuses page-header */
       .page-header .date { color: #a8a29e; font-size: 0.85rem; margin: 0 0 6px; }
       .banner { width: 100%; border-radius: 8px; margin: 0 0 8px; }
-      /* News banner — matches r-news-banner: fixed shape, cropped to the chosen focus */
+      /* News banner — matches .r-news-banner-frame, including the crop math */
       .news-banner { padding: 16px 28px 0; }
-      .news-banner img { display: block; width: 100%; height: auto; aspect-ratio: 21 / 9; max-height: 320px; object-fit: cover; border-radius: 6px; }
+      .news-banner-frame { position: relative; overflow: hidden; container-type: inline-size; width: 100%; aspect-ratio: 21 / 9; max-height: 320px; border-radius: 6px; }
+      .news-banner-frame img {
+        --fh: min(calc(100cqw * 9 / 21), 320px);
+        position: absolute; max-width: none;
+        --w: calc(max(100cqw, var(--fh) * var(--r, 1)) * var(--z, 1));
+        --h: calc(var(--w) / var(--r, 1));
+        width: var(--w); height: var(--h);
+        left: clamp(calc(100cqw - var(--w)), calc(50cqw - var(--cx, 0.5) * var(--w)), 0px);
+        top: clamp(calc(var(--fh) - var(--h)), calc(var(--fh) / 2 - var(--cy, 0.5) * var(--h)), 0px);
+      }
       /* Small or portrait news images — matches r-news-inset */
       .news-inset { float: right; max-width: min(300px, 40%); margin: 0 0 1.2em 28px; }
       .news-inset img { display: block; max-width: 100%; height: auto; border-radius: 6px; }
@@ -253,11 +276,146 @@
     });
     CMS.registerPreviewTemplate('speakers', SpeakerPreview);
 
+    // ── Banner crop ──
+    // A news banner crop is a centre (x, y as % of the image) and a zoom
+    // (1 = whole image width). Mirrors isNewsBanner/maxBannerZoom in
+    // src/lib/imageQuality.ts and the .r-news-banner-frame CSS.
+    var BANNER_MIN_WIDTH = 1000;      // px of image needed across the banner to be sharp
+    var BANNER_TIGHT = 1004 / 320;    // widest banner shape (large screens)
+    var BANNER_NARROW = 21 / 9;       // phones and narrower screens
+    function cropGet(v, k, d) {
+      if (v == null) return d;
+      var x = v.get ? v.get(k) : v[k];
+      return x == null ? d : x;
+    }
+    function isNewsBannerJS(w, h) { return w >= 700 && w / h >= 1.2; }
+    function maxZoomJS(w, h) {
+      var fill = Math.max(1, (w / h) / BANNER_TIGHT);
+      return Math.max(1, w / fill / BANNER_MIN_WIDTH);
+    }
+    // Part of the image (fractions of its width/height) a banner of this shape shows
+    function cropBox(r, aspect, z, cx, cy) {
+      var W = Math.max(1, r / aspect) * z;  // image width, in banner widths
+      var bw = 1 / W, bh = r / (aspect * W);
+      return {
+        x: Math.min(Math.max(cx - bw / 2, 0), 1 - bw),
+        y: Math.min(Math.max(cy - bh / 2, 0), 1 - bh),
+        w: bw, h: bh
+      };
+    }
+    function cropStyleVars(crop, w, h) {
+      return {
+        '--cx': cropGet(crop, 'x', 50) / 100,
+        '--cy': cropGet(crop, 'y', 50) / 100,
+        '--z': Math.min(cropGet(crop, 'zoom', 1), maxZoomJS(w, h)),
+        '--r': w / h
+      };
+    }
+
+    var BannerCropControl = createClass({
+      getInitialState: function() { return { src: null, nat: null }; },
+      crop: function() {
+        var v = this.props.value;
+        return { x: cropGet(v, 'x', 50) / 100, y: cropGet(v, 'y', 50) / 100, z: cropGet(v, 'zoom', 1) };
+      },
+      // Clamp zoom to what the image can support and the centre to where the
+      // always-visible box can reach, then save
+      commit: function(c) {
+        var nat = this.state.nat, r = nat.w / nat.h;
+        var z = Math.min(Math.max(c.z, 1), maxZoomJS(nat.w, nat.h));
+        var b = cropBox(r, BANNER_TIGHT, z, c.x, c.y);
+        this.props.onChange({
+          x: Math.round((b.x + b.w / 2) * 1000) / 10,
+          y: Math.round((b.y + b.h / 2) * 1000) / 10,
+          zoom: Math.round(z * 100) / 100
+        });
+      },
+      startDrag: function(mode, e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var self = this, stage = this.stage.getBoundingClientRect(), nat = this.state.nat, r = nat.w / nat.h;
+        var start = this.crop(), sx = e.clientX, sy = e.clientY;
+        var box = cropBox(r, BANNER_TIGHT, Math.min(start.z, maxZoomJS(nat.w, nat.h)), start.x, start.y);
+        var cx = box.x + box.w / 2, cy = box.y + box.h / 2;
+        function move(ev) {
+          if (mode === 'move') {
+            self.commit({ x: cx + (ev.clientX - sx) / stage.width, y: cy + (ev.clientY - sy) / stage.height, z: start.z });
+          } else {
+            // Resize around the centre, keeping the banner shape: half the box width
+            // is the pointer's horizontal distance from the centre
+            var half = Math.max(Math.abs(ev.clientX - (stage.left + cx * stage.width)) / stage.width, 0.02);
+            self.commit({ x: cx, y: cy, z: (1 / (2 * half)) / Math.max(1, r / BANNER_TIGHT) });
+          }
+        }
+        function up() {
+          window.removeEventListener('pointermove', move);
+          window.removeEventListener('pointerup', up);
+        }
+        window.addEventListener('pointermove', move);
+        window.addEventListener('pointerup', up);
+      },
+      onKeyDown: function(e) {
+        if (!this.state.nat) return;
+        var c = this.crop(), step = e.shiftKey ? 0.05 : 0.01;
+        switch (e.key) {
+          case 'ArrowLeft': c.x -= step; break;
+          case 'ArrowRight': c.x += step; break;
+          case 'ArrowUp': c.y -= step; break;
+          case 'ArrowDown': c.y += step; break;
+          case '+': case '=': c.z *= 1.1; break;
+          case '-': case '_': c.z /= 1.1; break;
+          default: return;
+        }
+        e.preventDefault();
+        this.commit(c);
+      },
+      render: function() {
+        var self = this, wrap = this.props.classNameWrapper;
+        var entry = this.props.entry, image = entry && entry.getIn(['data', 'image']);
+        if (!image) return h('div', { className: wrap }, h('p', { className: 'bc-note' }, 'Add a banner image first.'));
+        var asset = this.props.getAsset(image), src = asset ? asset.toString() : null;
+        var nat = this.state.src === src ? this.state.nat : null;
+        var img = h('img', {
+          src: src, className: 'bc-img', draggable: false, alt: '',
+          onLoad: function(e) { self.setState({ src: src, nat: { w: e.target.naturalWidth, h: e.target.naturalHeight } }); }
+        });
+        if (!nat) return h('div', { className: wrap }, h('div', { className: 'bc-stage' }, img));
+        if (!isNewsBannerJS(nat.w, nat.h)) {
+          return h('div', { className: wrap }, h('p', { className: 'bc-note' },
+            'This image is too small or not wide enough for a banner, so the site shows it uncropped beside the text. There is nothing to crop.'));
+        }
+        var r = nat.w / nat.h, c = this.crop(), maxZ = maxZoomJS(nat.w, nat.h), z = Math.min(c.z, maxZ);
+        var tight = cropBox(r, BANNER_TIGHT, z, c.x, c.y), narrow = cropBox(r, BANNER_NARROW, z, c.x, c.y);
+        function pos(b) { return { left: b.x * 100 + '%', top: b.y * 100 + '%', width: b.w * 100 + '%', height: b.h * 100 + '%' }; }
+        var across = Math.round(nat.w * tight.w), sharp = across >= BANNER_MIN_WIDTH;
+        return h('div', { className: wrap },
+          h('div', {
+              className: 'bc-stage', tabIndex: 0, onKeyDown: this.onKeyDown,
+              ref: function(el) { self.stage = el; },
+              'aria-label': 'Banner crop. Drag the box to move it and its corner to zoom; arrow keys move, plus and minus zoom.'
+            },
+            img,
+            h('div', { className: 'bc-narrow', style: pos(narrow) }),
+            h('div', { className: 'bc-box', style: pos(tight), onPointerDown: function(e) { self.startDrag('move', e); } },
+              maxZ > 1 && h('span', { className: 'bc-handle', title: 'Drag to zoom', onPointerDown: function(e) { self.startDrag('zoom', e); } })
+            )
+          ),
+          h('div', { className: 'bc-bar' },
+            h('span', {}, maxZ > 1
+              ? 'Zoom ' + z.toFixed(2) + '× (up to ' + maxZ.toFixed(1) + '×) · ' + across.toLocaleString() + 'px of the image across the banner'
+              : 'Not enough resolution to zoom · ' + across.toLocaleString() + 'px across the banner'),
+            h('span', { className: 'bc-q ' + (sharp ? 'ok' : 'soft') }, sharp ? 'Sharp' : 'Soft'),
+            h('button', { type: 'button', className: 'bc-reset', onClick: function() { self.props.onChange(null); } }, 'Reset')
+          )
+        );
+      }
+    });
+    CMS.registerWidget('banner-crop', BannerCropControl);
+
     // ── News Preview ──
     // Mirrors news/[year]/[slug].astro: large landscape images become a cropped
-    // banner above the title (using Banner Focus); small or portrait images sit
+    // banner above the title (using Banner Crop); small or portrait images sit
     // beside the text. The image's size is only known once it loads.
-    var NEWS_FOCUS_Y = { top: '0%', upper: '25%', center: '50%', lower: '75%', bottom: '100%' };
     var NewsPreview = createClass({
       getInitialState: function() { return { src: null, dims: null }; },
       render: function() {
@@ -266,7 +424,7 @@
         var date = entry.getIn(['data', 'date']) || '';
         var image = entry.getIn(['data', 'image']);
         var imageCaption = entry.getIn(['data', 'imageCaption']) || '';
-        var focus = entry.getIn(['data', 'imageFocus']) || 'center';
+        var crop = entry.getIn(['data', 'bannerCrop']);
         var tags = entry.getIn(['data', 'tags']);
         var body = this.props.widgetFor('body');
         var banner = image ? this.props.getAsset(image) : null;
@@ -283,7 +441,9 @@
 
         return h('div', {},
           src && isBanner && h('div', { className: 'news-banner' },
-            h('img', { src: src, onLoad: onLoad, style: { objectPosition: 'center ' + (NEWS_FOCUS_Y[focus] || '50%') } })
+            h('div', { className: 'news-banner-frame', style: dims ? cropStyleVars(crop, dims.w, dims.h) : {} },
+              h('img', { src: src, onLoad: onLoad })
+            )
           ),
           src && isBanner && caption,
           h('div', { className: 'page-header', style: { marginTop: src && isBanner ? '16px' : 0 } },

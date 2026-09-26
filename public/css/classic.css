@@ -526,12 +526,33 @@ section > div {
 .c-news-banner {
   margin: 0;
 }
-.c-news-banner img {
-  display: block;
-  width: 100%;
+.c-news-banner-frame {
+  position: relative;
+  overflow: hidden;
+  container-type: inline-size;
   height: 150px;
-  object-fit: cover;
+}
+.c-news-banner-frame img {
+  --fh: 150px; /* frame height, as set above */
+  /* Crop set in Decap (--cx/--cy centre as 0–1, --z zoom, --r image aspect).
+     The image fills the frame (by width, or by height for very wide images),
+     is drawn --z times larger, and is offset so the centre sits mid-frame,
+     clamped so the frame never shows past the image edges. */
+  position: absolute;
+  max-width: none;
+  --w: calc(max(100cqw, var(--fh) * var(--r, 1)) * var(--z, 1));
+  --h: calc(var(--w) / var(--r, 1));
+  width: var(--w);
+  height: var(--h);
+  left: clamp(calc(100cqw - var(--w)), calc(50cqw - var(--cx, 0.5) * var(--w)), 0px);
+  top: clamp(calc(var(--fh) - var(--h)), calc(var(--fh) / 2 - var(--cy, 0.5) * var(--h)), 0px);
   filter: grayscale(100%);
+}
+.c-news-banner-frame img.is-remote {
+  position: static;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .c-news-banner figcaption,
 .c-news-inset figcaption {

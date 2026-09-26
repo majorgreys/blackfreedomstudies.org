@@ -13,10 +13,13 @@ export type ImageUse =
 
 export type ImageStatus = 'blurry' | 'soft' | 'ok' | 'unchecked';
 
+// News banners are at most 1004px wide on screen (redesign theme)
+export const BANNER_MIN_WIDTH = 1000;
+
 const MIN: Partial<Record<ImageUse, number>> = {
   'Book cover': 560,
   'Speaker photo': 640,
-  'News banner': 1000,
+  'News banner': BANNER_MIN_WIDTH,
   'Interview image': 800,
   'Page image': 800,
 };
@@ -25,6 +28,18 @@ const MIN: Partial<Record<ImageUse, number>> = {
 // are shown beside the text at natural size. Matches news/[year]/[slug].astro.
 export function isNewsBanner(img: { width: number; height: number }) {
   return img.width >= 700 && img.width / img.height >= 1.2;
+}
+
+// Widest banner shape: 1004×320 once it hits its max height
+export const BANNER_TIGHTEST_ASPECT = 1004 / 320;
+
+// How far an editor may zoom into a banner and still have enough pixels across
+// the banner for it to be sharp. An image wider than the banner shape fills it
+// by height, so less of its width shows even at zoom 1.
+// Mirrored in public/admin/index.html.
+export function maxBannerZoom(img: { width: number; height: number }) {
+  const fill = Math.max(1, img.width / img.height / BANNER_TIGHTEST_ASPECT);
+  return Math.max(1, img.width / fill / BANNER_MIN_WIDTH);
 }
 
 // Speaker photos are cropped square, so their shorter side is what counts.

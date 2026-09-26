@@ -2,7 +2,6 @@
 title: Announcing the Fall 2026 Conversations in Black Freedom Studies Season!
 date: 2026-08-27
 image: ../../assets/graphics/queen-mother-moore.jpg
-imageFocus: center
 ---
 Please join us for the Fall 2026 season of Conversations in Black Freedom Studies! All the events in the series are free and open to the public. The events will take place online on the first Thursday of the month at 6:30 PM and recordings of all our events are available on the [Schomburg Center’s youtube page](https://www.youtube.com/playlist?list=PLpjTCMOQ1XpXnSUULh7ti4j5lzo20L3vS).
 
