@@ -51,6 +51,8 @@ const news = defineCollection({
     date: z.coerce.date(),
     image: image().optional(),
     imageCaption: z.string().optional(),
+    // Which band of the image to keep when it's cropped to the wide banner shape
+    imageFocus: z.enum(['top', 'upper', 'center', 'lower', 'bottom']).optional(),
     tags: z.array(z.string()).default([]),
   }),
 });

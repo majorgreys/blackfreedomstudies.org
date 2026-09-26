@@ -742,8 +742,25 @@ main { padding: 48px 0; }
 .r-news-item h2 a { color: var(--color-accent); text-decoration: none !important; transition: color 0.2s; }
 .r-news-item h2 a:hover { color: var(--color-accent-red); }
 .r-news-banner { margin: 16px 0; }
-.r-news-banner img { width: 100%; border-radius: 6px; }
-.r-news-banner figcaption {
+/* Fixed banner shape so the title stays above the fold whatever the image's proportions */
+.r-news-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 21 / 9;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+/* Small or portrait news images sit beside the text instead of stretching */
+.r-news-inset {
+  float: right;
+  max-width: min(300px, 40%);
+  margin: 0 0 1.2em 28px;
+}
+.r-news-inset img { display: block; max-width: 100%; height: auto; border-radius: 6px; }
+.r-news-banner figcaption,
+.r-news-inset figcaption {
   font-size: 0.8rem;
   color: var(--color-text-muted);
   font-style: italic;
@@ -824,6 +841,7 @@ section h2::after {
 /* ── Prose (markdown body) ── */
 .r-prose {
   max-width: var(--content-width);
+  display: flow-root;
 }
 .r-prose p { margin: 0 0 1.2em; }
 .r-prose h2 { margin-top: 2em; }
@@ -971,6 +989,12 @@ section h2::after {
     padding: 16px 16px;
   }
   .r-page-header h1 { font-size: 1.8rem; }
+
+  .r-news-inset {
+    float: none;
+    max-width: 300px;
+    margin: 0 0 1.2em;
+  }
 
   .r-speaker-grid {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));

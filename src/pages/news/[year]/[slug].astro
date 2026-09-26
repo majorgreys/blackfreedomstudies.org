@@ -20,22 +20,35 @@ const dateStr = entry.data.date.toLocaleDateString('en-US', { year: 'numeric', m
 // Decap can store remote image URLs, which <Image> can't size without both dimensions
 const image = entry.data.image;
 const isRemote = typeof image === 'string' && /^https?:\/\//.test(image);
+// Large landscape images are cropped to a fixed-shape banner; small or portrait
+// images would be stretched and blurry, so they sit beside the text at natural size
+const isBanner = isRemote || (!!image && (image as ImageMetadata).width >= 700
+  && (image as ImageMetadata).width / (image as ImageMetadata).height >= 1.2);
+const focusY = { top: '0%', upper: '25%', center: '50%', lower: '75%', bottom: '100%' };
+const focus = `center ${focusY[entry.data.imageFocus ?? 'center']}`;
+const caption = entry.data.imageCaption;
 ---
 <Layout title={entry.data.title} description={`${entry.data.title} — Conversations in Black Freedom Studies news, ${dateStr}.`} ogType="article">
   {isClassic ? (
     <article class="c-news-detail">
-      {entry.data.image && (
+      {image && isBanner && (
         <figure class="c-news-banner">
           {isRemote ? (
-            <img src={image as string} alt={entry.data.title} loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+            <img src={image as string} alt={entry.data.title} style={`object-position: ${focus}`} decoding="async" referrerpolicy="no-referrer" />
           ) : (
-            <Image src={image as ImageMetadata} alt={entry.data.title} width={800} />
+            <Image src={image as ImageMetadata} alt={entry.data.title} width={800} densities={[1, 2]} loading="eager" style={`object-position: ${focus}`} />
           )}
-          {entry.data.imageCaption && <figcaption>{entry.data.imageCaption}</figcaption>}
+          {caption && <figcaption>{caption}</figcaption>}
         </figure>
       )}
       <h1>{entry.data.title}</h1>
       <p class="c-news-date">{dateStr}</p>
+      {image && !isBanner && (
+        <figure class="c-news-inset">
+          <Image src={image as ImageMetadata} alt={entry.data.title} width={Math.min(240, (image as ImageMetadata).width)} densities={[1, 2]} />
+          {caption && <figcaption>{caption}</figcaption>}
+        </figure>
+      )}
       <Content />
       {entry.data.tags.length > 0 && (
         <div class="c-tags">
@@ -45,14 +58,14 @@ const isRemote = typeof image === 'string' && /^https?:\/\//.test(image);
     </article>
   ) : (
     <article>
-      {entry.data.image && (
+      {image && isBanner && (
         <figure class="r-news-banner">
           {isRemote ? (
-            <img src={image as string} alt={entry.data.title} loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+            <img src={image as string} alt={entry.data.title} style={`object-position: ${focus}`} decoding="async" referrerpolicy="no-referrer" />
           ) : (
-            <Image src={image as ImageMetadata} alt={entry.data.title} width={900} />
+            <Image src={image as ImageMetadata} alt={entry.data.title} width={900} densities={[1, 2]} loading="eager" style={`object-position: ${focus}`} />
           )}
-          {entry.data.imageCaption && <figcaption>{entry.data.imageCaption}</figcaption>}
+          {caption && <figcaption>{caption}</figcaption>}
         </figure>
       )}
       <div class="r-page-header">
@@ -60,6 +73,12 @@ const isRemote = typeof image === 'string' && /^https?:\/\//.test(image);
         <h1>{entry.data.title}</h1>
       </div>
       <div class="r-prose">
+        {image && !isBanner && (
+          <figure class="r-news-inset">
+            <Image src={image as ImageMetadata} alt={entry.data.title} width={Math.min(300, (image as ImageMetadata).width)} densities={[1, 2]} />
+            {caption && <figcaption>{caption}</figcaption>}
+          </figure>
+        )}
         <Content />
       </div>
       {entry.data.tags.length > 0 && (

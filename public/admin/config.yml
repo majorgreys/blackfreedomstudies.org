@@ -133,6 +133,7 @@ collections:
       - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
       - { name: image, label: Banner Image, widget: image, required: false }
       - { name: imageCaption, label: Image Caption, widget: string, required: false }
+      - { name: imageFocus, label: Banner Focus, widget: select, required: false, options: [top, upper, center, lower, bottom], hint: "Wide banners are cropped top-to-bottom to a fixed shape. Pick which band of the image to keep (default: center). Small or portrait images are shown beside the text instead." }
       - name: tags
         label: Tags
         label_singular: Tag
