@@ -2,3 +2,5 @@
 # issue_prefix: cbfs
 # default_priority: 2
 # default_type: task
+
+# sync.remote: "git+https://github.com/majorgreys/blackfreedomstudies.org.git"
