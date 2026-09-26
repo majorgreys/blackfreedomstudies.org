@@ -40,7 +40,12 @@ const primaryResources = event.data.primaryResources
   .map((slug: string) => allResources.find(r => r.id === slug))
   .filter(Boolean);
 
-const isFuture = event.data.date > new Date();
+// Upcoming through the whole event day (dates are UTC midnight)
+const isFuture = event.data.date.getTime() + 24 * 60 * 60 * 1000 > Date.now();
+const seasonSlug = `${event.data.seasonPart}-${event.data.seasonYear}`;
+const seasonTitle = `${event.data.seasonPart.charAt(0).toUpperCase() + event.data.seasonPart.slice(1)} ${event.data.seasonYear}`;
+const fullDate = event.data.date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+const year = event.data.date.getUTCFullYear();
 
 const speakerNames = speakers.map((s: any) => s.data.name).join(', ');
 const eventDescription = `${event.data.title} — featuring ${speakerNames || 'guest speakers'}. A Conversations in Black Freedom Studies event at the Schomburg Center.`;
@@ -162,20 +167,33 @@ const eventJsonLd = {
   ) : (
     <div>
       <div class="r-event-hero">
-        <div class="container" style="display:flex;align-items:flex-start;gap:24px;">
-          <div class="r-event-hero__date">
+        <nav class="r-breadcrumb" aria-label="Breadcrumb">
+          <a href="/events/">Conversations</a> <span aria-hidden="true">›</span> <a href={`/events/${seasonSlug}/`}>{seasonTitle}</a>
+        </nav>
+        <div class="r-event-hero__main">
+          <div class="r-event-hero__date" aria-hidden="true">
             <span class="r-event-hero__month">{month}</span>
             <span class="r-event-hero__day">{day}</span>
+            <span class="r-event-hero__year">{year}</span>
           </div>
           <div>
             <h1>{event.data.title}</h1>
+            <p class="r-event-hero__meta">
+              <time datetime={eventDate}>{fullDate}</time>
+              {isFuture && <span class="r-event-row__badge">Upcoming</span>}
+            </p>
           </div>
         </div>
       </div>
 
-      {isFuture && event.data.eventbrite && (
-        <a href={event.data.eventbrite} target="_blank" rel="noopener" class="r-btn-register">→ Register on Eventbrite</a>
-      )}
+      {(isFuture && event.data.eventbrite) || video ? (
+        <div class="r-event-actions">
+          {isFuture && event.data.eventbrite && (
+            <a href={event.data.eventbrite} rel="noopener" class="r-btn">Register on Eventbrite ↗</a>
+          )}
+          {video && <a href="#recording" class="r-btn r-btn--outline">Watch the recording</a>}
+        </div>
+      ) : null}
 
       <BookGrid books={event.data.books} />
 
@@ -204,7 +222,7 @@ const eventJsonLd = {
       )}
 
       {video && (
-        <section>
+        <section id="recording">
           <h2>Recording</h2>
           <VideoEmbed url={video.data.sourceUrl} embedCode={video.data.videoEmbedCode} title={event.data.title} />
         </section>
@@ -226,6 +244,8 @@ const eventJsonLd = {
           </ul>
         </section>
       )}
+
+      <p class="r-back-link"><a href={`/events/${seasonSlug}/`}>← All {seasonTitle} conversations</a></p>
     </div>
   )}
 </Layout>

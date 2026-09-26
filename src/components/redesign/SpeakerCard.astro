@@ -14,12 +14,14 @@ interface Props {
 }
 
 const { name, slug, affiliation, image, email, twitter, social, homepage, compact = false } = Astro.props;
+const initials = name.split(/\s+/).filter(w => /^[A-Za-z]/.test(w)).map(w => w[0]).slice(0, 1)
+  .concat(name.split(/\s+/).filter(w => /^[A-Za-z]/.test(w)).slice(-1).map(w => w[0])).join('').toUpperCase();
 ---
 <li class="r-speaker-item">
   {image ? (
     <Image src={image} alt="" class="r-speaker-headshot" width={192} height={192} />
   ) : (
-    <div class="r-speaker-placeholder">👤</div>
+    <div class="r-speaker-placeholder" aria-hidden="true">{initials}</div>
   )}
   <div class="r-speaker-info">
     <h3><a href={`/speakers/${slug}`}>{name}</a></h3>
