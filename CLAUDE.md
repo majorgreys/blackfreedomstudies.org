@@ -7,25 +7,29 @@ Astro imports all CSS from `.astro` components regardless of build-time conditio
 - **Page templates use `isClassic` ternary** for markup — import `{ Layout, isClassic }` from `src/lib/theme`
 - **Never `import` CSS in `.astro` files** — it will leak into both themes
 
-## Beads (br) Workflow
+## Beads (bd) Workflow
 
-Use `br` for ALL task tracking. Do NOT use TodoWrite, TaskCreate, or markdown files for tracking work.
+Use `bd` (Homebrew, v1.3.0+) for ALL task tracking. Do NOT use TodoWrite, TaskCreate, or markdown files for tracking work. Load the `beads:beads` skill; the beads plugin's SessionStart hook runs `bd prime`.
+
+Issues live in an embedded Dolt database (`.beads/embeddeddolt/`, gitignored) and sync through the Dolt remote on GitHub (`sync.remote` in `.beads/config.yaml`) — not through JSONL in git.
 
 ### Session Close Protocol
 Before saying "done" or "complete", run this checklist:
 1. `git status` — check what changed
 2. `git add <files>` — stage code changes
 3. `git commit -m "..."` — commit code
-4. `git push` — push to remote
+4. `bd dolt push` — push issue changes to the Dolt remote
+5. `git push` — push code to remote
 
 ### Core Commands
-- `br ready` — find work with no blockers
-- `br create --title="..." --description="..." --type=task|bug|feature --priority=2` — new issue (priority: 0-4, 0=critical)
-- `br update <id> --claim` — claim work
-- `br close <id>` — mark complete
-- `br dep add <issue> <depends-on>` — add dependency
-- `br blocked` — show blocked issues
-- `br sync --flush-only` — export DB to JSONL (then `git add .beads/ && git commit`)
+- `bd ready` — find work with no blockers
+- `bd show <id>` — full issue context
+- `bd create --title="..." --description="..." --type=task|bug|feature|chore|docs --priority=2` — new issue (priority: 0-4, 0=critical)
+- `bd update <id> --claim` — claim work
+- `bd close <id> --reason="..."` — mark complete
+- `bd dep add <issue> <depends-on>` — add dependency
+- `bd blocked` — show blocked issues
+- `bd dolt pull` / `bd dolt push` — sync issues with the Dolt remote
 
 ### Context Recovery
-Run `/br:prime` after context compaction or `/clear` to re-inject workflow context and see current work status.
+Run `bd prime` after context compaction or `/clear` to re-inject workflow context and see current work status.
