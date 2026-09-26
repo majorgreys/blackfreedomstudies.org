@@ -80,7 +80,7 @@ const seasonData = sortedSeasons.map(([slug, evts]) => {
                       <div class="c-book-grid">
                         {event.data.books.map((book: any) => (
                           <div class="c-book-grid-item">
-                            <BookCover src={book} width={200} />
+                            <BookCover src={book} width={200} alt="" />
                           </div>
                         ))}
                       </div>
@@ -136,7 +136,7 @@ const seasonData = sortedSeasons.map(([slug, evts]) => {
                   {event.data.books.length > 0 && (
                     <div class="r-event-row__books">
                       {event.data.books.slice(0, 3).map((book: any) => (
-                        <BookCover src={book} width={50} height={75} />
+                        <BookCover src={book} width={50} height={75} alt="" />
                       ))}
                     </div>
                   )}

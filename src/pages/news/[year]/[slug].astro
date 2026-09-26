@@ -45,9 +45,9 @@ const remoteFocus = `object-position: ${crop.x}% ${crop.y}%`;
         <figure class="c-news-banner">
           <div class="c-news-banner-frame" style={cropVars}>
             {isRemote ? (
-              <img class="is-remote" src={image as string} alt={entry.data.title} style={remoteFocus} decoding="async" referrerpolicy="no-referrer" />
+              <img class="is-remote" src={image as string} alt="" style={remoteFocus} decoding="async" referrerpolicy="no-referrer" />
             ) : (
-              <Image src={image as ImageMetadata} alt={entry.data.title} width={bannerWidth(800)} densities={[1, 2]} loading="eager" />
+              <Image src={image as ImageMetadata} alt="" width={bannerWidth(800)} densities={[1, 2]} loading="eager" />
             )}
           </div>
           {caption && <figcaption>{caption}</figcaption>}
@@ -57,7 +57,7 @@ const remoteFocus = `object-position: ${crop.x}% ${crop.y}%`;
       <p class="c-news-date">{dateStr}</p>
       {image && !isBanner && (
         <figure class="c-news-inset">
-          <Image src={image as ImageMetadata} alt={entry.data.title} width={Math.min(240, (image as ImageMetadata).width)} densities={[1, 2]} />
+          <Image src={image as ImageMetadata} alt="" width={Math.min(240, (image as ImageMetadata).width)} densities={[1, 2]} />
           {caption && <figcaption>{caption}</figcaption>}
         </figure>
       )}
@@ -74,9 +74,9 @@ const remoteFocus = `object-position: ${crop.x}% ${crop.y}%`;
         <figure class="r-news-banner">
           <div class="r-news-banner-frame" style={cropVars}>
             {isRemote ? (
-              <img class="is-remote" src={image as string} alt={entry.data.title} style={remoteFocus} decoding="async" referrerpolicy="no-referrer" />
+              <img class="is-remote" src={image as string} alt="" style={remoteFocus} decoding="async" referrerpolicy="no-referrer" />
             ) : (
-              <Image src={image as ImageMetadata} alt={entry.data.title} width={bannerWidth(1004)} densities={[1, 2]} loading="eager" />
+              <Image src={image as ImageMetadata} alt="" width={bannerWidth(1004)} densities={[1, 2]} loading="eager" />
             )}
           </div>
           {caption && <figcaption>{caption}</figcaption>}
@@ -89,7 +89,7 @@ const remoteFocus = `object-position: ${crop.x}% ${crop.y}%`;
       <div class="r-prose">
         {image && !isBanner && (
           <figure class="r-news-inset">
-            <Image src={image as ImageMetadata} alt={entry.data.title} width={Math.min(300, (image as ImageMetadata).width)} densities={[1, 2]} />
+            <Image src={image as ImageMetadata} alt="" width={Math.min(300, (image as ImageMetadata).width)} densities={[1, 2]} />
             {caption && <figcaption>{caption}</figcaption>}
           </figure>
         )}

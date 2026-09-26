@@ -4,26 +4,38 @@ import { parseVideoUrl } from '../../lib/video';
 interface Props {
   url?: string;
   embedCode?: string;
+  // Names the player for screen readers, e.g. the event title
+  title?: string;
 }
 
-const { url, embedCode } = Astro.props;
+const { url, embedCode, title = 'Video recording' } = Astro.props;
+const iframeTitle = `Recording: ${title}`.replace(/"/g, '&quot;');
 
 let embedHtml = '';
 if (embedCode) {
-  embedHtml = embedCode;
+  // Stored embed codes rarely have a title; add one if missing
+  embedHtml = /<iframe\b[^>]*\btitle=/i.test(embedCode)
+    ? embedCode
+    : embedCode.replace(/<iframe\b/i, `<iframe title="${iframeTitle}"`);
 } else if (url) {
   const { provider, id } = parseVideoUrl(url);
   if (provider === 'youtube' && id) {
-    embedHtml = `<iframe src="https://www.youtube.com/embed/${id}" frameborder="0" allowfullscreen loading="lazy"></iframe>`;
+    embedHtml = `<iframe title="${iframeTitle}" src="https://www.youtube.com/embed/${id}" frameborder="0" allowfullscreen loading="lazy"></iframe>`;
   } else if (provider === 'vimeo' && id) {
-    embedHtml = `<iframe src="https://player.vimeo.com/video/${id}" frameborder="0" allowfullscreen loading="lazy"></iframe>`;
+    embedHtml = `<iframe title="${iframeTitle}" src="https://player.vimeo.com/video/${id}" frameborder="0" allowfullscreen loading="lazy"></iframe>`;
   }
 }
+// Some embeds are domain-restricted or fail to load; always offer a direct link
+const provider = url ? parseVideoUrl(url).provider : null;
+const watchLabel = provider === 'youtube' ? 'Watch on YouTube' : provider === 'vimeo' ? 'Watch on Vimeo' : 'Watch the recording';
 ---
 {embedHtml && (
   <div class="video-embed">
     <Fragment set:html={embedHtml} />
   </div>
+)}
+{url && /^https?:\/\//.test(url) && (
+  <p class="video-embed__link"><a href={url} rel="noopener">{watchLabel} ↗</a></p>
 )}
 
 <style>

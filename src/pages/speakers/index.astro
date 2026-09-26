@@ -14,7 +14,7 @@ const speakers = (await getCollection('speakers'))
         {speakers.map(speaker => (
           <li class="c-speaker-grid-item">
             {speaker.data.image && (
-              <Image src={speaker.data.image} alt={speaker.data.name} width={320} height={320} />
+              <Image src={speaker.data.image} alt="" width={320} height={320} />
             )}
             <h3><a href={`/speakers/${speaker.id}`}>{speaker.data.name}</a></h3>
             {speaker.data.affiliation && <span class="affiliation">{speaker.data.affiliation}</span>}
@@ -32,7 +32,7 @@ const speakers = (await getCollection('speakers'))
         {speakers.map(speaker => (
           <li class="r-speaker-grid-item">
             {speaker.data.image && (
-              <Image src={speaker.data.image} alt={speaker.data.name} width={240} height={240} />
+              <Image src={speaker.data.image} alt="" width={240} height={240} />
             )}
             <h2><a href={`/speakers/${speaker.id}`}>{speaker.data.name}</a></h2>
             {speaker.data.affiliation && <span class="affiliation">{speaker.data.affiliation}</span>}

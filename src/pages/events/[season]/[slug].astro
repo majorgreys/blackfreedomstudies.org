@@ -135,7 +135,7 @@ const eventJsonLd = {
         <section>
           <h3 class="c-section-header">Recording</h3>
           <div class="c-video-embed">
-            <VideoEmbed url={video.data.sourceUrl} embedCode={video.data.videoEmbedCode} />
+            <VideoEmbed url={video.data.sourceUrl} embedCode={video.data.videoEmbedCode} title={event.data.title} />
           </div>
         </section>
       )}
@@ -206,7 +206,7 @@ const eventJsonLd = {
       {video && (
         <section>
           <h2>Recording</h2>
-          <VideoEmbed url={video.data.sourceUrl} embedCode={video.data.videoEmbedCode} />
+          <VideoEmbed url={video.data.sourceUrl} embedCode={video.data.videoEmbedCode} title={event.data.title} />
         </section>
       )}
 
