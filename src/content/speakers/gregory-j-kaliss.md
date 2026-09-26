@@ -1,7 +1,7 @@
 ---
 name: Gregory J. Kaliss
 affiliation: Franklin & Marshall College
-image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSESBfLJboEMC2haeySnkrB03jw5UWpUqKixiP9L0SaQg&s=10
+image: ../../assets/speakers/gregory-j-kaliss.jpg
 email: gregory.kaliss@fandm.edu
 twitter: GregKaliss
 homepage: https://www.fandm.edu/directory/gregory-kaliss.html

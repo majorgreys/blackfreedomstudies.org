@@ -1,7 +1,7 @@
 ---
 name: Letisha Engracia Cardoso Brown
 affiliation: University of Cincinnati
-image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZny9_wbexcK5N_1rJcz4U4x6zsNfBc9GkRDbowaM7nw&s=10
+image: ../../assets/speakers/letisha-engracia-cardoso-brown.jpg
 email: brown5lh@ucmail.uc.edu
 homepage: https://researchdirectory.uc.edu/p/brown5lh
 ---

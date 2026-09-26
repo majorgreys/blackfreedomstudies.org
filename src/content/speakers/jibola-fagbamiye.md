@@ -1,6 +1,6 @@
 ---
 name: Jibola Fagbamiye
-image: https://images.squarespace-cdn.com/content/v1/5eaccc18dd29096153c3b266/1593910327369-IU4J7CA7PVQS4ZM3L1WZ/jibola.jpg
+image: ../../assets/speakers/jibola-fagbamiye.webp
 email: jibola@jibolastudios.com
 social: https://www.instagram.com/jibolastudios/?hl=en
 homepage: https://www.jibolastudios.com/about

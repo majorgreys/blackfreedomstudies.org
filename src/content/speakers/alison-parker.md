@@ -1,7 +1,7 @@
 ---
 name: Alison Parker
 affiliation: "University of Delaware "
-image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnoHGESI3yuQRHyAOiBw1-viLFwUznp4vo3yUilWc1hw&s=10
+image: ../../assets/speakers/alison-parker.jpg
 email: aparker@udel.edu
 homepage: https://www.udel.edu/academics/colleges/cas/units/departments/history/our-people/alison-parker/
 ---

@@ -1,7 +1,7 @@
 ---
 name: Susana Morris
 affiliation: Georgia Institute of Technology
-image: https://hips.hearstapps.com/hmg-prod/images/positive-obsession-susana-m-morris-2048x1024-68b1e86f9bcac.jpg?crop=0.502xw:1.00xh;0.393xw,0&resize=1200:*
+image: ../../assets/speakers/susana-morris.jpg
 email: susana@gatech.edu
 twitter: iamcrunkadelic
 homepage: https://www.susanamorris.com/

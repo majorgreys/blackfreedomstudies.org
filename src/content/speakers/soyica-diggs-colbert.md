@@ -1,7 +1,7 @@
 ---
 name: Soyica Diggs Colbert
 affiliation: Georgetown University
-image: https://womensforum.georgetown.edu/wp-content/uploads/sites/15/2021/12/soyica-diggs-colbert.png
+image: ../../assets/speakers/soyica-diggs-colbert.png
 homepage: https://blackstudies.georgetown.edu/profiles/soyica-diggs-colbert-ph-d/
 ---
 Soyica Diggs Colbert is the Idol Family Professor of Black Studies and Performing Arts at Georgetown University. Colbert’s award-winning book, *Radical Vision*, a “loving, lavishly detailed” (*New York Times*) portrait of Lorraine Hansberry’s life, art, and political activism—one of *O Magazine*‘s best books of April 2021 is also described as “A devoted and deeply felt account of the development of an artist’s mind,” according to Dave Itzkoff, *New York Times Book Review*. In this acclaimed biography of Lorraine Hansberry, Colbert narrates a life at the intersection of art and politics, arguing that for Hansberry the theater operated as a rehearsal room for her political and intellectual work.

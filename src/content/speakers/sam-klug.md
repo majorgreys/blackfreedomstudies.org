@@ -1,7 +1,7 @@
 ---
 name: Sam Klug
 affiliation: Loyola University Maryland
-image: https://www.loyola.edu/_media/academics/history/images/faculty/klug/klug-sam.jpg
+image: ../../assets/speakers/sam-klug.jpg
 email: ssklug@loyola.edu
 social: https://bsky.app/profile/did:plc:igvcfwv2nbw3mw4j3m6q4q2w
 homepage: https://www.loyola.edu/academics/history/faculty/klug-sam.html

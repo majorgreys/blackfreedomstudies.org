@@ -1,7 +1,7 @@
 ---
 name: Reiland Rabaka
 affiliation: University of Colorado
-image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKfy0N5zbsXUzy-Y5xn7iNKCQ65FA2nOsAOIE1jCP13A&s=10
+image: ../../assets/speakers/reiland-rabaka.jpg
 email: reiland.rabaka@colorado.edu
 homepage: https://www.colorado.edu/ethnicstudies/people/core-faculty/reiland-rabaka
 ---

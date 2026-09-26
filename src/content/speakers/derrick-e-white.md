@@ -1,7 +1,7 @@
 ---
 name: Derrick E. White
 affiliation: University of Kentucky
-image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa2rHUu0O1_gxShtKIC1yN3WOkGTDVbAGJxfRKPwwi_A&s=10
+image: ../../assets/speakers/derrick-e-white.jpg
 email: drderrickwhite@gmail.com
 twitter: blackstar1906
 homepage: https://www.derrickwhitephd.com/
