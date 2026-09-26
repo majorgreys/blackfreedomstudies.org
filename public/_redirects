@@ -1,0 +1,4 @@
+# Cloudflare Pages redirects
+# Merged duplicate speaker entry
+/speakers/alondra-nelson-1 /speakers/alondra-nelson/ 301
+/speakers/alondra-nelson-1/ /speakers/alondra-nelson/ 301

@@ -53,9 +53,12 @@ const appearances = events
     </div>
   ) : (
     <div>
+      <nav class="r-breadcrumb r-breadcrumb--light" aria-label="Breadcrumb">
+        <a href="/speakers/">Speakers</a>
+      </nav>
       <div class="r-speaker-profile">
         {speaker.data.image && (
-          <Image src={speaker.data.image} alt="" width={160} height={160} />
+          <Image src={speaker.data.image} alt="" width={160} height={160} densities={[1, 2]} />
         )}
         <div>
           <h1>{speaker.data.name}</h1>
@@ -78,7 +81,10 @@ const appearances = events
             {appearances.map(event => (
               <li>
                 <a href={`/events/${event.data.seasonPart}-${event.data.seasonYear}/${event.id}`}>{event.data.title}</a>
-                <span class="date">{event.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', timeZone: 'UTC' })}</span>
+                <span class="date">
+                  {event.data.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}
+                  · <a href={`/events/${event.data.seasonPart}-${event.data.seasonYear}/`}>{event.data.seasonPart.charAt(0).toUpperCase() + event.data.seasonPart.slice(1)} {event.data.seasonYear} season</a>
+                </span>
               </li>
             ))}
           </ul>
