@@ -16,6 +16,35 @@ const recordings = resources
 
 const documents = resources.filter(r => r.data.resourceType === 'document');
 
+// Redesign: tie each recording to its conversation and group by year
+const events = await getCollection('events');
+const eventByVideo = new Map(events.filter(e => e.data.video).map(e => [e.data.video!, e]));
+const seenUrls = new Set<string>();
+const recordingRows = recordings
+  .filter(r => {
+    // Drop exact duplicates of the same video
+    if (seenUrls.has(r.data.sourceUrl!)) return false;
+    seenUrls.add(r.data.sourceUrl!);
+    return true;
+  })
+  .map(r => {
+    const event = eventByVideo.get(r.id);
+    const date = event?.data.date ?? r.data.date;
+    const host = (() => { try { return new URL(r.data.sourceUrl!).hostname.replace(/^www\./, ''); } catch { return ''; } })();
+    const source = host.includes('vimeo') ? 'Vimeo' : host.includes('youtu') ? 'YouTube' : host.includes('livestream') ? 'Livestream' : 'Watch';
+    return {
+      id: r.id,
+      title: r.data.title,
+      date,
+      year: date ? String(date.getUTCFullYear()) : 'Undated',
+      eventUrl: event ? `/events/${event.data.seasonPart}-${event.data.seasonYear}/${event.id}#recording` : null,
+      sourceUrl: r.data.sourceUrl!,
+      source,
+    };
+  })
+  .sort((a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0));
+const recordingYears = [...new Set(recordingRows.map(r => r.year))];
+
 const prefix = isClassic ? 'c' : 'r';
 ---
 <Layout title="Recordings" description="Video recordings of past Conversations in Black Freedom Studies events at the Schomburg Center.">
@@ -35,70 +64,76 @@ const prefix = isClassic ? 'c' : 'r';
     <div>
       <div class="r-page-header">
         <h1>Recordings</h1>
-        <p>Video recordings of past conversations at the Schomburg Center</p>
-      </div>
-      <div class="r-resource-list" data-show-more="25">
-        {recordings.map((r, i) => (
-          <a href={r.data.sourceUrl} target="_blank" rel="noopener" class={`r-resource-row ${i % 2 === 0 ? '' : 'r-resource-row--alt'}`}>
-            <div class="r-resource-row__icon">▶</div>
-            <div class="r-resource-row__title">{r.data.title}</div>
-            {r.data.date && (
-              <div class="r-resource-row__date">
-                {r.data.date.toLocaleDateString('en-US', { year: 'numeric', timeZone: 'UTC' })}
-              </div>
-            )}
-          </a>
-        ))}
+        <p>{recordingRows.length} recorded conversations from the Schomburg Center</p>
       </div>
 
-      {documents.length > 0 && (
-        <div style="margin-top:48px;">
-          <h2 class="r-section-heading">Documents</h2>
-          <div class="r-resource-list">
-            {documents.map((r, i) => (
-              <div class={`r-resource-row ${i % 2 === 0 ? '' : 'r-resource-row--alt'}`}>
-                <div class="r-resource-row__title">
-                  {r.data.document ? (
-                    <a href={r.data.document} download>{r.data.title}</a>
-                  ) : (
-                    <span>{r.data.title}</span>
-                  )}
-                </div>
-                {r.data.authorship && <div class="r-resource-row__author">{r.data.authorship}</div>}
-              </div>
+      <div class="r-archive-bar">
+        <label class="r-archive-bar__search">
+          <span class="r-visually-hidden">Search recordings</span>
+          <input type="search" id="rec-search" placeholder="Search recordings…" autocomplete="off" />
+        </label>
+        <nav class="r-archive-bar__years" aria-label="Jump to year">
+          {recordingYears.map(y => <a href={`#rec-${y}`}>{y}</a>)}
+        </nav>
+      </div>
+      <p class="r-archive-empty" id="rec-search-empty" hidden>No recordings match.</p>
+
+      {recordingYears.map(year => (
+        <section class="r-rec-year" id={`rec-${year}`} aria-labelledby={`rec-h-${year}`}>
+          <h2 class="r-list-heading" id={`rec-h-${year}`}>{year}</h2>
+          <ul class="r-rec-list">
+            {recordingRows.filter(r => r.year === year).map(r => (
+              <li class="r-rec" data-search={r.title.toLowerCase()}>
+                <span class="r-rec__icon" aria-hidden="true">▶</span>
+                <a class="r-rec__title" href={r.eventUrl ?? r.sourceUrl} rel={r.eventUrl ? undefined : 'noopener'}>{r.title}</a>
+                {r.date && (
+                  <span class="r-rec__date">{r.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })}</span>
+                )}
+                {r.eventUrl && <a class="r-rec__source" href={r.sourceUrl} rel="noopener">{r.source} ↗<span class="r-visually-hidden"> (opens {r.title} on {r.source})</span></a>}
+              </li>
             ))}
-          </div>
-        </div>
+          </ul>
+        </section>
+      ))}
+
+      {documents.length > 0 && (
+        <section class="r-rec-year" aria-labelledby="docs-heading">
+          <h2 class="r-list-heading" id="docs-heading">Documents</h2>
+          <ul class="r-rec-list">
+            {documents.map(r => (
+              <li class="r-rec">
+                <span class="r-rec__icon r-rec__icon--doc" aria-hidden="true">≡</span>
+                {r.data.document ? (
+                  <a class="r-rec__title" href={r.data.document} download>{r.data.title}</a>
+                ) : (
+                  <span class="r-rec__title">{r.data.title}</span>
+                )}
+                {r.data.authorship && <span class="r-rec__date">{r.data.authorship}</span>}
+              </li>
+            ))}
+          </ul>
+        </section>
       )}
+
+      <script>
+        const input = document.getElementById('rec-search') as HTMLInputElement | null;
+        const empty = document.getElementById('rec-search-empty');
+        input?.addEventListener('input', () => {
+          const q = input.value.trim().toLowerCase();
+          let shown = 0;
+          document.querySelectorAll<HTMLElement>('.r-rec-year[id^="rec-"]').forEach(section => {
+            let n = 0;
+            section.querySelectorAll<HTMLElement>('.r-rec').forEach(row => {
+              const match = !q || (row.dataset.search ?? '').includes(q);
+              row.hidden = !match;
+              if (match) n++;
+            });
+            section.hidden = n === 0;
+            shown += n;
+          });
+          if (empty) empty.hidden = shown > 0;
+        });
+      </script>
     </div>
   )}
 </Layout>
-
-<script>
-  document.querySelectorAll('[data-show-more]').forEach(function (list) {
-    var limit = parseInt(list.getAttribute('data-show-more'), 10);
-    var items = Array.from(list.children).filter(function (el) {
-      return !el.classList.contains('r-show-more-btn');
-    });
-    if (items.length <= limit) return;
-
-    // Hide items beyond the limit
-    items.forEach(function (item, i) {
-      if (i >= limit) item.style.display = 'none';
-    });
-
-    // Create the button
-    var btn = document.createElement('button');
-    btn.className = 'r-show-more-btn';
-    btn.textContent = 'Show all ' + items.length + ' items';
-    btn.type = 'button';
-    list.parentNode.insertBefore(btn, list.nextSibling);
-
-    btn.addEventListener('click', function () {
-      items.forEach(function (item) {
-        item.style.display = '';
-      });
-      btn.remove();
-    });
-  });
-</script>
