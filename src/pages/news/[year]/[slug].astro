@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import { Layout, isClassic } from '../../../lib/theme';
+import { isNewsBanner } from '../../../lib/imageQuality';
 
 export async function getStaticPaths() {
   const news = await getCollection('news');
@@ -22,8 +23,7 @@ const image = entry.data.image;
 const isRemote = typeof image === 'string' && /^https?:\/\//.test(image);
 // Large landscape images are cropped to a fixed-shape banner; small or portrait
 // images would be stretched and blurry, so they sit beside the text at natural size
-const isBanner = isRemote || (!!image && (image as ImageMetadata).width >= 700
-  && (image as ImageMetadata).width / (image as ImageMetadata).height >= 1.2);
+const isBanner = isRemote || (!!image && isNewsBanner(image as ImageMetadata));
 const focusY = { top: '0%', upper: '25%', center: '50%', lower: '75%', bottom: '100%' };
 const focus = `center ${focusY[entry.data.imageFocus ?? 'center']}`;
 const caption = entry.data.imageCaption;

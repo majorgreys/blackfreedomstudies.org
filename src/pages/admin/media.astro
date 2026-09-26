@@ -1,0 +1,227 @@
+---
+// Editor-facing media library: every image in src/assets with its size, where
+// it's used, and whether it's large enough for that use. Decap's own Media
+// modal only lists one folder with no metadata. Built with the site; not themed
+// and kept out of the sitemap.
+import fs from 'node:fs';
+import path from 'node:path';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import {
+  type ImageUse, type ImageStatus,
+  isNewsBanner, measuredSize, minimumFor, statusFor, worstStatus,
+} from '../../lib/imageQuality';
+
+const images = import.meta.glob<ImageMetadata>(
+  '/src/assets/**/*.{jpg,jpeg,png,gif,webp,JPG,JPEG,PNG}',
+  { eager: true, import: 'default' },
+);
+const sources = import.meta.glob<string>('/src/content/**/*.md', { eager: true, query: '?raw', import: 'default' });
+
+// Entry titles for the "used by" links, keyed by collection/id
+const titles = new Map<string, string>();
+for (const name of ['events', 'speakers', 'news', 'interviews', 'resources', 'pages'] as const) {
+  for (const e of await getCollection(name)) {
+    const d = e.data as { title?: string; name?: string };
+    titles.set(`${name}/${e.id}`, d.title ?? d.name ?? e.id);
+  }
+}
+
+interface Use { collection: string; id: string; title: string; use: ImageUse }
+const uses = new Map<string, Use[]>();  // asset path relative to src/assets -> uses
+
+for (const [file, raw] of Object.entries(sources)) {
+  const [, collection, id] = file.match(/^\/src\/content\/([^/]+)\/(.+)\.md$/) ?? [];
+  if (!collection) continue;
+  const [, frontmatter = '', body = ''] = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/) ?? [];
+  const add = (ref: string, use: ImageUse) => {
+    const key = ref.replace(/^(\.\.\/)+assets\//, '');
+    uses.set(key, [...(uses.get(key) ?? []), { collection, id, title: titles.get(`${collection}/${id}`) ?? id, use }]);
+  };
+  for (const m of frontmatter.matchAll(/^(\s*-\s*|image:\s*)"?((?:\.\.\/)+assets\/[^"\s]+)"?/gm)) {
+    const isList = m[1].trim() === '-';
+    const use: ImageUse =
+      collection === 'events' && isList ? 'Book cover'
+      : collection === 'speakers' ? 'Speaker photo'
+      : collection === 'news' ? 'News banner'  // refined below once dimensions are known
+      : collection === 'interviews' ? 'Interview image'
+      : 'Page image';
+    add(m[2], use);
+  }
+  for (const m of body.matchAll(/\]\(((?:\.\.\/)+assets\/[^)\s]+)\)/g)) add(m[1], 'Image in text');
+}
+
+const rows = Object.entries(images).map(([key, meta]) => {
+  const rel = key.replace('/src/assets/', '');
+  const folder = rel.split('/')[0];
+  const bytes = fs.statSync(path.join(process.cwd(), key)).size;
+  const used = (uses.get(rel) ?? []).map(u =>
+    u.use === 'News banner' && !isNewsBanner(meta) ? { ...u, use: 'News image beside text' as ImageUse } : u);
+  const statuses = used.map(u => statusFor(u.use, meta));
+  const status: ImageStatus = used.length ? worstStatus(statuses) : 'unchecked';
+  // The use that sets the status, to explain what size is needed
+  const limiting = used.find(u => statusFor(u.use, meta) === status && minimumFor(u.use));
+  return {
+    rel, folder, meta, bytes, used, status,
+    needs: limiting ? `${minimumFor(limiting.use)}px ${limiting.use === 'Speaker photo' ? 'shorter side' : 'wide'} for ${limiting.use.toLowerCase()}` : '',
+    measured: limiting ? measuredSize(limiting.use, meta) : meta.width,
+  };
+});
+// Worst first, then by name
+const ORDER: Record<ImageStatus, number> = { blurry: 0, soft: 1, ok: 2, unchecked: 3 };
+rows.sort((a, b) => ORDER[a.status] - ORDER[b.status] || a.rel.localeCompare(b.rel));
+
+const folders = [...new Set(rows.map(r => r.folder))].sort();
+const count = (f: (r: typeof rows[number]) => boolean) => rows.filter(f).length;
+const kb = (n: number) => n >= 1048576 ? `${(n / 1048576).toFixed(1)} MB` : `${Math.round(n / 1024)} KB`;
+const STATUS_LABEL: Record<ImageStatus, string> = { blurry: 'Blurry', soft: 'Soft', ok: 'OK', unchecked: 'Not checked' };
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Media — CBFS Content Manager</title>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style is:inline>
+    :root { --ink: #1c1917; --muted: #78716c; --line: #e7e5e4; --bg: #fafaf9; --teal: #097367; }
+    * { box-sizing: border-box; }
+    body { font-family: 'Archivo', system-ui, sans-serif; color: var(--ink); background: var(--bg); margin: 0; }
+    header { background: var(--ink); color: #fff; padding: 14px 16px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    header a { color: #d6d3d1; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+    header a:hover { color: #fff; }
+    header h1 { font-size: 1.1rem; margin: 0; }
+    main { max-width: 1280px; margin: 0 auto; padding: 20px 16px 48px; }
+    .intro { color: #57534e; margin: 0 0 16px; max-width: 80ch; font-size: 0.92rem; line-height: 1.5; }
+    .controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 12px; position: sticky; top: 0; background: var(--bg); padding: 10px 0; z-index: 1; }
+    .controls input, .controls select { font: inherit; font-size: 0.9rem; padding: 7px 10px; border: 1px solid #d6d3d1; border-radius: 6px; background: #fff; }
+    .controls input { flex: 1 1 240px; min-width: 0; }
+    .shown { color: var(--muted); font-size: 0.85rem; margin-left: auto; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+    .card { background: #fff; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; }
+    .thumb { height: 180px; padding: 8px; background: #f5f5f4 repeating-conic-gradient(#eeeceb 0 25%, transparent 0 50%) 0 0 / 16px 16px; display: flex; align-items: center; justify-content: center; }
+    .thumb img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; }
+    .body { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 6px; font-size: 0.82rem; flex: 1; }
+    .name { font-weight: 700; font-size: 0.85rem; word-break: break-all; }
+    .meta { color: var(--muted); }
+    .pill { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 0.72rem; font-weight: 700; }
+    .blurry { background: #ffedd5; color: #9a3412; }
+    .soft { background: #fef9c3; color: #854d0e; }
+    .ok { background: #dcfce7; color: #166534; }
+    .unchecked { background: #f5f5f4; color: var(--muted); }
+    .needs { color: #9a3412; }
+    .uses { margin: 0; padding: 0; list-style: none; }
+    .uses li { margin: 2px 0; }
+    .uses a { color: var(--teal); }
+    .uses .kind { color: var(--muted); }
+    .unused { color: var(--muted); font-style: italic; }
+    .copy { margin-top: auto; align-self: flex-start; font: inherit; font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border: 1px solid #d6d3d1; border-radius: 4px; background: #fff; cursor: pointer; }
+    .copy:hover { border-color: var(--teal); color: var(--teal); }
+    .empty { color: var(--muted); padding: 40px 0; text-align: center; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/admin/">← Content manager</a>
+    <h1>Media</h1>
+  </header>
+  <main>
+    <p class="intro">
+      Every image on the site, with its size and where it's used. <strong>Blurry</strong> images are under half the
+      size needed for where they appear; <strong>soft</strong> ones look fine on most screens but not sharp on
+      high-resolution ones. To replace an image, open the entry and upload a larger version. To add a new image,
+      upload it from the entry that uses it. Updated each time the site is built ({rows.length} images).
+    </p>
+    <div class="controls">
+      <input type="search" id="q" placeholder="Search file names and entries…" aria-label="Search" />
+      <select id="status" aria-label="Quality">
+        <option value="">All quality</option>
+        <option value="attention">Needs attention ({count(r => r.status === 'blurry' || r.status === 'soft')})</option>
+        <option value="blurry">Blurry ({count(r => r.status === 'blurry')})</option>
+        <option value="soft">Soft ({count(r => r.status === 'soft')})</option>
+        <option value="ok">OK ({count(r => r.status === 'ok')})</option>
+        <option value="unchecked">Not checked ({count(r => r.status === 'unchecked')})</option>
+      </select>
+      <select id="usage" aria-label="Usage">
+        <option value="">Used and unused</option>
+        <option value="used">Used ({count(r => r.used.length > 0)})</option>
+        <option value="unused">Unused ({count(r => r.used.length === 0)})</option>
+      </select>
+      <select id="folder" aria-label="Folder">
+        <option value="">All folders</option>
+        {folders.map(f => <option value={f}>{f} ({count(r => r.folder === f)})</option>)}
+      </select>
+      <span class="shown" id="shown"></span>
+    </div>
+    <div class="grid" id="grid">
+      {rows.map(r => (
+        <article
+          class="card"
+          data-status={r.status}
+          data-folder={r.folder}
+          data-used={r.used.length ? 'used' : 'unused'}
+          data-text={`${r.rel} ${r.used.map(u => u.title).join(' ')}`.toLowerCase()}
+        >
+          <div class="thumb"><Image src={r.meta} alt="" width={240} loading="lazy" /></div>
+          <div class="body">
+            <div class="name">{r.rel.split('/').pop()}</div>
+            <div class="meta">{r.folder} · {r.meta.width}×{r.meta.height} · {kb(r.bytes)}</div>
+            <div>
+              <span class={`pill ${r.status}`}>{STATUS_LABEL[r.status]}</span>
+              {r.needs && r.status !== 'ok' && <span class="needs"> needs {r.needs}</span>}
+            </div>
+            {r.used.length ? (
+              <ul class="uses">
+                {r.used.map(u => (
+                  <li><a href={`/admin/#/collections/${u.collection}/entries/${u.id}`}>{u.title}</a> <span class="kind">· {u.use.toLowerCase()}</span></li>
+                ))}
+              </ul>
+            ) : <div class="unused">Unused</div>}
+            <button class="copy" type="button" data-path={`../../assets/${r.rel}`}>Copy path</button>
+          </div>
+        </article>
+      ))}
+    </div>
+    <p class="empty" id="empty" hidden>No images match.</p>
+  </main>
+  <script is:inline>
+    (function () {
+      var q = document.getElementById('q'), status = document.getElementById('status'),
+          usage = document.getElementById('usage'), folder = document.getElementById('folder'),
+          cards = Array.prototype.slice.call(document.querySelectorAll('.card')),
+          shown = document.getElementById('shown'), empty = document.getElementById('empty');
+      // Filters live in the URL so a filtered view can be linked (e.g. ?status=attention)
+      var params = new URLSearchParams(location.search);
+      q.value = params.get('q') || ''; status.value = params.get('status') || '';
+      usage.value = params.get('usage') || ''; folder.value = params.get('folder') || '';
+      function apply() {
+        var text = q.value.trim().toLowerCase(), n = 0;
+        cards.forEach(function (c) {
+          var s = c.dataset.status;
+          var ok = (!text || c.dataset.text.indexOf(text) !== -1)
+            && (!status.value || (status.value === 'attention' ? (s === 'blurry' || s === 'soft') : s === status.value))
+            && (!usage.value || c.dataset.used === usage.value)
+            && (!folder.value || c.dataset.folder === folder.value);
+          c.hidden = !ok; if (ok) n++;
+        });
+        shown.textContent = n + ' of ' + cards.length + ' shown';
+        empty.hidden = n > 0;
+        var p = new URLSearchParams();
+        [['q', q.value.trim()], ['status', status.value], ['usage', usage.value], ['folder', folder.value]]
+          .forEach(function (kv) { if (kv[1]) p.set(kv[0], kv[1]); });
+        history.replaceState(null, '', p.toString() ? '?' + p : location.pathname);
+      }
+      [q, status, usage, folder].forEach(function (el) { el.addEventListener('input', apply); });
+      document.getElementById('grid').addEventListener('click', function (e) {
+        var b = e.target.closest('.copy'); if (!b) return;
+        navigator.clipboard.writeText(b.dataset.path).then(function () {
+          b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy path'; }, 1500);
+        });
+      });
+      apply();
+    })();
+  </script>
+</body>
+</html>
