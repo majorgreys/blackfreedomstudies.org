@@ -11,9 +11,12 @@ local_backend: true
 # Simple publish mode (editorial_workflow not supported by GitHub backend)
 publish_mode: simple
 
-# Media files in src/assets, preview served via public/assets symlink
-media_folder: src/assets
-public_folder: /assets
+# Default media library (the top-bar Media page). Decap only lists files directly
+# in this folder, not subfolders, so it points at the shared graphics folder.
+# Each collection overrides it below with its own folder and a relative
+# public_folder, because Astro's image() only accepts paths relative to the entry.
+media_folder: src/assets/graphics
+public_folder: /assets/graphics
 
 # Use unicode slug encoding for non-ASCII characters
 slug:
@@ -26,6 +29,8 @@ collections:
     label: Events
     label_singular: Event
     folder: src/content/events
+    media_folder: /src/assets/bookcovers
+    public_folder: ../../assets/bookcovers
     create: true
     extension: md
     slug: "{{slug}}"
@@ -67,7 +72,7 @@ collections:
         widget: list
         summary: "{{fields.image}}"
         collapsed: true
-        field: { name: image, label: Image, widget: image }
+        field: { name: image, label: Image, widget: image, choose_url: false, hint: "Upload the image file. If it is on another website, download it first: links to images on other sites are not allowed." }
         required: false
       - name: video
         label: Video Recording
@@ -100,6 +105,8 @@ collections:
     label: Speakers
     label_singular: Speaker
     folder: src/content/speakers
+    media_folder: /src/assets/speakers
+    public_folder: ../../assets/speakers
     create: true
     extension: md
     identifier_field: name
@@ -111,7 +118,7 @@ collections:
     fields:
       - { name: name, label: Name, widget: string }
       - { name: affiliation, label: Affiliation, widget: string, required: false, hint: "University or institution" }
-      - { name: image, label: Photo, widget: image, required: false }
+      - { name: image, label: Photo, widget: image, required: false, choose_url: false, hint: "Upload the image file. If it is on another website, download it first: links to images on other sites are not allowed." }
       - { name: email, label: Email, widget: string, required: false }
       - { name: twitter, label: Twitter/X Handle, widget: string, required: false, hint: "Handle only, without the @ symbol" }
       - { name: social, label: Social URL, widget: string, required: false, hint: "Full URL for Bluesky or other social profile" }
@@ -123,6 +130,8 @@ collections:
     label: News
     label_singular: Post
     folder: src/content/news
+    media_folder: /src/assets/graphics
+    public_folder: ../../assets/graphics
     create: true
     extension: md
     slug: "{{slug}}"
@@ -131,7 +140,7 @@ collections:
     fields:
       - { name: title, label: Title, widget: string }
       - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
-      - { name: image, label: Banner Image, widget: image, required: false }
+      - { name: image, label: Banner Image, widget: image, required: false, choose_url: false, hint: "Upload the image file. If it is on another website, download it first: links to images on other sites are not allowed." }
       - { name: imageCaption, label: Image Caption, widget: string, required: false }
       - { name: imageFocus, label: Banner Focus, widget: select, required: false, options: [top, upper, center, lower, bottom], hint: "Wide banners are cropped top-to-bottom to a fixed shape. Pick which band of the image to keep (default: center). Small or portrait images are shown beside the text instead." }
       - name: tags
@@ -148,6 +157,8 @@ collections:
     label: Interviews
     label_singular: Interview
     folder: src/content/interviews
+    media_folder: /src/assets/graphics
+    public_folder: ../../assets/graphics
     create: true
     extension: md
     slug: "{{slug}}"
@@ -156,7 +167,7 @@ collections:
     fields:
       - { name: title, label: Title, widget: string }
       - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
-      - { name: image, label: Image, widget: image, required: false }
+      - { name: image, label: Image, widget: image, required: false, choose_url: false, hint: "Upload the image file. If it is on another website, download it first: links to images on other sites are not allowed." }
       - name: relatedEvent
         label: Related Event
         widget: relation
@@ -220,10 +231,12 @@ collections:
     label: Pages
     label_singular: Page
     folder: src/content/pages
+    media_folder: /src/assets/graphics
+    public_folder: ../../assets/graphics
     create: false
     extension: md
     fields:
       - { name: title, label: Title, widget: string }
       - { name: heading, label: Heading, widget: string, required: false, hint: "Override the page title display" }
-      - { name: image, label: Image, widget: image, required: false }
+      - { name: image, label: Image, widget: image, required: false, choose_url: false, hint: "Upload the image file. If it is on another website, download it first: links to images on other sites are not allowed." }
       - { name: body, label: Content, widget: markdown }
