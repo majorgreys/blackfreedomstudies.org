@@ -161,6 +161,7 @@ const nextUrl = nextEvent ? `/events/${nextEvent.data.seasonPart}-${nextEvent.da
         </nav>
       </div>
       <p class="r-archive-empty" id="event-search-empty" hidden>No conversations match.</p>
+      <p class="r-visually-hidden" role="status" id="event-search-status"></p>
 
       {seasonData.map(season => (
         <section class="r-season-group" id={season.firstOfYear ? `y${season.year}` : undefined} aria-labelledby={`s-${season.slug}`}>
@@ -192,6 +193,8 @@ const nextUrl = nextEvent ? `/events/${nextEvent.data.seasonPart}-${nextEvent.da
             shown += groupShown;
           });
           if (empty) empty.hidden = shown > 0;
+          const status = document.getElementById('event-search-status');
+          if (status) status.textContent = q ? `${shown} ${shown === 1 ? 'conversation' : 'conversations'} match` : '';
         });
       </script>
     </div>

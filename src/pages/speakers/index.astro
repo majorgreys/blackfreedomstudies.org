@@ -60,6 +60,7 @@ const letters = [...groups.keys()];
         </nav>
       </div>
       <p class="r-archive-empty" id="speaker-search-empty" hidden>No speakers match.</p>
+      <p class="r-visually-hidden" role="status" id="speaker-search-status"></p>
 
       {letters.map(letter => (
         <section class="r-speaker-letter" id={`letter-${letter}`} aria-labelledby={`h-${letter}`}>
@@ -99,6 +100,8 @@ const letters = [...groups.keys()];
             shown += n;
           });
           if (empty) empty.hidden = shown > 0;
+          const status = document.getElementById('speaker-search-status');
+          if (status) status.textContent = q ? `${shown} ${shown === 1 ? 'speaker' : 'speakers'} match` : '';
         });
       </script>
     </div>

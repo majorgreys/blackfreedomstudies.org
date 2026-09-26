@@ -50,7 +50,7 @@ const speakersFor = (event: (typeof events)[number]) =>
         <p>{seasonEvents.length} conversation{seasonEvents.length !== 1 ? 's' : ''} · <a href={`/events/#s-${season}`}>All seasons</a></p>
       </div>
       <div class="r-season-group__events r-season-group__events--page">
-        {seasonEvents.map(event => <EventRow event={event} speakers={speakersFor(event)} />)}
+        {seasonEvents.map(event => <EventRow event={event} speakers={speakersFor(event)} headingLevel={2} />)}
       </div>
     </div>
   )}

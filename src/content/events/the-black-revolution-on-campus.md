@@ -6,7 +6,7 @@ seasonPart: fall
 eventbrite: "https://www.eventbrite.com/e/cbfs-black-revolution-on-campus-tickets-77361730017"
 speakers:
  - "john-bracey-jr"
- - "stefan-bradley-1"
+ - "stefan-bradley"
  - "shirletta-kinchen"
 books:
  - ../../assets/bookcovers/upendingtheivorytower.jpg

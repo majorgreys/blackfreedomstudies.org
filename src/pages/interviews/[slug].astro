@@ -51,7 +51,7 @@ if (entry.data.relatedEvent) {
       {relatedEvent && (
         <p style="margin-bottom:24px;">Related event: <a href={`/events/${relatedEvent.data.seasonPart}-${relatedEvent.data.seasonYear}/${relatedEvent.id}`}>{relatedEvent.data.title}</a></p>
       )}
-      <div class="r-prose" style="max-width:none;">
+      <div class="r-prose">
         <Content />
       </div>
     </article>

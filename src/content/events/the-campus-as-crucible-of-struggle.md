@@ -5,7 +5,7 @@ seasonYear: 2024
 seasonPart: fall
 eventbrite: "https://www.eventbrite.com/e/cbfs-the-campus-as-crucible-of-struggle-tickets-1003739641287?aff=ebdsoporgprofile"
 speakers:
- - "stefan-bradley-1"
+ - "stefan-bradley"
  - "danica-savonick"
  - "barbara-d-savage"
  - "brian-jones"

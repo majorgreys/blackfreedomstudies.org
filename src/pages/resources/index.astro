@@ -77,6 +77,7 @@ const prefix = isClassic ? 'c' : 'r';
         </nav>
       </div>
       <p class="r-archive-empty" id="rec-search-empty" hidden>No recordings match.</p>
+      <p class="r-visually-hidden" role="status" id="rec-search-status"></p>
 
       {recordingYears.map(year => (
         <section class="r-rec-year" id={`rec-${year}`} aria-labelledby={`rec-h-${year}`}>
@@ -132,6 +133,8 @@ const prefix = isClassic ? 'c' : 'r';
             shown += n;
           });
           if (empty) empty.hidden = shown > 0;
+          const status = document.getElementById('rec-search-status');
+          if (status) status.textContent = q ? `${shown} ${shown === 1 ? 'recording' : 'recordings'} match` : '';
         });
       </script>
     </div>

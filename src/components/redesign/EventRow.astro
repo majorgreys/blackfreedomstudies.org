@@ -9,9 +9,12 @@ interface Props {
   speakers: CollectionEntry<'speakers'>[];
   // Show the year in the date block (for lists that span seasons)
   showYear?: boolean;
+  // h3 under a season heading; h2 where the page title is the only heading above
+  headingLevel?: 2 | 3;
 }
 
-const { event, speakers, showYear = false } = Astro.props;
+const { event, speakers, showYear = false, headingLevel = 3 } = Astro.props;
+const Heading = headingLevel === 2 ? 'h2' : 'h3';
 const season = `${event.data.seasonPart}-${event.data.seasonYear}`;
 // Dates are stored as UTC midnight; format in UTC so they don't shift a day
 const month = event.data.date.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' });
@@ -32,10 +35,10 @@ const names = speakers.map(s => s.data.name).join(', ');
     {showYear && <span class="r-event-row__year">{year}</span>}
   </div>
   <div class="r-event-row__content">
-    <h3 class="r-event-row__title">
+    <Heading class="r-event-row__title">
       {event.data.title}
       {upcoming && <span class="r-event-row__badge">Upcoming</span>}
-    </h3>
+    </Heading>
     {names && <div class="r-event-row__speakers">{names}</div>}
   </div>
   {event.data.books.length > 0 && (
