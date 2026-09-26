@@ -2,3 +2,6 @@
 # Merged duplicate speaker entry
 /speakers/alondra-nelson-1 /speakers/alondra-nelson/ 301
 /speakers/alondra-nelson-1/ /speakers/alondra-nelson/ 301
+# Event saved under a placeholder slug
+/events/spring-2021/test-for-new-season /events/spring-2021/civil-rights-legacies-martin-malcolm-gwen-and-julian/ 301
+/events/spring-2021/test-for-new-season/ /events/spring-2021/civil-rights-legacies-martin-malcolm-gwen-and-julian/ 301
