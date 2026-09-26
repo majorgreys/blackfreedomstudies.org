@@ -30,26 +30,27 @@
       }
     }, true);
   </script>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script src="https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js"></script>
   <script>
     // ── Helpers ──
+    // Dates are stored as YYYY-MM-DD (UTC midnight); format in UTC so they don't shift a day
     function formatDate(d) {
       if (!d) return '';
       var date = new Date(d);
       if (isNaN(date)) return String(d);
-      return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
     }
     function formatMonth(d) {
       if (!d) return '';
       var date = new Date(d);
       if (isNaN(date)) return '';
-      return date.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+      return date.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' }).toUpperCase();
     }
     function formatDay(d) {
       if (!d) return '';
       var date = new Date(d);
       if (isNaN(date)) return '';
-      return date.getDate();
+      return date.getUTCDate();
     }
     function capitalize(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
     function slugToName(slug) {
@@ -114,6 +115,14 @@
       /* News / Interview — reuses page-header */
       .page-header .date { color: #a8a29e; font-size: 0.85rem; margin: 0 0 6px; }
       .banner { width: 100%; border-radius: 8px; margin: 0 0 8px; }
+      /* News banner — matches r-news-banner: fixed shape, cropped to the chosen focus */
+      .news-banner { padding: 16px 28px 0; }
+      .news-banner img { display: block; width: 100%; height: auto; aspect-ratio: 21 / 9; max-height: 320px; object-fit: cover; border-radius: 6px; }
+      /* Small or portrait news images — matches r-news-inset */
+      .news-inset { float: right; max-width: min(300px, 40%); margin: 0 0 1.2em 28px; }
+      .news-inset img { display: block; max-width: 100%; height: auto; border-radius: 6px; }
+      .news-inset .caption { padding: 0; margin-top: 6px; }
+      .body.clearfix { display: flow-root; }
       .caption { font-size: 0.8rem; color: #78716c; font-style: italic; margin: 0 0 16px; padding: 0 28px; }
       .badge { display: inline-block; background: #f5f5f4; border: 1px solid #e7e5e4; padding: 2px 10px; border-radius: 3px; font-size: 0.78rem; font-weight: 600; color: #78716c; margin-right: 6px; }
     `, { raw: true });
@@ -245,30 +254,52 @@
     CMS.registerPreviewTemplate('speakers', SpeakerPreview);
 
     // ── News Preview ──
+    // Mirrors news/[year]/[slug].astro: large landscape images become a cropped
+    // banner above the title (using Banner Focus); small or portrait images sit
+    // beside the text. The image's size is only known once it loads.
+    var NEWS_FOCUS_Y = { top: '0%', upper: '25%', center: '50%', lower: '75%', bottom: '100%' };
     var NewsPreview = createClass({
+      getInitialState: function() { return { src: null, dims: null }; },
       render: function() {
         var entry = this.props.entry;
         var title = entry.getIn(['data', 'title']) || '';
         var date = entry.getIn(['data', 'date']) || '';
         var image = entry.getIn(['data', 'image']);
         var imageCaption = entry.getIn(['data', 'imageCaption']) || '';
+        var focus = entry.getIn(['data', 'imageFocus']) || 'center';
         var tags = entry.getIn(['data', 'tags']);
         var body = this.props.widgetFor('body');
         var banner = image ? this.props.getAsset(image) : null;
+        var src = banner ? banner.toString() : null;
+        var self = this;
+        var dims = this.state.src === src ? this.state.dims : null;
+        function onLoad(e) {
+          var img = e.target;
+          self.setState({ src: src, dims: { w: img.naturalWidth, h: img.naturalHeight } });
+        }
+        // Same rule as isNewsBanner() in src/lib/imageQuality.ts
+        var isBanner = !dims || (dims.w >= 700 && dims.w / dims.h >= 1.2);
+        var caption = imageCaption && h('p', { className: 'caption' }, imageCaption);
 
         return h('div', {},
-          h('div', { className: 'page-header' },
+          src && isBanner && h('div', { className: 'news-banner' },
+            h('img', { src: src, onLoad: onLoad, style: { objectPosition: 'center ' + (NEWS_FOCUS_Y[focus] || '50%') } })
+          ),
+          src && isBanner && caption,
+          h('div', { className: 'page-header', style: { marginTop: src && isBanner ? '16px' : 0 } },
             h('p', { className: 'date' }, formatDate(date)),
             h('h1', {}, title)
           ),
-          h('div', { style: { padding: '24px 28px 0' } },
-            banner && h('img', { src: banner.toString(), className: 'banner' })
-          ),
-          imageCaption && h('p', { className: 'caption' }, imageCaption),
-          tags && tags.size > 0 && h('div', { style: { padding: '0 28px 12px' } },
+          tags && tags.size > 0 && h('div', { style: { padding: '12px 28px 0' } },
             tags.map(function(t, i) { return h('span', { key: i, className: 'badge' }, t); })
           ),
-          h('div', { className: 'body' }, body)
+          h('div', { className: 'body clearfix', style: { paddingTop: '24px' } },
+            src && !isBanner && h('figure', { className: 'news-inset' },
+              h('img', { src: src, onLoad: onLoad }),
+              caption
+            ),
+            body
+          )
         );
       }
     });
