@@ -13,9 +13,12 @@
     [class*="ToolbarButton"] { background: #097367 !important; color: #fff !important; border: none !important; }
     [class*="ToolbarButton"]:hover { background: #0a8576 !important; }
     [class*="ToolbarDeleteButton"] { background: #d82125 !important; }
+    .cbfs-audit-link { position: fixed; right: 16px; bottom: 16px; z-index: 1000; background: #1c1917; color: #fff; padding: 8px 14px; border-radius: 6px; font: 600 13px/1 'Archivo', sans-serif; text-decoration: none; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+    .cbfs-audit-link:hover { background: #097367; }
   </style>
 </head>
 <body>
+  <a class="cbfs-audit-link" href="/admin/image-audit/" target="_blank" rel="noopener">Image audit</a>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
     // ── Helpers ──

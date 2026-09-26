@@ -115,6 +115,7 @@ collections:
     sortable_fields: [name, affiliation]
     view_filters:
       - { label: "Has photo", field: image, pattern: "." }
+      - { label: "Image linked from another site", field: image, pattern: "^https?://" }
     fields:
       - { name: name, label: Name, widget: string }
       - { name: affiliation, label: Affiliation, widget: string, required: false, hint: "University or institution" }
@@ -137,6 +138,8 @@ collections:
     slug: "{{slug}}"
     summary: "{{title}} — {{date}}"
     sortable_fields: [title, date]
+    view_filters:
+      - { label: "Image linked from another site", field: image, pattern: "^https?://" }
     fields:
       - { name: title, label: Title, widget: string }
       - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
@@ -164,6 +167,8 @@ collections:
     slug: "{{slug}}"
     summary: "{{title}} — {{date}}"
     sortable_fields: [title, date]
+    view_filters:
+      - { label: "Image linked from another site", field: image, pattern: "^https?://" }
     fields:
       - { name: title, label: Title, widget: string }
       - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
