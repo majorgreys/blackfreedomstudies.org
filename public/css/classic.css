@@ -781,3 +781,18 @@ section > div {
     font-size: 24px;
   }
 }
+
+/* ── Skip link and keyboard focus ── */
+.c-skip-link {
+  position: absolute;
+  left: 8px;
+  top: -48px;
+  z-index: 200;
+  padding: 8px 16px;
+  background: #000;
+  color: #fff;
+  font-weight: 700;
+}
+.c-skip-link:focus { top: 8px; color: #fff; }
+:focus-visible { outline: 2px solid #d9534f; outline-offset: 2px; }
+main:focus { outline: none; }
