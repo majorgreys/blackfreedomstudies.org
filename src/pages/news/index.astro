@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import { Layout, isClassic } from '../../lib/theme';
+import { excerpt } from '../../lib/excerpt';
 
 const news = (await getCollection('news'))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
@@ -22,19 +23,19 @@ const newsWithContent = await Promise.all(
       </div>
       {newsWithContent.map(({ entry, Content }) => (
         <article class="c-news-item">
-          <h2><a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`}>{entry.data.title}</a></h2>
-          <p class="c-news-date">{entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+          <h2><a href={`/news/${entry.data.date.getUTCFullYear()}/${entry.id}`}>{entry.data.title}</a></h2>
+          <p class="c-news-date">{entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</p>
           {entry.data.image && (
             <div class="c-news-images">
               <div class="c-news-images__crop">
-                <Image src={entry.data.image} alt={entry.data.title} width={800} />
+                <Image src={entry.data.image} alt="" width={800} />
               </div>
             </div>
           )}
           <div class="c-news-excerpt">
             <Content />
           </div>
-          <p><a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`}>Continue reading</a></p>
+          <p><a href={`/news/${entry.data.date.getUTCFullYear()}/${entry.id}`}>Continue reading</a></p>
         </article>
       ))}
     </div>
@@ -42,18 +43,26 @@ const newsWithContent = await Promise.all(
     <div>
       <div class="r-page-header">
         <h1>News</h1>
-        <p>Announcements and updates from the series</p>
+        <p>Season announcements, schedules and updates from the series</p>
       </div>
-      <div class="r-resource-list">
-        {news.map((entry, i) => (
-          <a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`} class={`r-resource-row ${i % 2 === 0 ? '' : 'r-resource-row--alt'}`}>
-            <div class="r-resource-row__date">
-              {entry.data.date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
-            </div>
-            <div class="r-resource-row__title">{entry.data.title}</div>
-          </a>
+      <ol class="r-card-list">
+        {news.map(entry => (
+          <li class="r-card">
+            <a class="r-card__link" href={`/news/${entry.data.date.getUTCFullYear()}/${entry.id}`}>
+              <div class="r-card__body">
+                <time class="r-card__date" datetime={entry.data.date.toISOString().slice(0, 10)}>
+                  {entry.data.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}
+                </time>
+                <h2 class="r-card__title">{entry.data.title}</h2>
+                <p class="r-card__excerpt">{excerpt(entry.body)}</p>
+              </div>
+              {entry.data.image && (
+                <Image class="r-card__thumb" src={entry.data.image} alt="" width={200} height={140} densities={[1, 2]} />
+              )}
+            </a>
+          </li>
         ))}
-      </div>
+      </ol>
     </div>
   )}
 </Layout>

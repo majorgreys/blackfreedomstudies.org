@@ -6,18 +6,22 @@ import { isNewsBanner, maxBannerZoom } from '../../../lib/imageQuality';
 
 export async function getStaticPaths() {
   const news = await getCollection('news');
-  return news.map(entry => ({
+  // Newest first, so "newer" is the previous item and "older" the next
+  const sorted = news.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  const link = (e?: (typeof news)[number]) =>
+    e ? { href: `/news/${e.data.date.getUTCFullYear()}/${e.id}`, title: e.data.title } : null;
+  return sorted.map((entry, i) => ({
     params: {
-      year: String(entry.data.date.getFullYear()),
+      year: String(entry.data.date.getUTCFullYear()),
       slug: entry.id,
     },
-    props: { entry },
+    props: { entry, newer: link(sorted[i - 1]), older: link(sorted[i + 1]) },
   }));
 }
 
-const { entry } = Astro.props;
+const { entry, newer, older } = Astro.props;
 const { Content } = await render(entry);
-const dateStr = entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+const dateStr = entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 // Decap can store remote image URLs, which <Image> can't size without both dimensions
 const image = entry.data.image;
 const isRemote = typeof image === 'string' && /^https?:\/\//.test(image);
@@ -45,9 +49,9 @@ const remoteFocus = `object-position: ${crop.x}% ${crop.y}%`;
         <figure class="c-news-banner">
           <div class="c-news-banner-frame" style={cropVars}>
             {isRemote ? (
-              <img class="is-remote" src={image as string} alt={entry.data.title} style={remoteFocus} decoding="async" referrerpolicy="no-referrer" />
+              <img class="is-remote" src={image as string} alt="" style={remoteFocus} decoding="async" referrerpolicy="no-referrer" />
             ) : (
-              <Image src={image as ImageMetadata} alt={entry.data.title} width={bannerWidth(800)} densities={[1, 2]} loading="eager" />
+              <Image src={image as ImageMetadata} alt="" width={bannerWidth(800)} densities={[1, 2]} loading="eager" />
             )}
           </div>
           {caption && <figcaption>{caption}</figcaption>}
@@ -57,7 +61,7 @@ const remoteFocus = `object-position: ${crop.x}% ${crop.y}%`;
       <p class="c-news-date">{dateStr}</p>
       {image && !isBanner && (
         <figure class="c-news-inset">
-          <Image src={image as ImageMetadata} alt={entry.data.title} width={Math.min(240, (image as ImageMetadata).width)} densities={[1, 2]} />
+          <Image src={image as ImageMetadata} alt="" width={Math.min(240, (image as ImageMetadata).width)} densities={[1, 2]} />
           {caption && <figcaption>{caption}</figcaption>}
         </figure>
       )}
@@ -74,9 +78,9 @@ const remoteFocus = `object-position: ${crop.x}% ${crop.y}%`;
         <figure class="r-news-banner">
           <div class="r-news-banner-frame" style={cropVars}>
             {isRemote ? (
-              <img class="is-remote" src={image as string} alt={entry.data.title} style={remoteFocus} decoding="async" referrerpolicy="no-referrer" />
+              <img class="is-remote" src={image as string} alt="" style={remoteFocus} decoding="async" referrerpolicy="no-referrer" />
             ) : (
-              <Image src={image as ImageMetadata} alt={entry.data.title} width={bannerWidth(1004)} densities={[1, 2]} loading="eager" />
+              <Image src={image as ImageMetadata} alt="" width={bannerWidth(1004)} densities={[1, 2]} loading="eager" />
             )}
           </div>
           {caption && <figcaption>{caption}</figcaption>}
@@ -89,7 +93,7 @@ const remoteFocus = `object-position: ${crop.x}% ${crop.y}%`;
       <div class="r-prose">
         {image && !isBanner && (
           <figure class="r-news-inset">
-            <Image src={image as ImageMetadata} alt={entry.data.title} width={Math.min(300, (image as ImageMetadata).width)} densities={[1, 2]} />
+            <Image src={image as ImageMetadata} alt="" width={Math.min(300, (image as ImageMetadata).width)} densities={[1, 2]} />
             {caption && <figcaption>{caption}</figcaption>}
           </figure>
         )}
@@ -100,6 +104,11 @@ const remoteFocus = `object-position: ${crop.x}% ${crop.y}%`;
           {entry.data.tags.map((tag: string) => <span class="r-tag">{tag}</span>)}
         </div>
       )}
+      <nav class="r-pager" aria-label="More news">
+        {newer ? <a class="r-pager__prev" href={newer.href}><span>Newer</span>{newer.title}</a> : <span />}
+        {older ? <a class="r-pager__next" href={older.href}><span>Older</span>{older.title}</a> : <span />}
+      </nav>
+      <p class="r-back-link"><a href="/news/">← All news</a></p>
     </article>
   )}
 </Layout>

@@ -41,43 +41,38 @@ const books = lines.map((line: string, i: number) => {
         <h1>Books</h1>
         <p>Nearly 200 books spanning civil rights, Black Power, education, policing, abolition, culture, and internationalism</p>
       </div>
-      <div class="r-resource-list" data-show-more="25">
-        {books.map((book, i) => (
-          <div class={`r-resource-row ${i % 2 === 0 ? '' : 'r-resource-row--alt'}`}>
-            <div class="r-resource-row__title">{book.title}</div>
-            {book.author && <div class="r-resource-row__author">{book.author}</div>}
-          </div>
-        ))}
+      <div class="r-archive-bar">
+        <label class="r-archive-bar__search">
+          <span class="r-visually-hidden">Search books</span>
+          <input type="search" id="book-search" placeholder={`Search ${books.length} books by title or author…`} autocomplete="off" />
+        </label>
       </div>
+      <p class="r-archive-empty" id="book-search-empty" hidden>No books match.</p>
+      <p class="r-visually-hidden" role="status" id="book-search-status"></p>
+      <ul class="r-book-list">
+        {books.map(book => (
+          <li class="r-book" data-search={`${book.title} ${book.author}`.toLowerCase()}>
+            <cite class="r-book__title">{book.title}</cite>
+            {book.author && <span class="r-book__author">{book.author}</span>}
+          </li>
+        ))}
+      </ul>
+      <script>
+        const input = document.getElementById('book-search') as HTMLInputElement | null;
+        const empty = document.getElementById('book-search-empty');
+        input?.addEventListener('input', () => {
+          const q = input.value.trim().toLowerCase();
+          let shown = 0;
+          document.querySelectorAll<HTMLElement>('.r-book').forEach(li => {
+            const match = !q || (li.dataset.search ?? '').includes(q);
+            li.hidden = !match;
+            if (match) shown++;
+          });
+          if (empty) empty.hidden = shown > 0;
+          const status = document.getElementById('book-search-status');
+          if (status) status.textContent = q ? `${shown} ${shown === 1 ? 'book' : 'books'} match` : '';
+        });
+      </script>
     </div>
   )}
 </Layout>
-
-<script>
-  document.querySelectorAll('[data-show-more]').forEach(function (list) {
-    var limit = parseInt(list.getAttribute('data-show-more'), 10);
-    var items = Array.from(list.children).filter(function (el) {
-      return !el.classList.contains('r-show-more-btn');
-    });
-    if (items.length <= limit) return;
-
-    // Hide items beyond the limit
-    items.forEach(function (item, i) {
-      if (i >= limit) item.style.display = 'none';
-    });
-
-    // Create the button
-    var btn = document.createElement('button');
-    btn.className = 'r-show-more-btn';
-    btn.textContent = 'Show all ' + items.length + ' items';
-    btn.type = 'button';
-    list.parentNode.insertBefore(btn, list.nextSibling);
-
-    btn.addEventListener('click', function () {
-      items.forEach(function (item) {
-        item.style.display = '';
-      });
-      btn.remove();
-    });
-  });
-</script>

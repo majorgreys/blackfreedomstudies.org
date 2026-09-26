@@ -8,8 +8,8 @@ interface Props {
 }
 
 const { title, date, slug, seasonSlug, speakerCount } = Astro.props;
-const month = date.toLocaleDateString('en-US', { month: 'short' });
-const day = date.getDate();
+const month = date.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' });
+const day = date.getUTCDate();
 ---
 <li class="r-event-card">
   <a href={`/events/${seasonSlug}/${slug}`}>

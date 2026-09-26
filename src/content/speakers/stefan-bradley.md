@@ -1,9 +1,10 @@
 ---
 name: "Stefan Bradley"
-affiliation: "St. Louis University"
-image: "../../assets/speakers/sbradley.JPG"
-email: "sbradle7@slu.edu"
-homepage: "http://www.slu.edu/department-of-history/faculty-and-staff/regular-faculty/stefan-m-bradley"
+affiliation: "Amherst College"
+image: "../../assets/speakers/stefanbradley.jpg"
+email: "stefanbradley@amherst.edu"
+twitter: "ProfSBradley"
+homepage: "https://stefanbradley.com/"
 ---
 
-Dr. Bradley teaches at Saint Louis University including courses in African American Youth Movements in the 20th Century and Civil Rights in America, 1865-1965. His primary research area is recent U.S. history with an emphasis on the African American experience. He is fascinated with the efforts and abilities of black college students to change not only their scholastic environments but also the communities that surrounded their institutions of higher learning. He is the author of *Harlem vs. Columbia University: Black Student Power in the Late 1960s* (Urbana: University of Illinois Press, 2009), Winner of the Phillis Wheatley Book Prize.
+Dr. Stefan M. Bradley is the Charles Hamilton Houston 1915 Professor of Black Studies and History at Amherst College. He is the author of *Upending the Ivory Tower: Civil Rights, Black Power, and the Ivy League,* which won the Anna Julia Cooper and C.L.R. James Award, given by the National Council for Black Studies and the History of Education Society's Outstanding Book Award and was a finalist for the Pauli Murray Book Prize in Black Intellectual History, given by the African American Intellectual History Society. He is also the author of *Alpha Phi Alpha: A Legacy of Greatness, the Demands of Transcendence, and Harlem vs. Columbia University: Black Student Power in the Late 1960s.*

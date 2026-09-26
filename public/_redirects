@@ -1,0 +1,10 @@
+# Cloudflare Pages redirects
+# Merged duplicate speaker entry
+/speakers/alondra-nelson-1 /speakers/alondra-nelson/ 301
+/speakers/alondra-nelson-1/ /speakers/alondra-nelson/ 301
+# Event saved under a placeholder slug
+/events/spring-2021/test-for-new-season /events/spring-2021/civil-rights-legacies-martin-malcolm-gwen-and-julian/ 301
+/events/spring-2021/test-for-new-season/ /events/spring-2021/civil-rights-legacies-martin-malcolm-gwen-and-julian/ 301
+# Merged duplicate speaker entry
+/speakers/stefan-bradley-1 /speakers/stefan-bradley/ 301
+/speakers/stefan-bradley-1/ /speakers/stefan-bradley/ 301

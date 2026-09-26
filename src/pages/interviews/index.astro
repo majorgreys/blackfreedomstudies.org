@@ -1,6 +1,17 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import { Layout, isClassic } from '../../lib/theme';
+import { excerpt } from '../../lib/excerpt';
+
+// "Interview: Black Power Revisited" -> "Black Power Revisited",
+// "An Interview with Anne Gray Fischer" -> "Anne Gray Fischer"
+const cleanTitle = (t: string) => t.replace(/^(an\s+)?interview(\s+with)?:?\s*/i, '');
+const norm = (t: string) => t.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+// Skip the stock intro paragraph most interviews open with
+const BOILERPLATE = /monthly discussion series|curated by|Conversations in Black Freedom Studies \(CBFS\)/i;
+const intro = (body?: string) =>
+  excerpt((body ?? '').split(/\n\s*\n/).filter(p => p.trim() && !BOILERPLATE.test(p)).join('\n\n'), 180);
 
 const interviews = (await getCollection('interviews'))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
@@ -16,7 +27,7 @@ const allEvents = await getCollection('events');
       {interviews.map(entry => (
         <article class="c-news-item">
           <h2><a href={`/interviews/${entry.id}`}>{entry.data.title}</a></h2>
-          <p class="c-news-date">{entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+          <p class="c-news-date">{entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</p>
         </article>
       ))}
     </div>
@@ -24,28 +35,35 @@ const allEvents = await getCollection('events');
     <div>
       <div class="r-page-header">
         <h1>Interviews</h1>
-        <p>In-depth conversations with scholars featured in the series</p>
+        <p>Short interviews with scholars ahead of their conversations</p>
       </div>
-      <div class="r-resource-list">
-        {interviews.map((entry, i) => {
+      <ol class="r-card-list">
+        {interviews.map(entry => {
           const relatedEvent = entry.data.relatedEvent
             ? allEvents.find(e => e.id === entry.data.relatedEvent)
             : null;
+          const title = cleanTitle(entry.data.title);
+          // Only name the conversation when it says something the title doesn't
+          const showRelated = relatedEvent && norm(relatedEvent.data.title) !== norm(title);
           return (
-            <a href={`/interviews/${entry.id}`} class={`r-resource-row ${i % 2 === 0 ? '' : 'r-resource-row--alt'}`}>
-              <div class="r-resource-row__date">
-                {entry.data.date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
-              </div>
-              <div class="r-resource-row__content">
-                <div class="r-resource-row__title">{entry.data.title}</div>
-                {relatedEvent && (
-                  <div class="r-resource-row__related">Related: {relatedEvent.data.title}</div>
+            <li class="r-card">
+              <a class="r-card__link" href={`/interviews/${entry.id}`}>
+                <div class="r-card__body">
+                  <time class="r-card__date" datetime={entry.data.date.toISOString().slice(0, 10)}>
+                    {entry.data.date.toLocaleDateString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' })}
+                  </time>
+                  <h2 class="r-card__title">{title}</h2>
+                  {showRelated && <p class="r-card__context">For the conversation “{relatedEvent!.data.title}”</p>}
+                  <p class="r-card__excerpt">{intro(entry.body)}</p>
+                </div>
+                {entry.data.image && (
+                  <Image class="r-card__thumb" src={entry.data.image} alt="" width={200} height={140} densities={[1, 2]} />
                 )}
-              </div>
-            </a>
+              </a>
+            </li>
           );
         })}
-      </div>
+      </ol>
     </div>
   )}
 </Layout>

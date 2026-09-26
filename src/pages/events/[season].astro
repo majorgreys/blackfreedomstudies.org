@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { Layout, EventCard, isClassic } from '../../lib/theme';
+import EventRow from '../../components/redesign/EventRow.astro';
 
 export async function getStaticPaths() {
   const events = await getCollection('events');
@@ -19,6 +20,11 @@ const events = await getCollection('events');
 const seasonEvents = events
   .filter(e => `${e.data.seasonPart}-${e.data.seasonYear}` === season)
   .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+const allSpeakers = await getCollection('speakers');
+const speakersFor = (event: (typeof events)[number]) =>
+  event.data.speakers
+    .map((slug: string) => allSpeakers.find(s => s.id === slug))
+    .filter((s): s is (typeof allSpeakers)[number] => Boolean(s));
 
 ---
 <Layout title={label} description={`${label} season of Conversations in Black Freedom Studies — events and discussions at the Schomburg Center.`}>
@@ -41,19 +47,11 @@ const seasonEvents = events
     <div>
       <div class="r-page-header">
         <h1>{label}</h1>
-        <p>{seasonEvents.length} conversation{seasonEvents.length !== 1 ? 's' : ''} · <a href="/events/">View all seasons</a></p>
+        <p>{seasonEvents.length} conversation{seasonEvents.length !== 1 ? 's' : ''} · <a href={`/events/#s-${season}`}>All seasons</a></p>
       </div>
-      <ul class="r-events-list">
-        {seasonEvents.map(event => (
-          <EventCard
-            title={event.data.title}
-            date={event.data.date}
-            slug={event.id}
-            seasonSlug={season}
-            speakerCount={event.data.speakers.length}
-          />
-        ))}
-      </ul>
+      <div class="r-season-group__events r-season-group__events--page">
+        {seasonEvents.map(event => <EventRow event={event} speakers={speakersFor(event)} headingLevel={2} />)}
+      </div>
     </div>
   )}
 </Layout>

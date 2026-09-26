@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import { Layout, isClassic } from '../../lib/theme';
 import BookCover from '../../components/shared/BookCover.astro';
+import EventRow from '../../components/redesign/EventRow.astro';
 
 const events = await getCollection('events');
 const allSpeakers = await getCollection('speakers');
@@ -31,15 +32,35 @@ for (const [, evts] of sortedSeasons) {
 // Get unique years for nav pills
 const years = [...new Set(sortedSeasons.map(([slug]) => slug.split('-')[1]))].sort((a, b) => parseInt(b) - parseInt(a));
 
-const seasonData = sortedSeasons.map(([slug, evts]) => {
+const seasonData = sortedSeasons.map(([slug, evts], i) => {
   const [part, year] = slug.split('-');
   return {
     slug,
     year,
+    // Classic keeps its "2026 FALL" label; redesign uses the season page's title form
     label: `${year} ${part.toUpperCase()}`,
+    title: `${part.charAt(0).toUpperCase() + part.slice(1)} ${year}`,
+    // The first (latest) season of each year carries the year's jump-link anchor
+    firstOfYear: i === 0 || sortedSeasons[i - 1][0].split('-')[1] !== year,
     events: evts,
   };
 });
+
+const speakersFor = (event: (typeof events)[number]) =>
+  event.data.speakers
+    .map((slug: string) => allSpeakers.find(s => s.id === slug))
+    .filter((s): s is (typeof allSpeakers)[number] => Boolean(s));
+
+// Next conversation, kept as "next" through its whole day (dates are UTC midnight)
+const DAY_MS = 24 * 60 * 60 * 1000;
+const nextEvent = [...events]
+  .filter(e => e.data.date.getTime() + DAY_MS > Date.now())
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime())[0];
+const nextDate = nextEvent?.data.date.toLocaleDateString('en-US', {
+  weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC',
+});
+const nextSpeakers = nextEvent ? speakersFor(nextEvent) : [];
+const nextUrl = nextEvent ? `/events/${nextEvent.data.seasonPart}-${nextEvent.data.seasonYear}/${nextEvent.id}` : '';
 ---
 <Layout title="Conversations Series" description="Browse the complete archive of Conversations in Black Freedom Studies events at the Schomburg Center, featuring roundtable discussions with leading scholars in Black history.">
   {isClassic ? (
@@ -57,8 +78,8 @@ const seasonData = sortedSeasons.map(([slug, evts]) => {
           <h3 class="c-season-header">{season.label}</h3>
           <ul class="c-events-list">
             {season.events.map(event => {
-              const month = event.data.date.toLocaleDateString('en-US', { month: 'short' });
-              const day = String(event.data.date.getDate()).padStart(2, '0');
+              const month = event.data.date.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' });
+              const day = String(event.data.date.getUTCDate()).padStart(2, '0');
               const eventSpeakers = event.data.speakers
                 .map((slug: string) => allSpeakers.find(s => s.id === slug))
                 .filter(Boolean);
@@ -80,7 +101,7 @@ const seasonData = sortedSeasons.map(([slug, evts]) => {
                       <div class="c-book-grid">
                         {event.data.books.map((book: any) => (
                           <div class="c-book-grid-item">
-                            <BookCover src={book} width={200} />
+                            <BookCover src={book} width={200} alt="" />
                           </div>
                         ))}
                       </div>
@@ -107,45 +128,75 @@ const seasonData = sortedSeasons.map(([slug, evts]) => {
     <div>
       <div class="r-page-header">
         <h1>Conversations</h1>
-        <p>Monthly roundtable discussions at the Schomburg Center</p>
+        <p>Monthly roundtable discussions at the Schomburg Center, {years[years.length - 1]}–{years[0]}</p>
       </div>
-      {seasonData.map(season => (
-        <div class="r-season-group">
-          <h2 class="r-season-group__label">{season.label}</h2>
-          <div class="r-season-group__events">
-            {season.events.map(event => {
-              const month = event.data.date.toLocaleDateString('en-US', { month: 'short' });
-              const day = event.data.date.getDate();
-              const eventSpeakers = event.data.speakers
-                .map((slug: string) => allSpeakers.find(s => s.id === slug))
-                .filter(Boolean);
-              return (
-                <a href={`/events/${season.slug}/${event.id}`} class="r-event-row">
-                  <div class="r-event-row__date">
-                    <span class="r-event-row__month">{month}</span>
-                    <span class="r-event-row__day">{day}</span>
-                  </div>
-                  <div class="r-event-row__content">
-                    <h3 class="r-event-row__title">{event.data.title}</h3>
-                    <div class="r-event-row__speakers">
-                      {eventSpeakers.map((s: any, i: number) => (
-                        <span>{s.data.name}{i < eventSpeakers.length - 1 ? ', ' : ''}</span>
-                      ))}
-                    </div>
-                  </div>
-                  {event.data.books.length > 0 && (
-                    <div class="r-event-row__books">
-                      {event.data.books.slice(0, 3).map((book: any) => (
-                        <BookCover src={book} width={50} height={75} />
-                      ))}
-                    </div>
-                  )}
-                </a>
-              );
-            })}
+
+      {nextEvent && (
+        <section class="r-next-event" aria-labelledby="next-event-label">
+          <p class="r-next-event__label" id="next-event-label">Next conversation</p>
+          <h2 class="r-next-event__title"><a href={nextUrl}>{nextEvent.data.title}</a></h2>
+          <p class="r-next-event__meta">
+            <time datetime={nextEvent.data.date.toISOString().slice(0, 10)}>{nextDate}</time>
+            {nextSpeakers.length > 0 && <> · {nextSpeakers.map(s => s.data.name).join(', ')}</>}
+          </p>
+          <div class="r-next-event__actions">
+            <a class="r-btn" href={nextUrl}>Event details</a>
+            {nextEvent.data.eventbrite && <a class="r-btn r-btn--outline" href={nextEvent.data.eventbrite} rel="noopener">Register ↗</a>}
           </div>
-        </div>
+          {nextEvent.data.books.length > 0 && (
+            <div class="r-next-event__books" aria-hidden="true">
+              {nextEvent.data.books.slice(0, 4).map((book: any) => <BookCover src={book} width={90} height={135} alt="" />)}
+            </div>
+          )}
+        </section>
+      )}
+
+      <div class="r-archive-bar">
+        <label class="r-archive-bar__search">
+          <span class="r-visually-hidden">Search conversations</span>
+          <input type="search" id="event-search" placeholder="Search by title or speaker…" autocomplete="off" />
+        </label>
+        <nav class="r-archive-bar__years" aria-label="Jump to year">
+          {years.map(year => <a href={`#y${year}`}>{year}</a>)}
+        </nav>
+      </div>
+      <p class="r-archive-empty" id="event-search-empty" hidden>No conversations match.</p>
+      <p class="r-visually-hidden" role="status" id="event-search-status"></p>
+
+      {seasonData.map(season => (
+        <section class="r-season-group" id={season.firstOfYear ? `y${season.year}` : undefined} aria-labelledby={`s-${season.slug}`}>
+          <h2 class="r-season-group__label" id={`s-${season.slug}`}>
+            <a href={`/events/${season.slug}/`}>{season.title}</a>
+            <span class="r-season-group__count">{season.events.length} conversation{season.events.length !== 1 ? 's' : ''}</span>
+          </h2>
+          <div class="r-season-group__events">
+            {season.events.map(event => <EventRow event={event} speakers={speakersFor(event)} />)}
+          </div>
+        </section>
       ))}
+
+      <script>
+        // Filter rows by title/speaker; hide seasons with no matches
+        const input = document.getElementById('event-search') as HTMLInputElement | null;
+        const empty = document.getElementById('event-search-empty');
+        input?.addEventListener('input', () => {
+          const q = input.value.trim().toLowerCase();
+          let shown = 0;
+          document.querySelectorAll<HTMLElement>('.r-season-group').forEach(group => {
+            let groupShown = 0;
+            group.querySelectorAll<HTMLElement>('.r-event-row').forEach(row => {
+              const match = !q || (row.dataset.search ?? '').includes(q);
+              row.hidden = !match;
+              if (match) groupShown++;
+            });
+            group.hidden = groupShown === 0;
+            shown += groupShown;
+          });
+          if (empty) empty.hidden = shown > 0;
+          const status = document.getElementById('event-search-status');
+          if (status) status.textContent = q ? `${shown} ${shown === 1 ? 'conversation' : 'conversations'} match` : '';
+        });
+      </script>
     </div>
   )}
 </Layout>

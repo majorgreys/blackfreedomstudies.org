@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const dateStr = entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+const dateStr = entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 
 // Find related event if specified
 let relatedEvent = null;
@@ -27,7 +27,7 @@ if (entry.data.relatedEvent) {
     <article class="c-news-detail">
       {entry.data.image && (
         <figure class="c-news-banner">
-          <Image src={entry.data.image} alt={entry.data.title} width={800} />
+          <Image src={entry.data.image} alt="" width={800} />
         </figure>
       )}
       <h1>{entry.data.title}</h1>
@@ -41,7 +41,7 @@ if (entry.data.relatedEvent) {
     <article>
       {entry.data.image && (
         <figure class="r-news-banner">
-          <Image src={entry.data.image} alt={entry.data.title} width={900} />
+          <Image src={entry.data.image} alt="" width={900} />
         </figure>
       )}
       <div class="r-page-header">
@@ -51,7 +51,7 @@ if (entry.data.relatedEvent) {
       {relatedEvent && (
         <p style="margin-bottom:24px;">Related event: <a href={`/events/${relatedEvent.data.seasonPart}-${relatedEvent.data.seasonYear}/${relatedEvent.id}`}>{relatedEvent.data.title}</a></p>
       )}
-      <div class="r-prose" style="max-width:none;">
+      <div class="r-prose">
         <Content />
       </div>
     </article>

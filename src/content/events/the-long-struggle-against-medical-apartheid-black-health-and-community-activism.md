@@ -7,7 +7,7 @@ eventbrite: "https://www.eventbrite.com/e/conversations-in-black-freedom-studies
 speakers:
  - "dr-julius-garvey"
  - "gabriel-mendes"
- - "alondra-nelson-1"
+ - "alondra-nelson"
 books:
  - ../../assets/bookcovers/underthecolor.jpg
  - ../../assets/bookcovers/bodyandsoul.jpg
