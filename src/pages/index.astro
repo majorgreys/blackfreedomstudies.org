@@ -12,9 +12,11 @@ const latestNews = newsEntries
 
 // Find next upcoming event for the hero CTA
 const allEvents = await getCollection('events');
-const now = new Date();
+// Event dates are UTC midnight; keep an event as "next" through its whole day
+const DAY_MS = 24 * 60 * 60 * 1000;
+const now = Date.now();
 const nextEvent = allEvents
-  .filter(e => e.data.date > now)
+  .filter(e => e.data.date.getTime() + DAY_MS > now)
   .sort((a, b) => a.data.date.getTime() - b.data.date.getTime())[0];
 
 let HomepageContent: any = null;
@@ -93,7 +95,7 @@ const organizationJsonLd = {
           <div class="r-hero__actions">
             {nextEvent && (
               <a href={`/events/${nextEvent.data.seasonPart}-${nextEvent.data.seasonYear}/${nextEvent.id}`} class="r-hero__cta">
-                Next: {nextEvent.data.title} — {nextEvent.data.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                Next: {nextEvent.data.title} — {nextEvent.data.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })}
               </a>
             )}
             {latestNews.length > 0 && (
