@@ -16,7 +16,7 @@ const allEvents = await getCollection('events');
       {interviews.map(entry => (
         <article class="c-news-item">
           <h2><a href={`/interviews/${entry.id}`}>{entry.data.title}</a></h2>
-          <p class="c-news-date">{entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+          <p class="c-news-date">{entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</p>
         </article>
       ))}
     </div>
@@ -34,7 +34,7 @@ const allEvents = await getCollection('events');
           return (
             <a href={`/interviews/${entry.id}`} class={`r-resource-row ${i % 2 === 0 ? '' : 'r-resource-row--alt'}`}>
               <div class="r-resource-row__date">
-                {entry.data.date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                {entry.data.date.toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })}
               </div>
               <div class="r-resource-row__content">
                 <div class="r-resource-row__title">{entry.data.title}</div>

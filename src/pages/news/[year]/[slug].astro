@@ -8,7 +8,7 @@ export async function getStaticPaths() {
   const news = await getCollection('news');
   return news.map(entry => ({
     params: {
-      year: String(entry.data.date.getFullYear()),
+      year: String(entry.data.date.getUTCFullYear()),
       slug: entry.id,
     },
     props: { entry },
@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const dateStr = entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+const dateStr = entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 // Decap can store remote image URLs, which <Image> can't size without both dimensions
 const image = entry.data.image;
 const isRemote = typeof image === 'string' && /^https?:\/\//.test(image);

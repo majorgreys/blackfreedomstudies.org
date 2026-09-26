@@ -22,8 +22,8 @@ const newsWithContent = await Promise.all(
       </div>
       {newsWithContent.map(({ entry, Content }) => (
         <article class="c-news-item">
-          <h2><a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`}>{entry.data.title}</a></h2>
-          <p class="c-news-date">{entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+          <h2><a href={`/news/${entry.data.date.getUTCFullYear()}/${entry.id}`}>{entry.data.title}</a></h2>
+          <p class="c-news-date">{entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</p>
           {entry.data.image && (
             <div class="c-news-images">
               <div class="c-news-images__crop">
@@ -34,7 +34,7 @@ const newsWithContent = await Promise.all(
           <div class="c-news-excerpt">
             <Content />
           </div>
-          <p><a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`}>Continue reading</a></p>
+          <p><a href={`/news/${entry.data.date.getUTCFullYear()}/${entry.id}`}>Continue reading</a></p>
         </article>
       ))}
     </div>
@@ -46,9 +46,9 @@ const newsWithContent = await Promise.all(
       </div>
       <div class="r-resource-list">
         {news.map((entry, i) => (
-          <a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`} class={`r-resource-row ${i % 2 === 0 ? '' : 'r-resource-row--alt'}`}>
+          <a href={`/news/${entry.data.date.getUTCFullYear()}/${entry.id}`} class={`r-resource-row ${i % 2 === 0 ? '' : 'r-resource-row--alt'}`}>
             <div class="r-resource-row__date">
-              {entry.data.date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+              {entry.data.date.toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })}
             </div>
             <div class="r-resource-row__title">{entry.data.title}</div>
           </a>

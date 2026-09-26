@@ -2,13 +2,14 @@
 import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import { Layout, isClassic } from '../lib/theme';
+import EventRow from '../components/redesign/EventRow.astro';
 
 const pagesCollection = await getCollection('pages');
 const homepage = pagesCollection.find(p => p.id === 'homepage' || p.id === 'index');
 const newsEntries = await getCollection('news');
-const latestNews = newsEntries
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 2);
+const sortedNews = newsEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const latestNews = sortedNews.slice(0, 2);
+const homeNews = sortedNews.slice(0, 3);
 
 // Find next upcoming event for the hero CTA
 const allEvents = await getCollection('events');
@@ -18,6 +19,20 @@ const now = Date.now();
 const nextEvent = allEvents
   .filter(e => e.data.date.getTime() + DAY_MS > now)
   .sort((a, b) => a.data.date.getTime() - b.data.date.getTime())[0];
+
+// The season of the next conversation (or the most recent season), for "This season"
+const allSpeakers = await getCollection('speakers');
+const latestEvent = [...allEvents].sort((a, b) => b.data.date.getTime() - a.data.date.getTime())[0];
+const featured = nextEvent ?? latestEvent;
+const seasonKey = featured ? `${featured.data.seasonPart}-${featured.data.seasonYear}` : '';
+const seasonTitle = featured ? `${featured.data.seasonPart.charAt(0).toUpperCase() + featured.data.seasonPart.slice(1)} ${featured.data.seasonYear}` : '';
+const seasonEvents = allEvents
+  .filter(e => `${e.data.seasonPart}-${e.data.seasonYear}` === seasonKey)
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+const speakersFor = (event: (typeof allEvents)[number]) =>
+  event.data.speakers
+    .map((slug: string) => allSpeakers.find(s => s.id === slug))
+    .filter((s): s is (typeof allSpeakers)[number] => Boolean(s));
 
 let HomepageContent: any = null;
 if (homepage) {
@@ -63,7 +78,7 @@ const organizationJsonLd = {
             <ul>
               {latestNews.map(entry => (
                 <li>
-                  <a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`}>{entry.data.title}</a>
+                  <a href={`/news/${entry.data.date.getUTCFullYear()}/${entry.id}`}>{entry.data.title}</a>
                 </li>
               ))}
             </ul>
@@ -75,7 +90,7 @@ const organizationJsonLd = {
           <ul style="list-style:none;padding:0;margin:0 0 20px;">
             {latestNews.map(entry => (
               <li style="margin-bottom:6px;">
-                <a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`}>{entry.data.title}</a>
+                <a href={`/news/${entry.data.date.getUTCFullYear()}/${entry.id}`}>{entry.data.title}</a>
               </li>
             ))}
           </ul>
@@ -98,17 +113,52 @@ const organizationJsonLd = {
                 Next: {nextEvent.data.title} — {nextEvent.data.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })}
               </a>
             )}
-            {latestNews.length > 0 && (
-              <div class="r-hero__news">
-                {latestNews.map(entry => (
-                  <a href={`/news/${entry.data.date.getFullYear()}/${entry.id}`}>{entry.data.title}</a>
-                ))}
-              </div>
-            )}
           </div>
         </div>
       </div>
-      {HomepageContent && <div class="r-prose"><HomepageContent /></div>}
+
+      <div class="r-home-grid">
+        {seasonEvents.length > 0 && (
+          <section class="r-home-season" aria-labelledby="home-season">
+            <div class="r-home-heading">
+              <h2 id="home-season">{seasonTitle}</h2>
+              <a href={`/events/${seasonKey}/`}>Season page</a>
+            </div>
+            <div class="r-season-group__events r-season-group__events--page">
+              {seasonEvents.map(event => <EventRow event={event} speakers={speakersFor(event)} />)}
+            </div>
+            <p class="r-home-more"><a href="/events/">Browse every conversation since 2013 →</a></p>
+          </section>
+        )}
+        <aside class="r-home-side" aria-labelledby="home-news">
+          <div class="r-home-heading">
+            <h2 id="home-news">Latest news</h2>
+            <a href="/news/">All news</a>
+          </div>
+          <ul class="r-home-news">
+            {homeNews.map(entry => (
+              <li>
+                <time datetime={entry.data.date.toISOString().slice(0, 10)}>{entry.data.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</time>
+                <a href={`/news/${entry.data.date.getUTCFullYear()}/${entry.id}`}>{entry.data.title}</a>
+              </li>
+            ))}
+          </ul>
+          <div class="r-home-heading"><h2>Explore the archive</h2></div>
+          <ul class="r-home-links">
+            <li><a href="/resources/">Recordings</a></li>
+            <li><a href="/speakers/">Speakers</a></li>
+            <li><a href="/interviews/">Interviews</a></li>
+            <li><a href="/books">Books</a></li>
+          </ul>
+        </aside>
+      </div>
+
+      {HomepageContent && (
+        <section class="r-home-about" aria-labelledby="home-about">
+          <h2 id="home-about">About the series</h2>
+          <div class="r-prose"><HomepageContent /></div>
+        </section>
+      )}
     </div>
   )}
 </Layout>

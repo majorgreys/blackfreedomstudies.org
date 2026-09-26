@@ -1,0 +1,48 @@
+---
+// One conversation as a row: date, title, speakers, covers. Used on the events
+// index, season pages and the homepage so events look the same everywhere.
+import type { CollectionEntry } from 'astro:content';
+import BookCover from '../shared/BookCover.astro';
+
+interface Props {
+  event: CollectionEntry<'events'>;
+  speakers: CollectionEntry<'speakers'>[];
+  // Show the year in the date block (for lists that span seasons)
+  showYear?: boolean;
+}
+
+const { event, speakers, showYear = false } = Astro.props;
+const season = `${event.data.seasonPart}-${event.data.seasonYear}`;
+// Dates are stored as UTC midnight; format in UTC so they don't shift a day
+const month = event.data.date.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' });
+const day = event.data.date.getUTCDate();
+const year = event.data.date.getUTCFullYear();
+const DAY_MS = 24 * 60 * 60 * 1000;
+const upcoming = event.data.date.getTime() + DAY_MS > Date.now();
+const names = speakers.map(s => s.data.name).join(', ');
+---
+<a
+  href={`/events/${season}/${event.id}`}
+  class:list={['r-event-row', { 'is-upcoming': upcoming }]}
+  data-search={`${event.data.title} ${names}`.toLowerCase()}
+>
+  <div class="r-event-row__date">
+    <span class="r-event-row__month">{month}</span>
+    <span class="r-event-row__day">{day}</span>
+    {showYear && <span class="r-event-row__year">{year}</span>}
+  </div>
+  <div class="r-event-row__content">
+    <h3 class="r-event-row__title">
+      {event.data.title}
+      {upcoming && <span class="r-event-row__badge">Upcoming</span>}
+    </h3>
+    {names && <div class="r-event-row__speakers">{names}</div>}
+  </div>
+  {event.data.books.length > 0 && (
+    <div class="r-event-row__books" aria-hidden="true">
+      {event.data.books.slice(0, 3).map(book => (
+        <BookCover src={book} width={50} height={75} alt="" />
+      ))}
+    </div>
+  )}
+</a>

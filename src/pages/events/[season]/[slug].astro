@@ -16,8 +16,8 @@ export async function getStaticPaths() {
 
 const { event } = Astro.props;
 const { Content } = await render(event);
-const month = event.data.date.toLocaleDateString('en-US', { month: 'short' });
-const day = event.data.date.getDate();
+const month = event.data.date.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' });
+const day = event.data.date.getUTCDate();
 
 const allSpeakers = await getCollection('speakers');
 const speakers = event.data.speakers
