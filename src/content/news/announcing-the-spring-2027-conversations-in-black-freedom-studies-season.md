@@ -2,9 +2,9 @@
 title: Announcing the Spring 2027 Conversations in Black Freedom Studies Season!
 date: 2026-10-03
 ---
-Please join us for the Spring 2027 season of Conversations in Black Freedom Studies! All the events in the series are free and open to the public and take place on the first Thursday of the month at 6:30 PM. The season opens in person, and the remaining conversations will be held online. Recordings of our events are available on the [Schomburg Center's YouTube page](https://www.youtube.com/playlist?list=PLpjTCMOQ1XpXnSUULh7ti4j5lzo20L3vS).
+Please join us for the Spring 2027 season of Conversations in Black Freedom Studies! All the events in the series are free and open to the public and take place on the first Thursday of the month at 6:30 PM. The season opens in person at the Schomburg Center, and the remaining conversations will be held online. Recordings of our events are available on the [Schomburg Center's YouTube page](https://www.youtube.com/playlist?list=PLpjTCMOQ1XpXnSUULh7ti4j5lzo20L3vS).
 
-## February 4, 2027 — Black Power, "60" Years Later and Counting (in person)
+## February 4, 2027 — Black Power, "60" Years Later and Counting (in person at the Schomburg Center)
 
 The season begins with a conversation on Black Power sixty years on, featuring:
 
@@ -15,8 +15,6 @@ The season begins with a conversation on Black Power sixty years on, featuring:
 
 ## March 4, 2027 — Black Women at the Forefront of the Movement (online)
 
-*Black Women's Stories: Curriculum Guides*
-
 - Barbara Smith, *How We Get Free: Black Feminism and the Combahee River Collective*
 - Ann Marie Mingo, *Have You Got Good Religion?: Black Women's Faith, Courage, and Moral Leadership in the Civil Rights Movement*
 - Kali Gross, *Vengeance Feminism: The Power of Black Women's Fury in Lawless Times*
@@ -24,9 +22,7 @@ The season begins with a conversation on Black Power sixty years on, featuring:
 
 ## April 1, 2027 — Coretta Scott King at 100 (online)
 
-A celebration of the publication of *I Was Called: The Activist Life of Coretta Scott King*, with Matthew Delmont, Traci Parker, Vicki Crawford, and Lerone Martin.
-
-*Black Women's Stories: Curriculum Guides*
+In the centennial year of Coretta Scott King's birth, this conversation turns to her life as an activist in her own right, celebrating the publication of *I Was Called: The Activist Life of Coretta Scott King* by Jeanne Theoharis and Traci Parker. Traci Parker will be joined by Vicki Crawford, Matthew Delmont, and Lerone Martin.
 
 ## May 6, 2027 — Solidarity in the Black Freedom Struggle (online)
 
