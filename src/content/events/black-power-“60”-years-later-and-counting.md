@@ -5,6 +5,7 @@ seasonYear: 2027
 seasonPart: spring
 speakers:
   - arun-kundnani
+  - robert-p-robinson
 books:
   - ../../assets/bookcovers/motown.avif
   - ../../assets/bookcovers/marching-west.jpeg
