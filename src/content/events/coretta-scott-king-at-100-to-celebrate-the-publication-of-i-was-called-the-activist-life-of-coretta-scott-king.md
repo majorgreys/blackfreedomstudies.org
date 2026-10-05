@@ -8,6 +8,7 @@ speakers:
   - matt-delmont
   - traci-parker
   - lerone-martin
+  - vicki-crawford
 books:
   - ../../assets/bookcovers/i-was-called.avif
 ---
