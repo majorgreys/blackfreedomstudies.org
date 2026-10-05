@@ -6,6 +6,8 @@ seasonPart: spring
 speakers:
   - barbara-smith
   - kali-nicole-gross
+  - rosemary-hennessy
+  - annemarie-mingo
 books:
   - ../../assets/bookcovers/How-we-get-free.jpg
   - ../../assets/bookcovers/good-religion.jpg
