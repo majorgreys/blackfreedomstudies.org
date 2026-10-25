@@ -1,6 +1,14 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
+// Editors often type a bare domain ("www.example.com") into the CMS. Add the
+// missing https:// rather than failing the whole build on it.
+const url = () =>
+  z.preprocess(
+    (v) => (typeof v === 'string' && v.trim() && !/^[a-z][a-z0-9+.-]*:/i.test(v.trim()) ? `https://${v.trim()}` : v),
+    z.string().url(),
+  );
+
 const events = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/events' }),
   schema: ({ image }) => z.object({
@@ -8,7 +16,7 @@ const events = defineCollection({
     date: z.coerce.date(),
     seasonYear: z.number().int().min(2013),
     seasonPart: z.enum(['fall', 'spring', 'special']),
-    eventbrite: z.string().url().optional(),
+    eventbrite: url().optional(),
     speakers: z.array(z.string()).default([]),
     books: z.array(image()).default([]),
     video: z.string().optional(),
@@ -24,8 +32,8 @@ const speakers = defineCollection({
     image: image().optional(),
     email: z.string().optional(),
     twitter: z.string().optional(),
-    social: z.string().url().optional(),
-    homepage: z.string().url().optional(),
+    social: url().optional(),
+    homepage: url().optional(),
   }),
 });
 
