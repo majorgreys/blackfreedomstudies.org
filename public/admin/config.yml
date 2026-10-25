@@ -123,7 +123,7 @@ collections:
       - { name: email, label: Email, widget: string, required: false }
       - { name: twitter, label: Twitter/X Handle, widget: string, required: false, hint: "Handle only, without the @ symbol" }
       - { name: social, label: Social URL, widget: string, required: false, hint: "Full URL for Bluesky or other social profile" }
-      - { name: homepage, label: Website, widget: string, required: false }
+      - { name: homepage, label: Website, widget: string, required: false, hint: "Full web address, e.g. https://www.example.com" }
       - { name: body, label: Bio, widget: markdown }
 
   # ─── News ─────────────────────────────────────────────────
