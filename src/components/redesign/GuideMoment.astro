@@ -1,0 +1,24 @@
+---
+import { hms, youtubeUrl, transcriptUrl, formatDate, type Moment, type RecordingInfo } from '../../lib/guide';
+
+interface Props { moment: Moment; info: RecordingInfo; showTopic?: boolean }
+const { moment: m, info, showTopic = false } = Astro.props;
+const r = info[m.v];
+---
+<li class="r-guide-moment">
+  <div class="r-guide-moment__time">
+    <a class="r-guide-ts" href={youtubeUrl(m.v, m.k)} target="_blank" rel="noopener" aria-label={`Play ${r.title} at ${hms(m.k)} on YouTube`}>{hms(m.k)}</a>
+    <span class="r-guide-moment__year">{r.date.slice(0, 4)}</span>
+    {m.s === 3 && <span class="r-guide-badge">Central</span>}
+  </div>
+  <div>
+    {showTopic && <p class="r-guide-moment__topic">{m.t}</p>}
+    <p class="r-guide-moment__event">
+      {r.eventUrl ? <a href={r.eventUrl}>{r.title}</a> : r.title}
+      <span> · {formatDate(r.date)}</span>
+    </p>
+    <p class="r-guide-moment__note">{m.n}</p>
+    {m.x && <blockquote class="r-guide-moment__quote">{m.x}</blockquote>}
+    {r.hasTranscript && <a class="r-guide-moment__read" href={transcriptUrl(m.v, m.a)}>Read in the transcript</a>}
+  </div>
+</li>

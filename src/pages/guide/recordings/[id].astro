@@ -1,0 +1,59 @@
+---
+import { Layout } from '../../../lib/theme';
+import { transcripts, hms, youtubeUrl, formatDate, recordingInfo, type Transcript } from '../../../lib/guide';
+
+export function getStaticPaths() {
+  return [...transcripts].map(([id, transcript]) => ({ params: { id }, props: { transcript } }));
+}
+
+interface Props { transcript: Transcript }
+const { id } = Astro.params;
+const { transcript } = Astro.props;
+const r = (await recordingInfo())[id!];
+const notesAt = new Map<number, Transcript['moments']>();
+for (const m of transcript.moments) notesAt.set(m.a, [...(notesAt.get(m.a) ?? []), m]);
+const source = r.kind === 'whisper' ? 'Whisper speech recognition' : 'YouTube automatic captions';
+---
+<Layout title={`${r.title}: Transcript`} description={`Transcript of ${r.title}, a Conversations in Black Freedom Studies recording from ${formatDate(r.date)}.`}>
+  <div class="r-page-header">
+    <p><a href="/guide/recordings/">The recordings</a> · {formatDate(r.date)}</p>
+    <h1>{r.title}</h1>
+  </div>
+  <div class="r-guide-transcript">
+    <aside class="r-guide-transcript__side">
+      <div class="r-guide-player">
+        <iframe id="guide-player" title={`Recording: ${r.title}`} src={`https://www.youtube-nocookie.com/embed/${id}`} allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p class="r-guide-note"><a href={youtubeUrl(id!)} target="_blank" rel="noopener">Watch on YouTube</a>{r.eventUrl && <> · <a href={r.eventUrl}>About this event</a></>}</p>
+      {transcript.moments.length > 0 && (
+        <nav aria-label="Key moments">
+          <h2>Key moments</h2>
+          <ol class="r-guide-keylist">
+            {transcript.moments.map(m => <li><a href={`#t-${m.a}`}><span>{hms(m.k)}</span> {m.t}</a></li>)}
+          </ol>
+        </nav>
+      )}
+    </aside>
+    <div class="r-guide-transcript__text">
+      <p class="r-guide-note">Unedited machine transcript ({source}). Names are sometimes misheard; check the recording before quoting.</p>
+      {transcript.paragraphs.map(([sec, text]) => (
+        <div class:list={['r-guide-para', { 'has-note': notesAt.has(sec) }]} id={`t-${sec}`}>
+          <a class="r-guide-para__ts" href={youtubeUrl(id!, sec)} data-seek={sec}>{hms(sec)}</a>
+          <div>
+            {notesAt.get(sec)?.map(m => <p class="r-guide-para__note"><strong>{m.t}.</strong> {m.n}</p>)}
+            <p>{text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+  <script>
+    // Timestamps play in the page's player; the link still works without JavaScript.
+    const player = document.getElementById('guide-player') as HTMLIFrameElement;
+    const base = player.src.split('?')[0];
+    document.querySelectorAll<HTMLAnchorElement>('[data-seek]').forEach(a => a.addEventListener('click', e => {
+      e.preventDefault();
+      player.src = `${base}?start=${a.dataset.seek}&autoplay=1`;
+    }));
+  </script>
+</Layout>

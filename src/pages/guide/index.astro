@@ -1,0 +1,35 @@
+---
+import { Layout } from '../../lib/theme';
+import { parts, units, finder, recordings } from '../../lib/guide';
+
+const recordingCount = Object.keys(recordings).length;
+let n = 0;
+const numbered = parts.map(p => ({ ...p, units: p.units.map(u => ({ ...u, num: String(++n).padStart(2, '0') })) }));
+---
+<Layout title="Guide to the Recordings" description="A guided way into the Conversations in Black Freedom Studies recordings: units by place, movement, person and theme, each pointing to the exact moments to start from.">
+  <div class="r-page-header">
+    <h1>Guide to the Recordings</h1>
+    <p>Where to start, and at which minute, in {recordingCount} recorded conversations</p>
+  </div>
+  <div class="r-guide-intro">
+    <p>Since 2013, Conversations in Black Freedom Studies has recorded scholars, organizers and movement veterans in hours of discussion. This guide is a way in. Each of the {units.length} units gathers a place, movement, person or theme and opens with five moments from different years, each linked to the exact second it begins.</p>
+    <p>Looking for someone or something in particular? <a href="/guide/find/">Search all {finder.length} moments</a>, or <a href="/guide/recordings/">browse the recordings</a>.</p>
+    <p class="r-guide-note">Moments were chosen and described with AI assistance from machine transcripts, and the quotes are unedited, so names are sometimes misheard. Check the recording before citing.</p>
+  </div>
+  {numbered.map(p => (
+    <section class="r-guide-part">
+      <h2>{p.name}</h2>
+      <ol class="r-guide-units">
+        {p.units.map(u => (
+          <li>
+            <a class="r-guide-unit" href={`/guide/${u.key}/`}>
+              <span class="r-guide-unit__num">{u.num}</span>
+              <span class="r-guide-unit__title">{u.title}</span>
+              <span class="r-guide-unit__intro">{u.intro}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+  ))}
+</Layout>

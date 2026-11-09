@@ -1,0 +1,41 @@
+---
+import { Layout } from '../../lib/theme';
+import GuideMoment from '../../components/redesign/GuideMoment.astro';
+import { units, recordingInfo, type Unit } from '../../lib/guide';
+
+export function getStaticPaths() {
+  return units.map((unit, i) => ({
+    params: { unit: unit.key },
+    props: { unit, num: i + 1, prev: units[i - 1], next: units[i + 1] },
+  }));
+}
+
+interface Props { unit: Unit; num: number; prev?: Unit; next?: Unit }
+const { unit, num, prev, next } = Astro.props;
+const info = await recordingInfo();
+---
+<Layout title={`${unit.title}: Guide to the Recordings`} description={unit.intro}>
+  <div class="r-page-header">
+    <p><a href="/guide/">Guide to the Recordings</a> · Unit {num} of {units.length}</p>
+    <h1>{unit.title}</h1>
+  </div>
+  <p class="r-guide-lede">{unit.intro}</p>
+  <section>
+    <h2>Start here</h2>
+    <ol class="r-guide-moments">
+      {unit.stops.map(m => <GuideMoment moment={m} info={info} showTopic={unit.topics.length > 1} />)}
+    </ol>
+  </section>
+  {unit.more.length > 0 && (
+    <section>
+      <h2>Go further</h2>
+      <ol class="r-guide-moments">
+        {unit.more.map(m => <GuideMoment moment={m} info={info} showTopic={unit.topics.length > 1} />)}
+      </ol>
+    </section>
+  )}
+  <nav class="r-guide-pager" aria-label="Units">
+    {prev ? <a href={`/guide/${prev.key}/`}>← {prev.title}</a> : <span />}
+    {next && <a href={`/guide/${next.key}/`}>{next.title} →</a>}
+  </nav>
+</Layout>

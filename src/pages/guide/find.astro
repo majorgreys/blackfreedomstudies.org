@@ -1,0 +1,93 @@
+---
+import { Layout } from '../../lib/theme';
+import { finder, hms, youtubeUrl, transcriptUrl, formatDate, recordingInfo } from '../../lib/guide';
+
+const info = await recordingInfo();
+const counts = new Map<string, number>();
+for (const m of finder) counts.set(m.t, (counts.get(m.t) ?? 0) + 1);
+const topics = [...counts].sort(([a], [b]) => a.localeCompare(b));
+const data = [...finder]
+  .sort((a, b) => b.s - a.s || info[a.v].date.localeCompare(info[b.v].date))
+  .map(m => ({
+    t: m.t, s: m.s, n: m.n, x: m.x, time: hms(m.k), play: youtubeUrl(m.v, m.k),
+    title: info[m.v].title, date: formatDate(info[m.v].date), year: info[m.v].date.slice(0, 4),
+    read: info[m.v].hasTranscript ? transcriptUrl(m.v, m.a) : '',
+  }));
+const json = JSON.stringify(data).replace(/</g, '\\u003c');
+---
+<Layout title="Find a Moment: Guide to the Recordings" description="Search moments across the Conversations in Black Freedom Studies recordings by person, place or topic.">
+  <div class="r-page-header">
+    <p><a href="/guide/">Guide to the Recordings</a></p>
+    <h1>Find a person, place or topic</h1>
+  </div>
+  <div class="r-archive-bar r-guide-controls">
+    <label class="r-archive-bar__search">
+      <span class="r-visually-hidden">Search moments</span>
+      <input type="search" id="guide-q" placeholder="Try Ella Baker, Detroit, midwives, Attica…" autocomplete="off" />
+    </label>
+    <label>
+      <span class="r-visually-hidden">Topic</span>
+      <select id="guide-topic">
+        <option value="">All topics</option>
+        {topics.map(([t, c]) => <option value={t}>{t} ({c})</option>)}
+      </select>
+    </label>
+  </div>
+  <p class="r-guide-count" id="guide-count" role="status"></p>
+  <ol class="r-guide-moments" id="guide-results"></ol>
+  <button class="r-guide-more" id="guide-more" type="button" hidden>Show more</button>
+  <script type="application/json" id="guide-data" set:html={json}></script>
+  <script>
+    interface Item { t: string; s: number; n: string; x: string; time: string; play: string; title: string; date: string; year: string; read: string }
+    const data: Item[] = JSON.parse(document.getElementById('guide-data')!.textContent!);
+    const q = document.getElementById('guide-q') as HTMLInputElement;
+    const topic = document.getElementById('guide-topic') as HTMLSelectElement;
+    const count = document.getElementById('guide-count')!;
+    const results = document.getElementById('guide-results')!;
+    const more = document.getElementById('guide-more') as HTMLButtonElement;
+    const PAGE = 40;
+    let limit = PAGE;
+
+    const el = (tag: string, cls: string, text?: string) => {
+      const e = document.createElement(tag);
+      e.className = cls;
+      if (text) e.textContent = text;
+      return e;
+    };
+
+    function card(m: Item) {
+      const li = el('li', 'r-guide-moment');
+      const time = el('div', 'r-guide-moment__time');
+      const ts = el('a', 'r-guide-ts', m.time) as HTMLAnchorElement;
+      ts.href = m.play; ts.target = '_blank'; ts.rel = 'noopener';
+      ts.setAttribute('aria-label', `Play ${m.title} at ${m.time} on YouTube`);
+      time.append(ts, el('span', 'r-guide-moment__year', m.year));
+      if (m.s === 3) time.append(el('span', 'r-guide-badge', 'Central'));
+      const body = el('div', '');
+      body.append(el('p', 'r-guide-moment__topic', m.t), el('p', 'r-guide-moment__event', `${m.title} · ${m.date}`),
+        el('p', 'r-guide-moment__note', m.n));
+      if (m.x) body.append(el('blockquote', 'r-guide-moment__quote', m.x));
+      if (m.read) {
+        const a = el('a', 'r-guide-moment__read', 'Read in the transcript') as HTMLAnchorElement;
+        a.href = m.read;
+        body.append(a);
+      }
+      li.append(time, body);
+      return li;
+    }
+
+    function render() {
+      const term = q.value.trim().toLowerCase();
+      const hits = data.filter(m => (!topic.value || m.t === topic.value)
+        && (!term || `${m.t} ${m.title} ${m.n} ${m.x}`.toLowerCase().includes(term)));
+      results.replaceChildren(...hits.slice(0, limit).map(card));
+      count.textContent = `${hits.length} moment${hits.length === 1 ? '' : 's'}`;
+      more.hidden = hits.length <= limit;
+    }
+    const reset = () => { limit = PAGE; render(); };
+    q.addEventListener('input', reset);
+    topic.addEventListener('change', reset);
+    more.addEventListener('click', () => { limit += PAGE; render(); });
+    render();
+  </script>
+</Layout>
