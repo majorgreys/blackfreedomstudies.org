@@ -16,31 +16,31 @@ const source = r.kind === 'whisper' ? 'Whisper speech recognition' : 'YouTube au
 ---
 <Layout title={`${r.title}: Transcript`} description={`Transcript of ${r.title}, a Conversations in Black Freedom Studies recording from ${formatDate(r.date)}.`}>
   <div class="r-page-header">
-    <p><a href="/guide/recordings/">The recordings</a> · {formatDate(r.date)}</p>
+    <p class="r-guide-kicker"><a href="/resources/">Recordings</a> · {formatDate(r.date)}</p>
     <h1>{r.title}</h1>
   </div>
-  <div class="r-guide-transcript">
-    <aside class="r-guide-transcript__side">
-      <div class="r-guide-player">
+  <div class="r-transcript">
+    <aside class="r-transcript__side">
+      <div class="r-transcript__player">
         <iframe id="guide-player" title={`Recording: ${r.title}`} src={`https://www.youtube-nocookie.com/embed/${id}`} allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
       </div>
       <p class="r-guide-note"><a href={youtubeUrl(id!)} target="_blank" rel="noopener">Watch on YouTube</a>{r.eventUrl && <> · <a href={r.eventUrl}>About this event</a></>}</p>
       {transcript.moments.length > 0 && (
         <nav aria-label="Key moments">
           <h2>Key moments</h2>
-          <ol class="r-guide-keylist">
+          <ol class="r-transcript__keys">
             {transcript.moments.map(m => <li><a href={`#t-${m.a}`}><span>{hms(m.k)}</span> {m.t}</a></li>)}
           </ol>
         </nav>
       )}
     </aside>
-    <div class="r-guide-transcript__text">
+    <div class="r-transcript__text">
       <p class="r-guide-note">Unedited machine transcript ({source}). Names are sometimes misheard; check the recording before quoting.</p>
       {transcript.paragraphs.map(([sec, text]) => (
-        <div class:list={['r-guide-para', { 'has-note': notesAt.has(sec) }]} id={`t-${sec}`}>
-          <a class="r-guide-para__ts" href={youtubeUrl(id!, sec)} data-seek={sec}>{hms(sec)}</a>
+        <div class:list={['r-para', { 'has-note': notesAt.has(sec) }]} id={`t-${sec}`}>
+          <a class="r-para__ts" href={youtubeUrl(id!, sec)} data-seek={sec}>{hms(sec)}</a>
           <div>
-            {notesAt.get(sec)?.map(m => <p class="r-guide-para__note"><strong>{m.t}.</strong> {m.n}</p>)}
+            {notesAt.get(sec)?.map(m => <p class="r-para__note"><strong>{m.t}.</strong> {m.n}</p>)}
             <p>{text}</p>
           </div>
         </div>

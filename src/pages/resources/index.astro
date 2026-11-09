@@ -1,6 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import { Layout, isClassic } from '../../lib/theme';
+import GuideIndex from '../../components/redesign/GuideIndex.astro';
+import { recordings as guideRecordings, transcripts, transcriptUrl } from '../../lib/guide';
+import { parseVideoUrl } from '../../lib/video';
 
 const resources = await getCollection('resources');
 
@@ -19,6 +22,7 @@ const documents = resources.filter(r => r.data.resourceType === 'document');
 // Redesign: tie each recording to its conversation and group by year
 const events = await getCollection('events');
 const eventByVideo = new Map(events.filter(e => e.data.video).map(e => [e.data.video!, e]));
+const videoByDate = new Map(Object.entries(guideRecordings).map(([v, r]) => [r.date, v]));
 const seenUrls = new Set<string>();
 const recordingRows = recordings
   .filter(r => {
@@ -32,8 +36,12 @@ const recordingRows = recordings
     const date = event?.data.date ?? r.data.date;
     const host = (() => { try { return new URL(r.data.sourceUrl!).hostname.replace(/^www\./, ''); } catch { return ''; } })();
     const source = host.includes('vimeo') ? 'Vimeo' : host.includes('youtu') ? 'YouTube' : host.includes('livestream') ? 'Livestream' : 'Watch';
+    // The site may link a different upload of the event, so fall back to the date
+    const urlId = parseVideoUrl(r.data.sourceUrl!).id;
+    const videoId = urlId && transcripts.has(urlId) ? urlId : date && videoByDate.get(date.toISOString().slice(0, 10));
     return {
       id: r.id,
+      transcriptUrl: videoId && transcripts.has(videoId) ? transcriptUrl(videoId) : null,
       title: r.data.title,
       date,
       year: date ? String(date.getUTCFullYear()) : 'Undated',
@@ -67,6 +75,15 @@ const prefix = isClassic ? 'c' : 'r';
         <p>{recordingRows.length} recorded conversations from the Schomburg Center</p>
       </div>
 
+      <ul class="r-guide-jump" aria-label="On this page">
+        <li><a href="#guide">Guide by topic</a></li>
+        <li><a href="#find">Find a moment</a></li>
+        <li><a href="#all-recordings">All recordings</a></li>
+      </ul>
+
+      <GuideIndex />
+
+      <h2 class="r-list-heading" id="all-recordings">All recordings</h2>
       <div class="r-archive-bar">
         <label class="r-archive-bar__search">
           <span class="r-visually-hidden">Search recordings</span>
@@ -91,6 +108,7 @@ const prefix = isClassic ? 'c' : 'r';
                   <span class="r-rec__date">{r.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })}</span>
                 )}
                 {r.eventUrl && <a class="r-rec__source" href={r.sourceUrl} rel="noopener">{r.source} ↗<span class="r-visually-hidden"> (opens {r.title} on {r.source})</span></a>}
+                {r.transcriptUrl && <a class="r-rec__transcript" href={r.transcriptUrl}>Transcript<span class="r-visually-hidden"> of {r.title}</span></a>}
               </li>
             ))}
           </ul>

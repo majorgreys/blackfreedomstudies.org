@@ -16,12 +16,14 @@ export const transcripts = new Map(
   Object.entries(files).map(([path, mod]) => [path.split('/').pop()!.replace('.json', ''), mod.default]),
 );
 
+export const level = (s: number) => (s === 3 ? 'Central' : 'Substantial');
 export const hms = (s: number) => {
   const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = String(s % 60).padStart(2, '0');
   return h ? `${h}:${String(m).padStart(2, '0')}:${sec}` : `${m}:${sec}`;
 };
 export const youtubeUrl = (v: string, k?: number) => `https://www.youtube.com/watch?v=${v}${k ? `&t=${k}s` : ''}`;
-export const transcriptUrl = (v: string, a?: number) => `/guide/recordings/${v}/${a === undefined ? '' : `#t-${a}`}`;
+export const unitUrl = (key: string) => `/resources/guide/${key}/`;
+export const transcriptUrl = (v: string, a?: number) => `/resources/transcripts/${v}/${a === undefined ? '' : `#t-${a}`}`;
 export const formatDate = (d: string) =>
   new Date(`${d}T00:00:00Z`).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 

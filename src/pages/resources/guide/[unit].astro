@@ -1,0 +1,58 @@
+---
+import { Layout, isClassic } from '../../../lib/theme';
+import GuideMoment from '../../../components/redesign/GuideMoment.astro';
+import { parts, units, unitUrl, hms, youtubeUrl, recordingInfo, type Unit } from '../../../lib/guide';
+
+export function getStaticPaths() {
+  return units.map((unit, i) => ({
+    params: { unit: unit.key },
+    props: { unit, num: String(i + 1).padStart(2, '0'), prev: units[i - 1], next: units[i + 1] },
+  }));
+}
+
+interface Props { unit: Unit; num: string; prev?: Unit; next?: Unit }
+const { unit, num, prev, next } = Astro.props;
+const info = await recordingInfo();
+const part = parts.find(p => p.units.some(u => u.key === unit.key))!.name;
+const several = unit.topics.length > 1;
+---
+<Layout title={`${unit.title} · Recordings`} description={unit.intro}>
+  {isClassic ? (
+    <div>
+      <div class="c-page-header"><h1>{unit.title}</h1></div>
+      <p>{unit.intro}</p>
+      <ul>{[...unit.stops, ...unit.more].map(m => <li><a href={youtubeUrl(m.v, m.k)}>{hms(m.k)}</a> {info[m.v].date.slice(0, 4)}, {info[m.v].title}: {m.n}</li>)}</ul>
+      <p><a href="/resources/">All recordings</a></p>
+    </div>
+  ) : (
+    <div class="r-guide">
+      <div class="r-page-header">
+        <p class="r-guide-kicker"><a href="/resources/#guide">Recordings</a> · {part} · Unit {num}</p>
+        <h1>{unit.title}</h1>
+      </div>
+      <p class="r-guide-intro__lede">{unit.intro}</p>
+
+      <section aria-labelledby="start-heading">
+        <h2 class="r-list-heading" id="start-heading">Start here</h2>
+        <ol class="r-moments r-moments--featured">
+          {unit.stops.map(m => <GuideMoment moment={m} info={info} topic={several} />)}
+        </ol>
+      </section>
+
+      {unit.more.length > 0 && (
+        <section aria-labelledby="more-heading">
+          <h2 class="r-list-heading" id="more-heading">More moments</h2>
+          <p class="r-guide-sub">{unit.more.length} more {unit.more.length === 1 ? 'recording' : 'recordings'} that spend real time on {several ? 'these topics' : 'this topic'}, oldest first.</p>
+          <ol class="r-moments">
+            {unit.more.map(m => <GuideMoment moment={m} info={info} excerpt={false} topic={several} />)}
+          </ol>
+        </section>
+      )}
+
+      <nav class="r-pager" aria-label="Units">
+        {prev ? <a class="r-pager__prev" href={unitUrl(prev.key)}><span>Previous unit</span>{prev.title}</a> : <a class="r-pager__prev" href="/resources/#guide"><span>Recordings</span>All units</a>}
+        {next ? <a class="r-pager__next" href={unitUrl(next.key)}><span>Next unit</span>{next.title}</a> : <a class="r-pager__next" href="/resources/#find"><span>Recordings</span>Find a topic</a>}
+      </nav>
+    </div>
+  )}
+</Layout>

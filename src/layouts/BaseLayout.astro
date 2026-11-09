@@ -18,7 +18,7 @@ const cssPath = isClassic ? '/css/classic.css' : '/css/redesign.css';
 const path = Astro.url.pathname;
 const section = (prefix: string) => path === prefix || path.startsWith(prefix.endsWith('/') ? prefix : prefix + '/');
 const current = (prefix: string) => (section(prefix) ? 'page' : undefined);
-const inArchive = ['/interviews/', '/books', '/resources/', '/guide/'].some(section);
+const inArchive = ['/interviews/', '/books', '/resources/'].some(section);
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +55,6 @@ const inArchive = ['/interviews/', '/books', '/resources/', '/guide/'].some(sect
           <li class="r-navbar__dropdown">
             <button class:list={['r-navbar__dropdown-trigger', { 'is-current': inArchive }]} type="button" aria-expanded="false" aria-controls="nav-archive">Archive</button>
             <ul class="r-navbar__dropdown-menu" id="nav-archive">
-              <li><a href="/guide/" aria-current={current('/guide/')}>Guide to the Recordings</a></li>
               <li><a href="/resources/" aria-current={current('/resources/')}>Recordings</a></li>
               <li><a href="/interviews/" aria-current={current('/interviews/')}>Interviews</a></li>
               <li><a href="/books" aria-current={current('/books')}>Books</a></li>

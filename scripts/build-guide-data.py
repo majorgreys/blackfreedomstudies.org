@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the data behind the /guide section from a cbfs-transcripts checkout.
+"""Build the data behind the guide on the Recordings page from a cbfs-transcripts checkout.
 
 Usage: python3 scripts/build-guide-data.py [PATH_TO_CBFS_TRANSCRIPTS]
 Reads topics/scored.csv, index.csv and transcripts/*.txt; writes src/data/guide/guide.json
