@@ -1,0 +1,176 @@
+---
+import { getCollection } from 'astro:content';
+import { Layout } from '../../lib/theme';
+import RecordingsTabs from '../../components/redesign/RecordingsTabs.astro';
+import VideoDialog from '../../components/redesign/VideoDialog.astro';
+import { finder, recordings as guideRecordings, transcripts, transcriptUrl, youtubeUrl } from '../../lib/guide';
+import { parseVideoUrl } from '../../lib/video';
+// Thumbnails for the Vimeo uploads that Vimeo serves publicly (from its oEmbed API)
+import vimeoThumbs from '../../data/vimeo-thumbnails.json';
+
+const [events, resources, speakers] = await Promise.all([
+  getCollection('events'), getCollection('resources'), getCollection('speakers'),
+]);
+const speakerName = new Map(speakers.map(s => [s.id, s.data.name]));
+const isRecording = (r: (typeof resources)[number]) =>
+  (r.data.resourceType === 'video' || r.data.resourceType === 'external') && !!r.data.sourceUrl;
+const dayOf = (d: Date) => d.toISOString().slice(0, 10);
+const sourceName = (url: string) => {
+  const host = (() => { try { return new URL(url).hostname; } catch { return ''; } })();
+  for (const [needle, name] of [['youtu', 'YouTube'], ['vimeo', 'Vimeo'], ['livestream', 'Livestream'], ['c-span', 'C-SPAN']]) {
+    if (host.includes(needle)) return name;
+  }
+  return 'Watch';
+};
+
+const playable = (url: string) => ['YouTube', 'Vimeo'].includes(sourceName(url));
+
+const guideByDate = new Map(Object.entries(guideRecordings).map(([v, r]) => [r.date, v]));
+const resourceById = new Map(resources.map(r => [r.id, r]));
+const resourceByDate = new Map(resources.filter(r => isRecording(r) && r.data.date).map(r => [dayOf(r.data.date!), r]));
+
+// The topics each recording is most about, from the guide's scores
+const centralTopics = new Map<string, string[]>();
+for (const m of finder) if (m.s === 3) centralTopics.set(m.v, [...(centralTopics.get(m.v) ?? []), m.t]);
+
+interface Row { key: string; date: string; title: string; href: string; speakers: string[]; topics: string[]; watch: string; transcript: string | null }
+const thumbOf = (watch: string) => {
+  const { provider, id } = parseVideoUrl(watch);
+  if (provider === 'youtube') return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+  if (provider === 'vimeo') return (vimeoThumbs as Record<string, string>)[id ?? ''] ?? null;
+  return null;
+};
+const speakerLine = (names: string[]) => names.length > 3 ? `${names.slice(0, 3).join(', ')} and ${names.length - 3} more` : names.join(', ');
+const used = new Set<string>();
+
+// One row per event with a recording, preferring the YouTube upload the guide links to
+const eventRows = events.flatMap((e): Row[] => {
+  const date = dayOf(e.data.date);
+  const video = guideByDate.get(date);
+  const resource = (e.data.video && resourceById.get(e.data.video)) || resourceByDate.get(date);
+  if (resource) used.add(resource.id);
+  const watch = video ? youtubeUrl(video) : resource && isRecording(resource) ? resource.data.sourceUrl! : null;
+  if (!watch) return [];
+  return [{
+    key: e.id, date, title: e.data.title,
+    href: `/events/${e.data.seasonPart}-${e.data.seasonYear}/${e.id}#recording`,
+    speakers: e.data.speakers.map((s: string) => speakerName.get(s)).filter(Boolean) as string[],
+    topics: video ? (centralTopics.get(video) ?? []).slice(0, 4) : [],
+    watch, transcript: video && transcripts.has(video) ? transcriptUrl(video) : null,
+  }];
+});
+// Recordings from before the series, which have no event page
+const earlyRows: Row[] = Object.entries(guideRecordings).filter(([, r]) => r.date < '2013').map(([v, r]) => ({
+  key: v, date: r.date, title: r.title, href: youtubeUrl(v), speakers: [], topics: (centralTopics.get(v) ?? []).slice(0, 4),
+  watch: youtubeUrl(v), transcript: transcripts.has(v) ? transcriptUrl(v) : null,
+}));
+const rows = [...eventRows, ...earlyRows].sort((a, b) => b.date.localeCompare(a.date));
+const years = [...new Set(rows.map(r => r.date.slice(0, 4)))];
+
+const related = resources.filter(r => isRecording(r) && !used.has(r.id));
+const documents = resources.filter(r => r.data.resourceType === 'document');
+---
+<Layout title="All Recordings" description="Every video recording of past Conversations in Black Freedom Studies events at the Schomburg Center.">
+  <div>
+    <div class="r-page-header">
+      <h1>All recordings</h1>
+      <p>{rows.length} recorded conversations, {years[years.length - 1]} to {years[0]}</p>
+    </div>
+
+    <RecordingsTabs current="all" />
+
+    <div class="r-archive-bar">
+      <label class="r-archive-bar__search">
+        <span class="r-visually-hidden">Search recordings</span>
+        <input type="search" id="rec-search" placeholder="Search by title, speaker or topic…" autocomplete="off" />
+      </label>
+      <nav class="r-archive-bar__years" aria-label="Jump to year">
+        {years.map(y => <a href={`#rec-${y}`}>{y}</a>)}
+      </nav>
+    </div>
+    <p class="r-archive-empty" id="rec-search-empty" hidden>No recordings match.</p>
+    <p class="r-visually-hidden" role="status" id="rec-search-status"></p>
+
+    {years.map(year => (
+      <section class="r-rec-year" id={`rec-${year}`} aria-labelledby={`rec-h-${year}`}>
+        <h2 class="r-rec-year__label" id={`rec-h-${year}`}>{year}</h2>
+        <ul class="r-vid-grid">
+          {rows.filter(r => r.date.startsWith(year)).map(r => {
+            const thumb = thumbOf(r.watch);
+            const d = new Date(`${r.date}T00:00:00Z`);
+            return (
+              <li class="r-vid" data-search={[r.title, ...r.speakers, ...r.topics].join(' ').toLowerCase()}>
+                <a class="r-vid__link" href={r.href} rel={r.href.startsWith('http') ? 'noopener' : undefined}
+                  data-play-video={playable(r.watch) ? r.title : undefined} data-video-url={playable(r.watch) ? r.watch : undefined}>
+                  <span class="r-vid__thumb">
+                    {thumb
+                      ? <img src={thumb} alt="" width="480" height="270" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                      : <span class="r-vid__placeholder" aria-hidden="true">{year}</span>}
+                    <span class="r-vid__play" aria-hidden="true"></span>
+                    <span class="r-vid__source">{sourceName(r.watch)}</span>
+                  </span>
+                  <span class="r-vid__body">
+                    <span class="r-vid__date">
+                      <span class="r-vid__month">{d.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' })}</span>
+                      <span class="r-vid__day">{d.getUTCDate()}</span>
+                    </span>
+                    <span class="r-vid__text">
+                      <span class="r-vid__title">{r.title}</span>
+                      {r.speakers.length > 0 && <span class="r-vid__speakers">{speakerLine(r.speakers)}</span>}
+                      {r.topics.length > 0 && <span class="r-vid__topics">{r.topics.join(' · ')}</span>}
+                    </span>
+                  </span>
+                </a>
+                {(r.transcript || r.href.startsWith('/')) && (
+                  <p class="r-vid__links">
+                    {r.href.startsWith('/') && <a href={r.href.replace('#recording', '')}>Event page<span class="r-visually-hidden">: {r.title}</span></a>}
+                    {r.transcript && <a href={r.transcript}>Transcript<span class="r-visually-hidden"> of {r.title}</span></a>}
+                  </p>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    ))}
+
+    {(related.length > 0 || documents.length > 0) && (
+      <section class="r-rec-related" aria-labelledby="related-heading">
+        <h2 class="r-list-heading" id="related-heading">Related material</h2>
+        <ul class="r-rec-related__list">
+          {related.map(r => <li><a href={r.data.sourceUrl} rel="noopener">{r.data.title}</a>{r.data.date && <span> {r.data.date.getUTCFullYear()}</span>}</li>)}
+          {documents.map(r => (
+            <li>
+              {r.data.document ? <a href={r.data.document} download>{r.data.title}</a> : r.data.title}
+              {r.data.authorship && <span> {r.data.authorship}</span>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <VideoDialog />
+
+    <script>
+      const input = document.getElementById('rec-search') as HTMLInputElement | null;
+      const empty = document.getElementById('rec-search-empty');
+      input?.addEventListener('input', () => {
+        const q = input.value.trim().toLowerCase();
+        let shown = 0;
+        document.querySelectorAll<HTMLElement>('.r-rec-year').forEach(section => {
+          let n = 0;
+          section.querySelectorAll<HTMLElement>('.r-vid').forEach(row => {
+            const match = !q || (row.dataset.search ?? '').includes(q);
+            row.hidden = !match;
+            if (match) n++;
+          });
+          section.hidden = n === 0;
+          shown += n;
+        });
+        if (empty) empty.hidden = shown > 0;
+        const status = document.getElementById('rec-search-status');
+        if (status) status.textContent = q ? `${shown} ${shown === 1 ? 'recording' : 'recordings'} match` : '';
+      });
+    </script>
+  </div>
+</Layout>

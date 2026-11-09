@@ -1,0 +1,11 @@
+---
+interface Props { current: 'guide' | 'all' }
+const { current } = Astro.props;
+const tabs = [
+  { key: 'guide', href: '/resources/', label: 'Guide' },
+  { key: 'all', href: '/resources/all/', label: 'All recordings' },
+];
+---
+<nav class="r-rec-tabs" aria-label="Recordings">
+  {tabs.map(t => <a href={t.href} aria-current={t.key === current ? 'page' : undefined}>{t.label}</a>)}
+</nav>

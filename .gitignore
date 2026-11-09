@@ -17,3 +17,4 @@ public/assets
 .beads-credential-key
 .beads/proxieddb/
 *.gate.lock*
+src/data/guide/transcripts/

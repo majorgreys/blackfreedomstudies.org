@@ -1,0 +1,138 @@
+---
+import VideoDialog from './VideoDialog.astro';
+import { parts, finder, recordings, unitUrl, recordingInfo, transcriptUrl, youtubeUrl, hms } from '../../lib/guide';
+
+const info = await recordingInfo();
+let n = 0;
+const numbered = parts.map(p => ({ ...p, units: p.units.map(u => ({ ...u, num: String(++n).padStart(2, '0') })) }));
+
+const perYear: Record<string, number> = {};
+for (const r of Object.values(recordings)) perYear[r.date.slice(0, 4)] = (perYear[r.date.slice(0, 4)] ?? 0) + 1;
+const years = Object.keys(perYear).sort();
+const maxYear = Math.max(...Object.values(perYear));
+
+const counts = new Map<string, number>();
+for (const m of finder) counts.set(m.t, (counts.get(m.t) ?? 0) + 1);
+const topics = [...counts].sort(([a], [b]) => a.localeCompare(b));
+const data = [...finder]
+  .sort((a, b) => b.s - a.s || info[a.v].date.localeCompare(info[b.v].date))
+  .map(m => ({
+    t: m.t, s: m.s, n: m.n, time: hms(m.k), play: youtubeUrl(m.v, m.k), year: info[m.v].date.slice(0, 4),
+    e: info[m.v].title, u: info[m.v].eventUrl ?? undefined, read: info[m.v].hasTranscript ? transcriptUrl(m.v, m.a) : undefined,
+  }));
+---
+<div class="r-guide">
+  <div class="r-guide-intro">
+    <div>
+      <p class="r-guide-intro__lede">{n} units by place, movement, person and theme, drawn from {Object.keys(recordings).length} recorded conversations. Each starts at the minute the conversation turns to it.</p>
+      <p class="r-guide-note">Notes and quotes were prepared with AI assistance from machine transcripts, so names are sometimes misheard. Check the recording before citing.</p>
+    </div>
+    <div class="r-guide-reel" aria-label={`Recordings per year, ${years[0]} to ${years[years.length - 1]}`} role="img">
+      <div class="r-guide-reel__bars">
+        {years.map(y => <span style={`height:${8 + 52 * perYear[y] / maxYear}px`} title={`${y}: ${perYear[y]}`}></span>)}
+      </div>
+      <div class="r-guide-reel__axis"><span>{years[0]}</span><span>recordings per year</span><span>{years[years.length - 1]}</span></div>
+    </div>
+  </div>
+
+  <section class="r-guide-finder" id="find" aria-label="Find a person, place or topic">
+    <div class="r-archive-bar">
+      <label class="r-archive-bar__search">
+        <span class="r-visually-hidden">Search moments</span>
+        <input type="search" id="guide-q" placeholder={`Search ${finder.length} moments: Ella Baker, Detroit, midwives, Attica…`} autocomplete="off" />
+      </label>
+      <label class="r-guide-finder__topic">
+        <span class="r-visually-hidden">Topic</span>
+        <select id="guide-topic">
+          <option value="">All topics</option>
+          {topics.map(([t, c]) => <option value={t}>{t} ({c})</option>)}
+        </select>
+      </label>
+    </div>
+    <p class="r-guide-finder__count" id="guide-count" role="status"></p>
+    <ol class="r-moments" id="guide-results"></ol>
+    <button class="r-btn r-btn--outline" type="button" id="guide-more" hidden>Show more</button>
+    <script type="application/json" id="guide-data" set:html={JSON.stringify(data).replace(/</g, '\\u003c')}></script>
+  </section>
+
+  <div class="r-guide-toc" id="guide">
+    {numbered.map(p => (
+      <section aria-labelledby={`part-${p.name}`}>
+        <h2 class="r-list-heading" id={`part-${p.name}`}>{p.name}</h2>
+        <ol>
+          {p.units.map(u => (
+            <li>
+              <span class="r-guide-toc__num" aria-hidden="true">{u.num}</span>
+              <a href={unitUrl(u.key)}>{u.title}</a>
+              <span class="r-guide-toc__count">{u.stops.length + u.more.length}<span class="r-visually-hidden"> recordings</span></span>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))}
+  </div>
+</div>
+<VideoDialog />
+
+<script>
+  interface Item { t: string; s: number; n: string; time: string; play: string; year: string; e: string; u?: string; read?: string }
+  const data: Item[] = JSON.parse(document.getElementById('guide-data')!.textContent || '[]');
+  const q = document.getElementById('guide-q') as HTMLInputElement;
+  const topic = document.getElementById('guide-topic') as HTMLSelectElement;
+  const list = document.getElementById('guide-results')!;
+  const count = document.getElementById('guide-count')!;
+  const more = document.getElementById('guide-more') as HTMLButtonElement;
+  const PAGE = 30;
+  let limit = PAGE;
+
+  const el = (tag: string, cls: string, text = '') => {
+    const e = document.createElement(tag);
+    e.className = cls;
+    e.textContent = text;
+    return e;
+  };
+  const link = (cls: string, text: string, href: string) => {
+    const a = el('a', cls, text) as HTMLAnchorElement;
+    a.href = href;
+    return a;
+  };
+
+  function row(m: Item) {
+    const li = el('li', 'r-moment');
+    const time = el('div', 'r-moment__time');
+    const play = link('r-moment__play', `▶ ${m.time}`, m.play);
+    play.setAttribute('rel', 'noopener');
+    play.dataset.playVideo = m.e;
+    play.setAttribute('aria-label', `Play ${m.e} at ${m.time} on YouTube`);
+    time.append(play, el('span', 'r-moment__year', m.year),
+      el('span', 'r-moment__level' + (m.s === 3 ? ' is-central' : ''), m.s === 3 ? 'Central' : 'Substantial'));
+    const body = el('div', 'r-moment__body');
+    const event = el('p', 'r-moment__event');
+    if (m.u) event.append(link('', m.e, m.u)); else event.textContent = m.e;
+    body.append(el('p', 'r-moment__topic', m.t), event, el('p', 'r-moment__note', m.n));
+    if (m.read) body.append(link('r-moment__read', 'Read in the transcript', m.read));
+    li.append(time, body);
+    return li;
+  }
+
+  function render() {
+    const term = q.value.trim().toLowerCase();
+    // Results appear only once someone searches, so the units stay in view
+    if (!term && !topic.value) {
+      list.replaceChildren();
+      count.textContent = '';
+      more.hidden = true;
+      return;
+    }
+    const hits = data.filter(m => (!topic.value || m.t === topic.value)
+      && (!term || `${m.t} ${m.e} ${m.n}`.toLowerCase().includes(term)));
+    list.replaceChildren(...hits.slice(0, limit).map(row));
+    count.textContent = `${hits.length} ${hits.length === 1 ? 'moment' : 'moments'}` + (hits.length > limit ? `, showing ${limit}` : '');
+    more.hidden = hits.length <= limit;
+  }
+  const reset = () => { limit = PAGE; render(); };
+  q.addEventListener('input', reset);
+  topic.addEventListener('change', reset);
+  more.addEventListener('click', () => { limit += PAGE; render(); });
+  render();
+</script>
