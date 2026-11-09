@@ -1691,24 +1691,25 @@ a.r-rec__title:hover { color: var(--color-accent); text-decoration: underline; }
 .r-guide-reel__bars { display: flex; align-items: flex-end; gap: 3px; height: 62px; }
 .r-guide-reel__bars span { flex: 1; min-height: 2px; background: var(--color-stone-900); }
 .r-guide-reel__axis { display: flex; justify-content: space-between; margin-top: 6px; font-family: var(--font-ui); font-size: 0.75rem; color: var(--color-text-muted); }
-.r-guide-how { grid-column: 1 / -1; list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px 32px; font-size: 0.92rem; color: var(--color-text-secondary); }
-.r-guide-how strong { color: var(--color-text); font-family: var(--font-ui); }
-.r-guide-part { margin-bottom: 40px; }
-.r-guide-units { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 16px; }
-.r-guide-unit { position: relative; display: flex; flex-direction: column; gap: 6px; padding: 18px 20px 16px; background: var(--color-surface); border: 1px solid var(--color-border); border-top: 3px solid var(--color-stone-900); }
-.r-guide-unit:hover { border-top-color: var(--color-accent-red); }
-.r-guide-unit__num { font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; line-height: 1; color: var(--color-accent-red); font-variant-numeric: tabular-nums; }
-.r-guide-unit h3 { margin: 0; font-size: 1.3rem; }
-.r-guide-unit h3 a { color: var(--color-stone-900); text-decoration: none; }
-.r-guide-unit h3 a::after { content: ''; position: absolute; inset: 0; } /* whole card is the link */
-.r-guide-unit h3 a:hover { color: var(--color-accent); }
-.r-guide-unit p { margin: 0; font-size: 0.92rem; line-height: 1.55; color: var(--color-text-secondary); }
-.r-guide-unit__meta { margin-top: auto; padding-top: 6px; font-family: var(--font-ui); font-size: 0.78rem; font-weight: 700; color: var(--color-text-muted); }
 .r-guide-sub { color: var(--color-text-secondary); margin: 8px 0 0; }
 .r-guide section { margin-bottom: 40px; }
 .r-guide-finder__topic { flex: 0 1 280px; min-width: 0; max-width: 100%; }
 .r-guide-finder__topic select { width: 100%; font: inherit; font-size: 0.95rem; padding: 9px 12px; border: 1px solid var(--color-stone-300); border-radius: 6px; background: #fff; max-width: 100%; }
 .r-guide-finder__count { font-family: var(--font-ui); font-size: 0.85rem; color: var(--color-text-muted); margin: 0 0 8px; }
+
+.r-rec-tabs { display: flex; gap: 28px; margin: 0 0 28px; border-bottom: 1px solid var(--color-border); font-family: var(--font-ui); font-weight: 700; }
+.r-rec-tabs a { padding: 8px 0 10px; margin-bottom: -1px; border-bottom: 3px solid transparent; color: var(--color-text-secondary); text-decoration: none; }
+.r-rec-tabs a:hover { color: var(--color-accent); }
+.r-rec-tabs a[aria-current="page"] { color: var(--color-text); border-bottom-color: var(--color-accent-red); }
+.r-guide-finder [hidden] { display: none; }
+.r-guide-toc { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: 32px 40px; align-items: start; margin-top: 32px; }
+.r-guide .r-guide-toc section { margin-bottom: 0; }
+.r-guide-toc ol { list-style: none; margin: 10px 0 0; padding: 0; }
+.r-guide-toc li { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; gap: 8px; align-items: baseline; padding: 5px 0; border-bottom: 1px solid var(--color-border); }
+.r-guide-toc li a { font-family: var(--font-ui); font-weight: 700; color: var(--color-stone-900); text-decoration: none; }
+.r-guide-toc li a:hover { color: var(--color-accent); }
+.r-guide-toc__num { font-family: var(--font-ui); font-size: 0.78rem; font-weight: 700; color: var(--color-accent-red); font-variant-numeric: tabular-nums; }
+.r-guide-toc__count { font-family: var(--font-ui); font-size: 0.78rem; color: var(--color-text-muted); }
 
 /* A moment in a recording: timestamp on the left, note and quote on the right */
 .r-moments { list-style: none; margin: 16px 0 0; padding: 0; display: grid; }
@@ -1730,6 +1731,7 @@ a.r-rec__title:hover { color: var(--color-accent); text-decoration: underline; }
 .r-moment__quote { margin: 10px 0 0; padding-left: 14px; border-left: 3px solid var(--color-accent-red); font-style: italic; font-size: 0.92rem; line-height: 1.6; color: var(--color-text-secondary); max-width: 70ch; }
 @media (max-width: 768px) {
   .r-guide-intro { grid-template-columns: minmax(0, 1fr); }
+  .r-guide-reel { display: none; }
 }
 @media (max-width: 560px) {
   .r-moment { grid-template-columns: minmax(0, 1fr); gap: 10px; }
@@ -1738,7 +1740,6 @@ a.r-rec__title:hover { color: var(--color-accent); text-decoration: underline; }
 }
 
 /* Recording transcripts (/resources/transcripts/) */
-.r-guide-jump { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0 0 32px; padding: 0; list-style: none; font-family: var(--font-ui); font-weight: 700; }
 .r-guide-note { font-size: 0.875rem; color: var(--color-text-muted); }
 .r-moment__read { display: inline-block; margin-top: 8px; font-family: var(--font-ui); font-size: 0.85rem; font-weight: 700; }
 .r-rec__transcript { font-family: var(--font-ui); font-size: 0.8rem; }

@@ -1,0 +1,138 @@
+---
+import { getCollection } from 'astro:content';
+import { Layout } from '../../lib/theme';
+import RecordingsTabs from '../../components/redesign/RecordingsTabs.astro';
+import { recordings as guideRecordings, transcripts, transcriptUrl } from '../../lib/guide';
+import { parseVideoUrl } from '../../lib/video';
+
+const resources = await getCollection('resources');
+
+// All video and external resources are recordings — combine them
+const recordings = resources
+  .filter(r => r.data.resourceType === 'video' || r.data.resourceType === 'external')
+  .filter(r => r.data.sourceUrl)
+  .sort((a, b) => {
+    const dateA = a.data.date ? a.data.date.getTime() : 0;
+    const dateB = b.data.date ? b.data.date.getTime() : 0;
+    return dateB - dateA;
+  });
+
+const documents = resources.filter(r => r.data.resourceType === 'document');
+
+// Redesign: tie each recording to its conversation and group by year
+const events = await getCollection('events');
+const eventByVideo = new Map(events.filter(e => e.data.video).map(e => [e.data.video!, e]));
+const videoByDate = new Map(Object.entries(guideRecordings).map(([v, r]) => [r.date, v]));
+const seenUrls = new Set<string>();
+const recordingRows = recordings
+  .filter(r => {
+    // Drop exact duplicates of the same video
+    if (seenUrls.has(r.data.sourceUrl!)) return false;
+    seenUrls.add(r.data.sourceUrl!);
+    return true;
+  })
+  .map(r => {
+    const event = eventByVideo.get(r.id);
+    const date = event?.data.date ?? r.data.date;
+    const host = (() => { try { return new URL(r.data.sourceUrl!).hostname.replace(/^www\./, ''); } catch { return ''; } })();
+    const source = host.includes('vimeo') ? 'Vimeo' : host.includes('youtu') ? 'YouTube' : host.includes('livestream') ? 'Livestream' : 'Watch';
+    // The site may link a different upload of the event, so fall back to the date
+    const urlId = parseVideoUrl(r.data.sourceUrl!).id;
+    const videoId = urlId && transcripts.has(urlId) ? urlId : date && videoByDate.get(date.toISOString().slice(0, 10));
+    return {
+      id: r.id,
+      transcriptUrl: videoId && transcripts.has(videoId) ? transcriptUrl(videoId) : null,
+      title: r.data.title,
+      date,
+      year: date ? String(date.getUTCFullYear()) : 'Undated',
+      eventUrl: event ? `/events/${event.data.seasonPart}-${event.data.seasonYear}/${event.id}#recording` : null,
+      sourceUrl: r.data.sourceUrl!,
+      source,
+    };
+  })
+  .sort((a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0));
+const recordingYears = [...new Set(recordingRows.map(r => r.year))];
+
+---
+<Layout title="All Recordings" description="Every video recording of past Conversations in Black Freedom Studies events at the Schomburg Center.">
+  <div>
+    <div class="r-page-header">
+      <h1>All recordings</h1>
+      <p>{recordingRows.length} recorded conversations from the Schomburg Center</p>
+    </div>
+
+    <RecordingsTabs current="all" />
+
+    <div class="r-archive-bar">
+      <label class="r-archive-bar__search">
+        <span class="r-visually-hidden">Search recordings</span>
+        <input type="search" id="rec-search" placeholder="Search recordings…" autocomplete="off" />
+      </label>
+      <nav class="r-archive-bar__years" aria-label="Jump to year">
+        {recordingYears.map(y => <a href={`#rec-${y}`}>{y}</a>)}
+      </nav>
+    </div>
+    <p class="r-archive-empty" id="rec-search-empty" hidden>No recordings match.</p>
+    <p class="r-visually-hidden" role="status" id="rec-search-status"></p>
+
+    {recordingYears.map(year => (
+      <section class="r-rec-year" id={`rec-${year}`} aria-labelledby={`rec-h-${year}`}>
+        <h2 class="r-list-heading" id={`rec-h-${year}`}>{year}</h2>
+        <ul class="r-rec-list">
+          {recordingRows.filter(r => r.year === year).map(r => (
+            <li class="r-rec" data-search={r.title.toLowerCase()}>
+              <span class="r-rec__icon" aria-hidden="true">▶</span>
+              <a class="r-rec__title" href={r.eventUrl ?? r.sourceUrl} rel={r.eventUrl ? undefined : 'noopener'}>{r.title}</a>
+              {r.date && (
+                <span class="r-rec__date">{r.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })}</span>
+              )}
+              {r.eventUrl && <a class="r-rec__source" href={r.sourceUrl} rel="noopener">{r.source} ↗<span class="r-visually-hidden"> (opens {r.title} on {r.source})</span></a>}
+              {r.transcriptUrl && <a class="r-rec__transcript" href={r.transcriptUrl}>Transcript<span class="r-visually-hidden"> of {r.title}</span></a>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+
+    {documents.length > 0 && (
+      <section class="r-rec-year" aria-labelledby="docs-heading">
+        <h2 class="r-list-heading" id="docs-heading">Documents</h2>
+        <ul class="r-rec-list">
+          {documents.map(r => (
+            <li class="r-rec">
+              <span class="r-rec__icon r-rec__icon--doc" aria-hidden="true">≡</span>
+              {r.data.document ? (
+                <a class="r-rec__title" href={r.data.document} download>{r.data.title}</a>
+              ) : (
+                <span class="r-rec__title">{r.data.title}</span>
+              )}
+              {r.data.authorship && <span class="r-rec__date">{r.data.authorship}</span>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <script>
+      const input = document.getElementById('rec-search') as HTMLInputElement | null;
+      const empty = document.getElementById('rec-search-empty');
+      input?.addEventListener('input', () => {
+        const q = input.value.trim().toLowerCase();
+        let shown = 0;
+        document.querySelectorAll<HTMLElement>('.r-rec-year[id^="rec-"]').forEach(section => {
+          let n = 0;
+          section.querySelectorAll<HTMLElement>('.r-rec').forEach(row => {
+            const match = !q || (row.dataset.search ?? '').includes(q);
+            row.hidden = !match;
+            if (match) n++;
+          });
+          section.hidden = n === 0;
+          shown += n;
+        });
+        if (empty) empty.hidden = shown > 0;
+        const status = document.getElementById('rec-search-status');
+        if (status) status.textContent = q ? `${shown} ${shown === 1 ? 'recording' : 'recordings'} match` : '';
+      });
+    </script>
+  </div>
+</Layout>

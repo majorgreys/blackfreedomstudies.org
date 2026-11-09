@@ -20,45 +20,25 @@ const data = [...finder]
     e: info[m.v].title, u: info[m.v].eventUrl ?? undefined, read: info[m.v].hasTranscript ? transcriptUrl(m.v, m.a) : undefined,
   }));
 ---
-<div class="r-guide" id="guide">
+<div class="r-guide">
   <div class="r-guide-intro">
-    <p class="r-guide-intro__lede">A guided way into {Object.keys(recordings).length} recorded Conversations in Black Freedom Studies: {n} units by place, movement, person and theme, each starting at the minute the conversation turns to it.</p>
+    <div>
+      <p class="r-guide-intro__lede">{n} units by place, movement, person and theme, drawn from {Object.keys(recordings).length} recorded conversations. Each starts at the minute the conversation turns to it.</p>
+      <p class="r-guide-note">Notes and quotes were prepared with AI assistance from machine transcripts, so names are sometimes misheard. Check the recording before citing.</p>
+    </div>
     <div class="r-guide-reel" aria-label={`Recordings per year, ${years[0]} to ${years[years.length - 1]}`} role="img">
       <div class="r-guide-reel__bars">
         {years.map(y => <span style={`height:${8 + 52 * perYear[y] / maxYear}px`} title={`${y}: ${perYear[y]}`}></span>)}
       </div>
       <div class="r-guide-reel__axis"><span>{years[0]}</span><span>recordings per year</span><span>{years[years.length - 1]}</span></div>
     </div>
-    <ul class="r-guide-how">
-      <li><strong>Units</strong> group the recordings by place, movement, person and theme. Each opens with five moments from different years.</li>
-      <li><strong>Each moment</strong> opens the YouTube recording at the second the conversation turns to the topic, with a note on who is speaking and about what.</li>
-      <li><strong>Notes and quotes</strong> were prepared with AI assistance from machine transcripts, so names are sometimes misheard. Check the recording before citing.</li>
-    </ul>
   </div>
 
-  {numbered.map(p => (
-    <section class="r-guide-part" aria-labelledby={`part-${p.name}`}>
-      <h2 class="r-list-heading" id={`part-${p.name}`}>{p.name}</h2>
-      <ul class="r-guide-units">
-        {p.units.map(u => (
-          <li class="r-guide-unit">
-            <span class="r-guide-unit__num" aria-hidden="true">{u.num}</span>
-            <h3><a href={unitUrl(u.key)}>{u.title}</a></h3>
-            <p>{u.intro}</p>
-            <span class="r-guide-unit__meta">{u.stops.length + u.more.length} recordings</span>
-          </li>
-        ))}
-      </ul>
-    </section>
-  ))}
-
-  <section class="r-guide-finder" id="find" aria-labelledby="find-heading">
-    <h2 class="r-list-heading" id="find-heading">Find a person, place or topic</h2>
-    <p>Search every moment rated substantial or central, {finder.length} in all. Central moments come first.</p>
+  <section class="r-guide-finder" id="find" aria-label="Find a person, place or topic">
     <div class="r-archive-bar">
       <label class="r-archive-bar__search">
         <span class="r-visually-hidden">Search moments</span>
-        <input type="search" id="guide-q" placeholder="Try Ella Baker, Detroit, midwives, Attica…" autocomplete="off" />
+        <input type="search" id="guide-q" placeholder={`Search ${finder.length} moments: Ella Baker, Detroit, midwives, Attica…`} autocomplete="off" />
       </label>
       <label class="r-guide-finder__topic">
         <span class="r-visually-hidden">Topic</span>
@@ -73,6 +53,23 @@ const data = [...finder]
     <button class="r-btn r-btn--outline" type="button" id="guide-more" hidden>Show more</button>
     <script type="application/json" id="guide-data" set:html={JSON.stringify(data).replace(/</g, '\\u003c')}></script>
   </section>
+
+  <div class="r-guide-toc" id="guide">
+    {numbered.map(p => (
+      <section aria-labelledby={`part-${p.name}`}>
+        <h2 class="r-list-heading" id={`part-${p.name}`}>{p.name}</h2>
+        <ol>
+          {p.units.map(u => (
+            <li>
+              <span class="r-guide-toc__num" aria-hidden="true">{u.num}</span>
+              <a href={unitUrl(u.key)}>{u.title}</a>
+              <span class="r-guide-toc__count">{u.stops.length + u.more.length}<span class="r-visually-hidden"> recordings</span></span>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))}
+  </div>
 </div>
 
 <script>
@@ -117,6 +114,13 @@ const data = [...finder]
 
   function render() {
     const term = q.value.trim().toLowerCase();
+    // Results appear only once someone searches, so the units stay in view
+    if (!term && !topic.value) {
+      list.replaceChildren();
+      count.textContent = '';
+      more.hidden = true;
+      return;
+    }
     const hits = data.filter(m => (!topic.value || m.t === topic.value)
       && (!term || `${m.t} ${m.e} ${m.n}`.toLowerCase().includes(term)));
     list.replaceChildren(...hits.slice(0, limit).map(row));
