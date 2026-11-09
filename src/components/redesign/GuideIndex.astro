@@ -1,4 +1,5 @@
 ---
+import VideoDialog from './VideoDialog.astro';
 import { parts, finder, recordings, unitUrl, recordingInfo, transcriptUrl, youtubeUrl, hms } from '../../lib/guide';
 
 const info = await recordingInfo();
@@ -71,6 +72,7 @@ const data = [...finder]
     ))}
   </div>
 </div>
+<VideoDialog />
 
 <script>
   interface Item { t: string; s: number; n: string; time: string; play: string; year: string; e: string; u?: string; read?: string }
@@ -100,6 +102,7 @@ const data = [...finder]
     const time = el('div', 'r-moment__time');
     const play = link('r-moment__play', `▶ ${m.time}`, m.play);
     play.setAttribute('rel', 'noopener');
+    play.dataset.playVideo = m.e;
     play.setAttribute('aria-label', `Play ${m.e} at ${m.time} on YouTube`);
     time.append(play, el('span', 'r-moment__year', m.year),
       el('span', 'r-moment__level' + (m.s === 3 ? ' is-central' : ''), m.s === 3 ? 'Central' : 'Substantial'));

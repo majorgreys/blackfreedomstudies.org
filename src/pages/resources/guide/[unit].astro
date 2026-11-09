@@ -1,6 +1,7 @@
 ---
 import { Layout, isClassic } from '../../../lib/theme';
 import GuideMoment from '../../../components/redesign/GuideMoment.astro';
+import VideoDialog from '../../../components/redesign/VideoDialog.astro';
 import { parts, units, unitUrl, hms, youtubeUrl, recordingInfo, type Unit } from '../../../lib/guide';
 
 export function getStaticPaths() {
@@ -53,6 +54,7 @@ const several = unit.topics.length > 1;
         {prev ? <a class="r-pager__prev" href={unitUrl(prev.key)}><span>Previous unit</span>{prev.title}</a> : <a class="r-pager__prev" href="/resources/#guide"><span>Recordings</span>All units</a>}
         {next ? <a class="r-pager__next" href={unitUrl(next.key)}><span>Next unit</span>{next.title}</a> : <a class="r-pager__next" href="/resources/#find"><span>Recordings</span>Find a topic</a>}
       </nav>
+      <VideoDialog />
     </div>
   )}
 </Layout>

@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import { Layout } from '../../lib/theme';
 import RecordingsTabs from '../../components/redesign/RecordingsTabs.astro';
+import VideoDialog from '../../components/redesign/VideoDialog.astro';
 import { finder, recordings as guideRecordings, transcripts, transcriptUrl, youtubeUrl } from '../../lib/guide';
 import { parseVideoUrl } from '../../lib/video';
 // Thumbnails for the Vimeo uploads that Vimeo serves publicly (from its oEmbed API)
@@ -21,6 +22,8 @@ const sourceName = (url: string) => {
   }
   return 'Watch';
 };
+
+const playable = (url: string) => ['YouTube', 'Vimeo'].includes(sourceName(url));
 
 const guideByDate = new Map(Object.entries(guideRecordings).map(([v, r]) => [r.date, v]));
 const resourceById = new Map(resources.map(r => [r.id, r]));
@@ -97,7 +100,8 @@ const documents = resources.filter(r => r.data.resourceType === 'document');
             const d = new Date(`${r.date}T00:00:00Z`);
             return (
               <li class="r-vid" data-search={[r.title, ...r.speakers, ...r.topics].join(' ').toLowerCase()}>
-                <a class="r-vid__link" href={r.href} rel={r.href.startsWith('http') ? 'noopener' : undefined}>
+                <a class="r-vid__link" href={r.href} rel={r.href.startsWith('http') ? 'noopener' : undefined}
+                  data-play-video={playable(r.watch) ? r.title : undefined} data-video-url={playable(r.watch) ? r.watch : undefined}>
                   <span class="r-vid__thumb">
                     {thumb
                       ? <img src={thumb} alt="" width="480" height="270" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
@@ -117,7 +121,12 @@ const documents = resources.filter(r => r.data.resourceType === 'document');
                     </span>
                   </span>
                 </a>
-                {r.transcript && <a class="r-vid__transcript" href={r.transcript}>Read the transcript<span class="r-visually-hidden"> of {r.title}</span></a>}
+                {(r.transcript || r.href.startsWith('/')) && (
+                  <p class="r-vid__links">
+                    {r.href.startsWith('/') && <a href={r.href.replace('#recording', '')}>Event page<span class="r-visually-hidden">: {r.title}</span></a>}
+                    {r.transcript && <a href={r.transcript}>Transcript<span class="r-visually-hidden"> of {r.title}</span></a>}
+                  </p>
+                )}
               </li>
             );
           })}
@@ -139,6 +148,8 @@ const documents = resources.filter(r => r.data.resourceType === 'document');
         </ul>
       </section>
     )}
+
+    <VideoDialog />
 
     <script>
       const input = document.getElementById('rec-search') as HTMLInputElement | null;

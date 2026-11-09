@@ -7,7 +7,7 @@ const r = info[m.v];
 ---
 <li class="r-moment">
   <div class="r-moment__time">
-    <a class="r-moment__play" href={youtubeUrl(m.v, m.k)} rel="noopener">
+    <a class="r-moment__play" href={youtubeUrl(m.v, m.k)} rel="noopener" data-play-video={r.title}>
       <span aria-hidden="true">▶</span> {hms(m.k)}<span class="r-visually-hidden"> into {r.title} on YouTube</span>
     </a>
     <span class="r-moment__year">{r.date.slice(0, 4)}</span>
