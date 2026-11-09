@@ -2,63 +2,67 @@
 import { getCollection } from 'astro:content';
 import { Layout } from '../../lib/theme';
 import RecordingsTabs from '../../components/redesign/RecordingsTabs.astro';
-import { recordings as guideRecordings, transcripts, transcriptUrl } from '../../lib/guide';
-import { parseVideoUrl } from '../../lib/video';
+import { finder, recordings as guideRecordings, transcripts, transcriptUrl, youtubeUrl } from '../../lib/guide';
 
-const resources = await getCollection('resources');
+const [events, resources, speakers] = await Promise.all([
+  getCollection('events'), getCollection('resources'), getCollection('speakers'),
+]);
+const speakerName = new Map(speakers.map(s => [s.id, s.data.name]));
+const isRecording = (r: (typeof resources)[number]) =>
+  (r.data.resourceType === 'video' || r.data.resourceType === 'external') && !!r.data.sourceUrl;
+const dayOf = (d: Date) => d.toISOString().slice(0, 10);
+const sourceName = (url: string) => {
+  const host = (() => { try { return new URL(url).hostname; } catch { return ''; } })();
+  for (const [needle, name] of [['youtu', 'YouTube'], ['vimeo', 'Vimeo'], ['livestream', 'Livestream'], ['c-span', 'C-SPAN']]) {
+    if (host.includes(needle)) return name;
+  }
+  return 'Watch';
+};
 
-// All video and external resources are recordings — combine them
-const recordings = resources
-  .filter(r => r.data.resourceType === 'video' || r.data.resourceType === 'external')
-  .filter(r => r.data.sourceUrl)
-  .sort((a, b) => {
-    const dateA = a.data.date ? a.data.date.getTime() : 0;
-    const dateB = b.data.date ? b.data.date.getTime() : 0;
-    return dateB - dateA;
-  });
+const guideByDate = new Map(Object.entries(guideRecordings).map(([v, r]) => [r.date, v]));
+const resourceById = new Map(resources.map(r => [r.id, r]));
+const resourceByDate = new Map(resources.filter(r => isRecording(r) && r.data.date).map(r => [dayOf(r.data.date!), r]));
 
+// The topics each recording is most about, from the guide's scores
+const centralTopics = new Map<string, string[]>();
+for (const m of finder) if (m.s === 3) centralTopics.set(m.v, [...(centralTopics.get(m.v) ?? []), m.t]);
+
+interface Row { key: string; date: string; title: string; href: string; speakers: string[]; topics: string[]; watch: string; transcript: string | null }
+const used = new Set<string>();
+
+// One row per event with a recording, preferring the YouTube upload the guide links to
+const eventRows = events.flatMap((e): Row[] => {
+  const date = dayOf(e.data.date);
+  const video = guideByDate.get(date);
+  const resource = (e.data.video && resourceById.get(e.data.video)) || resourceByDate.get(date);
+  if (resource) used.add(resource.id);
+  const watch = video ? youtubeUrl(video) : resource && isRecording(resource) ? resource.data.sourceUrl! : null;
+  if (!watch) return [];
+  return [{
+    key: e.id, date, title: e.data.title,
+    href: `/events/${e.data.seasonPart}-${e.data.seasonYear}/${e.id}`,
+    speakers: e.data.speakers.map((s: string) => speakerName.get(s)).filter(Boolean) as string[],
+    topics: video ? (centralTopics.get(video) ?? []).slice(0, 4) : [],
+    watch, transcript: video && transcripts.has(video) ? transcriptUrl(video) : null,
+  }];
+});
+// Recordings from before the series, which have no event page
+const earlyRows: Row[] = Object.entries(guideRecordings).filter(([, r]) => r.date < '2013').map(([v, r]) => ({
+  key: v, date: r.date, title: r.title, href: youtubeUrl(v), speakers: [], topics: (centralTopics.get(v) ?? []).slice(0, 4),
+  watch: youtubeUrl(v), transcript: transcripts.has(v) ? transcriptUrl(v) : null,
+}));
+const rows = [...eventRows, ...earlyRows].sort((a, b) => b.date.localeCompare(a.date));
+const years = [...new Set(rows.map(r => r.date.slice(0, 4)))];
+const shortDate = (d: string) => new Date(`${d}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+
+const related = resources.filter(r => isRecording(r) && !used.has(r.id));
 const documents = resources.filter(r => r.data.resourceType === 'document');
-
-// Redesign: tie each recording to its conversation and group by year
-const events = await getCollection('events');
-const eventByVideo = new Map(events.filter(e => e.data.video).map(e => [e.data.video!, e]));
-const videoByDate = new Map(Object.entries(guideRecordings).map(([v, r]) => [r.date, v]));
-const seenUrls = new Set<string>();
-const recordingRows = recordings
-  .filter(r => {
-    // Drop exact duplicates of the same video
-    if (seenUrls.has(r.data.sourceUrl!)) return false;
-    seenUrls.add(r.data.sourceUrl!);
-    return true;
-  })
-  .map(r => {
-    const event = eventByVideo.get(r.id);
-    const date = event?.data.date ?? r.data.date;
-    const host = (() => { try { return new URL(r.data.sourceUrl!).hostname.replace(/^www\./, ''); } catch { return ''; } })();
-    const source = host.includes('vimeo') ? 'Vimeo' : host.includes('youtu') ? 'YouTube' : host.includes('livestream') ? 'Livestream' : 'Watch';
-    // The site may link a different upload of the event, so fall back to the date
-    const urlId = parseVideoUrl(r.data.sourceUrl!).id;
-    const videoId = urlId && transcripts.has(urlId) ? urlId : date && videoByDate.get(date.toISOString().slice(0, 10));
-    return {
-      id: r.id,
-      transcriptUrl: videoId && transcripts.has(videoId) ? transcriptUrl(videoId) : null,
-      title: r.data.title,
-      date,
-      year: date ? String(date.getUTCFullYear()) : 'Undated',
-      eventUrl: event ? `/events/${event.data.seasonPart}-${event.data.seasonYear}/${event.id}#recording` : null,
-      sourceUrl: r.data.sourceUrl!,
-      source,
-    };
-  })
-  .sort((a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0));
-const recordingYears = [...new Set(recordingRows.map(r => r.year))];
-
 ---
 <Layout title="All Recordings" description="Every video recording of past Conversations in Black Freedom Studies events at the Schomburg Center.">
   <div>
     <div class="r-page-header">
       <h1>All recordings</h1>
-      <p>{recordingRows.length} recorded conversations from the Schomburg Center</p>
+      <p>{rows.length} recorded conversations, {years[years.length - 1]} to {years[0]}</p>
     </div>
 
     <RecordingsTabs current="all" />
@@ -66,47 +70,46 @@ const recordingYears = [...new Set(recordingRows.map(r => r.year))];
     <div class="r-archive-bar">
       <label class="r-archive-bar__search">
         <span class="r-visually-hidden">Search recordings</span>
-        <input type="search" id="rec-search" placeholder="Search recordings…" autocomplete="off" />
+        <input type="search" id="rec-search" placeholder="Search by title, speaker or topic…" autocomplete="off" />
       </label>
       <nav class="r-archive-bar__years" aria-label="Jump to year">
-        {recordingYears.map(y => <a href={`#rec-${y}`}>{y}</a>)}
+        {years.map(y => <a href={`#rec-${y}`}>{y}</a>)}
       </nav>
     </div>
     <p class="r-archive-empty" id="rec-search-empty" hidden>No recordings match.</p>
     <p class="r-visually-hidden" role="status" id="rec-search-status"></p>
 
-    {recordingYears.map(year => (
+    {years.map(year => (
       <section class="r-rec-year" id={`rec-${year}`} aria-labelledby={`rec-h-${year}`}>
-        <h2 class="r-list-heading" id={`rec-h-${year}`}>{year}</h2>
+        <h2 class="r-rec-year__label" id={`rec-h-${year}`}>{year}</h2>
         <ul class="r-rec-list">
-          {recordingRows.filter(r => r.year === year).map(r => (
-            <li class="r-rec" data-search={r.title.toLowerCase()}>
-              <span class="r-rec__icon" aria-hidden="true">▶</span>
-              <a class="r-rec__title" href={r.eventUrl ?? r.sourceUrl} rel={r.eventUrl ? undefined : 'noopener'}>{r.title}</a>
-              {r.date && (
-                <span class="r-rec__date">{r.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })}</span>
-              )}
-              {r.eventUrl && <a class="r-rec__source" href={r.sourceUrl} rel="noopener">{r.source} ↗<span class="r-visually-hidden"> (opens {r.title} on {r.source})</span></a>}
-              {r.transcriptUrl && <a class="r-rec__transcript" href={r.transcriptUrl}>Transcript<span class="r-visually-hidden"> of {r.title}</span></a>}
+          {rows.filter(r => r.date.startsWith(year)).map(r => (
+            <li class="r-rec" data-search={[r.title, ...r.speakers, ...r.topics].join(' ').toLowerCase()}>
+              <span class="r-rec__date">{shortDate(r.date)}</span>
+              <div class="r-rec__main">
+                <a class="r-rec__title" href={r.href}>{r.title}</a>
+                {r.speakers.length > 0 && <p class="r-rec__speakers">{r.speakers.join(', ')}</p>}
+                {r.topics.length > 0 && <p class="r-rec__topics">{r.topics.join(' · ')}</p>}
+              </div>
+              <div class="r-rec__actions">
+                <a class="r-rec__watch" href={r.watch} rel="noopener"><span aria-hidden="true">▶</span> {sourceName(r.watch)}<span class="r-visually-hidden"> recording of {r.title}</span></a>
+                {r.transcript && <a class="r-rec__transcript" href={r.transcript}>Transcript<span class="r-visually-hidden"> of {r.title}</span></a>}
+              </div>
             </li>
           ))}
         </ul>
       </section>
     ))}
 
-    {documents.length > 0 && (
-      <section class="r-rec-year" aria-labelledby="docs-heading">
-        <h2 class="r-list-heading" id="docs-heading">Documents</h2>
-        <ul class="r-rec-list">
+    {(related.length > 0 || documents.length > 0) && (
+      <section class="r-rec-related" aria-labelledby="related-heading">
+        <h2 class="r-list-heading" id="related-heading">Related material</h2>
+        <ul class="r-rec-related__list">
+          {related.map(r => <li><a href={r.data.sourceUrl} rel="noopener">{r.data.title}</a>{r.data.date && <span> {r.data.date.getUTCFullYear()}</span>}</li>)}
           {documents.map(r => (
-            <li class="r-rec">
-              <span class="r-rec__icon r-rec__icon--doc" aria-hidden="true">≡</span>
-              {r.data.document ? (
-                <a class="r-rec__title" href={r.data.document} download>{r.data.title}</a>
-              ) : (
-                <span class="r-rec__title">{r.data.title}</span>
-              )}
-              {r.data.authorship && <span class="r-rec__date">{r.data.authorship}</span>}
+            <li>
+              {r.data.document ? <a href={r.data.document} download>{r.data.title}</a> : r.data.title}
+              {r.data.authorship && <span> {r.data.authorship}</span>}
             </li>
           ))}
         </ul>
@@ -119,7 +122,7 @@ const recordingYears = [...new Set(recordingRows.map(r => r.year))];
       input?.addEventListener('input', () => {
         const q = input.value.trim().toLowerCase();
         let shown = 0;
-        document.querySelectorAll<HTMLElement>('.r-rec-year[id^="rec-"]').forEach(section => {
+        document.querySelectorAll<HTMLElement>('.r-rec-year').forEach(section => {
           let n = 0;
           section.querySelectorAll<HTMLElement>('.r-rec').forEach(row => {
             const match = !q || (row.dataset.search ?? '').includes(q);

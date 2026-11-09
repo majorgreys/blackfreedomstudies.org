@@ -1519,37 +1519,33 @@ section h2::after {
   border-bottom: 3px solid var(--color-stone-900);
 }
 .r-list-heading::after { display: none; }
-.r-rec-year { margin-bottom: 32px; scroll-margin-top: var(--archive-bar-h, 140px); }
+.r-rec-year { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 0 24px; padding-top: 14px; margin-bottom: 28px; border-top: 3px solid var(--color-stone-900); scroll-margin-top: var(--archive-bar-h, 140px); }
+.r-rec-year[hidden] { display: none; }
+h2.r-rec-year__label { position: sticky; top: var(--archive-bar-h, 96px); align-self: start; margin: 0; padding: 0; font-family: var(--font-display); font-weight: 800; font-size: 2rem; line-height: 1; color: var(--color-accent-red); font-variant-numeric: tabular-nums; }
+h2.r-rec-year__label::after { display: none; }
 .r-rec-list { list-style: none; margin: 0; padding: 0; }
-.r-rec {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 8px;
-  border-bottom: 1px solid var(--color-border);
-}
-.r-rec:hover { background: var(--color-teal-50); }
-.r-rec__icon {
-  width: 28px;
-  height: 28px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: var(--color-stone-900);
-  color: #fff;
-  font-size: 11px;
-}
-.r-rec__icon--doc { background: var(--color-stone-500); }
-.r-rec__title { flex: 1; min-width: 0; font-family: var(--font-ui); font-weight: 700; color: var(--color-stone-900); text-decoration: none; }
+.r-rec { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 4px 18px; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--color-border); }
+.r-rec:first-child { padding-top: 2px; }
+.r-rec:last-child { border-bottom: 0; }
+.r-rec[hidden] { display: none; }
+.r-rec__date { font-family: var(--font-ui); font-size: 0.8rem; color: var(--color-text-muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.r-rec__main p { margin: 2px 0 0; }
+.r-rec__title { font-family: var(--font-ui); font-size: 1.05rem; font-weight: 700; line-height: 1.3; color: var(--color-stone-900); text-decoration: none; }
 a.r-rec__title:hover { color: var(--color-accent); text-decoration: underline; }
-.r-rec__date { font-family: var(--font-ui); font-size: 0.8rem; color: var(--color-text-muted); white-space: nowrap; }
-.r-rec__source { font-family: var(--font-ui); font-size: 0.8rem; font-weight: 700; white-space: nowrap; display: inline-block; padding: 6px 4px; }
+.r-rec__speakers { font-size: 0.9rem; color: var(--color-text-secondary); }
+.r-rec__topics { font-family: var(--font-ui); font-size: 0.78rem; font-weight: 700; color: var(--color-text-muted); }
+.r-rec__actions { display: flex; align-items: baseline; gap: 14px; font-family: var(--font-ui); font-size: 0.82rem; font-weight: 700; white-space: nowrap; }
+.r-rec__watch { color: var(--color-accent); text-decoration: none; }
+.r-rec__watch:hover { text-decoration: underline; }
+.r-rec__watch span[aria-hidden] { font-size: 0.68rem; }
+.r-rec-related { margin-top: 40px; }
+.r-rec-related__list { list-style: none; margin: 12px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap: 8px 32px; font-size: 0.95rem; }
+.r-rec-related__list span { color: var(--color-text-muted); font-size: 0.85rem; }
 @media (max-width: 640px) {
-  .r-rec { flex-wrap: wrap; }
-  .r-rec__title { flex-basis: calc(100% - 40px); }
-  .r-rec__date { margin-left: 40px; }
+  .r-rec-year { grid-template-columns: minmax(0, 1fr); }
+  h2.r-rec-year__label { position: static; margin-bottom: 10px; }
+  .r-rec { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .r-rec__actions { margin-top: 6px; }
 }
 
 /* ── Books ── */
@@ -1742,7 +1738,6 @@ a.r-rec__title:hover { color: var(--color-accent); text-decoration: underline; }
 /* Recording transcripts (/resources/transcripts/) */
 .r-guide-note { font-size: 0.875rem; color: var(--color-text-muted); }
 .r-moment__read { display: inline-block; margin-top: 8px; font-family: var(--font-ui); font-size: 0.85rem; font-weight: 700; }
-.r-rec__transcript { font-family: var(--font-ui); font-size: 0.8rem; }
 .r-transcript { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 40px; }
 .r-transcript__side { order: 2; position: sticky; top: 16px; align-self: start; max-height: calc(100vh - 32px); overflow: auto; }
 .r-transcript__player { position: relative; aspect-ratio: 16 / 9; background: var(--color-stone-900); }
