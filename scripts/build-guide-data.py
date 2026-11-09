@@ -14,6 +14,8 @@ from pathlib import Path
 
 CBFS = Path(sys.argv[1] if len(sys.argv) > 1 else Path.home() / "dev/git.lotus.yt/cbfs-transcripts")
 OUT = Path(__file__).resolve().parent.parent / "src/data/guide"
+# Hand-edited units: intro and stops (moment, note and quote) chosen by an editor, overriding the automatic picks
+CURATED = Path(__file__).resolve().parent / "guide-curation.json"
 
 PARTS = [
  ("Places",[
@@ -110,6 +112,17 @@ def main():
     for r in moments:
         by_topic.setdefault(r["topic"], []).append(r)
 
+    curated = json.loads(CURATED.read_text()) if CURATED.exists() else {}
+    categories = {r["topic"]: r["category"] for r in rows}
+    scores = {(r["topic"], r["video_id"]): int(r["score"]) for r in rows if r["source"] == "reviewed"}
+
+    def curated_item(c):
+        starts = [p[0] for p in paras[c["video_id"]]]
+        k = int(c["start_seconds"])
+        i = max(bisect.bisect_right(starts, k) - 1, 0)
+        return {"t": c["topic"], "c": categories.get(c["topic"], ""), "v": c["video_id"], "k": k, "a": starts[i] if starts else 0,
+                "s": scores.get((c["topic"], c["video_id"]), 2), "n": c["note"], "x": c["quote"]}
+
     parts = []
     for name, units in PARTS:
         out_units = []
@@ -121,10 +134,18 @@ def main():
                 if r["video_id"] not in seen:
                     seen.add(r["video_id"])
                     pick.append(r)
-            stops = choose(pick)
-            more = sorted((r for r in pick if r not in stops), key=lambda r: r["date"])
+            if key in curated:
+                cu = curated[key]
+                stop_items = [curated_item(c) for c in sorted(cu["stops"], key=lambda c: index[c["video_id"]]["date"])]
+                used = {c["video_id"] for c in cu["stops"]}
+                intro = cu.get("intro") or intro
+                more = sorted((r for r in pick if r["video_id"] not in used), key=lambda r: r["date"])
+            else:
+                stops = choose(pick)
+                stop_items = [item(r) for r in stops]
+                more = sorted((r for r in pick if r not in stops), key=lambda r: r["date"])
             out_units.append({"key": key, "title": title, "intro": intro, "topics": topics,
-                              "stops": [item(r) for r in stops], "more": [item(r, 30) for r in more]})
+                              "stops": stop_items, "more": [item(r, 30) for r in more]})
         parts.append({"name": name, "units": out_units})
 
     recordings = {v: {"date": r["date"], "kind": r["caption_type"], "title": titles.get(v, "")} for v, r in index.items()}
