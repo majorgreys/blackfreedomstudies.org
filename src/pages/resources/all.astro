@@ -3,6 +3,9 @@ import { getCollection } from 'astro:content';
 import { Layout } from '../../lib/theme';
 import RecordingsTabs from '../../components/redesign/RecordingsTabs.astro';
 import { finder, recordings as guideRecordings, transcripts, transcriptUrl, youtubeUrl } from '../../lib/guide';
+import { parseVideoUrl } from '../../lib/video';
+// Thumbnails for the Vimeo uploads that Vimeo serves publicly (from its oEmbed API)
+import vimeoThumbs from '../../data/vimeo-thumbnails.json';
 
 const [events, resources, speakers] = await Promise.all([
   getCollection('events'), getCollection('resources'), getCollection('speakers'),
@@ -28,6 +31,13 @@ const centralTopics = new Map<string, string[]>();
 for (const m of finder) if (m.s === 3) centralTopics.set(m.v, [...(centralTopics.get(m.v) ?? []), m.t]);
 
 interface Row { key: string; date: string; title: string; href: string; speakers: string[]; topics: string[]; watch: string; transcript: string | null }
+const thumbOf = (watch: string) => {
+  const { provider, id } = parseVideoUrl(watch);
+  if (provider === 'youtube') return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+  if (provider === 'vimeo') return (vimeoThumbs as Record<string, string>)[id ?? ''] ?? null;
+  return null;
+};
+const speakerLine = (names: string[]) => names.length > 3 ? `${names.slice(0, 3).join(', ')} and ${names.length - 3} more` : names.join(', ');
 const used = new Set<string>();
 
 // One row per event with a recording, preferring the YouTube upload the guide links to
@@ -40,7 +50,7 @@ const eventRows = events.flatMap((e): Row[] => {
   if (!watch) return [];
   return [{
     key: e.id, date, title: e.data.title,
-    href: `/events/${e.data.seasonPart}-${e.data.seasonYear}/${e.id}`,
+    href: `/events/${e.data.seasonPart}-${e.data.seasonYear}/${e.id}#recording`,
     speakers: e.data.speakers.map((s: string) => speakerName.get(s)).filter(Boolean) as string[],
     topics: video ? (centralTopics.get(video) ?? []).slice(0, 4) : [],
     watch, transcript: video && transcripts.has(video) ? transcriptUrl(video) : null,
@@ -53,7 +63,6 @@ const earlyRows: Row[] = Object.entries(guideRecordings).filter(([, r]) => r.dat
 }));
 const rows = [...eventRows, ...earlyRows].sort((a, b) => b.date.localeCompare(a.date));
 const years = [...new Set(rows.map(r => r.date.slice(0, 4)))];
-const shortDate = (d: string) => new Date(`${d}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
 
 const related = resources.filter(r => isRecording(r) && !used.has(r.id));
 const documents = resources.filter(r => r.data.resourceType === 'document');
@@ -82,21 +91,36 @@ const documents = resources.filter(r => r.data.resourceType === 'document');
     {years.map(year => (
       <section class="r-rec-year" id={`rec-${year}`} aria-labelledby={`rec-h-${year}`}>
         <h2 class="r-rec-year__label" id={`rec-h-${year}`}>{year}</h2>
-        <ul class="r-rec-list">
-          {rows.filter(r => r.date.startsWith(year)).map(r => (
-            <li class="r-rec" data-search={[r.title, ...r.speakers, ...r.topics].join(' ').toLowerCase()}>
-              <span class="r-rec__date">{shortDate(r.date)}</span>
-              <div class="r-rec__main">
-                <a class="r-rec__title" href={r.href}>{r.title}</a>
-                {r.speakers.length > 0 && <p class="r-rec__speakers">{r.speakers.join(', ')}</p>}
-                {r.topics.length > 0 && <p class="r-rec__topics">{r.topics.join(' · ')}</p>}
-              </div>
-              <div class="r-rec__actions">
-                <a class="r-rec__watch" href={r.watch} rel="noopener"><span aria-hidden="true">▶</span> {sourceName(r.watch)}<span class="r-visually-hidden"> recording of {r.title}</span></a>
-                {r.transcript && <a class="r-rec__transcript" href={r.transcript}>Transcript<span class="r-visually-hidden"> of {r.title}</span></a>}
-              </div>
-            </li>
-          ))}
+        <ul class="r-vid-grid">
+          {rows.filter(r => r.date.startsWith(year)).map(r => {
+            const thumb = thumbOf(r.watch);
+            const d = new Date(`${r.date}T00:00:00Z`);
+            return (
+              <li class="r-vid" data-search={[r.title, ...r.speakers, ...r.topics].join(' ').toLowerCase()}>
+                <a class="r-vid__link" href={r.href} rel={r.href.startsWith('http') ? 'noopener' : undefined}>
+                  <span class="r-vid__thumb">
+                    {thumb
+                      ? <img src={thumb} alt="" width="480" height="270" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                      : <span class="r-vid__placeholder" aria-hidden="true">{year}</span>}
+                    <span class="r-vid__play" aria-hidden="true"></span>
+                    <span class="r-vid__source">{sourceName(r.watch)}</span>
+                  </span>
+                  <span class="r-vid__body">
+                    <span class="r-vid__date">
+                      <span class="r-vid__month">{d.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' })}</span>
+                      <span class="r-vid__day">{d.getUTCDate()}</span>
+                    </span>
+                    <span class="r-vid__text">
+                      <span class="r-vid__title">{r.title}</span>
+                      {r.speakers.length > 0 && <span class="r-vid__speakers">{speakerLine(r.speakers)}</span>}
+                      {r.topics.length > 0 && <span class="r-vid__topics">{r.topics.join(' · ')}</span>}
+                    </span>
+                  </span>
+                </a>
+                {r.transcript && <a class="r-vid__transcript" href={r.transcript}>Read the transcript<span class="r-visually-hidden"> of {r.title}</span></a>}
+              </li>
+            );
+          })}
         </ul>
       </section>
     ))}
@@ -124,7 +148,7 @@ const documents = resources.filter(r => r.data.resourceType === 'document');
         let shown = 0;
         document.querySelectorAll<HTMLElement>('.r-rec-year').forEach(section => {
           let n = 0;
-          section.querySelectorAll<HTMLElement>('.r-rec').forEach(row => {
+          section.querySelectorAll<HTMLElement>('.r-vid').forEach(row => {
             const match = !q || (row.dataset.search ?? '').includes(q);
             row.hidden = !match;
             if (match) n++;
