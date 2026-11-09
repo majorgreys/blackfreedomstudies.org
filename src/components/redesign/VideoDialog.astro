@@ -44,6 +44,7 @@
     iframe.title = `Recording: ${title.textContent}`;
     iframe.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
     iframe.allowFullscreen = true;
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin'; // YouTube refuses to play without a referrer
     frame.replaceChildren(iframe);
     dialog.showModal();
   });
