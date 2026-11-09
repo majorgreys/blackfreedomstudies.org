@@ -1,0 +1,22 @@
+---
+import { hms, watchUrl, level, type Moment } from '../../lib/guide';
+
+interface Props { m: Moment; event?: { url: string; title: string }; excerpt?: boolean; topic?: boolean; }
+const { m, event, excerpt = true, topic = false } = Astro.props;
+const title = event?.title ?? m.e;
+---
+<li class="r-moment">
+  <div class="r-moment__time">
+    <a class="r-moment__play" href={watchUrl(m)} rel="noopener">
+      <span aria-hidden="true">▶</span> {hms(m.k)}<span class="r-visually-hidden"> into {title} on YouTube</span>
+    </a>
+    <span class="r-moment__year">{m.d.slice(0, 4)}</span>
+    <span class:list={['r-moment__level', { 'is-central': m.s === 3 }]}>{level(m.s)}</span>
+  </div>
+  <div class="r-moment__body">
+    {topic && <p class="r-moment__topic">{m.t}</p>}
+    <p class="r-moment__event">{event ? <a href={event.url}>{title}</a> : title}</p>
+    <p class="r-moment__note">{m.n}</p>
+    {excerpt && m.x && <blockquote class="r-moment__quote">“{m.x}”</blockquote>}
+  </div>
+</li>

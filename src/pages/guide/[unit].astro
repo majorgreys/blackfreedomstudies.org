@@ -1,0 +1,61 @@
+---
+import { Layout, isClassic } from '../../lib/theme';
+import GuideMoment from '../../components/redesign/GuideMoment.astro';
+import { guide, units, eventPages, hms, watchUrl, type Moment } from '../../lib/guide';
+
+export function getStaticPaths() {
+  return units.map((u, i) => ({ params: { unit: u.key }, props: { u, prev: units[i - 1], next: units[i + 1] } }));
+}
+const { u, prev, next } = Astro.props;
+const events = await eventPages();
+
+// Every other substantial or central moment on this unit's topics, one per recording and topic
+const featured = new Set(u.stops.map(m => `${m.v}:${m.k}`));
+const seen = new Set<string>();
+const rest: Moment[] = guide.moments
+  .filter(m => u.topics.includes(m.t) && !featured.has(`${m.v}:${m.k}`))
+  .sort((a, b) => b.s - a.s || u.topics.indexOf(a.t) - u.topics.indexOf(b.t))
+  .filter(m => (seen.has(m.v) ? false : (seen.add(m.v), true)))
+  .sort((a, b) => a.d.localeCompare(b.d));
+const description = `${u.intro} Five moments to start from, and ${rest.length} more across the Conversations in Black Freedom Studies recordings.`;
+---
+<Layout title={`${u.name} · Study Guide`} description={description}>
+  {isClassic ? (
+    <div>
+      <div class="c-page-header"><h1>{u.name}</h1></div>
+      <p>{u.intro}</p>
+      <ul>{[...u.stops, ...rest].map(m => <li><a href={watchUrl(m)}>{hms(m.k)}</a> {m.d.slice(0, 4)}, {events.get(m.d)?.title ?? m.e}: {m.n}</li>)}</ul>
+      <p><a href="/guide/">All units</a></p>
+    </div>
+  ) : (
+    <div class="r-guide">
+      <div class="r-page-header">
+        <p class="r-guide-kicker"><a href="/guide/">Study Guide</a> · {u.part} · Unit {u.num}</p>
+        <h1>{u.name}</h1>
+      </div>
+      <p class="r-guide-intro__lede">{u.intro}</p>
+
+      <section aria-labelledby="start-heading">
+        <h2 class="r-list-heading" id="start-heading">Start here</h2>
+        <ol class="r-moments r-moments--featured">
+          {u.stops.map(m => <GuideMoment m={m} event={events.get(m.d)} />)}
+        </ol>
+      </section>
+
+      {rest.length > 0 && (
+        <section aria-labelledby="more-heading">
+          <h2 class="r-list-heading" id="more-heading">More moments</h2>
+          <p class="r-guide-sub">{rest.length} more recordings that spend real time on {u.topics.length > 1 ? 'these topics' : 'this topic'}, oldest first.</p>
+          <ol class="r-moments">
+            {rest.map(m => <GuideMoment m={m} event={events.get(m.d)} excerpt={false} topic={u.topics.length > 1} />)}
+          </ol>
+        </section>
+      )}
+
+      <nav class="r-pager" aria-label="Units">
+        {prev ? <a class="r-pager__prev" href={`/guide/${prev.key}/`}><span>Previous unit</span>{prev.name}</a> : <a class="r-pager__prev" href="/guide/"><span>Study Guide</span>All units</a>}
+        {next ? <a class="r-pager__next" href={`/guide/${next.key}/`}><span>Next unit</span>{next.name}</a> : <a class="r-pager__next" href="/guide/#find"><span>Study Guide</span>Find a topic</a>}
+      </nav>
+    </div>
+  )}
+</Layout>
