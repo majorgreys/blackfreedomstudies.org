@@ -45,26 +45,32 @@ const inArchive = ['/interviews/', '/books', '/resources/'].some(section);
       </div>
     </nav>
   ) : (
-    <nav class="r-navbar">
-      <a class="r-navbar__brand" href="/"><span class="r-brand-line1">Black</span><br/><span class="r-brand-line2">Freedom</span><br/><span class="r-brand-line3">Studies</span></a>
-      <div class="r-navbar__bar">
-        <button class="r-navbar__toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links" id="nav-toggle">☰</button>
-        <ul class="r-navbar__links" id="nav-links">
-          <li><a href="/events/" aria-current={current('/events/')}>Conversations</a></li>
-          <li><a href="/speakers/" aria-current={current('/speakers/')}>Speakers</a></li>
-          <li class="r-navbar__dropdown">
-            <button class:list={['r-navbar__dropdown-trigger', { 'is-current': inArchive }]} type="button" aria-expanded="false" aria-controls="nav-archive">Archive</button>
-            <ul class="r-navbar__dropdown-menu" id="nav-archive">
-              <li><a href="/resources/" aria-current={current('/resources/')}>Recordings</a></li>
-              <li><a href="/interviews/" aria-current={current('/interviews/')}>Interviews</a></li>
-              <li><a href="/books" aria-current={current('/books')}>Books</a></li>
-            </ul>
-          </li>
-          <li><a href="/news/" aria-current={current('/news/')}>News</a></li>
-          <li><a href="/about" aria-current={current('/about')}>About</a></li>
-        </ul>
-      </div>
-    </nav>
+    <header class="r-masthead">
+      <div class="r-tricolor" aria-hidden="true"></div>
+      <nav class="r-navbar" aria-label="Main">
+        <a class="r-navbar__brand" href="/">
+          <span class="r-navbar__kicker">Conversations in</span>
+          <span class="r-navbar__name">Black Freedom Studies</span>
+        </a>
+        <div class="r-navbar__bar">
+          <button class="r-navbar__toggle" aria-expanded="false" aria-controls="nav-links" id="nav-toggle">Menu</button>
+          <ul class="r-navbar__links" id="nav-links">
+            <li><a href="/events/" aria-current={current('/events/')}>Conversations</a></li>
+            <li><a href="/speakers/" aria-current={current('/speakers/')}>Speakers</a></li>
+            <li class="r-navbar__dropdown">
+              <button class:list={['r-navbar__dropdown-trigger', { 'is-current': inArchive }]} type="button" aria-expanded="false" aria-controls="nav-archive">Archive</button>
+              <ul class="r-navbar__dropdown-menu" id="nav-archive">
+                <li><a href="/resources/" aria-current={current('/resources/')}>Recordings</a></li>
+                <li><a href="/interviews/" aria-current={current('/interviews/')}>Interviews</a></li>
+                <li><a href="/books" aria-current={current('/books')}>Books</a></li>
+              </ul>
+            </li>
+            <li><a href="/news/" aria-current={current('/news/')}>News</a></li>
+            <li><a href="/about" aria-current={current('/about')}>About</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
   )}
 
   <main class="container" id="main" tabindex="-1">
@@ -82,20 +88,17 @@ const inArchive = ['/interviews/', '/books', '/resources/'].some(section);
   ) : (
     <footer class="r-footer">
       <div class="r-footer__bar">
+        <p class="r-footer__motto">Each one teach one</p>
+        <p class="r-footer__motto-note">The tradition of mass self-education this series continues. <a href="/about">About the series</a></p>
+        <div class="r-tricolor" aria-hidden="true"></div>
         <div class="r-footer__content">
           <div class="r-footer__info">
-            <a href="mailto:blackfreedomstudies@gmail.com">Email us</a>
-            <span class="r-footer__sep" aria-hidden="true">·</span>
-            <a href="https://twitter.com/SchomburgCBFS">Follow us on X</a>
+            <a href="mailto:blackfreedomstudies@gmail.com">Email the curators</a>
+            <a href="https://twitter.com/SchomburgCBFS">@SchomburgCBFS on X</a>
           </div>
           <div class="r-footer__sponsors">
             Supported by the <a href="https://www.nypl.org/locations/schomburg">Schomburg Center for Research in Black Culture</a> and the <a href="https://gc.cuny.edu">CUNY Graduate Center</a>
           </div>
-        </div>
-        <div class="r-footer__brand">
-          <span class="r-brand-line1">Black</span><br/>
-          <span class="r-brand-line2">Freedom</span><br/>
-          <span class="r-brand-line3">Studies</span>
         </div>
       </div>
     </footer>

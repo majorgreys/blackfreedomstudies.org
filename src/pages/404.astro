@@ -12,8 +12,11 @@ import { Layout, isClassic } from '../lib/theme';
     <div class="r-not-found">
       <p class="r-not-found__code" aria-hidden="true">404</p>
       <h1>Page not found</h1>
-      <p>The page you're looking for doesn't exist.</p>
-      <a href="/">Return to homepage</a>
+      <p>Nothing is filed at this address. It may have moved when the site was rebuilt.</p>
+      <div class="r-not-found__actions">
+        <a class="r-btn" href="/">Go to the homepage</a>
+        <a class="r-btn r-btn--outline" href="/events/">Browse conversations</a>
+      </div>
     </div>
   )}
 </Layout>
