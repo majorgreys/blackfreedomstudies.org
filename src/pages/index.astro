@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import { Layout, isClassic } from '../lib/theme';
 import EventRow from '../components/redesign/EventRow.astro';
+import BookCover from '../components/shared/BookCover.astro';
 
 const pagesCollection = await getCollection('pages');
 const homepage = pagesCollection.find(p => p.id === 'homepage' || p.id === 'index');
@@ -126,65 +127,41 @@ const organizationJsonLd = {
   ) : (
     <div>
       <div class="r-hero">
-        <div class="r-hero__stage">
-          {homepage?.data.image && (
-            <div class="r-hero__photo">
-              <img src={(homepage.data.image as any).src} alt="Speakers in conversation before an audience at the Schomburg Center" />
-            </div>
-          )}
-          <div class="r-hero__content">
-            <h1 class="r-hero__title">
-              <span class="r-hero__kicker"><b>Conversations in</b></span>
-              <span>Black</span>
-              <span>Freedom</span>
-              <span>Studies</span>
-            </h1>
+        <h1 class="r-hero__title">
+          <span class="r-hero__kicker"><b>Conversations in</b></span>
+          <span>Black</span>
+          <span>Freedom</span>
+          <span>Studies</span>
+        </h1>
+        {homepage?.data.image && (
+          <div class="r-hero__photo">
+            <img src={(homepage.data.image as any).src} alt="Speakers in conversation before an audience at the Schomburg Center" />
           </div>
-        </div>
-        <div class="r-hero__strip">
-          <div class="r-hero__strip-inner">
-            <p class="r-hero__subtitle">A monthly roundtable discussion at the Schomburg Center with authors and experts in Black history.</p>
-          </div>
-        </div>
+        )}
+        <p class="r-hero__subtitle">A monthly roundtable discussion at the Schomburg Center with authors and experts in Black history.</p>
       </div>
 
-      <div class="r-home-top">
-        {featured && (
-          <section class="r-handbill" aria-labelledby="home-next">
-            <p class="r-handbill__date" aria-hidden="true">
-              <span class="r-handbill__month">{featured.data.date.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' })}</span>
-              <span class="r-handbill__day">{featured.data.date.getUTCDate()}</span>
-              <span class="r-handbill__year">{featured.data.date.getUTCFullYear()}</span>
+      {featured && (
+        <section class="r-lead" aria-labelledby="home-next">
+          <div class="r-lead__body">
+            <p class="r-lead__label" id="home-next">{nextEvent ? 'Next conversation' : 'Most recent conversation'}</p>
+            <h2 class="r-lead__title"><a href={featuredUrl}>{featured.data.title}</a></h2>
+            <p class="r-lead__when">
+              <time datetime={featured.data.date.toISOString().slice(0, 10)}>{featured.data.date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</time>
             </p>
-            <div class="r-handbill__body">
-              <p class="r-handbill__label" id="home-next">{nextEvent ? 'Next conversation' : 'Most recent conversation'}</p>
-              <h2 class="r-handbill__title"><a href={featuredUrl}>{featured.data.title}</a></h2>
-              <p class="r-handbill__when">
-                <time datetime={featured.data.date.toISOString().slice(0, 10)}>{featured.data.date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</time>
-              </p>
-              {featuredSpeakers.length > 0 && <p class="r-handbill__with">With {listNames(featuredSpeakers.map(s => s.data.name))}</p>}
-              <div class="r-handbill__actions">
-                <a class="r-btn" href={featuredUrl}>Event details</a>
-                {nextEvent?.data.eventbrite && <a class="r-btn r-btn--outline" href={nextEvent.data.eventbrite} rel="noopener">Register</a>}
-              </div>
+            {featuredSpeakers.length > 0 && <p class="r-lead__with">With {listNames(featuredSpeakers.map(s => s.data.name))}</p>}
+            <div class="r-lead__actions">
+              <a class="r-btn" href={featuredUrl}>Event details</a>
+              {nextEvent?.data.eventbrite && <a class="r-btn r-btn--outline" href={nextEvent.data.eventbrite} rel="noopener">Register</a>}
             </div>
-          </section>
-        )}
-        <section class="r-ledger" aria-labelledby="home-archive">
-          <h2 id="home-archive">Explore the archive</h2>
-          <ul>
-            {ledger.map(row => (
-              <li>
-                <a href={row.href}>
-                  <span class="r-ledger__name">{row.name}</span>
-                  <span class="r-ledger__dots" aria-hidden="true"></span>
-                  <span class="r-ledger__n">{row.count}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
+          </div>
+          {featured.data.books.length > 0 && (
+            <div class="r-lead__books" aria-hidden="true">
+              {featured.data.books.slice(0, 4).map((book: any) => <BookCover src={book} width={248} alt="" />)}
+            </div>
+          )}
         </section>
-      </div>
+      )}
 
       <div class="r-home-grid">
         {seasonEvents.length > 0 && (
@@ -211,6 +188,10 @@ const organizationJsonLd = {
                 <a href={`/news/${entry.data.date.getUTCFullYear()}/${entry.id}`}>{entry.data.title}</a>
               </li>
             ))}
+          </ul>
+          <div class="r-home-heading"><h2>Explore the archive</h2></div>
+          <ul class="r-home-links">
+            {ledger.map(row => <li><a href={row.href}>{row.name}</a> <span>{row.count}</span></li>)}
           </ul>
         </aside>
       </div>
