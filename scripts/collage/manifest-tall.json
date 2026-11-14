@@ -1,0 +1,2914 @@
+{
+ "width": 1200,
+ "height": 1300,
+ "background": "#1c1b19",
+ "pieces": [
+  {
+   "piece": "prisons-make-us-safer#title",
+   "x": -27,
+   "y": 43,
+   "w": 210,
+   "rot": -0.3,
+   "z": 0,
+   "gray": true
+  },
+  {
+   "piece": "giveustheballot#title",
+   "x": 142,
+   "y": 33,
+   "w": 137,
+   "rot": -1,
+   "z": 1,
+   "gray": true
+  },
+  {
+   "piece": "freedomsteacher#title",
+   "x": 314,
+   "y": 40,
+   "w": 215,
+   "rot": -0.9,
+   "z": 2,
+   "gray": true
+  },
+  {
+   "piece": "purnellfighting#title",
+   "x": 484,
+   "y": 35,
+   "w": 133,
+   "rot": 0,
+   "z": 3,
+   "gray": true
+  },
+  {
+   "piece": "Woodard#title",
+   "x": 642,
+   "y": 36,
+   "w": 192,
+   "rot": -0.9,
+   "z": 4,
+   "gray": true
+  },
+  {
+   "piece": "movement-made-us#title",
+   "x": 838,
+   "y": 43,
+   "w": 208,
+   "rot": -2,
+   "z": 5,
+   "gray": true
+  },
+  {
+   "piece": "oneperson#title",
+   "x": 1011,
+   "y": 35,
+   "w": 146,
+   "rot": -1.8,
+   "z": 6,
+   "gray": true
+  },
+  {
+   "piece": "tip-of-the-spear#title",
+   "x": 1202,
+   "y": 37,
+   "w": 243,
+   "rot": -1.8,
+   "z": 7,
+   "gray": true
+  },
+  {
+   "piece": "bradleyharlem#title",
+   "x": -46,
+   "y": 101,
+   "w": 169,
+   "rot": -2.1,
+   "z": 8,
+   "gray": true
+  },
+  {
+   "piece": "rooks-book#title",
+   "x": 132,
+   "y": 100,
+   "w": 196,
+   "rot": -2.5,
+   "z": 9,
+   "gray": true
+  },
+  {
+   "piece": "black-ball#title",
+   "x": 296,
+   "y": 100,
+   "w": 142,
+   "rot": -2.2,
+   "z": 10,
+   "gray": true
+  },
+  {
+   "piece": "williamsconcrete#title",
+   "x": 491,
+   "y": 102,
+   "w": 256,
+   "rot": -1.4,
+   "z": 11,
+   "gray": true
+  },
+  {
+   "piece": "the-containment-1#title",
+   "x": 739,
+   "y": 100,
+   "w": 248,
+   "rot": -1.4,
+   "z": 12,
+   "gray": true
+  },
+  {
+   "piece": "reproductiveinjustice#title",
+   "x": 997,
+   "y": 100,
+   "w": 276,
+   "rot": -1.6,
+   "z": 13,
+   "gray": true
+  },
+  {
+   "piece": "PartyMusic#title",
+   "x": 1213,
+   "y": 101,
+   "w": 165,
+   "rot": -1.6,
+   "z": 14,
+   "gray": true
+  },
+  {
+   "piece": "Jim-Crow-NY_190404_160837#title",
+   "x": -10,
+   "y": 136,
+   "w": 138,
+   "rot": 0.8,
+   "z": 15,
+   "gray": true
+  },
+  {
+   "piece": "kingharlem#title",
+   "x": 168,
+   "y": 133,
+   "w": 227,
+   "rot": 0,
+   "z": 16,
+   "gray": true
+  },
+  {
+   "piece": "Harlem#title",
+   "x": 383,
+   "y": 135,
+   "w": 211,
+   "rot": 1.9,
+   "z": 17,
+   "gray": true
+  },
+  {
+   "piece": "wyatt#title",
+   "x": 552,
+   "y": 133,
+   "w": 134,
+   "rot": 0.3,
+   "z": 18,
+   "gray": true
+  },
+  {
+   "piece": "on-a-move#title",
+   "x": 690,
+   "y": 136,
+   "w": 151,
+   "rot": 1.8,
+   "z": 19,
+   "gray": true
+  },
+  {
+   "piece": "medicalbondage#title",
+   "x": 859,
+   "y": 135,
+   "w": 195,
+   "rot": 1.4,
+   "z": 20,
+   "gray": true
+  },
+  {
+   "piece": "black-scare-red-scare#title",
+   "x": 1073,
+   "y": 136,
+   "w": 239,
+   "rot": 1.9,
+   "z": 21,
+   "gray": true
+  },
+  {
+   "piece": "fit-citizens#title",
+   "x": 1254,
+   "y": 132,
+   "w": 130,
+   "rot": 0.5,
+   "z": 22,
+   "gray": true
+  },
+  {
+   "piece": "Ansley#title",
+   "x": 29,
+   "y": 181,
+   "w": 257,
+   "rot": -0.3,
+   "z": 23,
+   "gray": true
+  },
+  {
+   "piece": "andersonpower#title",
+   "x": 272,
+   "y": 181,
+   "w": 237,
+   "rot": -1.4,
+   "z": 24,
+   "gray": true
+  },
+  {
+   "piece": "raceforprofit#title",
+   "x": 525,
+   "y": 178,
+   "w": 279,
+   "rot": 1.2,
+   "z": 25,
+   "gray": true
+  },
+  {
+   "piece": "savonickbook#title",
+   "x": 807,
+   "y": 181,
+   "w": 293,
+   "rot": 1.1,
+   "z": 26,
+   "gray": true
+  },
+  {
+   "piece": "firstcivilright#title",
+   "x": 1201,
+   "y": 180,
+   "w": 503,
+   "rot": 0.7,
+   "z": 27,
+   "gray": true
+  },
+  {
+   "piece": "woolner-book#title",
+   "x": 80,
+   "y": 222,
+   "w": 186,
+   "rot": 2.3,
+   "z": 28,
+   "gray": true
+  },
+  {
+   "piece": "groundwork#title",
+   "x": 247,
+   "y": 222,
+   "w": 156,
+   "rot": -0.3,
+   "z": 29,
+   "gray": true
+  },
+  {
+   "piece": "unteachables#title",
+   "x": 394,
+   "y": 223,
+   "w": 146,
+   "rot": 1.9,
+   "z": 30,
+   "gray": true
+  },
+  {
+   "piece": "bodyandsoul#title",
+   "x": 580,
+   "y": 220,
+   "w": 235,
+   "rot": 0.6,
+   "z": 31,
+   "gray": true
+  },
+  {
+   "piece": "contestedbodies#title",
+   "x": 788,
+   "y": 221,
+   "w": 188,
+   "rot": 1.4,
+   "z": 32,
+   "gray": true
+  },
+  {
+   "piece": "maemallory#title",
+   "x": 969,
+   "y": 221,
+   "w": 183,
+   "rot": 0.2,
+   "z": 33,
+   "gray": true
+  },
+  {
+   "piece": "penningroth#title",
+   "x": 1200,
+   "y": 220,
+   "w": 286,
+   "rot": 0.6,
+   "z": 34,
+   "gray": true
+  },
+  {
+   "piece": "occupiedterritory#title",
+   "x": 135,
+   "y": 294,
+   "w": 275,
+   "rot": -1.3,
+   "z": 35,
+   "gray": true
+  },
+  {
+   "piece": "perrillouncivil#title",
+   "x": 439,
+   "y": 288,
+   "w": 341,
+   "rot": -0.8,
+   "z": 36,
+   "gray": true
+  },
+  {
+   "piece": "fightthepower#title",
+   "x": 690,
+   "y": 302,
+   "w": 168,
+   "rot": -1.8,
+   "z": 37,
+   "gray": true
+  },
+  {
+   "piece": "gloriarichardson#title",
+   "x": 842,
+   "y": 295,
+   "w": 145,
+   "rot": -2.5,
+   "z": 38,
+   "gray": true
+  },
+  {
+   "piece": "ashmorecarry#title",
+   "x": 952,
+   "y": 298,
+   "w": 82,
+   "rot": -1.4,
+   "z": 39,
+   "gray": true
+  },
+  {
+   "piece": "apeopleshistoryofsports#title",
+   "x": 1153,
+   "y": 291,
+   "w": 328,
+   "rot": -1.6,
+   "z": 40,
+   "gray": true
+  },
+  {
+   "piece": "crosbyground#title",
+   "x": 50,
+   "y": 370,
+   "w": 254,
+   "rot": -2,
+   "z": 41,
+   "gray": true
+  },
+  {
+   "piece": "curvinnewark#title",
+   "x": 310,
+   "y": 372,
+   "w": 276,
+   "rot": -0.4,
+   "z": 42,
+   "gray": true
+  },
+  {
+   "piece": "mahalia-jackson#title",
+   "x": 520,
+   "y": 374,
+   "w": 151,
+   "rot": 0.3,
+   "z": 43,
+   "gray": true
+  },
+  {
+   "piece": "race-for-profit-1#title",
+   "x": 661,
+   "y": 372,
+   "w": 139,
+   "rot": -2.2,
+   "z": 44,
+   "gray": true
+  },
+  {
+   "piece": "Alejandra-Marchevsky#title",
+   "x": 804,
+   "y": 374,
+   "w": 155,
+   "rot": 0.1,
+   "z": 45,
+   "gray": true
+  },
+  {
+   "piece": "survival-alternate-2-1#title",
+   "x": 955,
+   "y": 372,
+   "w": 156,
+   "rot": -2,
+   "z": 46,
+   "gray": true
+  },
+  {
+   "piece": "sisterhood#title",
+   "x": 1161,
+   "y": 374,
+   "w": 264,
+   "rot": -1.5,
+   "z": 47,
+   "gray": true
+  },
+  {
+   "piece": "IMG_9978#title",
+   "x": -36,
+   "y": 411,
+   "w": 186,
+   "rot": -0.1,
+   "z": 48,
+   "gray": true
+  },
+  {
+   "piece": "yogahistory#title",
+   "x": 152,
+   "y": 410,
+   "w": 198,
+   "rot": -0.6,
+   "z": 49,
+   "gray": true
+  },
+  {
+   "piece": "nightingalesegregation#title",
+   "x": 349,
+   "y": 411,
+   "w": 205,
+   "rot": 0.4,
+   "z": 50,
+   "gray": true
+  },
+  {
+   "piece": "randolphflorynce#title",
+   "x": 582,
+   "y": 414,
+   "w": 269,
+   "rot": -2.1,
+   "z": 51,
+   "gray": true
+  },
+  {
+   "piece": "Radical_Reproductive_Justice4.55.12PM#title",
+   "x": 934,
+   "y": 414,
+   "w": 445,
+   "rot": -2.1,
+   "z": 52,
+   "gray": true
+  },
+  {
+   "piece": "badges-without-borders#title",
+   "x": 1274,
+   "y": 415,
+   "w": 244,
+   "rot": -0.6,
+   "z": 53,
+   "gray": true
+  },
+  {
+   "piece": "harambeecity#title",
+   "x": 13,
+   "y": 448,
+   "w": 187,
+   "rot": 0,
+   "z": 54,
+   "gray": true
+  },
+  {
+   "piece": "gatewaytoequality#title",
+   "x": 176,
+   "y": 448,
+   "w": 147,
+   "rot": -1,
+   "z": 55,
+   "gray": true
+  },
+  {
+   "piece": "policinglifeanddeath#title",
+   "x": 330,
+   "y": 450,
+   "w": 170,
+   "rot": -1.3,
+   "z": 56,
+   "gray": true
+  },
+  {
+   "piece": "souls#title",
+   "x": 497,
+   "y": 449,
+   "w": 172,
+   "rot": 0.3,
+   "z": 57,
+   "gray": true
+  },
+  {
+   "piece": "cityofinmates#title",
+   "x": 654,
+   "y": 449,
+   "w": 150,
+   "rot": -0.9,
+   "z": 58,
+   "gray": true
+  },
+  {
+   "piece": "inpursuitofknowledge#title",
+   "x": 817,
+   "y": 450,
+   "w": 184,
+   "rot": 0.8,
+   "z": 59,
+   "gray": true
+  },
+  {
+   "piece": "szwedwhat#title",
+   "x": 1024,
+   "y": 449,
+   "w": 237,
+   "rot": 0.4,
+   "z": 60,
+   "gray": true
+  },
+  {
+   "piece": "underthecolor#title",
+   "x": 1228,
+   "y": 449,
+   "w": 179,
+   "rot": -0.6,
+   "z": 61,
+   "gray": true
+  },
+  {
+   "piece": "presumedcriminal#title",
+   "x": 82,
+   "y": 498,
+   "w": 174,
+   "rot": -2.3,
+   "z": 62,
+   "gray": true
+  },
+  {
+   "piece": "mothersofmassiveresistance#title",
+   "x": 219,
+   "y": 503,
+   "w": 106,
+   "rot": 0.4,
+   "z": 63,
+   "gray": true
+  },
+  {
+   "piece": "tornapart#title",
+   "x": 321,
+   "y": 501,
+   "w": 106,
+   "rot": 0.5,
+   "z": 64,
+   "gray": true
+  },
+  {
+   "piece": "IMG_9974#title",
+   "x": 453,
+   "y": 504,
+   "w": 167,
+   "rot": -2.1,
+   "z": 65,
+   "gray": true
+  },
+  {
+   "piece": "we-were-there#title",
+   "x": 593,
+   "y": 500,
+   "w": 122,
+   "rot": -1.8,
+   "z": 66,
+   "gray": true
+  },
+  {
+   "piece": "northofdixie#title",
+   "x": 719,
+   "y": 500,
+   "w": 136,
+   "rot": 0,
+   "z": 67,
+   "gray": true
+  },
+  {
+   "piece": "blackrevolutiononcampus#title",
+   "x": 845,
+   "y": 507,
+   "w": 125,
+   "rot": -1.3,
+   "z": 68,
+   "gray": true
+  },
+  {
+   "piece": "i-didnt-come-here-to-lie#title",
+   "x": 1001,
+   "y": 497,
+   "w": 195,
+   "rot": -1,
+   "z": 69,
+   "gray": true
+  },
+  {
+   "piece": "Sexworkers#title",
+   "x": 1163,
+   "y": 503,
+   "w": 136,
+   "rot": -0.7,
+   "z": 70,
+   "gray": true
+  },
+  {
+   "piece": "IMG_9959#title",
+   "x": 20,
+   "y": 556,
+   "w": 144,
+   "rot": 0.1,
+   "z": 71,
+   "gray": true
+  },
+  {
+   "piece": "free-joan-little-film-1#title",
+   "x": 218,
+   "y": 557,
+   "w": 261,
+   "rot": -0.6,
+   "z": 72,
+   "gray": true
+  },
+  {
+   "piece": "All-Our-Trials#title",
+   "x": 463,
+   "y": 557,
+   "w": 237,
+   "rot": 0.5,
+   "z": 73,
+   "gray": true
+  },
+  {
+   "piece": "andersonpower#title",
+   "x": 665,
+   "y": 559,
+   "w": 174,
+   "rot": 1.1,
+   "z": 74,
+   "gray": true
+  },
+  {
+   "piece": "A-Political-Education#title",
+   "x": 877,
+   "y": 555,
+   "w": 259,
+   "rot": 1.6,
+   "z": 75,
+   "gray": true
+  },
+  {
+   "piece": "madness-in-the-city#title",
+   "x": 1076,
+   "y": 556,
+   "w": 148,
+   "rot": -0.4,
+   "z": 76,
+   "gray": true
+  },
+  {
+   "piece": "dividing-lines-1#title",
+   "x": 1224,
+   "y": 557,
+   "w": 155,
+   "rot": 2,
+   "z": 77,
+   "gray": true
+  },
+  {
+   "piece": "deathblowtojimcrow#title",
+   "x": -13,
+   "y": 590,
+   "w": 231,
+   "rot": 0.6,
+   "z": 78,
+   "gray": true
+  },
+  {
+   "piece": "hubert-harrison-1#title",
+   "x": 198,
+   "y": 591,
+   "w": 198,
+   "rot": -0.4,
+   "z": 79,
+   "gray": true
+  },
+  {
+   "piece": "IMG_9977#title",
+   "x": 424,
+   "y": 589,
+   "w": 262,
+   "rot": 0.1,
+   "z": 80,
+   "gray": true
+  },
+  {
+   "piece": "chainedinsilence#title",
+   "x": 630,
+   "y": 588,
+   "w": 158,
+   "rot": -1.9,
+   "z": 81,
+   "gray": true
+  },
+  {
+   "piece": "Fitz#title",
+   "x": 802,
+   "y": 588,
+   "w": 195,
+   "rot": -1,
+   "z": 82,
+   "gray": true
+  },
+  {
+   "piece": "mcgruderwitness#title",
+   "x": 971,
+   "y": 589,
+   "w": 151,
+   "rot": -0.2,
+   "z": 83,
+   "gray": true
+  },
+  {
+   "piece": "kincraft#title",
+   "x": 1105,
+   "y": 587,
+   "w": 123,
+   "rot": 0.3,
+   "z": 84,
+   "gray": true
+  },
+  {
+   "piece": "murchliving#title",
+   "x": 1237,
+   "y": 587,
+   "w": 150,
+   "rot": -1.3,
+   "z": 85,
+   "gray": true
+  },
+  {
+   "piece": "blacklivesmatter#title",
+   "x": 24,
+   "y": 632,
+   "w": 282,
+   "rot": -0.4,
+   "z": 86,
+   "gray": true
+  },
+  {
+   "piece": "reviveusagain#title",
+   "x": 314,
+   "y": 634,
+   "w": 305,
+   "rot": -0.6,
+   "z": 87,
+   "gray": true
+  },
+  {
+   "piece": "vanguard#title",
+   "x": 577,
+   "y": 632,
+   "w": 227,
+   "rot": -2.4,
+   "z": 88,
+   "gray": true
+  },
+  {
+   "piece": "familyproperties#title",
+   "x": 865,
+   "y": 633,
+   "w": 358,
+   "rot": -1.2,
+   "z": 89,
+   "gray": true
+  },
+  {
+   "piece": "tate#title",
+   "x": 1156,
+   "y": 633,
+   "w": 232,
+   "rot": -1.2,
+   "z": 90,
+   "gray": true
+  },
+  {
+   "piece": "rolinsongarveyism#title",
+   "x": 68,
+   "y": 670,
+   "w": 210,
+   "rot": 0.6,
+   "z": 91,
+   "gray": true
+  },
+  {
+   "piece": "duncan-book#title",
+   "x": 228,
+   "y": 672,
+   "w": 119,
+   "rot": 1.2,
+   "z": 92,
+   "gray": true
+  },
+  {
+   "piece": "AG#title",
+   "x": 318,
+   "y": 671,
+   "w": 69,
+   "rot": -0.3,
+   "z": 93,
+   "gray": true
+  },
+  {
+   "piece": "How-we-get-free#title",
+   "x": 390,
+   "y": 670,
+   "w": 84,
+   "rot": 1.2,
+   "z": 94,
+   "gray": true
+  },
+  {
+   "piece": "preston-book#title",
+   "x": 484,
+   "y": 671,
+   "w": 111,
+   "rot": 1,
+   "z": 95,
+   "gray": true
+  },
+  {
+   "piece": "Kundnani-Muslims-Are-Coming#title",
+   "x": 551,
+   "y": 671,
+   "w": 32,
+   "rot": 0.6,
+   "z": 96,
+   "gray": true
+  },
+  {
+   "piece": "IMG_9975#title",
+   "x": 592,
+   "y": 674,
+   "w": 57,
+   "rot": 0.9,
+   "z": 97,
+   "gray": true
+  },
+  {
+   "piece": "Sword#title",
+   "x": 632,
+   "y": 674,
+   "w": 30,
+   "rot": -1.3,
+   "z": 98,
+   "gray": true
+  },
+  {
+   "piece": "everything-man#title",
+   "x": 652,
+   "y": 670,
+   "w": 18,
+   "rot": -1.6,
+   "z": 99,
+   "gray": true
+  },
+  {
+   "piece": "nadasenwelfare#title",
+   "x": 699,
+   "y": 673,
+   "w": 84,
+   "rot": -0.9,
+   "z": 100,
+   "gray": true
+  },
+  {
+   "piece": "to-shape-a-new-world#title",
+   "x": 768,
+   "y": 672,
+   "w": 63,
+   "rot": -0.6,
+   "z": 101,
+   "gray": true
+  },
+  {
+   "piece": "fergusonisamerica#title",
+   "x": 836,
+   "y": 672,
+   "w": 80,
+   "rot": 1,
+   "z": 102,
+   "gray": true
+  },
+  {
+   "piece": "IMG_9971#title",
+   "x": 919,
+   "y": 673,
+   "w": 94,
+   "rot": 0.7,
+   "z": 103,
+   "gray": true
+  },
+  {
+   "piece": "fela-music-is-the-weapon#title",
+   "x": 997,
+   "y": 674,
+   "w": 70,
+   "rot": -1.5,
+   "z": 104,
+   "gray": true
+  },
+  {
+   "piece": "Building-a-Latino-Civil-Rights-Movement#title",
+   "x": 1064,
+   "y": 670,
+   "w": 73,
+   "rot": -1.5,
+   "z": 105,
+   "gray": true
+  },
+  {
+   "piece": "Stevenson-Just-Mercy#title",
+   "x": 1130,
+   "y": 670,
+   "w": 66,
+   "rot": 0.2,
+   "z": 106,
+   "gray": true
+  },
+  {
+   "piece": "queen-mother#title",
+   "x": 1201,
+   "y": 672,
+   "w": 85,
+   "rot": -0.1,
+   "z": 107,
+   "gray": true
+  },
+  {
+   "piece": "born-a-sufferah#title",
+   "x": -22,
+   "y": 733,
+   "w": 180,
+   "rot": 1,
+   "z": 108,
+   "gray": true
+  },
+  {
+   "piece": "inloveandstruggle#title",
+   "x": 240,
+   "y": 736,
+   "w": 352,
+   "rot": -1.4,
+   "z": 109,
+   "gray": true
+  },
+  {
+   "piece": "otherside#title",
+   "x": 462,
+   "y": 739,
+   "w": 100,
+   "rot": 0.3,
+   "z": 110,
+   "gray": true
+  },
+  {
+   "piece": "lightoffreedom#title",
+   "x": 635,
+   "y": 738,
+   "w": 253,
+   "rot": -0.3,
+   "z": 111,
+   "gray": true
+  },
+  {
+   "piece": "the-internal-colony#title",
+   "x": 837,
+   "y": 742,
+   "w": 159,
+   "rot": 1.3,
+   "z": 112,
+   "gray": true
+  },
+  {
+   "piece": "ransbyeslanda#title",
+   "x": 1066,
+   "y": 733,
+   "w": 307,
+   "rot": -0.4,
+   "z": 113,
+   "gray": true
+  },
+  {
+   "piece": "Cuttingschool#title",
+   "x": 1316,
+   "y": 737,
+   "w": 201,
+   "rot": -0.9,
+   "z": 114,
+   "gray": true
+  },
+  {
+   "piece": "Matt-Delmont#title",
+   "x": -64,
+   "y": 805,
+   "w": 83,
+   "rot": 0.3,
+   "z": 115,
+   "gray": true
+  },
+  {
+   "piece": "ChariseBurden#title",
+   "x": 8,
+   "y": 809,
+   "w": 69,
+   "rot": -0.5,
+   "z": 116,
+   "gray": true
+  },
+  {
+   "piece": "sojourner#title",
+   "x": 61,
+   "y": 809,
+   "w": 45,
+   "rot": 1.6,
+   "z": 117,
+   "gray": true
+  },
+  {
+   "piece": "sistersinstruggle#title",
+   "x": 98,
+   "y": 805,
+   "w": 35,
+   "rot": -0.3,
+   "z": 118,
+   "gray": true
+  },
+  {
+   "piece": "reproductiverights#title",
+   "x": 146,
+   "y": 808,
+   "w": 69,
+   "rot": 1.5,
+   "z": 119,
+   "gray": true
+  },
+  {
+   "piece": "worthypieceofwork#title",
+   "x": 194,
+   "y": 808,
+   "w": 36,
+   "rot": 0.2,
+   "z": 120,
+   "gray": true
+  },
+  {
+   "piece": "IMG_9967#title",
+   "x": 256,
+   "y": 809,
+   "w": 97,
+   "rot": 1.1,
+   "z": 121,
+   "gray": true
+  },
+  {
+   "piece": "IMG_9972#title",
+   "x": 345,
+   "y": 809,
+   "w": 87,
+   "rot": 1.5,
+   "z": 122,
+   "gray": true
+  },
+  {
+   "piece": "foodcoopsinamerica#title",
+   "x": 406,
+   "y": 809,
+   "w": 44,
+   "rot": 1.6,
+   "z": 123,
+   "gray": true
+  },
+  {
+   "piece": "achanceforchange#title",
+   "x": 482,
+   "y": 807,
+   "w": 117,
+   "rot": 0.3,
+   "z": 124,
+   "gray": true
+  },
+  {
+   "piece": "banking-on-freedom#title",
+   "x": 574,
+   "y": 808,
+   "w": 75,
+   "rot": 0,
+   "z": 125,
+   "gray": true
+  },
+  {
+   "piece": "berryjustice#title",
+   "x": 622,
+   "y": 808,
+   "w": 29,
+   "rot": 0.8,
+   "z": 126,
+   "gray": true
+  },
+  {
+   "piece": "monsonfreedom#title",
+   "x": 663,
+   "y": 808,
+   "w": 61,
+   "rot": 0.8,
+   "z": 127,
+   "gray": true
+  },
+  {
+   "piece": "strike-the-hammer#title",
+   "x": 741,
+   "y": 809,
+   "w": 102,
+   "rot": 1.9,
+   "z": 128,
+   "gray": true
+  },
+  {
+   "piece": "memoirs-of-robert-and-mabel-williams#title",
+   "x": 810,
+   "y": 806,
+   "w": 44,
+   "rot": 1.4,
+   "z": 129,
+   "gray": true
+  },
+  {
+   "piece": "theheritage#title",
+   "x": 877,
+   "y": 807,
+   "w": 99,
+   "rot": -0.8,
+   "z": 130,
+   "gray": true
+  },
+  {
+   "piece": "slaveryatsea#title",
+   "x": 968,
+   "y": 809,
+   "w": 91,
+   "rot": -0.5,
+   "z": 131,
+   "gray": true
+  },
+  {
+   "piece": "intheheat#title",
+   "x": 1044,
+   "y": 806,
+   "w": 70,
+   "rot": 0.7,
+   "z": 132,
+   "gray": true
+  },
+  {
+   "piece": "from-rights-to-lives#title",
+   "x": 1104,
+   "y": 806,
+   "w": 56,
+   "rot": 1.8,
+   "z": 133,
+   "gray": true
+  },
+  {
+   "piece": "morebeautiful#title",
+   "x": 1147,
+   "y": 805,
+   "w": 39,
+   "rot": 0.5,
+   "z": 134,
+   "gray": true
+  },
+  {
+   "piece": "soscallingallblackpeople#title",
+   "x": 1220,
+   "y": 808,
+   "w": 115,
+   "rot": -0.2,
+   "z": 135,
+   "gray": true
+  },
+  {
+   "piece": "Greene_9781469671314_EDB342CD-A139-10A4-E7364561F30A71C4_ede1817c-0a51-c8c8-65b801fcf6499f47#title",
+   "x": 29,
+   "y": 844,
+   "w": 76,
+   "rot": 0.1,
+   "z": 136,
+   "gray": true
+  },
+  {
+   "piece": "stayedfreedom#title",
+   "x": 137,
+   "y": 842,
+   "w": 148,
+   "rot": 1.1,
+   "z": 137,
+   "gray": true
+  },
+  {
+   "piece": "young-lords-speak#title",
+   "x": 220,
+   "y": 844,
+   "w": 24,
+   "rot": -0.3,
+   "z": 138,
+   "gray": true
+  },
+  {
+   "piece": "politics-of-public-safety#title",
+   "x": 271,
+   "y": 843,
+   "w": 86,
+   "rot": 0.8,
+   "z": 139,
+   "gray": true
+  },
+  {
+   "piece": "77DE3F42-1FA0-478A-A7C3-5225DFD4798D#title",
+   "x": 341,
+   "y": 846,
+   "w": 62,
+   "rot": 0.5,
+   "z": 140,
+   "gray": true
+  },
+  {
+   "piece": "umojashoot#title",
+   "x": 404,
+   "y": 843,
+   "w": 71,
+   "rot": -0.3,
+   "z": 141,
+   "gray": true
+  },
+  {
+   "piece": "mapping-malcolm#title",
+   "x": 497,
+   "y": 846,
+   "w": 124,
+   "rot": -0.3,
+   "z": 142,
+   "gray": true
+  },
+  {
+   "piece": "nyls#title",
+   "x": 590,
+   "y": 847,
+   "w": 70,
+   "rot": -1.1,
+   "z": 143,
+   "gray": true
+  },
+  {
+   "piece": "radicalintellect#title",
+   "x": 688,
+   "y": 847,
+   "w": 133,
+   "rot": 1.2,
+   "z": 144,
+   "gray": true
+  },
+  {
+   "piece": "votingrightswar#title",
+   "x": 775,
+   "y": 845,
+   "w": 49,
+   "rot": 0.9,
+   "z": 145,
+   "gray": true
+  },
+  {
+   "piece": "troop-movements#title",
+   "x": 863,
+   "y": 844,
+   "w": 134,
+   "rot": 0.2,
+   "z": 146,
+   "gray": true
+  },
+  {
+   "piece": "greatuprising#title",
+   "x": 992,
+   "y": 845,
+   "w": 131,
+   "rot": 0.5,
+   "z": 147,
+   "gray": true
+  },
+  {
+   "piece": "IMG_9960#title",
+   "x": 1103,
+   "y": 845,
+   "w": 99,
+   "rot": -0.1,
+   "z": 148,
+   "gray": true
+  },
+  {
+   "piece": "Law-Resistance-Behind-Bars#title",
+   "x": 1208,
+   "y": 844,
+   "w": 119,
+   "rot": -0.3,
+   "z": 149,
+   "gray": true
+  },
+  {
+   "piece": "IMG_9970#title",
+   "x": 47,
+   "y": 914,
+   "w": 263,
+   "rot": 0.8,
+   "z": 150,
+   "gray": true
+  },
+  {
+   "piece": "Anthem#title",
+   "x": 312,
+   "y": 914,
+   "w": 276,
+   "rot": 2.3,
+   "z": 151,
+   "gray": true
+  },
+  {
+   "piece": "thepewandthepicket#title",
+   "x": 549,
+   "y": 912,
+   "w": 206,
+   "rot": 1.5,
+   "z": 152,
+   "gray": true
+  },
+  {
+   "piece": "Mealy-Fidel-Malcolm#title",
+   "x": 704,
+   "y": 906,
+   "w": 110,
+   "rot": 0.3,
+   "z": 153,
+   "gray": true
+  },
+  {
+   "piece": "nembhardcollective#title",
+   "x": 832,
+   "y": 913,
+   "w": 153,
+   "rot": 0.5,
+   "z": 154,
+   "gray": true
+  },
+  {
+   "piece": "RosaParksYA#title",
+   "x": 1000,
+   "y": 909,
+   "w": 191,
+   "rot": 2,
+   "z": 155,
+   "gray": true
+  },
+  {
+   "piece": "a-wide-net-of-solidarity#title",
+   "x": 1175,
+   "y": 908,
+   "w": 168,
+   "rot": 2.5,
+   "z": 156,
+   "gray": true
+  },
+  {
+   "piece": "Gilmore-Golden-Gulags#title",
+   "x": -31,
+   "y": 975,
+   "w": 135,
+   "rot": 0.5,
+   "z": 157,
+   "gray": true
+  },
+  {
+   "piece": "landofthefree#title",
+   "x": 72,
+   "y": 974,
+   "w": 80,
+   "rot": 1.5,
+   "z": 158,
+   "gray": true
+  },
+  {
+   "piece": "civil-rights-queen#title",
+   "x": 173,
+   "y": 974,
+   "w": 129,
+   "rot": -1.1,
+   "z": 159,
+   "gray": true
+  },
+  {
+   "piece": "civilrightsnewyorkcity#title",
+   "x": 264,
+   "y": 976,
+   "w": 59,
+   "rot": 1.4,
+   "z": 160,
+   "gray": true
+  },
+  {
+   "piece": "policingla#title",
+   "x": 332,
+   "y": 973,
+   "w": 85,
+   "rot": -0.2,
+   "z": 161,
+   "gray": true
+  },
+  {
+   "piece": "notourpres#title",
+   "x": 412,
+   "y": 974,
+   "w": 84,
+   "rot": -0.2,
+   "z": 162,
+   "gray": true
+  },
+  {
+   "piece": "haopian-book#title",
+   "x": 489,
+   "y": 976,
+   "w": 78,
+   "rot": -1.2,
+   "z": 163,
+   "gray": true
+  },
+  {
+   "piece": "say-her-name#title",
+   "x": 552,
+   "y": 973,
+   "w": 55,
+   "rot": 1,
+   "z": 164,
+   "gray": true
+  },
+  {
+   "piece": "black-panther-woman#title",
+   "x": 602,
+   "y": 973,
+   "w": 54,
+   "rot": 1.3,
+   "z": 165,
+   "gray": true
+  },
+  {
+   "piece": "until#title",
+   "x": 678,
+   "y": 976,
+   "w": 106,
+   "rot": 0.5,
+   "z": 166,
+   "gray": true
+  },
+  {
+   "piece": "sistuhs#title",
+   "x": 793,
+   "y": 975,
+   "w": 132,
+   "rot": 0.5,
+   "z": 167,
+   "gray": true
+  },
+  {
+   "piece": "charlestonsyllabus#title",
+   "x": 898,
+   "y": 972,
+   "w": 86,
+   "rot": 1.5,
+   "z": 168,
+   "gray": true
+  },
+  {
+   "piece": "alexander-book#title",
+   "x": 970,
+   "y": 972,
+   "w": 66,
+   "rot": 0.4,
+   "z": 169,
+   "gray": true
+  },
+  {
+   "piece": "those-who-know-don-t-say#title",
+   "x": 1010,
+   "y": 974,
+   "w": 22,
+   "rot": -0.4,
+   "z": 170,
+   "gray": true
+  },
+  {
+   "piece": "historyteaches#title",
+   "x": 1035,
+   "y": 973,
+   "w": 36,
+   "rot": -1,
+   "z": 171,
+   "gray": true
+  },
+  {
+   "piece": "waywardlives#title",
+   "x": 1065,
+   "y": 975,
+   "w": 32,
+   "rot": 1.2,
+   "z": 172,
+   "gray": true
+  },
+  {
+   "piece": "theyounglords#title",
+   "x": 1107,
+   "y": 976,
+   "w": 62,
+   "rot": 1.7,
+   "z": 173,
+   "gray": true
+  },
+  {
+   "piece": "81ZAKF-ig4L._AC_UL210_SR210210#title",
+   "x": 1154,
+   "y": 972,
+   "w": 39,
+   "rot": -1,
+   "z": 174,
+   "gray": true
+  },
+  {
+   "piece": "midwest-unrest-1#title",
+   "x": 1224,
+   "y": 973,
+   "w": 109,
+   "rot": 0.6,
+   "z": 175,
+   "gray": true
+  },
+  {
+   "piece": "Half-in-Shadow#title",
+   "x": 13,
+   "y": 1008,
+   "w": 102,
+   "rot": -0.6,
+   "z": 176,
+   "gray": true
+  },
+  {
+   "piece": "the-undesirable-many-1#title",
+   "x": 94,
+   "y": 1009,
+   "w": 67,
+   "rot": -1.8,
+   "z": 177,
+   "gray": true
+  },
+  {
+   "piece": "assata-taught-me#title",
+   "x": 155,
+   "y": 1009,
+   "w": 63,
+   "rot": -1.4,
+   "z": 178,
+   "gray": true
+  },
+  {
+   "piece": "gospel-of-j-edgar-hoover#title",
+   "x": 210,
+   "y": 1006,
+   "w": 56,
+   "rot": -1.4,
+   "z": 179,
+   "gray": true
+  },
+  {
+   "piece": "freedoms-gate#title",
+   "x": 267,
+   "y": 1006,
+   "w": 66,
+   "rot": 0.4,
+   "z": 180,
+   "gray": true
+  },
+  {
+   "piece": "IMG_9965#title",
+   "x": 333,
+   "y": 1008,
+   "w": 73,
+   "rot": -1.3,
+   "z": 181,
+   "gray": true
+  },
+  {
+   "piece": "positive-obsession#title",
+   "x": 420,
+   "y": 1009,
+   "w": 110,
+   "rot": -0.6,
+   "z": 182,
+   "gray": true
+  },
+  {
+   "piece": "Misogynoir-Transformed#title",
+   "x": 496,
+   "y": 1006,
+   "w": 50,
+   "rot": -1.6,
+   "z": 183,
+   "gray": true
+  },
+  {
+   "piece": "hillbusiness#title",
+   "x": 569,
+   "y": 1008,
+   "w": 103,
+   "rot": -0.8,
+   "z": 184,
+   "gray": true
+  },
+  {
+   "piece": "lookingforlorraine#title",
+   "x": 659,
+   "y": 1009,
+   "w": 87,
+   "rot": -0.5,
+   "z": 185,
+   "gray": true
+  },
+  {
+   "piece": "aintgonnaletnobody#title",
+   "x": 718,
+   "y": 1009,
+   "w": 39,
+   "rot": -2,
+   "z": 186,
+   "gray": true
+  },
+  {
+   "piece": "black-arts-black-muslims#title",
+   "x": 779,
+   "y": 1009,
+   "w": 92,
+   "rot": -0.7,
+   "z": 187,
+   "gray": true
+  },
+  {
+   "piece": "half-american#title",
+   "x": 861,
+   "y": 1005,
+   "w": 81,
+   "rot": -1.6,
+   "z": 188,
+   "gray": true
+  },
+  {
+   "piece": "by-hands#title",
+   "x": 916,
+   "y": 1007,
+   "w": 37,
+   "rot": -1.7,
+   "z": 189,
+   "gray": true
+  },
+  {
+   "piece": "fordthreads#title",
+   "x": 961,
+   "y": 1006,
+   "w": 62,
+   "rot": 0.4,
+   "z": 190,
+   "gray": true
+  },
+  {
+   "piece": "Indigenous-people#title",
+   "x": 1014,
+   "y": 1006,
+   "w": 50,
+   "rot": 0.8,
+   "z": 191,
+   "gray": true
+  },
+  {
+   "piece": "Settheworldonfire#title",
+   "x": 1064,
+   "y": 1007,
+   "w": 60,
+   "rot": -0.1,
+   "z": 192,
+   "gray": true
+  },
+  {
+   "piece": "therevolutionhascome#title",
+   "x": 1130,
+   "y": 1008,
+   "w": 80,
+   "rot": -1.6,
+   "z": 193,
+   "gray": true
+  },
+  {
+   "piece": "vengeance-feminism#title",
+   "x": 1196,
+   "y": 1007,
+   "w": 60,
+   "rot": 0.9,
+   "z": 194,
+   "gray": true
+  },
+  {
+   "piece": "torturemachine#title",
+   "x": 23,
+   "y": 1053,
+   "w": 146,
+   "rot": 0.2,
+   "z": 195,
+   "gray": true
+  },
+  {
+   "piece": "mcduffiesojourning#title",
+   "x": 182,
+   "y": 1052,
+   "w": 180,
+   "rot": -0.5,
+   "z": 196,
+   "gray": true
+  },
+  {
+   "piece": "newarkfrontier#title",
+   "x": 340,
+   "y": 1054,
+   "w": 144,
+   "rot": -1.6,
+   "z": 197,
+   "gray": true
+  },
+  {
+   "piece": "feldsteinfree#title",
+   "x": 469,
+   "y": 1054,
+   "w": 121,
+   "rot": 0.5,
+   "z": 198,
+   "gray": true
+  },
+  {
+   "piece": "streetsbelongtous#title",
+   "x": 565,
+   "y": 1051,
+   "w": 80,
+   "rot": -2.4,
+   "z": 199,
+   "gray": true
+  },
+  {
+   "piece": "food-power-politics#title",
+   "x": 642,
+   "y": 1050,
+   "w": 82,
+   "rot": -0.2,
+   "z": 200,
+   "gray": true
+  },
+  {
+   "piece": "viralunderclass#title",
+   "x": 747,
+   "y": 1051,
+   "w": 135,
+   "rot": -0.7,
+   "z": 201,
+   "gray": true
+  },
+  {
+   "piece": "Unfinished-Agenda#title",
+   "x": 899,
+   "y": 1051,
+   "w": 178,
+   "rot": -1.5,
+   "z": 202,
+   "gray": true
+  },
+  {
+   "piece": "the-great-black-hope#title",
+   "x": 1025,
+   "y": 1049,
+   "w": 80,
+   "rot": -2.1,
+   "z": 203,
+   "gray": true
+  },
+  {
+   "piece": "upendingtheivorytower#title",
+   "x": 1098,
+   "y": 1050,
+   "w": 75,
+   "rot": -1.9,
+   "z": 204,
+   "gray": true
+  },
+  {
+   "piece": "forgotten-migration#title",
+   "x": 1203,
+   "y": 1050,
+   "w": 143,
+   "rot": -0.8,
+   "z": 205,
+   "gray": true
+  },
+  {
+   "piece": "we-are-internationalists#title",
+   "x": 18,
+   "y": 1095,
+   "w": 112,
+   "rot": 0.6,
+   "z": 206,
+   "gray": true
+  },
+  {
+   "piece": "Whatsracegottodo-2#title",
+   "x": 125,
+   "y": 1094,
+   "w": 110,
+   "rot": 1.6,
+   "z": 207,
+   "gray": true
+  },
+  {
+   "piece": "high-school-students-unite-1#title",
+   "x": 227,
+   "y": 1093,
+   "w": 103,
+   "rot": 0.2,
+   "z": 208,
+   "gray": true
+  },
+  {
+   "piece": "blackpower50#title",
+   "x": 312,
+   "y": 1092,
+   "w": 74,
+   "rot": -0.8,
+   "z": 209,
+   "gray": true
+  },
+  {
+   "piece": "muslim-cool#title",
+   "x": 360,
+   "y": 1092,
+   "w": 32,
+   "rot": 0.3,
+   "z": 210,
+   "gray": true
+  },
+  {
+   "piece": "selmanorth#title",
+   "x": 394,
+   "y": 1096,
+   "w": 44,
+   "rot": -0.8,
+   "z": 211,
+   "gray": true
+  },
+  {
+   "piece": "9780231182201#title",
+   "x": 468,
+   "y": 1094,
+   "w": 111,
+   "rot": 1.4,
+   "z": 212,
+   "gray": true
+  },
+  {
+   "piece": "radical-women-writers#title",
+   "x": 556,
+   "y": 1094,
+   "w": 74,
+   "rot": 1.8,
+   "z": 213,
+   "gray": true
+  },
+  {
+   "piece": "roddey#title",
+   "x": 626,
+   "y": 1093,
+   "w": 74,
+   "rot": 0.6,
+   "z": 214,
+   "gray": true
+  },
+  {
+   "piece": "IMG_9968#title",
+   "x": 701,
+   "y": 1096,
+   "w": 84,
+   "rot": 0.1,
+   "z": 215,
+   "gray": true
+  },
+  {
+   "piece": "thetruththatneverhurts#title",
+   "x": 766,
+   "y": 1093,
+   "w": 53,
+   "rot": -0.7,
+   "z": 216,
+   "gray": true
+  },
+  {
+   "piece": "waronpoverty#title",
+   "x": 834,
+   "y": 1093,
+   "w": 92,
+   "rot": 1.3,
+   "z": 217,
+   "gray": true
+  },
+  {
+   "piece": "helton-book#title",
+   "x": 914,
+   "y": 1095,
+   "w": 75,
+   "rot": -1,
+   "z": 218,
+   "gray": true
+  },
+  {
+   "piece": "Berry-and-Gross#title",
+   "x": 962,
+   "y": 1094,
+   "w": 28,
+   "rot": 0.9,
+   "z": 219,
+   "gray": true
+  },
+  {
+   "piece": "CS#title",
+   "x": 982,
+   "y": 1095,
+   "w": 20,
+   "rot": -0.1,
+   "z": 220,
+   "gray": true
+  },
+  {
+   "piece": "williamsbullet#title",
+   "x": 1011,
+   "y": 1095,
+   "w": 46,
+   "rot": 0.6,
+   "z": 221,
+   "gray": true
+  },
+  {
+   "piece": "theoharisstart#title",
+   "x": 1081,
+   "y": 1096,
+   "w": 101,
+   "rot": 0.2,
+   "z": 222,
+   "gray": true
+  },
+  {
+   "piece": "diasporic-blackness#title",
+   "x": 1168,
+   "y": 1094,
+   "w": 82,
+   "rot": 0.9,
+   "z": 223,
+   "gray": true
+  },
+  {
+   "piece": "blood-sweat-and-tears#title",
+   "x": 1247,
+   "y": 1093,
+   "w": 85,
+   "rot": 0.6,
+   "z": 224,
+   "gray": true
+  },
+  {
+   "piece": "IMG_9976#title",
+   "x": -13,
+   "y": 1175,
+   "w": 230,
+   "rot": -1.7,
+   "z": 225,
+   "gray": true
+  },
+  {
+   "piece": "Rose-Parks-Doc-Banner-scaled-1#title",
+   "x": 276,
+   "y": 1175,
+   "w": 357,
+   "rot": -1.3,
+   "z": 226,
+   "gray": true
+  },
+  {
+   "piece": "black-folk#title",
+   "x": 515,
+   "y": 1170,
+   "w": 128,
+   "rot": -1.4,
+   "z": 227,
+   "gray": true
+  },
+  {
+   "piece": "burgin-book#title",
+   "x": 697,
+   "y": 1165,
+   "w": 245,
+   "rot": -1.1,
+   "z": 228,
+   "gray": true
+  },
+  {
+   "piece": "jankenwilmingtonten#title",
+   "x": 920,
+   "y": 1173,
+   "w": 208,
+   "rot": -0.1,
+   "z": 229,
+   "gray": true
+  },
+  {
+   "piece": "regina-anderson-andrews#title",
+   "x": 1086,
+   "y": 1161,
+   "w": 134,
+   "rot": -0.1,
+   "z": 230,
+   "gray": true
+  },
+  {
+   "piece": "marching-west#title",
+   "x": 1333,
+   "y": 1167,
+   "w": 368,
+   "rot": -1.8,
+   "z": 231,
+   "gray": true
+  },
+  {
+   "piece": "Fernandez#title",
+   "x": -13,
+   "y": 1244,
+   "w": 55,
+   "rot": -0.4,
+   "z": 232,
+   "gray": true
+  },
+  {
+   "piece": "AM#title",
+   "x": 42,
+   "y": 1243,
+   "w": 63,
+   "rot": -1.9,
+   "z": 233,
+   "gray": true
+  },
+  {
+   "piece": "police-against-the-movement-1#title",
+   "x": 102,
+   "y": 1247,
+   "w": 67,
+   "rot": 0.7,
+   "z": 234,
+   "gray": true
+  },
+  {
+   "piece": "i-rise-in-fire#title",
+   "x": 169,
+   "y": 1244,
+   "w": 74,
+   "rot": 0.7,
+   "z": 235,
+   "gray": true
+  },
+  {
+   "piece": "Unequal-cities#title",
+   "x": 248,
+   "y": 1247,
+   "w": 93,
+   "rot": -1.9,
+   "z": 236,
+   "gray": true
+  },
+  {
+   "piece": "carceral-apartheid-1#title",
+   "x": 336,
+   "y": 1243,
+   "w": 90,
+   "rot": -1.4,
+   "z": 237,
+   "gray": true
+  },
+  {
+   "piece": "taylornyc#title",
+   "x": 405,
+   "y": 1245,
+   "w": 57,
+   "rot": -0.9,
+   "z": 238,
+   "gray": true
+  },
+  {
+   "piece": "essential-soldiers-1#title",
+   "x": 457,
+   "y": 1246,
+   "w": 54,
+   "rot": -1.7,
+   "z": 239,
+   "gray": true
+  },
+  {
+   "piece": "america#title",
+   "x": 544,
+   "y": 1243,
+   "w": 128,
+   "rot": -0.2,
+   "z": 240,
+   "gray": true
+  },
+  {
+   "piece": "Simanagabook#title",
+   "x": 646,
+   "y": 1247,
+   "w": 82,
+   "rot": -0.8,
+   "z": 241,
+   "gray": true
+  },
+  {
+   "piece": "harlem-columbia#title",
+   "x": 735,
+   "y": 1244,
+   "w": 104,
+   "rot": -1.7,
+   "z": 242,
+   "gray": true
+  },
+  {
+   "piece": "wewillwintheday#title",
+   "x": 799,
+   "y": 1246,
+   "w": 33,
+   "rot": 0.8,
+   "z": 243,
+   "gray": true
+  },
+  {
+   "piece": "nomercyhere#title",
+   "x": 851,
+   "y": 1247,
+   "w": 80,
+   "rot": -1.9,
+   "z": 244,
+   "gray": true
+  },
+  {
+   "piece": "our-secret-society#title",
+   "x": 948,
+   "y": 1245,
+   "w": 121,
+   "rot": 0.8,
+   "z": 245,
+   "gray": true
+  },
+  {
+   "piece": "swan-book#title",
+   "x": 1066,
+   "y": 1245,
+   "w": 125,
+   "rot": -1.7,
+   "z": 246,
+   "gray": true
+  },
+  {
+   "piece": "we-are-worth-fighting-for#title",
+   "x": 1143,
+   "y": 1243,
+   "w": 36,
+   "rot": -1.4,
+   "z": 247,
+   "gray": true
+  },
+  {
+   "piece": "josephdark#title",
+   "x": 1184,
+   "y": 1243,
+   "w": 53,
+   "rot": 0.7,
+   "z": 248,
+   "gray": true
+  },
+  {
+   "piece": "anafricanamericanandlatinxhistoryoftheus#title",
+   "x": 1237,
+   "y": 1243,
+   "w": 62,
+   "rot": 0.2,
+   "z": 249,
+   "gray": true
+  },
+  {
+   "piece": "theoharisparks#title",
+   "x": -57,
+   "y": 1284,
+   "w": 140,
+   "rot": 0.2,
+   "z": 250,
+   "gray": true
+  },
+  {
+   "piece": "Griffin#title",
+   "x": 58,
+   "y": 1284,
+   "w": 97,
+   "rot": -0.7,
+   "z": 251,
+   "gray": true
+  },
+  {
+   "piece": "blackpantherpartyreconsidered#title",
+   "x": 125,
+   "y": 1287,
+   "w": 46,
+   "rot": 1,
+   "z": 252,
+   "gray": true
+  },
+  {
+   "piece": "fugative-pedegogy#title",
+   "x": 196,
+   "y": 1284,
+   "w": 104,
+   "rot": -0.8,
+   "z": 253,
+   "gray": true
+  },
+  {
+   "piece": "Taylor#title",
+   "x": 296,
+   "y": 1287,
+   "w": 105,
+   "rot": 0.2,
+   "z": 254,
+   "gray": true
+  },
+  {
+   "piece": "education-for-the-revolution#title",
+   "x": 373,
+   "y": 1286,
+   "w": 57,
+   "rot": 0.3,
+   "z": 255,
+   "gray": true
+  },
+  {
+   "piece": "payneteach#title",
+   "x": 440,
+   "y": 1286,
+   "w": 85,
+   "rot": 0.8,
+   "z": 256,
+   "gray": true
+  },
+  {
+   "piece": "black-history#title",
+   "x": 504,
+   "y": 1288,
+   "w": 51,
+   "rot": 0.1,
+   "z": 257,
+   "gray": true
+  },
+  {
+   "piece": "i-was-called#title",
+   "x": 576,
+   "y": 1288,
+   "w": 102,
+   "rot": 0.1,
+   "z": 258,
+   "gray": true
+  },
+  {
+   "piece": "slavescause#title",
+   "x": 642,
+   "y": 1287,
+   "w": 38,
+   "rot": 1.1,
+   "z": 259,
+   "gray": true
+  },
+  {
+   "piece": "goldbergwork#title",
+   "x": 713,
+   "y": 1287,
+   "w": 112,
+   "rot": 1.7,
+   "z": 260,
+   "gray": true
+  },
+  {
+   "piece": "Seniors-book#title",
+   "x": 824,
+   "y": 1286,
+   "w": 119,
+   "rot": 0,
+   "z": 261,
+   "gray": true
+  },
+  {
+   "piece": "Whitehorn-War-Before#title",
+   "x": 932,
+   "y": 1283,
+   "w": 103,
+   "rot": 1.1,
+   "z": 262,
+   "gray": true
+  },
+  {
+   "piece": "orleckstorming#title",
+   "x": 1046,
+   "y": 1285,
+   "w": 133,
+   "rot": 1.7,
+   "z": 263,
+   "gray": true
+  },
+  {
+   "piece": "rosa-parks#title",
+   "x": 1153,
+   "y": 1284,
+   "w": 89,
+   "rot": 0.3,
+   "z": 264,
+   "gray": true
+  },
+  {
+   "piece": "ivory-tower#title",
+   "x": 1245,
+   "y": 1284,
+   "w": 102,
+   "rot": 1,
+   "z": 265,
+   "gray": true
+  },
+  {
+   "piece": "jeffrieslowndes#title",
+   "x": -86,
+   "y": 1322,
+   "w": 96,
+   "rot": -0.4,
+   "z": 266,
+   "gray": true
+  },
+  {
+   "piece": "lockingupourown#title",
+   "x": -10,
+   "y": 1321,
+   "w": 65,
+   "rot": 1.5,
+   "z": 267,
+   "gray": true
+  },
+  {
+   "piece": "LTP#title",
+   "x": 33,
+   "y": 1323,
+   "w": 28,
+   "rot": 0.4,
+   "z": 268,
+   "gray": true
+  },
+  {
+   "piece": "aworldmoreconcrete#title",
+   "x": 82,
+   "y": 1320,
+   "w": 79,
+   "rot": -0.4,
+   "z": 269,
+   "gray": true
+  },
+  {
+   "piece": "IMG_9964#title",
+   "x": 142,
+   "y": 1322,
+   "w": 48,
+   "rot": 0.7,
+   "z": 270,
+   "gray": true
+  },
+  {
+   "piece": "scanlonjustice#title",
+   "x": 218,
+   "y": 1322,
+   "w": 111,
+   "rot": -0.3,
+   "z": 271,
+   "gray": true
+  },
+  {
+   "piece": "bedasse-book#title",
+   "x": 310,
+   "y": 1320,
+   "w": 81,
+   "rot": -0.6,
+   "z": 272,
+   "gray": true
+  },
+  {
+   "piece": "a-proxy-africa#title",
+   "x": 368,
+   "y": 1320,
+   "w": 44,
+   "rot": -0.3,
+   "z": 273,
+   "gray": true
+  },
+  {
+   "piece": "tigerbelle#title",
+   "x": 402,
+   "y": 1324,
+   "w": 32,
+   "rot": 1.7,
+   "z": 274,
+   "gray": true
+  },
+  {
+   "piece": "2022.02.27resized-Power-Hungry-cover#title",
+   "x": 446,
+   "y": 1322,
+   "w": 63,
+   "rot": 1.4,
+   "z": 275,
+   "gray": true
+  },
+  {
+   "piece": "king-eig#title",
+   "x": 504,
+   "y": 1321,
+   "w": 61,
+   "rot": 1.4,
+   "z": 276,
+   "gray": true
+  },
+  {
+   "piece": "goreradicalism#title",
+   "x": 587,
+   "y": 1323,
+   "w": 114,
+   "rot": 2,
+   "z": 277,
+   "gray": true
+  },
+  {
+   "piece": "IMG_9966#title",
+   "x": 667,
+   "y": 1321,
+   "w": 53,
+   "rot": 1.4,
+   "z": 278,
+   "gray": true
+  },
+  {
+   "piece": "jimcrowcountykings#title",
+   "x": 724,
+   "y": 1321,
+   "w": 71,
+   "rot": 0.8,
+   "z": 279,
+   "gray": true
+  },
+  {
+   "piece": "Nixons-war-at-home#title",
+   "x": 781,
+   "y": 1324,
+   "w": 50,
+   "rot": 0.8,
+   "z": 280,
+   "gray": true
+  },
+  {
+   "piece": "wilderebony#title",
+   "x": 824,
+   "y": 1323,
+   "w": 43,
+   "rot": 0,
+   "z": 281,
+   "gray": true
+  },
+  {
+   "piece": "Hammer-and-Hoe#title",
+   "x": 892,
+   "y": 1322,
+   "w": 102,
+   "rot": -0.2,
+   "z": 282,
+   "gray": true
+  },
+  {
+   "piece": "With-Her-Fist-Raised#title",
+   "x": 990,
+   "y": 1322,
+   "w": 102,
+   "rot": -0.8,
+   "z": 283,
+   "gray": true
+  },
+  {
+   "piece": "3-mothers#title",
+   "x": 1086,
+   "y": 1321,
+   "w": 99,
+   "rot": 1.1,
+   "z": 284,
+   "gray": true
+  },
+  {
+   "piece": "blackchicago#title",
+   "x": 1176,
+   "y": 1324,
+   "w": 88,
+   "rot": 0.8,
+   "z": 285,
+   "gray": true
+  },
+  {
+   "piece": "westtoussaint#title",
+   "x": 1254,
+   "y": 1322,
+   "w": 75,
+   "rot": 0.3,
+   "z": 286,
+   "gray": true
+  },
+  {
+   "piece": "3-mothers#1",
+   "x": 1010,
+   "y": 700,
+   "w": 190,
+   "rot": 2.4,
+   "z": 287,
+   "gray": false
+  },
+  {
+   "piece": "aintgonnaletnobody#1",
+   "x": 180,
+   "y": 740,
+   "w": 180,
+   "rot": 0.3,
+   "z": 288,
+   "gray": false
+  },
+  {
+   "piece": "All-Our-Trials#1",
+   "x": 620,
+   "y": 760,
+   "w": 170,
+   "rot": 2,
+   "z": 289,
+   "gray": false
+  },
+  {
+   "piece": "anafricanamericanandlatinxhistoryoftheus#2",
+   "x": 840,
+   "y": 620,
+   "w": 150,
+   "rot": 4.4,
+   "z": 290,
+   "gray": false
+  },
+  {
+   "piece": "andersonpower#1",
+   "x": 400,
+   "y": 660,
+   "w": 150,
+   "rot": 2.7,
+   "z": 291,
+   "gray": false
+  },
+  {
+   "piece": "bedasse-book#1",
+   "x": 1090,
+   "y": 520,
+   "w": 140,
+   "rot": 0.4,
+   "z": 292,
+   "gray": false
+  },
+  {
+   "piece": "anafricanamericanandlatinxhistoryoftheus#1",
+   "x": 159,
+   "y": 866,
+   "w": 378,
+   "rot": -3.4,
+   "z": 293,
+   "gray": false
+  },
+  {
+   "piece": "high-school-students-unite-1#1",
+   "x": 354,
+   "y": 870,
+   "w": 317,
+   "rot": 1.2,
+   "z": 294,
+   "gray": false
+  },
+  {
+   "piece": "jankenwilmingtonten#1",
+   "x": 541,
+   "y": 876,
+   "w": 261,
+   "rot": 1.9,
+   "z": 295,
+   "gray": false
+  },
+  {
+   "piece": "AG#1",
+   "x": 686,
+   "y": 886,
+   "w": 259,
+   "rot": 1.3,
+   "z": 296,
+   "gray": false
+  },
+  {
+   "piece": "IMG_9961#1",
+   "x": 886,
+   "y": 874,
+   "w": 295,
+   "rot": 4.2,
+   "z": 297,
+   "gray": false
+  },
+  {
+   "piece": "IMG_9978#1",
+   "x": 1095,
+   "y": 867,
+   "w": 303,
+   "rot": -3.8,
+   "z": 298,
+   "gray": false
+  },
+  {
+   "piece": "streetsbelongtous#1",
+   "x": 1261,
+   "y": 871,
+   "w": 271,
+   "rot": 1.8,
+   "z": 299,
+   "gray": false
+  },
+  {
+   "piece": "strike-the-hammer#1",
+   "x": 112,
+   "y": 1034,
+   "w": 305,
+   "rot": -1.1,
+   "z": 300,
+   "gray": false
+  },
+  {
+   "piece": "AM#1",
+   "x": 330,
+   "y": 1027,
+   "w": 309,
+   "rot": -2.5,
+   "z": 301,
+   "gray": false
+  },
+  {
+   "piece": "Fitz#1",
+   "x": 540,
+   "y": 1025,
+   "w": 309,
+   "rot": 1.4,
+   "z": 302,
+   "gray": false
+  },
+  {
+   "piece": "Mealy-Fidel-Malcolm#1",
+   "x": 680,
+   "y": 1056,
+   "w": 243,
+   "rot": -2,
+   "z": 303,
+   "gray": false
+  },
+  {
+   "piece": "penningroth#1",
+   "x": 836,
+   "y": 1023,
+   "w": 268,
+   "rot": 3.2,
+   "z": 304,
+   "gray": false
+  },
+  {
+   "piece": "2022.02.27resized-Power-Hungry-cover#1",
+   "x": 989,
+   "y": 1018,
+   "w": 280,
+   "rot": -0.1,
+   "z": 305,
+   "gray": false
+  },
+  {
+   "piece": "IMG_9965#1",
+   "x": 1188,
+   "y": 1006,
+   "w": 313,
+   "rot": -3.2,
+   "z": 306,
+   "gray": false
+  },
+  {
+   "piece": "vanguard#1",
+   "x": 1368,
+   "y": 1011,
+   "w": 305,
+   "rot": -3.5,
+   "z": 307,
+   "gray": false
+  },
+  {
+   "piece": "waywardlives#1",
+   "x": -10,
+   "y": 1211,
+   "w": 80,
+   "rot": -2.9,
+   "z": 308,
+   "gray": false
+  },
+  {
+   "piece": "rosa-parks#1",
+   "x": 56,
+   "y": 1190,
+   "w": 110,
+   "rot": -1.4,
+   "z": 309,
+   "gray": false
+  },
+  {
+   "piece": "not-free#1",
+   "x": 137,
+   "y": 1229,
+   "w": 145,
+   "rot": -2.2,
+   "z": 310,
+   "gray": false
+  },
+  {
+   "piece": "souls#1",
+   "x": 223,
+   "y": 1198,
+   "w": 131,
+   "rot": -0.9,
+   "z": 311,
+   "gray": false
+  },
+  {
+   "piece": "jimcrowcountykings#1",
+   "x": 300,
+   "y": 1193,
+   "w": 144,
+   "rot": 0,
+   "z": 312,
+   "gray": false
+  },
+  {
+   "piece": "LTP#1",
+   "x": 372,
+   "y": 1231,
+   "w": 101,
+   "rot": 0.6,
+   "z": 313,
+   "gray": false
+  },
+  {
+   "piece": "Hammer-and-Hoe#1",
+   "x": 450,
+   "y": 1231,
+   "w": 136,
+   "rot": -4,
+   "z": 314,
+   "gray": false
+  },
+  {
+   "piece": "RosaParksYA#1",
+   "x": 530,
+   "y": 1240,
+   "w": 129,
+   "rot": 1.1,
+   "z": 315,
+   "gray": false
+  },
+  {
+   "piece": "marching-west#1",
+   "x": 591,
+   "y": 1193,
+   "w": 100,
+   "rot": -3.2,
+   "z": 316,
+   "gray": false
+  },
+  {
+   "piece": "northofdixie#1",
+   "x": 683,
+   "y": 1215,
+   "w": 159,
+   "rot": -1.1,
+   "z": 317,
+   "gray": false
+  },
+  {
+   "piece": "thetruththatneverhurts#1",
+   "x": 930,
+   "y": 865,
+   "w": 262,
+   "rot": 3,
+   "z": 318,
+   "gray": false
+  },
+  {
+   "piece": "mahalia-jackson#1",
+   "x": 980,
+   "y": 1070,
+   "w": 367,
+   "rot": -2,
+   "z": 319,
+   "gray": false
+  },
+  {
+   "piece": "haopian-book#1",
+   "x": 640,
+   "y": 1160,
+   "w": 401,
+   "rot": 3,
+   "z": 320,
+   "gray": false
+  },
+  {
+   "piece": "fela-music-is-the-weapon#1",
+   "x": 300,
+   "y": 1170,
+   "w": 262,
+   "rot": 3,
+   "z": 321,
+   "gray": false
+  },
+  {
+   "piece": "Sword#1",
+   "x": 110,
+   "y": 1165,
+   "w": 159,
+   "rot": -2,
+   "z": 322,
+   "gray": false
+  }
+ ]
+}
