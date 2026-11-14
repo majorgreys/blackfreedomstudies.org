@@ -203,8 +203,16 @@ const organizationJsonLd = {
             ))}
           </ul>
           <div class="r-home-heading"><h2>Explore the archive</h2></div>
-          <ul class="r-home-links">
-            {ledger.map(row => <li><a href={row.href}>{row.name}</a> <span>{row.count}</span></li>)}
+          <ul class="r-ledger">
+            {ledger.map(row => (
+              <li>
+                <a href={row.href}>
+                  <span class="r-ledger__name">{row.name}</span>
+                  <span class="r-ledger__dots" aria-hidden="true"></span>
+                  <span class="r-ledger__n">{row.count}</span>
+                </a>
+              </li>
+            ))}
           </ul>
         </aside>
       </div>

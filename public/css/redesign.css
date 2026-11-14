@@ -8,7 +8,7 @@
    paper. Capitals are reserved for the masthead and the homepage
    title, which extends the CBFS logo: red letters over a black-and-white
    photograph. Photographs and book covers are shown as they are. */
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Courier+Prime&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Courier+Prime:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&display=swap');
 
 :root {
   --font-sans: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -342,13 +342,20 @@ main.container { padding-top: var(--main-pad); padding-bottom: 72px; flex: 1; wi
 .r-home-heading a { font-size: 0.9375rem; white-space: nowrap; }
 .r-home-more { margin: 18px 0 0; }
 .r-home-side .r-home-heading { margin-bottom: 10px; }
-.r-home-news, .r-home-links { list-style: none; margin: 0 0 40px; padding: 0; }
+.r-home-news { list-style: none; margin: 0 0 40px; padding: 0; }
 .r-home-news li { margin-bottom: 18px; }
 .r-home-news time { display: block; font-size: 0.9375rem; color: var(--ink-soft); }
 .r-home-news a { font-weight: 600; line-height: 1.3; text-decoration: none; }
 .r-home-news a:hover { text-decoration: underline; }
-.r-home-links li { padding: 5px 0; }
-.r-home-links span { color: var(--ink-soft); }
+/* Explore the archive: a ledger, each section's name run out to its count on a
+   row of dots, with the count typed */
+.r-ledger { list-style: none; margin: 0 0 40px; padding: 0; border-top: 2px solid var(--ink); }
+.r-ledger li { border-bottom: 1px solid var(--ink); }
+.r-ledger a { display: flex; align-items: baseline; gap: 8px; padding: 10px 0 8px; text-decoration: none; }
+.r-ledger__name { font-stretch: 68%; font-weight: 800; font-size: 1.5rem; line-height: 1.1; text-transform: uppercase; }
+.r-ledger__dots { flex: 1; min-width: 16px; border-bottom: 2px dotted currentColor; transform: translateY(-4px); }
+.r-ledger__n { font-family: var(--font-typed); font-size: 1.25rem; font-weight: 700; line-height: 1.1; }
+.r-ledger a:hover .r-ledger__name { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
 .r-home-about {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
