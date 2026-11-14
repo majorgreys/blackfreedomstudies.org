@@ -86,7 +86,8 @@ function compose({ name, W, H, bandHeights, rows, anchorSpots, objectSpots }) {
     const a = aspectOf(f), w = h * a;
     out.push({ piece: f.id, x, y: Math.round(bottom - h / 2), w: Math.round(w), rot, z: z++, gray: false });
   });
-  for (const e of out) if (forceGray.has(e.piece)) e.gray = true;
+  // The whole collage is printed in black and white
+  for (const e of out) e.gray = true;
   console.log(`${name}: ${out.length} pieces (${usedTitles} titles, ${Math.min(objectSpots.length, objects.length)} objects, ${usedFigures + anchorSpots.length} figures), ${new Set(out.map((e) => pieces.find((p) => p.id === e.piece).cover)).size} covers`);
   return { width: W, height: H, background: '#1c1b19', pieces: out };
 }
@@ -110,7 +111,7 @@ const wide = compose({
     { from: 2000, to: 2440, bottom: 950, h: 215, pack: 0.42 },
   ],
   // [anchor index, x, bottom, height, rotation]
-  anchorSpots: [[9, 1310, 190, 120, 2], [2, 1600, 245, 165, 3], [7, 1570, 430, 235, 2], [8, 1770, 430, 240, -2], [4, 1990, 310, 210, 3], [6, 2210, 340, 230, -2], [3, 2090, 610, 250, -4], [1, 2310, 650, 220, 2], [5, 2060, 945, 255, 3], [0, 2215, 950, 380, -2]],
+  anchorSpots: [[9, 1310, 190, 120, 2], [2, 1600, 245, 165, 3], [7, 1570, 430, 235, 2], [4, 1775, 430, 225, -2], [6, 2110, 345, 230, -2], [8, 2325, 310, 225, 3], [3, 2090, 610, 250, -4], [1, 2310, 650, 220, 2], [5, 2040, 950, 270, 3], [0, 2235, 950, 370, -2]],
 });
 // On a phone there is no right-hand side, so the same idea runs top to bottom:
 // lettering behind the title, and the crowd in a band below it (the hero is
@@ -125,7 +126,7 @@ const tall = compose({
     { from: 20, to: 1190, bottom: 1170, h: 175, pack: 0.44 },
     { from: 20, to: 1190, bottom: 1320, h: 215, pack: 0.42 },
   ],
-  anchorSpots: [[7, 250, 1075, 215, 2], [8, 450, 1085, 215, -2], [6, 700, 1040, 190, -2], [3, 1020, 1045, 200, 3], [2, 300, 1300, 230, 3], [5, 610, 1305, 260, -2], [0, 930, 1310, 330, -2]],
+  anchorSpots: [[7, 250, 1075, 215, 2], [3, 460, 1085, 205, -2], [6, 700, 1040, 190, -2], [8, 1030, 1050, 205, 3], [2, 300, 1300, 230, 3], [5, 610, 1305, 260, -2], [0, 930, 1310, 330, -2]],
 });
 await fs.writeFile(path.join(here, 'manifest-wide.json'), JSON.stringify(wide, null, 1));
 await fs.writeFile(path.join(here, 'manifest-tall.json'), JSON.stringify(tall, null, 1));

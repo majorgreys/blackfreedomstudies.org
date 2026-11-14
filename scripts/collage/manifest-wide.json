@@ -2800,7 +2800,7 @@
    "w": 150,
    "rot": -5.9,
    "z": 310,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "aintgonnaletnobody#1",
@@ -2809,7 +2809,7 @@
    "w": 130,
    "rot": -1.3,
    "z": 311,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "All-Our-Trials#1",
@@ -2818,7 +2818,7 @@
    "w": 130,
    "rot": 0.6,
    "z": 312,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "anafricanamericanandlatinxhistoryoftheus#2",
@@ -2827,7 +2827,7 @@
    "w": 130,
    "rot": 1.6,
    "z": 313,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "anafricanamericanandlatinxhistoryoftheus#1",
@@ -2836,7 +2836,7 @@
    "w": 230,
    "rot": 3.3,
    "z": 314,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "high-school-students-unite-1#1",
@@ -2845,7 +2845,7 @@
    "w": 232,
    "rot": 1.6,
    "z": 315,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "jankenwilmingtonten#1",
@@ -2854,7 +2854,7 @@
    "w": 202,
    "rot": 1.1,
    "z": 316,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "AG#1",
@@ -2863,7 +2863,7 @@
    "w": 155,
    "rot": 4.3,
    "z": 317,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "IMG_9961#1",
@@ -2872,7 +2872,7 @@
    "w": 163,
    "rot": -4.4,
    "z": 318,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "IMG_9978#1",
@@ -2881,7 +2881,7 @@
    "w": 146,
    "rot": -4.3,
    "z": 319,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "streetsbelongtous#1",
@@ -2890,7 +2890,7 @@
    "w": 176,
    "rot": -3.7,
    "z": 320,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "strike-the-hammer#1",
@@ -2899,7 +2899,7 @@
    "w": 153,
    "rot": -2.5,
    "z": 321,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "AM#1",
@@ -2908,7 +2908,7 @@
    "w": 188,
    "rot": -1.5,
    "z": 322,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "Fitz#1",
@@ -2917,7 +2917,7 @@
    "w": 142,
    "rot": 2.9,
    "z": 323,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "Mealy-Fidel-Malcolm#1",
@@ -2926,7 +2926,7 @@
    "w": 139,
    "rot": -1.8,
    "z": 324,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "penningroth#1",
@@ -2935,7 +2935,7 @@
    "w": 136,
    "rot": -2.2,
    "z": 325,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "2022.02.27resized-Power-Hungry-cover#1",
@@ -2944,7 +2944,7 @@
    "w": 162,
    "rot": -3.2,
    "z": 326,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "IMG_9965#1",
@@ -2953,7 +2953,7 @@
    "w": 131,
    "rot": 1.7,
    "z": 327,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "vanguard#1",
@@ -2962,7 +2962,7 @@
    "w": 152,
    "rot": 2.1,
    "z": 328,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "i-didnt-come-here-to-lie#1",
@@ -2971,7 +2971,7 @@
    "w": 206,
    "rot": -1.2,
    "z": 329,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "police-against-the-movement-1#1",
@@ -2980,7 +2980,7 @@
    "w": 219,
    "rot": -0.3,
    "z": 330,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "troop-movements#1",
@@ -2989,7 +2989,7 @@
    "w": 166,
    "rot": 1.1,
    "z": 331,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "sisterhood#1",
@@ -2998,7 +2998,7 @@
    "w": 225,
    "rot": -3.8,
    "z": 332,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "banking-on-freedom#1",
@@ -3007,7 +3007,7 @@
    "w": 196,
    "rot": 1,
    "z": 333,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "memoirs-of-robert-and-mabel-williams#1",
@@ -3016,7 +3016,7 @@
    "w": 188,
    "rot": -2,
    "z": 334,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "Fernandez#1",
@@ -3025,7 +3025,7 @@
    "w": 226,
    "rot": -2.3,
    "z": 335,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "politics-of-public-safety#1",
@@ -3034,7 +3034,7 @@
    "w": 182,
    "rot": -3.1,
    "z": 336,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "winslowshirley#1",
@@ -3043,7 +3043,7 @@
    "w": 223,
    "rot": 4.1,
    "z": 337,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "RosaParksYA#1",
@@ -3052,7 +3052,7 @@
    "w": 100,
    "rot": 3.5,
    "z": 338,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "waywardlives#1",
@@ -3061,7 +3061,7 @@
    "w": 53,
    "rot": -0.1,
    "z": 339,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "wewillwintheday#1",
@@ -3070,7 +3070,7 @@
    "w": 123,
    "rot": 1.2,
    "z": 340,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "purnellfighting#1",
@@ -3079,7 +3079,7 @@
    "w": 101,
    "rot": -0.3,
    "z": 341,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "LTP#1",
@@ -3088,7 +3088,7 @@
    "w": 70,
    "rot": -4.4,
    "z": 342,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "madness-in-the-city#1",
@@ -3097,7 +3097,7 @@
    "w": 48,
    "rot": -2.5,
    "z": 343,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "newarkfrontier#1",
@@ -3106,7 +3106,7 @@
    "w": 68,
    "rot": -4.5,
    "z": 344,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "rosa-parks#1",
@@ -3115,7 +3115,7 @@
    "w": 71,
    "rot": -4.2,
    "z": 345,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "gatewaytoequality#1",
@@ -3124,7 +3124,7 @@
    "w": 111,
    "rot": -3.9,
    "z": 346,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "murchliving#1",
@@ -3133,7 +3133,7 @@
    "w": 70,
    "rot": -4.1,
    "z": 347,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "Hammer-and-Hoe#1",
@@ -3142,7 +3142,7 @@
    "w": 98,
    "rot": -0.9,
    "z": 348,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "blood-sweat-and-tears#1",
@@ -3151,7 +3151,7 @@
    "w": 74,
    "rot": 2.1,
    "z": 349,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "the-undesirable-many-1#2",
@@ -3160,7 +3160,7 @@
    "w": 74,
    "rot": 3.7,
    "z": 350,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "curwood-shirley-chisholm#1",
@@ -3169,7 +3169,7 @@
    "w": 70,
    "rot": -2,
    "z": 351,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "greatuprising#1",
@@ -3178,7 +3178,7 @@
    "w": 119,
    "rot": 2,
    "z": 352,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "tigerbelle#1",
@@ -3187,7 +3187,7 @@
    "w": 100,
    "rot": -0.3,
    "z": 353,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "williamsbullet#1",
@@ -3196,7 +3196,7 @@
    "w": 132,
    "rot": -2.5,
    "z": 354,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "Seniors-book#1",
@@ -3205,7 +3205,7 @@
    "w": 106,
    "rot": 1.2,
    "z": 355,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "the-undesirable-many-1#1",
@@ -3214,7 +3214,7 @@
    "w": 81,
    "rot": -2.5,
    "z": 356,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "food-power-politics#1",
@@ -3223,7 +3223,7 @@
    "w": 79,
    "rot": -0.1,
    "z": 357,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "Griffin#1",
@@ -3232,7 +3232,7 @@
    "w": 86,
    "rot": -1.1,
    "z": 358,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "upendingtheivorytower#1",
@@ -3241,7 +3241,7 @@
    "w": 44,
    "rot": -4.5,
    "z": 359,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "muslim-cool#1",
@@ -3250,7 +3250,7 @@
    "w": 112,
    "rot": 3.5,
    "z": 360,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "kingharlem#1",
@@ -3259,7 +3259,7 @@
    "w": 121,
    "rot": -0.1,
    "z": 361,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "ransbyeslanda#1",
@@ -3268,7 +3268,7 @@
    "w": 155,
    "rot": -3.4,
    "z": 362,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "serailebruce#1",
@@ -3277,7 +3277,7 @@
    "w": 119,
    "rot": -0.3,
    "z": 363,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "andersonpower#1",
@@ -3286,7 +3286,7 @@
    "w": 163,
    "rot": 3.3,
    "z": 364,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "randolphflorynce#1",
@@ -3295,7 +3295,7 @@
    "w": 117,
    "rot": -2.4,
    "z": 365,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "selmanorth#1",
@@ -3304,7 +3304,7 @@
    "w": 96,
    "rot": 3.7,
    "z": 366,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "bradleyharlem#1",
@@ -3313,7 +3313,7 @@
    "w": 101,
    "rot": -1.3,
    "z": 367,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "cityofinmates#1",
@@ -3322,7 +3322,7 @@
    "w": 164,
    "rot": -0.5,
    "z": 368,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "contestedbodies#1",
@@ -3331,7 +3331,7 @@
    "w": 149,
    "rot": -4.1,
    "z": 369,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "black-folk#1",
@@ -3340,7 +3340,7 @@
    "w": 134,
    "rot": -1.5,
    "z": 370,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "bloodbrothers#1",
@@ -3349,7 +3349,7 @@
    "w": 168,
    "rot": -1.4,
    "z": 371,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "groundwork#1",
@@ -3358,7 +3358,7 @@
    "w": 131,
    "rot": -2.3,
    "z": 372,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "jimcrowcountykings#1",
@@ -3367,7 +3367,7 @@
    "w": 95,
    "rot": -0.5,
    "z": 373,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "presumedcriminal#1",
@@ -3376,7 +3376,7 @@
    "w": 103,
    "rot": 1.1,
    "z": 374,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "fromcivilrights#1",
@@ -3385,7 +3385,7 @@
    "w": 161,
    "rot": -3.3,
    "z": 375,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "Matt-Delmont#1",
@@ -3394,7 +3394,7 @@
    "w": 181,
    "rot": -3.1,
    "z": 376,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "blacklivesmatter#1",
@@ -3403,7 +3403,7 @@
    "w": 171,
    "rot": 0.7,
    "z": 377,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "IMG_9969#1",
@@ -3412,7 +3412,7 @@
    "w": 46,
    "rot": -0.6,
    "z": 378,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "3-mothers#3",
@@ -3421,7 +3421,7 @@
    "w": 187,
    "rot": -1.4,
    "z": 379,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "regina-anderson-andrews#1",
@@ -3430,7 +3430,7 @@
    "w": 122,
    "rot": 2.4,
    "z": 380,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "radical-women-writers#1",
@@ -3448,7 +3448,7 @@
    "w": 221,
    "rot": 3,
    "z": 382,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "Sword#1",
@@ -3457,34 +3457,34 @@
    "w": 133,
    "rot": 2,
    "z": 383,
-   "gray": false
-  },
-  {
-   "piece": "Sword#2",
-   "x": 1770,
-   "y": 310,
-   "w": 164,
-   "rot": -2,
-   "z": 384,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "tell-her-story-1#1",
-   "x": 1990,
-   "y": 205,
-   "w": 255,
-   "rot": 3,
-   "z": 385,
-   "gray": false
+   "x": 1775,
+   "y": 318,
+   "w": 273,
+   "rot": -2,
+   "z": 384,
+   "gray": true
   },
   {
    "piece": "freedomsteacher#1",
-   "x": 2210,
-   "y": 225,
+   "x": 2110,
+   "y": 230,
    "w": 223,
    "rot": -2,
+   "z": 385,
+   "gray": true
+  },
+  {
+   "piece": "Sword#2",
+   "x": 2325,
+   "y": 198,
+   "w": 153,
+   "rot": 3,
    "z": 386,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "thetruththatneverhurts#1",
@@ -3493,7 +3493,7 @@
    "w": 243,
    "rot": -4,
    "z": 387,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "we-are-internationalists#1",
@@ -3502,25 +3502,25 @@
    "w": 256,
    "rot": 2,
    "z": 388,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "fela-music-is-the-weapon#1",
-   "x": 2060,
-   "y": 818,
-   "w": 197,
+   "x": 2040,
+   "y": 815,
+   "w": 208,
    "rot": 3,
    "z": 389,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "mahalia-jackson#1",
-   "x": 2215,
-   "y": 760,
-   "w": 297,
+   "x": 2235,
+   "y": 765,
+   "w": 289,
    "rot": -2,
    "z": 390,
-   "gray": false
+   "gray": true
   }
  ]
 }

@@ -2593,7 +2593,7 @@
    "w": 130,
    "rot": 2.4,
    "z": 287,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "aintgonnaletnobody#1",
@@ -2602,7 +2602,7 @@
    "w": 120,
    "rot": 0.3,
    "z": 288,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "anafricanamericanandlatinxhistoryoftheus#1",
@@ -2611,7 +2611,7 @@
    "w": 294,
    "rot": 0.2,
    "z": 289,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "high-school-students-unite-1#1",
@@ -2620,7 +2620,7 @@
    "w": 234,
    "rot": -1.1,
    "z": 290,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "jankenwilmingtonten#1",
@@ -2629,7 +2629,7 @@
    "w": 223,
    "rot": 2.5,
    "z": 291,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "AG#1",
@@ -2638,7 +2638,7 @@
    "w": 206,
    "rot": -2.7,
    "z": 292,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "IMG_9961#1",
@@ -2647,7 +2647,7 @@
    "w": 248,
    "rot": 3.7,
    "z": 293,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "IMG_9978#1",
@@ -2656,7 +2656,7 @@
    "w": 241,
    "rot": 3.4,
    "z": 294,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "streetsbelongtous#1",
@@ -2665,7 +2665,7 @@
    "w": 232,
    "rot": -0.8,
    "z": 295,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "strike-the-hammer#1",
@@ -2674,7 +2674,7 @@
    "w": 212,
    "rot": -0.5,
    "z": 296,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "AM#1",
@@ -2683,7 +2683,7 @@
    "w": 220,
    "rot": 1.2,
    "z": 297,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "Fitz#1",
@@ -2692,7 +2692,7 @@
    "w": 207,
    "rot": 1.3,
    "z": 298,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "Mealy-Fidel-Malcolm#1",
@@ -2701,7 +2701,7 @@
    "w": 240,
    "rot": -4.1,
    "z": 299,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "penningroth#1",
@@ -2710,7 +2710,7 @@
    "w": 208,
    "rot": -1.8,
    "z": 300,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "2022.02.27resized-Power-Hungry-cover#1",
@@ -2719,7 +2719,7 @@
    "w": 251,
    "rot": -0.4,
    "z": 301,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "IMG_9965#1",
@@ -2728,7 +2728,7 @@
    "w": 219,
    "rot": 2.7,
    "z": 302,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "vanguard#1",
@@ -2737,7 +2737,7 @@
    "w": 189,
    "rot": 2.5,
    "z": 303,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "i-didnt-come-here-to-lie#1",
@@ -2746,7 +2746,7 @@
    "w": 185,
    "rot": 3.4,
    "z": 304,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "police-against-the-movement-1#1",
@@ -2755,7 +2755,7 @@
    "w": 194,
    "rot": 0.7,
    "z": 305,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "troop-movements#1",
@@ -2764,7 +2764,7 @@
    "w": 232,
    "rot": -1.4,
    "z": 306,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "sisterhood#1",
@@ -2773,7 +2773,7 @@
    "w": 176,
    "rot": 0.4,
    "z": 307,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "Griffin#1",
@@ -2782,7 +2782,7 @@
    "w": 90,
    "rot": -0.9,
    "z": 308,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "regina-anderson-andrews#1",
@@ -2791,7 +2791,7 @@
    "w": 98,
    "rot": 0,
    "z": 309,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "newarkfrontier#1",
@@ -2800,7 +2800,7 @@
    "w": 69,
    "rot": 0.6,
    "z": 310,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "northofdixie#1",
@@ -2809,7 +2809,7 @@
    "w": 94,
    "rot": -4,
    "z": 311,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "muslim-cool#1",
@@ -2818,7 +2818,7 @@
    "w": 90,
    "rot": 1.1,
    "z": 312,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "Bond#1",
@@ -2827,7 +2827,7 @@
    "w": 67,
    "rot": -3.2,
    "z": 313,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "rsz_1rsz_purnell_comp_final_rev#1",
@@ -2836,7 +2836,7 @@
    "w": 104,
    "rot": -1.1,
    "z": 314,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "kingharlem#1",
@@ -2845,7 +2845,7 @@
    "w": 100,
    "rot": 0.9,
    "z": 315,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "purnellfighting#1",
@@ -2854,7 +2854,7 @@
    "w": 89,
    "rot": -3.1,
    "z": 316,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "waywardlives#1",
@@ -2863,7 +2863,7 @@
    "w": 69,
    "rot": 0.5,
    "z": 317,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "not-free#1",
@@ -2872,7 +2872,7 @@
    "w": 115,
    "rot": 3.5,
    "z": 318,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "marching-west#1",
@@ -2881,7 +2881,7 @@
    "w": 62,
    "rot": -0.1,
    "z": 319,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "Seniors-book#1",
@@ -2890,7 +2890,7 @@
    "w": 147,
    "rot": 1.2,
    "z": 320,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "RosaParksYA#1",
@@ -2899,7 +2899,7 @@
    "w": 123,
    "rot": -0.3,
    "z": 321,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "presumedcriminal#1",
@@ -2908,7 +2908,7 @@
    "w": 82,
    "rot": -4.4,
    "z": 322,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "madness-in-the-city#1",
@@ -2917,7 +2917,7 @@
    "w": 51,
    "rot": -2.5,
    "z": 323,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "curwood-shirley-chisholm#1",
@@ -2926,7 +2926,7 @@
    "w": 75,
    "rot": -4.5,
    "z": 324,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "blood-sweat-and-tears#1",
@@ -2935,7 +2935,7 @@
    "w": 85,
    "rot": -4.2,
    "z": 325,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "bodyandsoul#1",
@@ -2944,7 +2944,7 @@
    "w": 126,
    "rot": -3.9,
    "z": 326,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "LTP#1",
@@ -2953,7 +2953,7 @@
    "w": 83,
    "rot": -4.1,
    "z": 327,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "wewillwintheday#1",
@@ -2962,7 +2962,7 @@
    "w": 114,
    "rot": -0.9,
    "z": 328,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "the-undesirable-many-1#1",
@@ -2971,7 +2971,7 @@
    "w": 84,
    "rot": 2.1,
    "z": 329,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "unteachables#1",
@@ -2980,7 +2980,7 @@
    "w": 85,
    "rot": 3.7,
    "z": 330,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "souls#1",
@@ -2989,7 +2989,7 @@
    "w": 81,
    "rot": -2,
    "z": 331,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "andersonpower#1",
@@ -2998,7 +2998,7 @@
    "w": 131,
    "rot": 2,
    "z": 332,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "toni-cade-bambara#1",
@@ -3007,7 +3007,7 @@
    "w": 138,
    "rot": -2.3,
    "z": 333,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "tigerbelle#1",
@@ -3016,7 +3016,7 @@
    "w": 157,
    "rot": 0.3,
    "z": 334,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "3-mothers#2",
@@ -3025,7 +3025,7 @@
    "w": 203,
    "rot": -0.2,
    "z": 335,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "tate#1",
@@ -3034,7 +3034,7 @@
    "w": 124,
    "rot": -1.8,
    "z": 336,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "ChariseBurden#1",
@@ -3043,7 +3043,7 @@
    "w": 163,
    "rot": -2.4,
    "z": 337,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "gatewaytoequality#1",
@@ -3052,7 +3052,7 @@
    "w": 140,
    "rot": -1,
    "z": 338,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "upendingtheivorytower#1",
@@ -3061,7 +3061,7 @@
    "w": 54,
    "rot": -4.5,
    "z": 339,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "fordthreads#1",
@@ -3070,7 +3070,7 @@
    "w": 147,
    "rot": 3.5,
    "z": 340,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "assata-taught-me#1",
@@ -3079,7 +3079,7 @@
    "w": 160,
    "rot": -0.1,
    "z": 341,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "maemallory#1",
@@ -3088,7 +3088,7 @@
    "w": 197,
    "rot": -3.4,
    "z": 342,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "Matt-Delmont#1",
@@ -3097,7 +3097,7 @@
    "w": 165,
    "rot": -0.3,
    "z": 343,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "Unfinished-Agenda#1",
@@ -3106,7 +3106,7 @@
    "w": 209,
    "rot": 3.3,
    "z": 344,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "america#1",
@@ -3115,7 +3115,7 @@
    "w": 152,
    "rot": -2.4,
    "z": 345,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "williamsbullet#1",
@@ -3124,7 +3124,7 @@
    "w": 134,
    "rot": 3.7,
    "z": 346,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "Jim-Crow-NY_190404_160837#1",
@@ -3133,7 +3133,7 @@
    "w": 126,
    "rot": -1.3,
    "z": 347,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "black-folk#1",
@@ -3142,7 +3142,7 @@
    "w": 149,
    "rot": -0.4,
    "z": 348,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "Sword#1",
@@ -3151,16 +3151,16 @@
    "w": 122,
    "rot": 2,
    "z": 349,
-   "gray": false
+   "gray": true
   },
   {
-   "piece": "Sword#2",
-   "x": 450,
-   "y": 978,
-   "w": 147,
+   "piece": "thetruththatneverhurts#1",
+   "x": 460,
+   "y": 983,
+   "w": 199,
    "rot": -2,
    "z": 350,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "freedomsteacher#1",
@@ -3169,16 +3169,16 @@
    "w": 184,
    "rot": -2,
    "z": 351,
-   "gray": false
+   "gray": true
   },
   {
-   "piece": "thetruththatneverhurts#1",
-   "x": 1020,
-   "y": 945,
-   "w": 194,
+   "piece": "Sword#2",
+   "x": 1030,
+   "y": 948,
+   "w": 140,
    "rot": 3,
    "z": 352,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "haopian-book#1",
@@ -3187,7 +3187,7 @@
    "w": 308,
    "rot": 3,
    "z": 353,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "fela-music-is-the-weapon#1",
@@ -3196,7 +3196,7 @@
    "w": 200,
    "rot": -2,
    "z": 354,
-   "gray": false
+   "gray": true
   },
   {
    "piece": "mahalia-jackson#1",
@@ -3205,7 +3205,7 @@
    "w": 258,
    "rot": -2,
    "z": 355,
-   "gray": false
+   "gray": true
   }
  ]
 }

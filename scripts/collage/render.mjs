@@ -1,7 +1,8 @@
 // Renders the cut-out collage from manifest-wide.json and manifest-tall.json
-// into public/images/collage. `--colour all|figures|none` chooses what is
-// printed in colour (default figures: lettering in black and white, figures in
-// their own colour). `--out <dir>` writes somewhere else, for comparisons.
+// into public/images/collage. Each manifest entry says whether its piece is
+// printed in black and white (`gray`); at present every piece is. `--colour all`
+// or `--colour none` overrides that for a comparison, and `--out <dir>` writes
+// somewhere else.
 import sharp from 'sharp';
 import fs from 'node:fs/promises';
 import path from 'node:path';
