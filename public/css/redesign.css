@@ -1,13 +1,18 @@
 /* Redesign theme: plain movement print.
    Black type on a near-white sheet, one grotesque family (Archivo) doing
    nearly all the work, a reading serif (Newsreader) for long text, and red as
-   the single accent. Capitals are reserved for the masthead and the homepage
+   the single accent. Typewriter type (Courier Prime) is kept for the short
+   descriptive line under a title and the credit line in the footer, where
+   flyers and little-magazine covers of the period used a typewriter. One block
+   on a page may sit on coloured stock, as broadsides were printed on tinted
+   paper. Capitals are reserved for the masthead and the homepage
    title, which extends the CBFS logo: red letters over a black-and-white
    photograph. Photographs and book covers are shown as they are. */
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Courier+Prime&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&display=swap');
 
 :root {
   --font-sans: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-typed: 'Courier Prime', 'Courier New', Courier, monospace;
   --font-serif: 'Newsreader', 'Iowan Old Style', Georgia, serif;
 
   --sheet: #fcfbf8;
@@ -17,6 +22,7 @@
   --red-text: #b81d12;   /* small text, 6.2:1 on the sheet */
   --line: #d9d6cf;
   --tint: #f1efe9;
+  --stock: #ead9b0;      /* coloured stock, for one block on a page */
 
   --max-width: 1200px;
   --gutter: clamp(20px, 4vw, 48px);
@@ -201,7 +207,7 @@ main.container { padding-top: var(--main-pad); padding-bottom: 72px; flex: 1; wi
 .r-footer__content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 40px; font-size: 0.9375rem; }
 .r-footer__info { display: flex; flex-wrap: wrap; gap: 0 28px; }
 .r-footer__info a { display: inline-block; padding: 10px 0; }
-.r-footer__sponsors { max-width: 56ch; padding: 10px 0; color: #d6d3cc; }
+.r-footer__sponsors { max-width: 60ch; padding: 10px 0; font-family: var(--font-typed); color: #d6d3cc; }
 .r-footer a { color: #fff; }
 .r-footer a:hover { color: #fff; text-decoration-thickness: 2px; }
 
@@ -224,86 +230,104 @@ main.container { padding-top: var(--main-pad); padding-bottom: 72px; flex: 1; wi
 .r-btn--outline:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
 
 /* ── Homepage hero ──
-   The CBFS logo at page size: the title in red capitals laid over the
-   photograph, which is shown plainly in black and white. The photo is kept
-   near its real size (it is 800px wide) and set off-centre. */
+   A collage cut from the covers of the books discussed in the series, printed
+   in black and white, with the title in red capitals over it (after the cover
+   of Nikki Giovanni's Re:Creation, Broadside Press, 1970). The three words
+   step to the right, as the title does on The Rocks Cry Out (Broadside Press,
+   1969). The collage is built by scripts/build-cover-collage.mjs. */
 .r-hero {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: 16px;
-  margin-bottom: 72px;
-}
-.r-hero__photo { grid-column: 5 / -1; grid-row: 1; align-self: start; }
-.r-hero__photo img { display: block; width: 100%; filter: grayscale(1) contrast(1.08); }
-.r-hero__title {
-  grid-column: 1 / 11;
-  grid-row: 1;
-  align-self: end;
   position: relative;
-  z-index: 1;
-  padding-top: 20px;
-  color: var(--red);
+  margin: calc(-1 * var(--main-pad)) calc(50% - 50vw) 0;
+  background: #1a1a1a;
+  overflow: hidden;
+}
+.r-hero__collage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+}
+/* Ink the collage down so the red letters hold */
+.r-hero::after { content: ''; position: absolute; inset: 0; background: #000; opacity: 0.5; }
+.r-hero__inner { position: relative; z-index: 1; max-width: var(--max-width); margin: 0 auto; padding: 44px var(--gutter) 40px; }
+.r-hero__title {
+  color: #ee3a26;
   font-stretch: 62%;
   font-weight: 900;
-  font-size: min(17.5vw, 13.75rem);
+  font-size: min(16.5vw, 13.75rem);
   line-height: 0.8;
   letter-spacing: -0.005em;
   text-transform: uppercase;
   text-wrap: initial;
 }
 .r-hero__title span { display: block; }
+.r-hero__title span:nth-child(3) { margin-left: 0.55em; }
+.r-hero__title span:nth-child(4) { margin-left: 1.1em; }
 .r-hero__title .r-hero__kicker {
-  margin-bottom: 0.7em;
-  color: var(--ink);
+  margin-bottom: 0.9em;
   font-stretch: 100%;
   font-weight: 700;
   font-size: clamp(1.125rem, 1.8vw, 1.5rem);
   line-height: 1.2;
   letter-spacing: 0;
   text-transform: none;
+  color: #fff;
 }
-.r-hero__kicker b { background: var(--sheet); padding: 2px 8px 2px 0; font-weight: 700; }
+.r-hero__kicker b { background: #000; padding: 5px 10px; font-weight: 700; }
+/* Typed, like the statement on a poster */
 .r-hero__subtitle {
-  grid-column: 9 / -1;
-  grid-row: 1;
-  align-self: end;
-  margin: 0;
-  padding-bottom: 6px;
-  font-size: 1.1875rem;
-  line-height: 1.4;
+  max-width: 34rem;
+  margin: 28px 0 64px;
+  font-family: var(--font-typed);
+  font-size: 1.125rem;
+  line-height: 1.5;
 }
-@media (max-width: 760px) {
-  .r-hero { display: flex; flex-direction: column; margin: calc(-1 * var(--main-pad)) 0 48px; }
-  .r-hero__photo { order: 1; margin: 0 calc(-1 * var(--gutter)); }
-  .r-hero__title { order: 2; margin-top: -1.15em; padding-top: 0; font-size: 24.5vw; }
-  .r-hero__subtitle { order: 3; }
-  .r-hero__title .r-hero__kicker { display: inline-block; margin-bottom: 0.5em; }
-  .r-hero__kicker b { padding: 4px 8px; margin-left: -8px; }
-  .r-hero__subtitle { margin-top: 20px; }
+@media (max-width: 700px) {
+  .r-hero__inner { padding: 36px var(--gutter) 28px; }
+  .r-hero__title { font-size: 21vw; }
+  .r-hero__title span:nth-child(3) { margin-left: 0.25em; }
+  .r-hero__title span:nth-child(4) { margin-left: 0.5em; }
+  .r-hero__subtitle { margin: 22px 0 48px; }
 }
 
-/* ── Homepage: the next conversation leads ── */
-.r-lead {
+/* ── Homepage: the next conversation leads ──
+   Two flat fields, the title in red on the sheet above a black band, as on the
+   cover of Dudley Randall's Cities Burning (Broadside Press, 1968). */
+.r-lead { margin-bottom: 72px; }
+.r-lead__top { padding-bottom: 22px; }
+.r-lead__label { margin: 0 0 10px; font-weight: 700; }
+.r-lead__title { max-width: 16em; font-stretch: 75%; font-weight: 800; font-size: clamp(2.5rem, 6.2vw, 5rem); line-height: 0.95; letter-spacing: -0.01em; color: var(--red-text); }
+.r-lead__title a { color: inherit; text-decoration: none; }
+.r-lead__title a:hover { text-decoration: underline; text-decoration-thickness: 3px; }
+.r-lead__band {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 24px 48px;
   align-items: end;
-  margin-bottom: 72px;
-  padding-top: 20px;
-  border-top: 3px solid var(--ink);
+  padding: 26px 28px 28px;
+  background: #000;
+  color: #fff;
 }
-.r-lead__label { margin: 0 0 12px; font-weight: 700; color: var(--red-text); }
-.r-lead__title { font-stretch: 75%; font-weight: 800; font-size: clamp(2.25rem, 5.4vw, 4.25rem); line-height: 0.98; letter-spacing: -0.01em; }
-.r-lead__title a { text-decoration: none; }
-.r-lead__title a:hover { text-decoration: underline; text-decoration-thickness: 3px; }
-.r-lead__when { margin: 18px 0 2px; font-size: 1.25rem; font-weight: 700; }
-.r-lead__with { margin: 0 0 22px; max-width: 52ch; font-size: 1.125rem; }
+/* The date is set wide and bold, like the date line on a poster */
+.r-lead__when { margin: 0 0 6px; font-stretch: 118%; font-weight: 800; font-size: clamp(1.125rem, 2vw, 1.5rem); line-height: 1.2; }
+.r-lead__with { margin: 0 0 22px; max-width: 46ch; font-size: 1.125rem; }
 .r-lead__actions { display: flex; flex-wrap: wrap; gap: 10px; }
-.r-lead__books { display: flex; gap: 10px; align-items: flex-end; }
-.r-lead__books img { display: block; width: 124px; height: auto; }
+.r-lead .r-btn { background: #fff; border-color: #fff; color: #000; }
+.r-lead .r-btn:hover { background: #ee3a26; border-color: #ee3a26; color: #000; }
+.r-lead .r-btn--outline { background: transparent; color: #fff; }
+.r-lead :focus-visible { outline-color: #fff; }
+/* The books stand on the band and rise onto the sheet */
+.r-lead__books { display: flex; gap: 10px; align-items: flex-end; margin-top: -120px; }
+.r-lead__books img { display: block; width: 130px; height: auto; }
 @media (max-width: 900px) {
-  .r-lead { grid-template-columns: minmax(0, 1fr); margin-bottom: 56px; }
-  .r-lead__books img { width: calc((100vw - 2 * var(--gutter) - 30px) / 4); max-width: 124px; }
+  .r-lead { margin-bottom: 56px; }
+  .r-lead__band { grid-template-columns: minmax(0, 1fr); padding: 22px 20px 0; margin: 0 calc(-1 * var(--gutter)); }
+  .r-lead__books { margin: 4px 0 -36px; }
+  .r-lead__books img { width: calc((100vw - 40px - 30px) / 4); max-width: 130px; }
+  .r-lead { padding-bottom: 36px; }
 }
 
 /* ── Homepage: season and side column ── */
@@ -325,16 +349,29 @@ main.container { padding-top: var(--main-pad); padding-bottom: 72px; flex: 1; wi
 .r-home-news a:hover { text-decoration: underline; }
 .r-home-links li { padding: 5px 0; }
 .r-home-links span { color: var(--ink-soft); }
-.r-home-about { max-width: 44rem; }
+.r-home-about {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 28px 48px;
+  align-items: start;
+  margin: 0 calc(-1 * var(--gutter));
+  padding: 40px var(--gutter) 44px;
+  background: var(--stock);
+}
+.r-home-about__photo { display: block; width: 100%; height: auto; }
 .r-home-about h2 { margin-bottom: 14px; }
+.r-home-about .r-prose a { text-decoration-color: currentColor; }
 @media (max-width: 900px) {
   .r-home-grid { grid-template-columns: minmax(0, 1fr); margin-bottom: 56px; }
+  .r-home-about { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ── Page header ── */
 .r-page-header { margin: 8px 0 40px; }
 .r-page-header p,
 .r-page-header .r-news-date { display: block; margin: 14px 0 0; font-size: 1.125rem; color: var(--ink-soft); }
+/* The line under a section title is typed */
+.r-page-header p { max-width: 44rem; font-family: var(--font-typed); font-size: 1.0625rem; color: var(--ink); }
 .r-page-header .r-news-date { margin: 0 0 10px; font-size: 1rem; }
 /* Long article titles are set smaller than section titles */
 article .r-page-header h1 { font-size: clamp(2.1rem, 5vw, 3.5rem); line-height: 1; }
@@ -394,11 +431,10 @@ main section > h2.r-season-group__label {
   grid-template-areas: "label books" "title books" "meta books" "actions books";
   column-gap: 40px;
   margin: 0 0 40px;
-  padding: 20px 0 28px;
-  border-top: 3px solid var(--ink);
-  border-bottom: 1px solid var(--line);
+  padding: 24px 28px 28px;
+  background: var(--stock);
 }
-.r-next-event__label { grid-area: label; margin: 0 0 8px; font-weight: 700; color: var(--red-text); }
+.r-next-event__label { grid-area: label; margin: 0 0 8px; font-weight: 700; }
 main section > h2.r-next-event__title { grid-area: title; margin: 0 0 12px; font-stretch: 75%; font-weight: 800; font-size: clamp(1.9rem, 4vw, 3rem); line-height: 1; }
 .r-next-event__title a { text-decoration: none; }
 .r-next-event__title a:hover { text-decoration: underline; text-decoration-thickness: 3px; }
@@ -408,7 +444,7 @@ main section > h2.r-next-event__title { grid-area: title; margin: 0 0 12px; font
 .r-next-event__books { grid-area: books; display: flex; gap: 8px; align-self: end; }
 .r-next-event__books img { display: block; width: 90px; height: 135px; object-fit: cover; }
 @media (max-width: 768px) {
-  .r-next-event { grid-template-columns: minmax(0, 1fr); grid-template-areas: "label" "title" "meta" "actions"; }
+  .r-next-event { grid-template-columns: minmax(0, 1fr); grid-template-areas: "label" "title" "meta" "actions"; padding: 20px; }
   .r-next-event__books { display: none; }
 }
 

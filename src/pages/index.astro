@@ -127,39 +127,52 @@ const organizationJsonLd = {
   ) : (
     <div>
       <div class="r-hero">
-        <h1 class="r-hero__title">
-          <span class="r-hero__kicker"><b>Conversations in</b></span>
-          <span>Black</span>
-          <span>Freedom</span>
-          <span>Studies</span>
-        </h1>
-        {homepage?.data.image && (
-          <div class="r-hero__photo">
-            <img src={(homepage.data.image as any).src} alt="Speakers in conversation before an audience at the Schomburg Center" />
-          </div>
-        )}
-        <p class="r-hero__subtitle">A monthly roundtable discussion at the Schomburg Center with authors and experts in Black history.</p>
+        <picture>
+          <source media="(max-width: 700px)" srcset="/images/collage/covers-tall-750.webp 750w, /images/collage/covers-tall-1200.webp 1200w" sizes="100vw" />
+          <img
+            class="r-hero__collage"
+            src="/images/collage/covers-wide-1600.webp"
+            srcset="/images/collage/covers-wide-1000.webp 1000w, /images/collage/covers-wide-1600.webp 1600w, /images/collage/covers-wide-2400.webp 2400w"
+            sizes="100vw"
+            width="2400"
+            height="1000"
+            alt="Collage of pieces cut from the covers of books discussed in the series"
+          />
+        </picture>
+        <div class="r-hero__inner">
+          <h1 class="r-hero__title">
+            <span class="r-hero__kicker"><b>Conversations in</b></span>
+            <span>Black</span>
+            <span>Freedom</span>
+            <span>Studies</span>
+          </h1>
+        </div>
       </div>
+      <p class="r-hero__subtitle">A monthly roundtable discussion at the Schomburg Center with authors and experts in Black history.</p>
 
       {featured && (
         <section class="r-lead" aria-labelledby="home-next">
-          <div class="r-lead__body">
+          <div class="r-lead__top">
             <p class="r-lead__label" id="home-next">{nextEvent ? 'Next conversation' : 'Most recent conversation'}</p>
             <h2 class="r-lead__title"><a href={featuredUrl}>{featured.data.title}</a></h2>
-            <p class="r-lead__when">
-              <time datetime={featured.data.date.toISOString().slice(0, 10)}>{featured.data.date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</time>
-            </p>
-            {featuredSpeakers.length > 0 && <p class="r-lead__with">With {listNames(featuredSpeakers.map(s => s.data.name))}</p>}
-            <div class="r-lead__actions">
-              <a class="r-btn" href={featuredUrl}>Event details</a>
-              {nextEvent?.data.eventbrite && <a class="r-btn r-btn--outline" href={nextEvent.data.eventbrite} rel="noopener">Register</a>}
-            </div>
           </div>
-          {featured.data.books.length > 0 && (
-            <div class="r-lead__books" aria-hidden="true">
-              {featured.data.books.slice(0, 4).map((book: any) => <BookCover src={book} width={248} alt="" />)}
+          <div class="r-lead__band">
+            <div class="r-lead__info">
+              <p class="r-lead__when">
+                <time datetime={featured.data.date.toISOString().slice(0, 10)}>{featured.data.date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</time>
+              </p>
+              {featuredSpeakers.length > 0 && <p class="r-lead__with">With {listNames(featuredSpeakers.map(s => s.data.name))}</p>}
+              <div class="r-lead__actions">
+                <a class="r-btn" href={featuredUrl}>Event details</a>
+                {nextEvent?.data.eventbrite && <a class="r-btn r-btn--outline" href={nextEvent.data.eventbrite} rel="noopener">Register</a>}
+              </div>
             </div>
-          )}
+            {featured.data.books.length > 0 && (
+              <div class="r-lead__books" aria-hidden="true">
+                {featured.data.books.slice(0, 4).map((book: any) => <BookCover src={book} width={260} alt="" />)}
+              </div>
+            )}
+          </div>
         </section>
       )}
 
@@ -198,8 +211,13 @@ const organizationJsonLd = {
 
       {HomepageContent && (
         <section class="r-home-about" aria-labelledby="home-about">
-          <h2 id="home-about">About the series</h2>
-          <div class="r-prose"><HomepageContent /></div>
+          {homepage?.data.image && (
+            <Image class="r-home-about__photo" src={homepage.data.image} alt="Speakers in conversation before an audience at the Schomburg Center" width={800} />
+          )}
+          <div>
+            <h2 id="home-about">About the series</h2>
+            <div class="r-prose"><HomepageContent /></div>
+          </div>
         </section>
       )}
     </div>
