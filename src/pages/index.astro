@@ -129,8 +129,7 @@ const organizationJsonLd = {
         <div class="r-hero__inner">
           <div class="r-hero__content">
             <h1 class="r-hero__title"><span class="r-hero__kicker">Conversations in</span> Black Freedom Studies</h1>
-            <p class="r-hero__subtitle">A monthly roundtable with authors and experts in Black history, at the Schomburg Center in Harlem and online.</p>
-            <p class="r-hero__facts">First Thursdays at 6:30pm, since {firstYear}</p>
+            <p class="r-hero__subtitle">A monthly roundtable discussion at the Schomburg Center with authors and experts in Black history.</p>
           </div>
           <div class="r-hero__sun">
             {homepage?.data.image && (
@@ -158,11 +157,10 @@ const organizationJsonLd = {
           </section>
         )}
         <section class="r-ledger" aria-labelledby="home-archive">
-          <h2 id="home-archive">In the archive</h2>
+          <h2 id="home-archive">Explore the archive</h2>
           <p class="r-ledger__sentence">
-            Since {firstYear} the series has gathered{' '}
             {ledger.map((row, i) => (
-              <Fragment><a href={row.href}>{row.count} {row.name.toLowerCase()}</a>{i < ledger.length - 2 ? ', ' : i === ledger.length - 2 ? ' and ' : '.'}</Fragment>
+              <Fragment><a href={row.href}>{row.count} {row.name.toLowerCase()}</a>{i < ledger.length - 1 ? ', ' : ''}</Fragment>
             ))}
           </p>
         </section>
@@ -172,7 +170,7 @@ const organizationJsonLd = {
         {seasonEvents.length > 0 && (
           <section class="r-home-season" aria-labelledby="home-season">
             <div class="r-home-heading">
-              <h2 id="home-season">{seasonTitle} season</h2>
+              <h2 id="home-season">{seasonTitle}</h2>
               <a href={`/events/${seasonKey}/`}>Season page</a>
             </div>
             <div class="r-season-group__events r-season-group__events--page">
@@ -183,7 +181,7 @@ const organizationJsonLd = {
         )}
         <aside class="r-home-side" aria-labelledby="home-news">
           <div class="r-home-heading">
-            <h2 id="home-news">News</h2>
+            <h2 id="home-news">Latest news</h2>
             <a href="/news/">All news</a>
           </div>
           <ul class="r-home-news">
