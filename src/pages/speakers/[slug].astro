@@ -63,7 +63,7 @@ const appearances = events
         <div>
           <h1>{speaker.data.name}</h1>
           {speaker.data.affiliation && <span class="affiliation">{speaker.data.affiliation}</span>}
-          <div class="r-speaker-social" style="margin-top:12px;">
+          <div class="r-speaker-social">
             {speaker.data.homepage && <a href={speaker.data.homepage}>Website</a>}
             {speaker.data.email && <a href={`mailto:${speaker.data.email}`}>Email</a>}
             {speaker.data.twitter && <a href={`https://twitter.com/${speaker.data.twitter}`}>Twitter</a>}

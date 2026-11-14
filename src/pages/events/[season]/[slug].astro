@@ -189,7 +189,7 @@ const eventJsonLd = {
       {(isFuture && event.data.eventbrite) || video ? (
         <div class="r-event-actions">
           {isFuture && event.data.eventbrite && (
-            <a href={event.data.eventbrite} rel="noopener" class="r-btn">Register on Eventbrite ↗</a>
+            <a href={event.data.eventbrite} rel="noopener" class="r-btn">Register on Eventbrite</a>
           )}
           {video && <a href="#recording" class="r-btn r-btn--outline">Watch the recording</a>}
         </div>
@@ -245,7 +245,7 @@ const eventJsonLd = {
         </section>
       )}
 
-      <p class="r-back-link"><a href={`/events/${seasonSlug}/`}>← All {seasonTitle} conversations</a></p>
+      <p class="r-back-link"><a href={`/events/${seasonSlug}/`}>All {seasonTitle} conversations</a></p>
     </div>
   )}
 </Layout>
