@@ -5,11 +5,11 @@
 // Running this script again rebuilds both manifests from the rules below and
 // overwrites hand edits.
 //
-// The arrangement follows Barbara Jones-Hogu's print "Unite" (1971): a field of
-// lettering fills the sheet, and the figures stand massed along the bottom and
-// up the right side, in front of it. Title lettering runs in bands of very
-// different heights. Figures are in three rows, groups behind and single
-// figures in front, with a few large figures anchoring the right.
+// The arrangement reads as titles, then faces. Title lettering runs in bands of
+// very different heights across the sheet (after the lettering field of
+// Barbara Jones-Hogu's print "Unite", 1971). The figures are massed together as
+// one crowd in front of it, groups behind and single figures in front, with a
+// few large figures placed by hand to anchor it.
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { here } from './pieces.mjs';
@@ -68,7 +68,7 @@ function compose({ name, W, H, bandHeights, rows, anchorSpots, objectSpots }) {
   const figs = [...figures].sort((a, b) => aspectOf(b) - aspectOf(a));
   let usedFigures = 0;
   for (const row of rows) {
-    let x = row.from;
+    let x = row.from + (rand() - 0.5) * 70;   // an uneven edge to the crowd
     while (x < row.to && figs.length) {
       // back rows take the widest (groups); front rows take from the narrow end
       const f = row.groups ? figs.shift() : figs.splice(Math.floor(rand() * Math.min(figs.length, 40)) + Math.max(0, figs.length - 40), 1)[0];
@@ -77,7 +77,7 @@ function compose({ name, W, H, bandHeights, rows, anchorSpots, objectSpots }) {
       const w = Math.min(h * a, row.h * 2.1);
       out.push({ piece: f.id, x: Math.round(x + w / 2), y: Math.round(row.bottom - (w / a) / 2 + (rand() - 0.5) * 24), w: Math.round(w), rot: +((rand() - 0.5) * 9).toFixed(1), z: z++, gray: !!row.gray });
       usedFigures++;
-      x += w * (0.52 + rand() * 0.2);
+      x += w * ((row.pack ?? 0.52) + rand() * 0.18);
     }
   }
   // 4. Anchors, placed by hand
@@ -91,41 +91,41 @@ function compose({ name, W, H, bandHeights, rows, anchorSpots, objectSpots }) {
   return { width: W, height: H, background: '#1c1b19', pieces: out };
 }
 
-// Where figures may stand. On the site the red title covers the middle of the
-// sheet, and the hero crops the sheet differently at each screen width, so the
-// figures keep to the parts that stay clear of the letters and inside the
-// visible area at 1280, 1440 and 1920px: the right-hand column, the upper band
-// beside the first word, and a strip at the lower left. Under the title there
-// is lettering only.
+// Titles, then faces. The lettering fills the left and centre of the sheet,
+// under the red site title; every figure is gathered into one crowd on the
+// right. The hero pins the sheet to its right edge, so the crowd is always in
+// view, and the crowd's left edge steps back row by row to stay clear of the
+// three stepped words of the title (measured at 1280px, the tightest case).
 const wide = compose({
   name: 'wide', W: 2400, H: 1000,
   bandHeights: [118, 46, 40, 72, 38, 150, 44, 58, 36, 96, 42, 40, 66, 38, 128, 44, 52],
   // [x, y, width]
-  objectSpots: [[2300, 120, 190], [1250, 150, 170], [100, 300, 180], [2320, 540, 170], [90, 620, 170], [1500, 130, 150], [2310, 800, 160], [120, 880, 170]],
+  objectSpots: [[2290, 110, 150], [1700, 120, 130], [2360, 470, 130], [2300, 760, 130]],
   rows: [
-    { from: 1300, to: 1760, bottom: 215, h: 150, groups: true },
-    { from: 1760, to: 2240, bottom: 250, h: 180, groups: true },
-    { from: 1760, to: 2240, bottom: 500, h: 190, groups: true },
-    { from: 1750, to: 2240, bottom: 720, h: 190 },
-    { from: 200, to: 500, bottom: 700, h: 170 },
-    { from: -40, to: 230, bottom: 940, h: 200 },
-    { from: 2200, to: 2440, bottom: 960, h: 220 },
+    { from: 1010, to: 2440, bottom: 190, h: 112, groups: true, pack: 0.5 },
+    { from: 1480, to: 2440, bottom: 310, h: 150, groups: true, pack: 0.46 },
+    { from: 1490, to: 2440, bottom: 440, h: 165, pack: 0.44 },
+    { from: 1950, to: 2440, bottom: 580, h: 175, pack: 0.42 },
+    { from: 1970, to: 2440, bottom: 740, h: 185, pack: 0.42 },
+    { from: 2000, to: 2440, bottom: 950, h: 215, pack: 0.42 },
   ],
   // [anchor index, x, bottom, height, rotation]
-  anchorSpots: [[4, 1830, 300, 210, 3], [6, 2090, 330, 230, -2], [7, 1380, 400, 250, 2], [8, 1590, 400, 250, -2], [3, 1850, 560, 250, -4], [1, 2110, 640, 240, 2], [0, 1975, 925, 400, -2], [5, 330, 660, 250, 3], [2, 370, 925, 280, 3], [9, 2330, 300, 190, 2]],
+  anchorSpots: [[9, 1310, 190, 120, 2], [2, 1600, 245, 165, 3], [7, 1570, 430, 235, 2], [8, 1770, 430, 240, -2], [4, 1990, 310, 210, 3], [6, 2210, 340, 230, -2], [3, 2090, 610, 250, -4], [1, 2310, 650, 220, 2], [5, 2060, 945, 255, 3], [0, 2215, 950, 380, -2]],
 });
+// On a phone there is no right-hand side, so the same idea runs top to bottom:
+// lettering behind the title, and the crowd in a band below it (the hero is
+// made taller on phones to show it).
 const tall = compose({
   name: 'tall', W: 1200, H: 1300,
   bandHeights: [96, 40, 36, 62, 34, 124, 40, 50, 34, 82, 38, 36, 58, 34, 108, 40, 46],
-  objectSpots: [[150, 110, 170], [1080, 1230, 160], [120, 1220, 170], [620, 1225, 150]],
+  objectSpots: [[150, 960, 130], [1090, 940, 120]],
   rows: [
-    { from: 300, to: 1220, bottom: 150, h: 150, groups: true },
-    { from: 640, to: 1220, bottom: 330, h: 150, groups: true },
-    { from: 1010, to: 1220, bottom: 640, h: 170 },
-    { from: 1010, to: 1220, bottom: 860, h: 170 },
-    { from: 200, to: 1000, bottom: 1300, h: 190, groups: true },
+    { from: 40, to: 1180, bottom: 935, h: 140, groups: true, pack: 0.5 },
+    { from: 20, to: 1190, bottom: 1050, h: 160, groups: true, pack: 0.46 },
+    { from: 20, to: 1190, bottom: 1170, h: 175, pack: 0.44 },
+    { from: 20, to: 1190, bottom: 1320, h: 215, pack: 0.42 },
   ],
-  anchorSpots: [[0, 870, 430, 230, -2], [7, 660, 425, 200, 2], [3, 1100, 1090, 220, 3], [2, 420, 1170, 120, 3], [5, 760, 1180, 130, -2]],
+  anchorSpots: [[7, 250, 1075, 215, 2], [8, 450, 1085, 215, -2], [6, 700, 1040, 190, -2], [3, 1020, 1045, 200, 3], [2, 300, 1300, 230, 3], [5, 610, 1305, 260, -2], [0, 930, 1310, 330, -2]],
 });
 await fs.writeFile(path.join(here, 'manifest-wide.json'), JSON.stringify(wide, null, 1));
 await fs.writeFile(path.join(here, 'manifest-tall.json'), JSON.stringify(tall, null, 1));
