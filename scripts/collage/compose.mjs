@@ -21,6 +21,7 @@ const detect = JSON.parse(await fs.readFile(path.join(here, 'detect.json'), 'utf
 function rng(seed) { let a = seed >>> 0; return () => { a |= 0; a = (a + 0x6d2b79f5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
 const aspectOf = (p) => (p.box[2] * detect[p.cover].w) / (p.box[3] * detect[p.cover].h);
 
+const forceGray = new Set(review.gray ?? []);
 const drop = new Set(review.drop), keepObj = new Set(review.keepObjects), anchorIds = review.anchors;
 const seenText = new Set();
 const titles = pieces.filter((p) => p.kind === 'title').filter((p) => { const k = p.text.toLowerCase().replace(/[^a-z]/g, ''); if (seenText.has(k)) return false; seenText.add(k); return true; });
@@ -85,33 +86,46 @@ function compose({ name, W, H, bandHeights, rows, anchorSpots, objectSpots }) {
     const a = aspectOf(f), w = h * a;
     out.push({ piece: f.id, x, y: Math.round(bottom - h / 2), w: Math.round(w), rot, z: z++, gray: false });
   });
+  for (const e of out) if (forceGray.has(e.piece)) e.gray = true;
   console.log(`${name}: ${out.length} pieces (${usedTitles} titles, ${Math.min(objectSpots.length, objects.length)} objects, ${usedFigures + anchorSpots.length} figures), ${new Set(out.map((e) => pieces.find((p) => p.id === e.piece).cover)).size} covers`);
   return { width: W, height: H, background: '#1c1b19', pieces: out };
 }
 
+// Where figures may stand. On the site the red title covers the middle of the
+// sheet, and the hero crops the sheet differently at each screen width, so the
+// figures keep to the parts that stay clear of the letters and inside the
+// visible area at 1280, 1440 and 1920px: the right-hand column, the upper band
+// beside the first word, and a strip at the lower left. Under the title there
+// is lettering only.
 const wide = compose({
   name: 'wide', W: 2400, H: 1000,
   bandHeights: [118, 46, 40, 72, 38, 150, 44, 58, 36, 96, 42, 40, 66, 38, 128, 44, 52],
   // [x, y, width]
-  objectSpots: [[2130, 150, 250], [1830, 250, 210], [2290, 400, 200], [1960, 470, 190], [130, 560, 210], [470, 610, 170], [1580, 560, 180], [2040, 80, 170], [760, 640, 160], [1120, 660, 170], [1380, 690, 150], [300, 700, 150], [2330, 620, 170], [1720, 110, 150], [940, 720, 140], [1700, 700, 150]],
+  objectSpots: [[2300, 120, 190], [1250, 150, 170], [100, 300, 180], [2320, 540, 170], [90, 620, 170], [1500, 130, 150], [2310, 800, 160], [120, 880, 170]],
   rows: [
-    { from: 1520, to: 2420, bottom: 640, h: 190, groups: true },
-    { from: -40, to: 2420, bottom: 850, h: 215, groups: true },
-    { from: -60, to: 1560, bottom: 1035, h: 265 },
+    { from: 1300, to: 1760, bottom: 215, h: 150, groups: true },
+    { from: 1760, to: 2240, bottom: 250, h: 180, groups: true },
+    { from: 1760, to: 2240, bottom: 500, h: 190, groups: true },
+    { from: 1750, to: 2240, bottom: 720, h: 190 },
+    { from: 200, to: 500, bottom: 700, h: 170 },
+    { from: -40, to: 230, bottom: 940, h: 200 },
+    { from: 2200, to: 2440, bottom: 960, h: 220 },
   ],
   // [anchor index, x, bottom, height, rotation]
-  anchorSpots: [[4, 2300, 470, 260, 3], [3, 1780, 690, 280, -4], [0, 2140, 1005, 520, -2], [1, 880, 1010, 290, 2], [2, 1860, 1010, 330, 3], [5, 620, 1040, 380, 3], [6, 1140, 1005, 310, -2], [7, 1630, 1005, 330, 2], [8, 1390, 1005, 320, -2], [9, 250, 1040, 330, 2]],
+  anchorSpots: [[4, 1830, 300, 210, 3], [6, 2090, 330, 230, -2], [7, 1380, 400, 250, 2], [8, 1590, 400, 250, -2], [3, 1850, 560, 250, -4], [1, 2110, 640, 240, 2], [0, 1975, 925, 400, -2], [5, 330, 660, 250, 3], [2, 370, 925, 280, 3], [9, 2330, 300, 190, 2]],
 });
 const tall = compose({
   name: 'tall', W: 1200, H: 1300,
   bandHeights: [96, 40, 36, 62, 34, 124, 40, 50, 34, 82, 38, 36, 58, 34, 108, 40, 46],
-  objectSpots: [[1010, 700, 190], [180, 740, 180], [620, 760, 170], [840, 620, 150], [400, 660, 150], [1090, 520, 140]],
+  objectSpots: [[150, 110, 170], [1080, 1230, 160], [120, 1220, 170], [620, 1225, 150]],
   rows: [
-    { from: -30, to: 1220, bottom: 960, h: 180, groups: true },
-    { from: -40, to: 1220, bottom: 1130, h: 205, groups: true },
-    { from: -50, to: 700, bottom: 1335, h: 250 },
+    { from: 300, to: 1220, bottom: 150, h: 150, groups: true },
+    { from: 640, to: 1220, bottom: 330, h: 150, groups: true },
+    { from: 1010, to: 1220, bottom: 640, h: 170 },
+    { from: 1010, to: 1220, bottom: 860, h: 170 },
+    { from: 200, to: 1000, bottom: 1300, h: 190, groups: true },
   ],
-  anchorSpots: [[3, 930, 1000, 270, 3], [0, 980, 1305, 470, -2], [2, 640, 1310, 300, 3], [5, 300, 1340, 340, 3], [7, 110, 1305, 280, -2]],
+  anchorSpots: [[0, 870, 430, 230, -2], [7, 660, 425, 200, 2], [3, 1100, 1090, 220, 3], [2, 420, 1170, 120, 3], [5, 760, 1180, 130, -2]],
 });
 await fs.writeFile(path.join(here, 'manifest-wide.json'), JSON.stringify(wide, null, 1));
 await fs.writeFile(path.join(here, 'manifest-tall.json'), JSON.stringify(tall, null, 1));

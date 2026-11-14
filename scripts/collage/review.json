@@ -1,5 +1,5 @@
 {
- "note": "Review of the candidate pieces in pieces.json, made by looking at contact sheets. drop: author portraits, duplicates, fragments with stray lettering, and pieces that did not cut cleanly. keepObjects: the non-figure cut-outs worth using (the rest are dropped). anchors: figures placed large.",
+ "note": "Review of the candidate pieces in pieces.json, made by looking at contact sheets. drop: author portraits, duplicates, fragments with stray lettering, and pieces that did not cut cleanly. keepObjects: the non-figure cut-outs worth using (the rest are dropped). anchors: figures placed large. gray: red- and orange-toned pieces printed in black and white so they do not compete with the red title.",
  "drop": [
   "aldonmorris#1",
   "AnneGrayFischerheadshot#1",
@@ -136,5 +136,15 @@
   "Sword#1",
   "Sword#2",
   "radical-women-writers#1"
+ ],
+ "gray": [
+  "radical-women-writers#1",
+  "civilrightsnewyorkcity#1",
+  "Alejandra-Marchevsky#1",
+  "taylornyc#1",
+  "notworking#1",
+  "IMG_9975#1",
+  "IMG_9974#1",
+  "black-scare-red-scare#1"
  ]
 }
