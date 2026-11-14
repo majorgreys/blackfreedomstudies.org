@@ -49,7 +49,7 @@ if (entry.data.relatedEvent) {
         <h1>{entry.data.title}</h1>
       </div>
       {relatedEvent && (
-        <p style="margin-bottom:24px;">Related event: <a href={`/events/${relatedEvent.data.seasonPart}-${relatedEvent.data.seasonYear}/${relatedEvent.id}`}>{relatedEvent.data.title}</a></p>
+        <p class="r-related">For the conversation <a href={`/events/${relatedEvent.data.seasonPart}-${relatedEvent.data.seasonYear}/${relatedEvent.id}`}>{relatedEvent.data.title}</a></p>
       )}
       <div class="r-prose">
         <Content />
