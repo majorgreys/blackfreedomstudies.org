@@ -34,6 +34,31 @@ const speakersFor = (event: (typeof allEvents)[number]) =>
     .map((slug: string) => allSpeakers.find(s => s.id === slug))
     .filter((s): s is (typeof allSpeakers)[number] => Boolean(s));
 
+const featuredUrl = featured ? `/events/${seasonKey}/${featured.id}` : '';
+const featuredSpeakers = featured ? speakersFor(featured) : [];
+const listNames = (names: string[]) =>
+  names.length <= 1 ? names.join('') : `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}`;
+const firstYear = Math.min(...allEvents.map(e => e.data.seasonYear));
+
+// The archive ledger: real counts, each linking to its section. Recordings are
+// counted as on the Recordings page (videos and external links, one per URL).
+const allResources = await getCollection('resources');
+const recordingCount = new Set(
+  allResources
+    .filter(r => (r.data.resourceType === 'video' || r.data.resourceType === 'external') && r.data.sourceUrl)
+    .map(r => r.data.sourceUrl),
+).size;
+const interviewCount = (await getCollection('interviews')).length;
+const booksPage = pagesCollection.find(p => p.id === 'books');
+const bookCount = (booksPage?.body ?? '').split('\n').filter(l => l.startsWith('- ')).length;
+const ledger = [
+  { name: 'Conversations', count: allEvents.length, href: '/events/' },
+  { name: 'Speakers', count: allSpeakers.length, href: '/speakers/' },
+  { name: 'Recordings', count: recordingCount, href: '/resources/' },
+  { name: 'Interviews', count: interviewCount, href: '/interviews/' },
+  { name: 'Books', count: bookCount, href: '/books' },
+].filter(row => row.count > 0);
+
 let HomepageContent: any = null;
 if (homepage) {
   const rendered = await render(homepage);
@@ -101,38 +126,84 @@ const organizationJsonLd = {
   ) : (
     <div>
       <div class="r-hero">
-        {homepage?.data.image && (
-          <img src={(homepage.data.image as any).src} alt="Speakers in conversation before an audience at the Schomburg Center" />
-        )}
-        <div class="r-hero__content">
-          <h1 class="r-hero__title">Conversations in<br/>Black Freedom Studies</h1>
-          <p class="r-hero__subtitle">A monthly roundtable discussion at the Schomburg Center with authors and experts in Black history.</p>
-          <div class="r-hero__actions">
-            {nextEvent && (
-              <a href={`/events/${nextEvent.data.seasonPart}-${nextEvent.data.seasonYear}/${nextEvent.id}`} class="r-hero__cta">
-                Next: {nextEvent.data.title} — {nextEvent.data.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })}
-              </a>
-            )}
+        <div class="r-hero__stage">
+          {homepage?.data.image && (
+            <div class="r-hero__photo">
+              <img src={(homepage.data.image as any).src} alt="Speakers in conversation before an audience at the Schomburg Center" />
+            </div>
+          )}
+          <div class="r-hero__content">
+            <h1 class="r-hero__title">
+              <span class="r-hero__kicker"><b>Conversations in</b></span>
+              <span>Black</span>
+              <span>Freedom</span>
+              <span>Studies</span>
+            </h1>
           </div>
         </div>
+        <div class="r-hero__strip">
+          <div class="r-hero__strip-inner">
+            <p class="r-hero__subtitle">A monthly roundtable with authors and experts in Black history, at the Schomburg Center in Harlem and online.</p>
+            <p class="r-hero__facts">First Thursdays, 6:30pm. Since {firstYear}.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="r-home-top">
+        {featured && (
+          <section class="r-handbill" aria-labelledby="home-next">
+            <p class="r-handbill__date" aria-hidden="true">
+              <span class="r-handbill__month">{featured.data.date.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' })}</span>
+              <span class="r-handbill__day">{featured.data.date.getUTCDate()}</span>
+              <span class="r-handbill__year">{featured.data.date.getUTCFullYear()}</span>
+            </p>
+            <div class="r-handbill__body">
+              <p class="r-handbill__label" id="home-next">{nextEvent ? 'Next conversation' : 'Most recent conversation'}</p>
+              <h2 class="r-handbill__title"><a href={featuredUrl}>{featured.data.title}</a></h2>
+              <p class="r-handbill__when">
+                <time datetime={featured.data.date.toISOString().slice(0, 10)}>{featured.data.date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</time>
+              </p>
+              {featuredSpeakers.length > 0 && <p class="r-handbill__with">With {listNames(featuredSpeakers.map(s => s.data.name))}</p>}
+              <div class="r-handbill__actions">
+                <a class="r-btn" href={featuredUrl}>Event details</a>
+                {nextEvent?.data.eventbrite && <a class="r-btn r-btn--outline" href={nextEvent.data.eventbrite} rel="noopener">Register</a>}
+              </div>
+            </div>
+          </section>
+        )}
+        <section class="r-ledger" aria-labelledby="home-archive">
+          <h2 id="home-archive">In the archive</h2>
+          <ul>
+            {ledger.map(row => (
+              <li>
+                <a href={row.href}>
+                  <span class="r-ledger__name">{row.name}</span>
+                  <span class="r-ledger__dots" aria-hidden="true"></span>
+                  <span class="r-ledger__n">{row.count}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p class="r-ledger__note">Every conversation since {firstYear}, free to browse.</p>
+        </section>
       </div>
 
       <div class="r-home-grid">
         {seasonEvents.length > 0 && (
           <section class="r-home-season" aria-labelledby="home-season">
             <div class="r-home-heading">
-              <h2 id="home-season">{seasonTitle}</h2>
+              <h2 id="home-season">{seasonTitle} program</h2>
               <a href={`/events/${seasonKey}/`}>Season page</a>
             </div>
             <div class="r-season-group__events r-season-group__events--page">
               {seasonEvents.map(event => <EventRow event={event} speakers={speakersFor(event)} />)}
             </div>
-            <p class="r-home-more"><a href="/events/">Browse every conversation since 2013 →</a></p>
+            <p class="r-home-more"><a href="/events/">Browse every conversation since {firstYear}</a></p>
           </section>
         )}
         <aside class="r-home-side" aria-labelledby="home-news">
           <div class="r-home-heading">
-            <h2 id="home-news">Latest news</h2>
+            <h2 id="home-news">News</h2>
             <a href="/news/">All news</a>
           </div>
           <ul class="r-home-news">
@@ -142,13 +213,6 @@ const organizationJsonLd = {
                 <a href={`/news/${entry.data.date.getUTCFullYear()}/${entry.id}`}>{entry.data.title}</a>
               </li>
             ))}
-          </ul>
-          <div class="r-home-heading"><h2>Explore the archive</h2></div>
-          <ul class="r-home-links">
-            <li><a href="/resources/">Recordings</a></li>
-            <li><a href="/speakers/">Speakers</a></li>
-            <li><a href="/interviews/">Interviews</a></li>
-            <li><a href="/books">Books</a></li>
           </ul>
         </aside>
       </div>
