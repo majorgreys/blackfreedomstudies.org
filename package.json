@@ -12,7 +12,10 @@
     "preview": "astro preview",
     "build:classic": "THEME=classic astro build",
     "build:redesign": "THEME=redesign astro build",
-    "collage": "node scripts/build-cover-collage.mjs"
+    "collage": "node scripts/build-cover-collage.mjs",
+    "collage:extract": "swift scripts/collage/extract.swift && node scripts/collage/pieces.mjs",
+    "collage:compose": "node scripts/collage/compose.mjs",
+    "collage:cutouts": "node scripts/collage/render.mjs"
   },
   "keywords": [],
   "author": "",
